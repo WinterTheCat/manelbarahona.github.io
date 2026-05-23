@@ -13,13 +13,16 @@
     --surface2: #1e1c2e;
     --pink: #ff6b9d;
     --yellow: #f9c846;
+    --purple: #a855f7;
+    --cyan: #4ecdc4;
+    --green: #6ee7b7;
     --text: #f0eeff;
     --muted: #c4bfe0;
     --muted2: #8a85a8;
     --border: rgba(255,255,255,0.09);
     --font-display: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'DM Sans', sans-serif;
-    --max-w: 900px;
+    --max-w: 860px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -41,149 +44,177 @@
   .lang-btn { padding: 0.28rem 0.75rem; font-size: 0.78rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; background: transparent; color: var(--muted2); transition: all 0.2s; letter-spacing: 0.04em; }
   .lang-btn.active { background: var(--yellow); color: var(--bg); }
 
-  /* HERO */
-  .project-hero {
-    padding: 8rem 2.5rem 4rem;
+  /* HERO — full cover */
+  .hero-cover {
+    position: relative;
+    height: 90vh;
+    min-height: 500px;
+    overflow: hidden;
+    display: flex; align-items: flex-end;
+  }
+  .hero-cover img {
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: center top;
+  }
+  .hero-cover-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(15,14,23,1) 0%, rgba(15,14,23,0.5) 50%, rgba(15,14,23,0.1) 100%);
+  }
+  .hero-cover-content {
+    position: relative; z-index: 2;
+    padding: 3rem 3rem 4rem;
     max-width: var(--max-w);
     margin: 0 auto;
+    width: 100%;
   }
-  .project-tag {
+  .hero-tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,107,157,0.1);
-    border: 1px solid rgba(255,107,157,0.3);
-    border-radius: 100px;
-    padding: 0.35rem 1rem;
-    font-size: 0.72rem; font-weight: 700;
-    color: var(--pink);
-    font-family: var(--font-display);
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin-bottom: 1.2rem;
+    background: rgba(255,107,157,0.15); border: 1px solid rgba(255,107,157,0.4);
+    border-radius: 100px; padding: 0.35rem 1rem;
+    font-size: 0.72rem; font-weight: 700; color: var(--pink);
+    font-family: var(--font-display); letter-spacing: 0.08em;
+    text-transform: uppercase; margin-bottom: 1rem;
   }
-  h1 {
+  .hero-cover-content h1 {
     font-family: var(--font-display);
-    font-size: clamp(2.5rem, 6vw, 4rem);
-    font-weight: 800;
-    letter-spacing: -0.03em;
-    line-height: 1.0;
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    font-weight: 800; letter-spacing: -0.03em;
+    line-height: 0.95; color: var(--text);
     margin-bottom: 1rem;
-    color: var(--text);
   }
-  .project-subtitle {
-    font-size: 1rem; color: var(--muted); max-width: 600px;
-    line-height: 1.75; font-weight: 300; margin-bottom: 2rem;
+  .hero-cover-content p {
+    font-size: 1.05rem; color: var(--muted);
+    max-width: 520px; line-height: 1.7;
+    font-weight: 300;
   }
-  .project-meta {
-    display: flex; flex-wrap: wrap; gap: 1.5rem;
-    padding: 1.2rem 0;
-    border-top: 1px solid var(--border);
+
+  /* META BAR */
+  .meta-bar {
+    background: var(--surface);
     border-bottom: 1px solid var(--border);
   }
-  .meta-item { }
-  .meta-label { font-size: 0.68rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.2rem; }
-  .meta-value { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+  .meta-bar-inner {
+    max-width: var(--max-w); margin: 0 auto;
+    padding: 1.2rem 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 2rem;
+  }
+  .meta-item .meta-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.2rem; }
+  .meta-item .meta-value { font-size: 0.88rem; font-weight: 600; color: var(--text); }
 
   /* CONTENT */
-  .project-content {
-    max-width: var(--max-w);
-    margin: 0 auto;
-    padding: 0 2.5rem 6rem;
-  }
+  .project-content { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem 6rem; }
+  .content-block { margin: 3.5rem 0; }
 
-  .section-label {
-    display: flex; align-items: center; gap: 0.7rem;
-    font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--muted2); margin-bottom: 0.6rem;
-  }
+  .section-label { display: flex; align-items: center; gap: 0.7rem; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.5rem; }
   .section-label::before { content:''; display:block; width:18px; height:2px; background:var(--pink); }
 
-  h2 {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
-    font-weight: 800; letter-spacing: -0.02em;
-    line-height: 1.15; margin-bottom: 1rem; color: var(--text);
-  }
+  h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; color: var(--text); }
 
-  .content-block { margin-bottom: 3.5rem; }
+  .content-block p { color: var(--muted); line-height: 1.8; font-weight: 300; font-size: 0.97rem; margin-bottom: 0.8rem; }
+  .content-block p strong { color: var(--text); font-weight: 600; }
 
-  .content-block p {
-    color: var(--muted); line-height: 1.8; font-weight: 300;
-    font-size: 0.97rem; margin-bottom: 0.8rem;
-  }
-
-  /* IMAGE SLOTS */
-  .img-slot {
-    width: 100%; border-radius: 12px; overflow: hidden;
-    border: 1px solid var(--border);
-    margin: 1.5rem 0;
+  /* CALLOUTS */
+  .callouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+  .callout {
     background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 1.3rem 1.2rem;
+    text-align: center;
   }
-  .img-slot img { width: 100%; display: block; object-fit: cover; }
-  .img-slot .img-caption {
-    padding: 0.7rem 1rem;
-    font-size: 0.75rem; color: var(--muted2);
-    border-top: 1px solid var(--border);
-    font-style: italic;
-  }
-  .img-placeholder {
-    width: 100%; aspect-ratio: 16/9;
-    background: var(--surface2);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0.5rem; color: var(--muted2);
-    font-size: 0.8rem;
-  }
-  .img-placeholder .ph-icon { font-size: 2rem; }
+  .callout-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--pink); line-height: 1; margin-bottom: 0.3rem; }
+  .callout-label { font-size: 0.75rem; color: var(--muted2); font-weight: 400; line-height: 1.3; }
 
-  .img-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 1rem; margin: 1.5rem 0;
+  /* DESIGN PROCESS CARD */
+  .process-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin: 1.5rem 0;
   }
+  .process-header {
+    padding: 1rem 1.4rem;
+    background: var(--surface2);
+    border-bottom: 1px solid var(--border);
+    font-family: var(--font-display);
+    font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--muted2);
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .process-header span { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); display: inline-block; }
+  .process-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .process-step {
+    padding: 1.3rem 1.2rem;
+    border-right: 1px solid var(--border);
+  }
+  .process-step:last-child { border-right: none; }
+  .process-step-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .process-step p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; font-weight: 300; margin: 0; }
+  .label-problem { color: #f87171; }
+  .label-solution { color: var(--cyan); }
+  .label-result { color: var(--green); }
+
+  /* IMAGES */
+  .img-slot { width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin: 1.5rem 0; background: var(--surface); }
+  .img-slot img { width: 100%; display: block; object-fit: cover; }
+  .img-slot .img-caption { padding: 0.65rem 1rem; font-size: 0.73rem; color: var(--muted2); border-top: 1px solid var(--border); font-style: italic; }
+  .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
   .img-grid .img-slot { margin: 0; }
+
+  /* REFS */
+  .refs { display: flex; flex-wrap: wrap; gap: 0.6rem; margin: 1rem 0; }
+  .ref-chip { padding: 0.35rem 0.9rem; border-radius: 8px; font-size: 0.78rem; font-weight: 600; font-family: var(--font-display); background: var(--surface); border: 1px solid var(--border); color: var(--muted); }
+
+  /* CHARS */
+  .chars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .char-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
+  .char-name { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 0.15rem; }
+  .char-alias { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
+  .char-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; font-weight: 300; }
 
   /* ROLE TAGS */
   .role-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-  .role-tag {
-    padding: 0.3rem 0.85rem; border-radius: 100px;
-    font-size: 0.75rem; font-weight: 600;
-    font-family: var(--font-display);
-    background: rgba(255,107,157,0.1);
-    color: var(--pink);
-    border: 1px solid rgba(255,107,157,0.25);
-  }
+  .role-tag { padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.74rem; font-weight: 600; font-family: var(--font-display); background: rgba(255,107,157,0.1); color: var(--pink); border: 1px solid rgba(255,107,157,0.25); }
 
-  /* BACK BUTTON */
-  .btn-back {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.78rem 1.7rem;
-    background: transparent; color: var(--text);
-    border: 1px solid var(--border); border-radius: 8px;
-    font-family: var(--font-display); font-weight: 600; font-size: 0.88rem;
-    cursor: pointer; text-decoration: none;
-    transition: border-color 0.2s, background 0.2s;
-    margin-top: 1rem;
+  /* LEARNINGS */
+  .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
+  .learning-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem; }
+  .learning-icon { font-size: 1.5rem; margin-bottom: 0.7rem; }
+  .learning-title { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; }
+  .learning-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; font-weight: 300; }
+
+  /* OUTCOME */
+  .outcome-banner {
+    background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(255,107,157,0.1));
+    border: 1px solid rgba(168,85,247,0.2);
+    border-radius: 14px;
+    padding: 2rem;
+    margin: 1.5rem 0;
+    text-align: center;
   }
+  .outcome-banner h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 0.6rem; }
+  .outcome-banner p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 560px; margin: 0 auto; }
+
+  .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; }
   .btn-back:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
-
-  .btn-primary {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    padding: 0.78rem 1.7rem;
-    background: var(--yellow); color: var(--bg);
-    border: none; border-radius: 8px;
-    font-family: var(--font-display); font-weight: 700; font-size: 0.88rem;
-    cursor: pointer; text-decoration: none;
-    transition: transform 0.2s, box-shadow 0.2s;
-    margin-top: 1rem; margin-right: 0.8rem;
-  }
-  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,200,70,0.22); }
 
   footer { text-align: center; padding: 1.6rem; border-top: 1px solid var(--border); font-size: 0.76rem; color: var(--muted2); }
 
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
   @media (max-width: 720px) {
     nav { padding: 0.9rem 1.2rem; }
-    .project-hero, .project-content { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .img-grid { grid-template-columns: 1fr; }
+    .hero-cover-content { padding: 2rem 1.2rem 3rem; }
+    .meta-bar-inner, .project-content { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .callouts, .process-steps { grid-template-columns: 1fr; }
+    .process-step { border-right: none; border-bottom: 1px solid var(--border); }
+    .process-step:last-child { border-bottom: none; }
+    .img-grid, .chars-grid, .learnings-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -198,110 +229,202 @@
   </div>
 </nav>
 
-<!-- HERO -->
-<div class="project-hero">
-  <div class="project-tag" data-i18n="tag">RPG Narrativo · Demo Universitaria</div>
-  <h1>Divine Angels</h1>
-  <p class="project-subtitle" data-i18n="subtitle">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.
-  </p>
-  <div class="project-meta">
-    <div class="meta-item">
-      <div class="meta-label" data-i18n="meta_role_label">Rol</div>
-      <div class="meta-value" data-i18n="meta_role">Lead Game Designer</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label" data-i18n="meta_platform_label">Plataforma</div>
-      <div class="meta-value" data-i18n="meta_platform">PC</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label" data-i18n="meta_team_label">Equipo</div>
-      <div class="meta-value" data-i18n="meta_team">Lorem ipsum</div>
-    </div>
-    <div class="meta-item">
-      <div class="meta-label" data-i18n="meta_duration_label">Duración</div>
-      <div class="meta-value" data-i18n="meta_duration">Lorem ipsum</div>
-    </div>
+<!-- HERO COVER -->
+<div class="hero-cover">
+  <img src="../divine-angels.jpg" alt="Divine Angels">
+  <div class="hero-cover-overlay"></div>
+  <div class="hero-cover-content">
+    <div class="hero-tag" data-i18n="tag">RPG Narrativo · Demo Universitaria · PC</div>
+    <h1>Divine<br>Angels</h1>
+    <p data-i18n="hero_sub">4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.</p>
   </div>
 </div>
 
-<!-- CONTENT -->
+<!-- META BAR -->
+<div class="meta-bar">
+  <div class="meta-bar-inner">
+    <div class="meta-item"><div class="meta-label" data-i18n="m1l">Rol</div><div class="meta-value" data-i18n="m1v">Game Designer</div></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m2l">Plataforma</div><div class="meta-value">PC</div></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m3l">Equipo</div><div class="meta-value" data-i18n="m3v">12 personas</div></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m4l">Tipo</div><div class="meta-value" data-i18n="m4v">Prototipo · Presentado a inversores</div></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m5l">Áreas</div><div class="meta-value" data-i18n="m5v">Sistemas · Narrativa · UI/UX</div></div>
+  </div>
+</div>
+
 <div class="project-content">
 
-  <!-- COVER IMAGE -->
-  <div class="img-slot">
-    <img src="../divine-angels.jpg" alt="Divine Angels cover">
-    <div class="img-caption" data-i18n="img1_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+  <!-- CALLOUTS -->
+  <div class="content-block reveal">
+    <div class="callouts">
+      <div class="callout"><div class="callout-num">3</div><div class="callout-label" data-i18n="c1">Formas de resolver cada encuentro de combate</div></div>
+      <div class="callout"><div class="callout-num">4</div><div class="callout-label" data-i18n="c2">Personajes jugables con sistemas de habilidades independientes</div></div>
+      <div class="callout"><div class="callout-num">12</div><div class="callout-label" data-i18n="c3">Personas coordinadas entre diseño y arte</div></div>
+    </div>
   </div>
 
   <!-- OVERVIEW -->
-  <div class="content-block">
-    <div class="section-label" data-i18n="overview_label">Descripción</div>
-    <h2 data-i18n="overview_title">Lorem ipsum dolor sit amet.</h2>
-    <p data-i18n="overview_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <p data-i18n="overview_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="content-block reveal">
+    <div class="section-label" data-i18n="s1">El Concepto</div>
+    <h2 data-i18n="h1">Persona meets Divinity. Vida cotidiana, combate táctico y decisiones que importan.</h2>
+    <p data-i18n="p1">Divine Angels es un RPG de acción sobre 4 supermujeres que compaginan trabajo, familia y vida social con proteger la ciudad de un aumento inexplicable de supervillanos. El día se divide en mañana, tarde y noche — tú decides cómo inviertes el tiempo de cada personaje, y esas decisiones tienen consecuencias directas en el combate y la narrativa.</p>
+    <p data-i18n="p2">El juego combina <strong>combate táctico por turnos en entornos 3D</strong> con interacciones sociales, sistema de investigación de crímenes, economía de recursos y decisiones narrativas ramificadas. Todo está conectado: lo que haces fuera del combate cambia lo que puedes hacer dentro.</p>
+    <div class="refs">
+      <span class="ref-chip">Persona — gestión de tiempo</span>
+      <span class="ref-chip">Divinity: Original Sin — combate táctico</span>
+      <span class="ref-chip">Undertale — diálogo con enemigos</span>
+    </div>
   </div>
 
-  <!-- MY ROLE -->
-  <div class="content-block">
-    <div class="section-label" data-i18n="role_label">Mi Rol</div>
-    <h2 data-i18n="role_title">Lorem ipsum dolor sit amet.</h2>
-    <p data-i18n="role_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-    <p data-i18n="role_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.</p>
+  <!-- DESIGN PROCESS -->
+  <div class="content-block reveal">
+    <div class="section-label" data-i18n="s2">Proceso de Diseño</div>
+    <h2 data-i18n="h2">Del RPG clásico al puzzle táctico: cómo evolucionó el combate.</h2>
+    <p data-i18n="p3">El sistema de combate pasó por una evolución significativa durante el desarrollo. El diseño original era correcto en papel — pero aburrido en la práctica.</p>
+
+    <div class="process-card">
+      <div class="process-header"><span></span> <span data-i18n="proc_title">Evolución del Sistema de Combate</span></div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-label label-problem" data-i18n="proc1l">El Problema</div>
+          <p data-i18n="proc1p">El combate RPG clásico inicial — stats, turnos, menús — funcionaba mecánicamente pero no generaba decisiones interesantes. Los jugadores ejecutaban la misma estrategia en cada encuentro.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-label label-solution" data-i18n="proc2l">La Solución</div>
+          <p data-i18n="proc2p">Rediseñamos hacia un combate táctico en entornos 3D inspirado en Divinity: Original Sin. Las habilidades de los 3 personajes jugables interactúan con el entorno: mojar el suelo, colocar una máquina encima, lanzar un rayo — electrocución en área.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-label label-result" data-i18n="proc3l">El Resultado</div>
+          <p data-i18n="proc3p">Cada combate se convirtió en un puzzle con múltiples soluciones. Los jugadores dejaron de repetir estrategias y empezaron a experimentar. El entorno pasó de ser decorado a ser una herramienta de diseño activa.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="img-grid reveal">
+    <div class="img-slot">
+      <img src="../da-combat.jpg" alt="Divine Angels combat system">
+      <div class="img-caption" data-i18n="ic1">Sistema de combate táctico por turnos con interacción de habilidades.</div>
+    </div>
+    <div class="img-slot">
+      <img src="../da-interaction.jpg" alt="Divine Angels interaction system">
+      <div class="img-caption" data-i18n="ic2">Interacción del entorno — las habilidades reaccionan entre sí y con los elementos del escenario.</div>
+    </div>
+  </div>
+
+  <!-- TALK MECHANIC -->
+  <div class="content-block reveal">
+    <div class="section-label" data-i18n="s3">Feature de Diseño</div>
+    <h2 data-i18n="h3">El sistema de diálogo en combate: personalidad como mecánica.</h2>
+    <p data-i18n="p4">En lugar de que "hablar" fuera solo una opción de rendición pasiva, diseñamos un sistema donde <strong>cada enemigo tiene una personalidad que responde de forma diferente a cómo le hablas</strong>. Usar tu turno para hablar tiene consecuencias reales y estratégicas.</p>
+
+    <div class="process-card">
+      <div class="process-header"><span></span> <span data-i18n="proc2_title">Cómo funciona la personalidad del enemigo</span></div>
+      <div class="process-steps">
+        <div class="process-step">
+          <div class="process-step-label" style="color:var(--yellow);" data-i18n="talk1l">Calmar al enemigo</div>
+          <p data-i18n="talk1p">Más fácil razonar con él y conseguir que se rinda. Pero se vuelve más inteligente tácticamente — buscará activamente escapar del combate si tiene oportunidad.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-label" style="color:#f87171;" data-i18n="talk2l">Enfurecer al enemigo</div>
+          <p data-i18n="talk2p">Más agresivo pero más descuidado. Difícil de rendir, pero mucho más fácil de manipular y tenderle trampas. Su ira se convierte en tu ventaja táctica.</p>
+        </div>
+        <div class="process-step">
+          <div class="process-step-label" style="color:var(--green);" data-i18n="talk3l">Rendición</div>
+          <p data-i18n="talk3p">El objetivo ideal. Requiere leer la personalidad del enemigo y elegir el enfoque correcto. Ganar sin violencia es siempre una opción, pero nunca la más fácil.</p>
+        </div>
+      </div>
+    </div>
+
+    <p data-i18n="p5">Este sistema fue una de las iteraciones más complejas del proyecto — definir el comportamiento de cada personalidad bajo cada condición, y equilibrarlo para que ninguna opción fuera siempre superior, requirió múltiples rondas de playtesting y ajuste.</p>
+  </div>
+
+  <!-- CHARACTERS -->
+  <div class="content-block reveal">
+    <div class="section-label" data-i18n="s4">Los Personajes</div>
+    <h2 data-i18n="h4">Cuatro vidas, cuatro poderes, un sistema de habilidades evolutivo.</h2>
+    <p data-i18n="p6">Cada personaje tiene una vida profesional propia y poderes únicos que <strong>evolucionan según cómo los uses en combate</strong>, generando árboles de habilidad distintos en cada partida.</p>
+    <div class="chars-grid">
+      <div class="char-card">
+        <div class="char-name">Alice</div>
+        <div class="char-alias" style="color:var(--pink);" data-i18n="ch1a">The Spearhead · Pediatra</div>
+        <div class="char-desc" data-i18n="ch1d">Poderes físicos de combate cuerpo a cuerpo. Divertida pero protectora. Alta agilidad y carisma.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-name">Beatrice</div>
+        <div class="char-alias" style="color:var(--purple);" data-i18n="ch2a">The Psychic · Programadora</div>
+        <div class="char-desc" data-i18n="ch2d">Poderes psíquicos para doblar la voluntad y manipular la realidad. Alta inteligencia y sociabilidad.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-name">Caroline</div>
+        <div class="char-alias" style="color:var(--cyan);" data-i18n="ch3a">The Elemental · Abogada</div>
+        <div class="char-desc" data-i18n="ch3d">Controla agua, hielo, viento, fuego, tierra y rayos. La que más interacciones de entorno genera en combate.</div>
+      </div>
+      <div class="char-card">
+        <div class="char-name">Diane</div>
+        <div class="char-alias" style="color:var(--yellow);" data-i18n="ch4a">The Technomancer · Ingeniera</div>
+        <div class="char-desc" data-i18n="ch4d">En silla de ruedas con gadgets avanzados. La más inteligente del equipo. Alta inteligencia y poder tecnológico.</div>
+      </div>
+    </div>
     <div class="role-tags">
-      <span class="role-tag" data-i18n="rtag1">Systems Design</span>
-      <span class="role-tag" data-i18n="rtag2">Narrative Design</span>
-      <span class="role-tag" data-i18n="rtag3">Combat Design</span>
-      <span class="role-tag" data-i18n="rtag4">Lorem Ipsum</span>
+      <span class="role-tag" data-i18n="rt1">Diseño de Sistemas</span>
+      <span class="role-tag" data-i18n="rt2">Diseño Narrativo</span>
+      <span class="role-tag" data-i18n="rt3">Diseño de Combate</span>
+      <span class="role-tag" data-i18n="rt4">UI/UX</span>
+      <span class="role-tag" data-i18n="rt5">Árbol de Habilidades</span>
+      <span class="role-tag" data-i18n="rt6">Balance de Personajes</span>
     </div>
   </div>
 
-  <!-- IMAGE GRID -->
-  <div class="img-grid">
-    <div class="img-slot">
-      <div class="img-placeholder">
-        <div class="ph-icon">🖼️</div>
-        <span data-i18n="img2_ph">Screenshot 2 — replace with image</span>
-      </div>
-      <div class="img-caption" data-i18n="img2_caption">Lorem ipsum dolor sit amet.</div>
-    </div>
-    <div class="img-slot">
-      <div class="img-placeholder">
-        <div class="ph-icon">🖼️</div>
-        <span data-i18n="img3_ph">Screenshot 3 — replace with image</span>
-      </div>
-      <div class="img-caption" data-i18n="img3_caption">Lorem ipsum dolor sit amet.</div>
-    </div>
+  <div class="img-slot reveal">
+    <img src="../da-skills.jpg" alt="Divine Angels skills system">
+    <div class="img-caption" data-i18n="ic_skills">Sistema de habilidades evolutivo — cada poder crece según cómo lo uses, con árboles de habilidad ramificados por personaje.</div>
   </div>
 
-  <!-- DESIGN CHALLENGES -->
-  <div class="content-block">
-    <div class="section-label" data-i18n="challenges_label">Retos de Diseño</div>
-    <h2 data-i18n="challenges_title">Lorem ipsum dolor sit amet.</h2>
-    <p data-i18n="challenges_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-    <p data-i18n="challenges_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  <div class="img-slot reveal">
+    <img src="../da-social.jpg" alt="Divine Angels social interactions">
+    <div class="img-caption" data-i18n="ic3">Estructura de día tripartita con sistema de compras, trabajo e investigación de crímenes.</div>
   </div>
 
-  <!-- FULL WIDTH IMAGE -->
-  <div class="img-slot">
-    <div class="img-placeholder" style="aspect-ratio:21/9;">
-      <div class="ph-icon">🖼️</div>
-      <span data-i18n="img4_ph">Wide screenshot — replace with image</span>
+  <!-- OUTCOME -->
+  <div class="content-block reveal">
+    <div class="section-label" data-i18n="s5">Resultado</div>
+    <h2 data-i18n="h5">Un proyecto universitario que llegó a inversores reales.</h2>
+    <div class="outcome-banner">
+      <h3 data-i18n="ob_title">Interés inversor. Cancelación por contexto, no por calidad.</h3>
+      <p data-i18n="ob_desc">Divine Angels se presentó a inversores que mostraron interés real en el proyecto. La cancelación no fue por falta de calidad del diseño — fue por el contexto de ser un proyecto universitario sin el respaldo de un estudio establecido. Una lección valiosa sobre cómo el posicionamiento importa tanto como el producto.</p>
     </div>
-    <div class="img-caption" data-i18n="img4_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
   </div>
 
   <!-- LEARNINGS -->
-  <div class="content-block">
-    <div class="section-label" data-i18n="learnings_label">Aprendizajes</div>
-    <h2 data-i18n="learnings_title">Lorem ipsum dolor sit amet.</h2>
-    <p data-i18n="learnings_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-    <p data-i18n="learnings_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
+  <div class="content-block reveal">
+    <div class="section-label" data-i18n="s6">Aprendizajes</div>
+    <h2 data-i18n="h6">Lo que este proyecto me enseñó como diseñador.</h2>
+    <div class="learnings-grid">
+      <div class="learning-card">
+        <div class="learning-icon">🔄</div>
+        <div class="learning-title" data-i18n="lc1t">Iterar sin miedo</div>
+        <div class="learning-desc" data-i18n="lc1d">Abandonar el sistema de combate original fue difícil — habíamos invertido tiempo en él. Pero reconocer que algo funciona en papel y falla en práctica, y actuar sobre eso, es lo que separa un buen diseñador de uno que se aferra a su primera idea.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-icon">🧩</div>
+        <div class="learning-title" data-i18n="lc2t">Los sistemas se comunican</div>
+        <div class="learning-desc" data-i18n="lc2d">Diseñar la personalidad de los enemigos enseña que cada sistema toca a todos los demás. Un cambio en el diálogo afecta al balance del combate, que afecta a la dificultad, que afecta a la narrativa. Pensar en sistemas aislados genera problemas en la integración.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-icon">🎯</div>
+        <div class="learning-title" data-i18n="lc3t">Scope y ambición</div>
+        <div class="learning-desc" data-i18n="lc3d">Divine Angels era muy ambicioso para el tiempo disponible. Aprendí a definir qué es el MVP real de un diseño — qué sistemas son el núcleo del juego y cuáles son features que añaden pero no son imprescindibles para validar la experiencia.</div>
+      </div>
+      <div class="learning-card">
+        <div class="learning-icon">📢</div>
+        <div class="learning-title" data-i18n="lc4t">El producto no es suficiente</div>
+        <div class="learning-desc" data-i18n="lc4d">Tener un buen juego no garantiza nada. La presentación, el contexto y el respaldo institucional importan tanto como la calidad del diseño. Una lección que cambió cómo pienso en la producción y el posicionamiento de proyectos.</div>
+      </div>
+    </div>
   </div>
 
-  <!-- BACK BUTTON -->
-  <div>
-    <a href="../index.html" class="btn-back" data-i18n="btn_back">← Back to Portfolio</a>
+  <div class="reveal">
+    <a href="../index.html" class="btn-back" data-i18n="btn_back">← Volver al Portfolio</a>
   </div>
 
 </div>
@@ -313,62 +436,92 @@
 <script>
 const i18n = {
   es: {
-    back: "Portfolio",
-    tag: "RPG Narrativo · Demo Universitaria",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.",
-    meta_role_label: "Rol", meta_role: "Lead Game Designer",
-    meta_platform_label: "Plataforma", meta_platform: "PC",
-    meta_team_label: "Equipo", meta_team: "Lorem ipsum",
-    meta_duration_label: "Duración", meta_duration: "Lorem ipsum",
-    img1_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    overview_label: "Descripción", overview_title: "Lorem ipsum dolor sit amet.",
-    overview_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    overview_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    role_label: "Mi Rol", role_title: "Lorem ipsum dolor sit amet.",
-    role_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-    role_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.",
-    rtag1: "Diseño de Sistemas", rtag2: "Diseño Narrativo", rtag3: "Diseño de Combate", rtag4: "Lorem Ipsum",
-    img2_ph: "Captura 2 — reemplazar con imagen", img2_caption: "Lorem ipsum dolor sit amet.",
-    img3_ph: "Captura 3 — reemplazar con imagen", img3_caption: "Lorem ipsum dolor sit amet.",
-    challenges_label: "Retos de Diseño", challenges_title: "Lorem ipsum dolor sit amet.",
-    challenges_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    challenges_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    img4_ph: "Captura panorámica — reemplazar con imagen",
-    img4_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    learnings_label: "Aprendizajes", learnings_title: "Lorem ipsum dolor sit amet.",
-    learnings_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-    learnings_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    btn_back: "← Volver al Portfolio",
-    footer_text: "Hecho con mucho café y amor por los juegos."
+    back:"Portfolio", tag:"RPG Narrativo · Prototipo · PC",
+    hero_sub:"4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.",
+    m1l:"Rol",m1v:"Game Designer",m2l:"Plataforma",m3l:"Equipo",m3v:"12 personas",
+    m4l:"Resultado",m4v:"Prototipo · Presentado a inversores",m5l:"Áreas",m5v:"Sistemas · Narrativa · UI/UX",
+    c1:"Formas de resolver cada encuentro de combate",c2:"Personajes jugables con árboles de habilidad independientes",c3:"Personas coordinadas entre diseño y arte",
+    s1:"El Concepto",h1:"Persona meets Divinity. Vida cotidiana, combate táctico y decisiones que importan.",
+    p1:"Divine Angels es un RPG de acción sobre 4 supermujeres que compaginan trabajo, familia y vida social con proteger la ciudad de un aumento inexplicable de supervillanos. El día se divide en mañana, tarde y noche — tú decides cómo inviertes el tiempo de cada personaje, y esas decisiones tienen consecuencias directas en el combate y la narrativa.",
+    p2:"El juego combina combate táctico por turnos en entornos 3D con interacciones sociales, sistema de investigación de crímenes, economía de recursos y decisiones narrativas ramificadas. Todo está conectado: lo que haces fuera del combate cambia lo que puedes hacer dentro.",
+    s2:"Proceso de Diseño",h2:"Del RPG clásico al puzzle táctico: cómo evolucionó el combate.",
+    p3:"El sistema de combate pasó por una evolución significativa. El diseño original era correcto en papel — pero aburrido en la práctica.",
+    proc_title:"Evolución del Sistema de Combate",
+    proc1l:"El Problema",proc1p:"El combate RPG clásico inicial funcionaba mecánicamente pero no generaba decisiones interesantes. Los jugadores ejecutaban la misma estrategia en cada encuentro.",
+    proc2l:"La Solución",proc2p:"Rediseñamos hacia combate táctico en entornos 3D. Las habilidades de los 3 personajes interactúan con el entorno: mojar el suelo, colocar una máquina encima, lanzar un rayo — electrocución en área.",
+    proc3l:"El Resultado",proc3p:"Cada combate se convirtió en un puzzle con múltiples soluciones. Los jugadores dejaron de repetir estrategias y empezaron a experimentar activamente con el entorno.",
+    ic1:"Sistema de combate táctico por turnos con interacción de habilidades.",
+    ic2:"Interacción del entorno — las habilidades reaccionan entre sí y con los elementos del escenario.",
+    s3:"Feature de Diseño",h3:"El sistema de diálogo en combate: personalidad como mecánica.",
+    p4:"En lugar de que hablar fuera solo una opción pasiva de rendición, diseñamos un sistema donde cada enemigo tiene una personalidad que responde de forma diferente según cómo le hablas.",
+    proc2_title:"Cómo funciona la personalidad del enemigo",
+    talk1l:"Calmar al enemigo",talk1p:"Más fácil razonar con él y conseguir que se rinda. Pero se vuelve más inteligente tácticamente — buscará activamente escapar del combate si tiene oportunidad.",
+    talk2l:"Enfurecer al enemigo",talk2p:"Más agresivo pero más descuidado. Difícil de rendir, pero mucho más fácil de manipular y tenderle trampas. Su ira se convierte en tu ventaja.",
+    talk3l:"Rendición",talk3p:"El objetivo ideal. Requiere leer la personalidad del enemigo y elegir el enfoque correcto. Ganar sin violencia es siempre una opción, pero nunca la más fácil.",
+    p5:"Este sistema fue una de las iteraciones más complejas — definir el comportamiento de cada personalidad bajo cada condición, y equilibrarlo para que ninguna opción fuera siempre superior, requirió múltiples rondas de playtesting.",
+    s4:"Los Personajes",h4:"Cuatro vidas, cuatro poderes, un sistema de habilidades evolutivo.",
+    p6:"Cada personaje tiene una vida profesional propia y poderes únicos que evolucionan según cómo los uses en combate, generando árboles de habilidad distintos en cada partida.",
+    ch1a:"The Spearhead · Pediatra",ch1d:"Poderes físicos de combate cuerpo a cuerpo. Divertida pero protectora. Alta agilidad y carisma.",
+    ch2a:"The Psychic · Programadora",ch2d:"Poderes psíquicos para doblar la voluntad y manipular la realidad. Alta inteligencia y sociabilidad.",
+    ch3a:"The Elemental · Abogada",ch3d:"Controla agua, hielo, viento, fuego, tierra y rayos. La que más interacciones de entorno genera.",
+    ch4a:"The Technomancer · Ingeniera",ch4d:"En silla de ruedas con gadgets avanzados. La más inteligente del equipo.",
+    rt1:"Diseño de Sistemas",rt2:"Diseño Narrativo",rt3:"Diseño de Combate",rt4:"UI/UX",rt5:"Árbol de Habilidades",rt6:"Balance de Personajes",
+    ic3:"Estructura de día tripartita con sistema de compras, trabajo e investigación de crímenes.",
+    ic_skills:"Sistema de habilidades evolutivo — cada poder crece según cómo lo uses, con árboles de habilidad ramificados.",
+    s5:"Resultado",h5:"Un proyecto universitario que llegó a inversores reales.",
+    ob_title:"Interés inversor. Cancelación por contexto, no por calidad.",
+    ob_desc:"Divine Angels se presentó a inversores que mostraron interés real. La cancelación no fue por falta de calidad del diseño — fue por el contexto de ser un proyecto universitario sin el respaldo de un estudio establecido. Una lección valiosa sobre cómo el posicionamiento importa tanto como el producto.",
+    s6:"Aprendizajes",h6:"Lo que este proyecto me enseñó como diseñador.",
+    lc1t:"Iterar sin miedo",lc1d:"Abandonar el sistema de combate original fue difícil — habíamos invertido tiempo en él. Pero reconocer que algo funciona en papel y falla en práctica, y actuar sobre eso, es lo que separa un buen diseñador de uno que se aferra a su primera idea.",
+    lc2t:"Los sistemas se comunican",lc2d:"Diseñar la personalidad de los enemigos enseña que cada sistema toca a todos los demás. Un cambio en el diálogo afecta al balance, que afecta a la dificultad, que afecta a la narrativa. Pensar en sistemas aislados genera problemas en la integración.",
+    lc3t:"Scope y ambición",lc3d:"Divine Angels era muy ambicioso para el tiempo disponible. Aprendí a definir el MVP real de un diseño — qué sistemas son el núcleo y cuáles son features que añaden pero no son imprescindibles para validar la experiencia.",
+    lc4t:"El producto no es suficiente",lc4d:"Tener un buen juego no garantiza nada. La presentación, el contexto y el respaldo institucional importan tanto como la calidad del diseño. Una lección que cambió cómo pienso en la producción y posicionamiento de proyectos.",
+    ic_skills:"Sistema de habilidades evolutivo — cada poder crece según cómo lo uses, con árboles de habilidad ramificados por personaje.",
+    btn_back:"← Volver al Portfolio",footer_text:"Hecho con mucho café y amor por los juegos."
   },
   en: {
-    back: "Portfolio",
-    tag: "Narrative RPG · University Demo",
-    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.",
-    meta_role_label: "Role", meta_role: "Lead Game Designer",
-    meta_platform_label: "Platform", meta_platform: "PC",
-    meta_team_label: "Team", meta_team: "Lorem ipsum",
-    meta_duration_label: "Duration", meta_duration: "Lorem ipsum",
-    img1_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    overview_label: "Overview", overview_title: "Lorem ipsum dolor sit amet.",
-    overview_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    overview_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    role_label: "My Role", role_title: "Lorem ipsum dolor sit amet.",
-    role_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
-    role_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.",
-    rtag1: "Systems Design", rtag2: "Narrative Design", rtag3: "Combat Design", rtag4: "Lorem Ipsum",
-    img2_ph: "Screenshot 2 — replace with image", img2_caption: "Lorem ipsum dolor sit amet.",
-    img3_ph: "Screenshot 3 — replace with image", img3_caption: "Lorem ipsum dolor sit amet.",
-    challenges_label: "Design Challenges", challenges_title: "Lorem ipsum dolor sit amet.",
-    challenges_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-    challenges_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    img4_ph: "Wide screenshot — replace with image",
-    img4_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    learnings_label: "Learnings", learnings_title: "Lorem ipsum dolor sit amet.",
-    learnings_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
-    learnings_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
-    btn_back: "← Back to Portfolio",
-    footer_text: "Made with lots of coffee and love for games."
+    back:"Portfolio", tag:"Narrative RPG · Prototype · PC",
+    hero_sub:"4 superwomen. A city in danger. A combat system that reimagines the classic RPG.",
+    m1l:"Role",m1v:"Game Designer",m2l:"Platform",m3l:"Team",m3v:"12 people",
+    m4l:"Outcome",m4v:"Prototype · Pitched to investors",m5l:"Areas",m5v:"Systems · Narrative · UI/UX",
+    c1:"Ways to resolve each combat encounter",c2:"Playable characters with independent skill trees",c3:"People coordinated across design and art",
+    s1:"The Concept",h1:"Persona meets Divinity. Daily life, tactical combat and choices that matter.",
+    p1:"Divine Angels is an action RPG about 4 superwomen balancing work, family and social life with protecting the city from an unexplained surge of super criminals. The day splits into morning, afternoon and evening — you decide how each character spends their time, and those decisions directly impact combat and narrative.",
+    p2:"The game blends turn-based tactical combat in 3D environments with social interactions, crime investigation, resource economy and branching narrative decisions. Everything is connected: what you do outside combat changes what you can do inside it.",
+    s2:"Design Process",h2:"From classic RPG to tactical puzzle: how the combat evolved.",
+    p3:"The combat system went through a significant evolution during development. The original design was correct on paper — but dull in practice.",
+    proc_title:"Combat System Evolution",
+    proc1l:"The Problem",proc1p:"The initial classic RPG combat worked mechanically but didn't generate interesting decisions. Players repeated the same strategy in every encounter.",
+    proc2l:"The Solution",proc2p:"We redesigned toward tactical combat in 3D environments inspired by Divinity: Original Sin. The 3 characters' skills interact with the environment: wet the floor, drop a machine on it, throw a bolt — area electrocution.",
+    proc3l:"The Result",proc3p:"Every combat became a puzzle with multiple solutions. Players stopped repeating strategies and started actively experimenting with the environment.",
+    ic1:"Turn-based tactical combat with skill interaction system.",
+    ic2:"Environment interaction system — skills react with each other and with stage elements.",
+    s3:"Design Feature",h3:"The in-combat dialogue system: personality as mechanic.",
+    p4:"Instead of talking being a passive surrender option, we designed a system where every enemy has a personality that responds differently based on how you talk to them.",
+    proc2_title:"How enemy personality works",
+    talk1l:"Calm the enemy",talk1p:"Easier to reason with them and get them to surrender. But they become tactically smarter — they'll actively look for escape routes if given the opportunity.",
+    talk2l:"Anger the enemy",talk2p:"More aggressive but more reckless. Hard to surrender, but much easier to manipulate and trap. Their anger becomes your tactical advantage.",
+    talk3l:"Surrender",talk3p:"The ideal outcome. Requires reading the enemy's personality and choosing the right approach. Winning without violence is always an option, but never the easiest one.",
+    p5:"This system was one of the most complex iterations — defining each personality's behaviour under every condition, and balancing it so no option was always superior, required multiple rounds of playtesting.",
+    s4:"The Characters",h4:"Four lives, four powers, an evolutionary skill system.",
+    p6:"Each character has their own professional life and unique powers that evolve based on how you use them in combat, generating different skill trees in each run.",
+    ch1a:"The Spearhead · Pediatrician",ch1d:"Physical combat powers for close-quarters fighting. Funny but protective. High agility and charisma.",
+    ch2a:"The Psychic · Game Programmer",ch2d:"Psychic powers to bend will and manipulate reality. High intelligence and sociability.",
+    ch3a:"The Elemental · Lawyer",ch3d:"Controls water, ice, wind, fire, earth and lightning. Generates the most environment interactions in combat.",
+    ch4a:"The Technomancer · Engineer",ch4d:"In a wheelchair packed with advanced gadgets. The smartest member of the team.",
+    rt1:"Systems Design",rt2:"Narrative Design",rt3:"Combat Design",rt4:"UI/UX",rt5:"Skill Tree",rt6:"Character Balance",
+    ic3:"Three-part day structure with shopping, work and crime investigation systems.",
+    ic_skills:"Evolutionary skill system — each power grows based on how you use it, with branching skill trees per character.",
+    s5:"Outcome",h5:"A university project that reached real investors.",
+    ob_title:"Investor interest. Cancelled by context, not by quality.",
+    ob_desc:"Divine Angels was pitched to investors who showed genuine interest. The cancellation wasn't due to lack of design quality — it was due to the context of being a university project without an established studio behind it. A valuable lesson in how positioning matters as much as the product.",
+    s6:"Learnings",h6:"What this project taught me as a designer.",
+    lc1t:"Iterate without fear",lc1d:"Abandoning the original combat system was hard — we'd already invested time in it. But recognising when something works on paper and fails in practice, and acting on that, is what separates a good designer from one who clings to their first idea.",
+    lc2t:"Systems talk to each other",lc2d:"Designing enemy personalities teaches that every system touches all the others. A change in dialogue affects combat balance, which affects difficulty, which affects narrative. Designing systems in isolation creates integration problems.",
+    lc3t:"Scope and ambition",lc3d:"Divine Angels was very ambitious for the time available. I learned to define the real MVP of a design — which systems are the core of the game and which are features that add to it but aren't essential to validate the experience.",
+    lc4t:"The product isn't enough",lc4d:"Having a good game guarantees nothing. Presentation, context and institutional backing matter as much as design quality. A lesson that changed how I think about production and project positioning.",
+    ic_skills:"Evolutionary skill system — each power grows based on how you use it, with branching skill trees per character.",
+    btn_back:"← Back to Portfolio",footer_text:"Made with lots of coffee and love for games."
   }
 };
 
@@ -379,10 +532,15 @@ function setLang(lang) {
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const val = i18n[lang][el.dataset.i18n];
     if (val === undefined) return;
-    el.textContent = val;
+    if (val.includes('<strong>')) el.innerHTML = val; else el.textContent = val;
   });
   document.documentElement.lang = lang;
 }
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 </script>
 </body>
 </html>
