@@ -133,27 +133,28 @@
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 14px;
-    overflow: hidden;
+    overflow: visible;
     margin: 1.5rem 0;
   }
   .process-header {
-    padding: 1rem 1.4rem;
+    padding: 0.9rem 1.4rem;
     background: var(--surface2);
     border-bottom: 1px solid var(--border);
+    border-radius: 14px 14px 0 0;
     font-family: var(--font-display);
-    font-size: 0.72rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    color: var(--muted2);
-    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 0.8rem; font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--text);
   }
-  .process-header span { width: 6px; height: 6px; border-radius: 50%; background: var(--pink); display: inline-block; }
-  .process-steps { display: grid; grid-template-columns: 1fr 1fr 1fr; }
+  .process-header span { display: none; }
+  .process-steps { display: grid; grid-template-columns: repeat(3, 1fr); }
   .process-step {
-    padding: 1.3rem 1.2rem;
+    padding: 1.2rem 1.1rem;
     border-right: 1px solid var(--border);
+    min-width: 0;
   }
   .process-step:last-child { border-right: none; }
-  .process-step-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .process-step-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
   .process-step p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; font-weight: 300; margin: 0; }
   .label-problem { color: #f87171; }
   .label-solution { color: var(--cyan); }
@@ -208,11 +209,12 @@
   .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
-  @media (max-width: 720px) {
+  @media (max-width: 860px) {
     nav { padding: 0.9rem 1.2rem; }
     .hero-cover-content { padding: 2rem 1.2rem 3rem; }
     .meta-bar-inner, .project-content { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .callouts, .process-steps { grid-template-columns: 1fr; }
+    .callouts { grid-template-columns: 1fr; }
+    .process-steps { grid-template-columns: 1fr; }
     .process-step { border-right: none; border-bottom: 1px solid var(--border); }
     .process-step:last-child { border-bottom: none; }
     .img-grid, .chars-grid, .learnings-grid { grid-template-columns: 1fr; }
