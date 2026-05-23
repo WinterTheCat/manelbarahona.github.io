@@ -32,15 +32,40 @@
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 1rem 2.5rem;
-    background: rgba(15,14,23,0.88);
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center;
+    padding: 0 2.5rem;
+    height: 52px;
+    background: rgba(15,14,23,0.92);
     backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
+    gap: 2rem;
   }
-  .nav-back { font-family: var(--font-display); font-weight: 700; font-size: 0.88rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+  .nav-back {
+    font-family: var(--font-display); font-weight: 600; font-size: 0.82rem;
+    color: var(--muted); text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s; white-space: nowrap;
+    border-right: 1px solid var(--border); padding-right: 2rem;
+  }
   .nav-back:hover { color: var(--text); }
-  .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--yellow); text-decoration: none; }
+  .nav-back::before { content: "←"; font-size: 0.85rem; }
+  .nav-sections {
+    display: flex; align-items: center; gap: 0.2rem;
+    overflow-x: auto; scrollbar-width: none;
+  }
+  .nav-sections::-webkit-scrollbar { display: none; }
+  .nav-section-link {
+    font-family: var(--font-display); font-size: 0.78rem; font-weight: 500;
+    color: var(--muted2); text-decoration: none;
+    padding: 0.3rem 0.7rem; border-radius: 6px;
+    transition: color 0.2s, background 0.2s; white-space: nowrap;
+  }
+  .nav-section-link:hover { color: var(--text); background: var(--surface2); }
+  .nav-section-link.active { color: var(--text); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; border-left: 1px solid var(--border); padding-left: 2rem; }
+  .nav-title { display: none; }
+  .nav-logo { display: none; }
   .lang-toggle { display: flex; background: var(--surface2); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
   .lang-btn { padding: 0.28rem 0.75rem; font-size: 0.78rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; background: transparent; color: var(--muted2); transition: all 0.2s; letter-spacing: 0.04em; }
   .lang-btn.active { background: var(--yellow); color: var(--bg); }
@@ -98,13 +123,18 @@
   }
   .meta-bar-inner {
     max-width: var(--max-w); margin: 0 auto;
-    padding: 1rem 2.5rem;
-    display: flex; flex-wrap: nowrap; gap: 1.5rem;
-    align-items: center;
+    padding: 0.9rem 2.5rem;
+    display: flex; flex-direction: column; gap: 0.7rem;
   }
+  .meta-row { display: flex; flex-wrap: nowrap; gap: 1.2rem; align-items: center; }
   .meta-item { flex-shrink: 0; }
-  .meta-item .meta-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.2rem; }
-  .meta-item .meta-value { font-size: 0.88rem; font-weight: 600; color: var(--text); }
+  .meta-item .meta-label { font-size: 0.62rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.15rem; }
+  .meta-item .meta-value { font-size: 0.85rem; font-weight: 600; color: var(--text); }
+  .meta-stats-row { display: flex !important; gap: 1.5rem; align-items: center; border-top: 1px solid var(--border); padding-top: 0.7rem; }
+  .meta-stat-block { display: flex; align-items: baseline; gap: 0.4rem; flex-shrink: 0; }
+  .meta-stat-num { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: var(--pink); line-height: 1; }
+  .meta-stat-label { font-size: 0.72rem; color: var(--muted2); font-weight: 400; }
+  .meta-divider { display: none; }
 
   /* CONTENT */
   .project-content { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem 6rem; }
@@ -119,12 +149,12 @@
   .content-block p strong { color: var(--text); font-weight: 600; }
 
   /* CALLOUTS */
-  .callouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 2rem 0; }
+  .callouts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin: 1rem 0; }
   .callout {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 12px;
-    padding: 1.3rem 1.2rem;
+    padding: 0.8rem 1rem;
     text-align: center;
   }
   .callout-num { font-family: var(--font-display); font-size: 2.2rem; font-weight: 800; color: var(--pink); line-height: 1; margin-bottom: 0.3rem; }
@@ -195,9 +225,9 @@
     background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(255,107,157,0.15));
     border: 1px solid rgba(168,85,247,0.35);
     border-radius: 14px;
-    padding: 2.5rem 2rem;
-    margin: 1.5rem 0;
-    text-align: center;
+    padding: 1rem 1.3rem;
+    margin: 1rem 0 0.5rem;
+    text-align: left;
     position: relative;
     overflow: hidden;
   }
@@ -208,11 +238,13 @@
     height: 3px;
     background: linear-gradient(90deg, var(--purple), var(--pink));
   }
-  .outcome-banner h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 0.8rem; }
-  .outcome-banner p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; font-weight: 300; max-width: 580px; margin: 0 auto; }
+  .outcome-banner h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
+  .outcome-banner p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin: 0; }
 
   .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; }
   .btn-back:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
+  .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--pink); border: 1px solid rgba(255,107,157,0.35); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; margin-left: 0.8rem; }
+  .btn-download:hover { border-color: var(--pink); background: rgba(255,107,157,0.08); }
 
   footer { text-align: center; padding: 1.6rem; border-top: 1px solid var(--border); font-size: 0.76rem; color: var(--muted2); }
 
@@ -234,11 +266,19 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-back">← <span data-i18n="back">Portfolio</span></a>
-  <a href="index.html" class="nav-logo">MB</a>
-  <div class="lang-toggle">
-    <button class="lang-btn active" onclick="setLang('es')">ES</button>
-    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  <a href="index.html" class="nav-back" data-i18n="back">Portfolio</a>
+  <div class="nav-sections">
+    <a href="#concept" class="nav-section-link" data-i18n="nav_s1">Concepto</a>
+    <a href="#process" class="nav-section-link" data-i18n="nav_s2">Diseño</a>
+    <a href="#characters" class="nav-section-link" data-i18n="nav_s3">Personajes</a>
+    <a href="#outcome" class="nav-section-link" data-i18n="nav_s4">Resultado</a>
+    <a href="#learnings" class="nav-section-link" data-i18n="nav_s5">Aprendizajes</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')">ES</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
   </div>
 </nav>
 
@@ -256,27 +296,27 @@
 <!-- META BAR -->
 <div class="meta-bar">
   <div class="meta-bar-inner">
-    <div class="meta-item"><div class="meta-label" data-i18n="m1l">Rol</div><div class="meta-value" data-i18n="m1v">Game Designer</div></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m2l">Plataforma</div><div class="meta-value">PC</div></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m3l">Equipo</div><div class="meta-value" data-i18n="m3v">12 personas</div></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m4l">Tipo</div><div class="meta-value" data-i18n="m4v">Prototipo · Presentado a inversores</div></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m5l">Áreas</div><div class="meta-value" data-i18n="m5v">Sistemas · Narrativa · UI/UX</div></div>
+    <div class="meta-row">
+      <div class="meta-item"><div class="meta-label" data-i18n="m1l">Rol</div><div class="meta-value" data-i18n="m1v">Game Designer</div></div>
+      <div class="meta-item"><div class="meta-label" data-i18n="m2l">Plataforma</div><div class="meta-value">PC</div></div>
+      <div class="meta-item"><div class="meta-label" data-i18n="m3l">Equipo</div><div class="meta-value" data-i18n="m3v">12 personas</div></div>
+      <div class="meta-item"><div class="meta-label" data-i18n="m4l">Tipo</div><div class="meta-value" data-i18n="m4v">Prototipo · Presentado a inversores</div></div>
+      <div class="meta-item"><div class="meta-label" data-i18n="m5l">Áreas</div><div class="meta-value" data-i18n="m5v">Sistemas · Narrativa · UI/UX</div></div>
+    </div>
+    <div class="meta-row meta-stats-row">
+      <div class="meta-stat-block"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c1">formas de resolver cada encuentro</span></div>
+      <div class="meta-stat-block"><span class="meta-stat-num">4</span><span class="meta-stat-label" data-i18n="c2">personajes con árboles de habilidad independientes</span></div>
+      <div class="meta-stat-block"><span class="meta-stat-num">12</span><span class="meta-stat-label" data-i18n="c3">personas entre diseño y arte</span></div>
+    </div>
   </div>
 </div>
 
 <div class="project-content">
 
-  <!-- CALLOUTS -->
-  <div class="content-block reveal">
-    <div class="callouts">
-      <div class="callout"><div class="callout-num">3</div><div class="callout-label" data-i18n="c1">Formas de resolver cada encuentro de combate</div></div>
-      <div class="callout"><div class="callout-num">4</div><div class="callout-label" data-i18n="c2">Personajes jugables con sistemas de habilidades independientes</div></div>
-      <div class="callout"><div class="callout-num">12</div><div class="callout-label" data-i18n="c3">Personas coordinadas entre diseño y arte</div></div>
-    </div>
-  </div>
+
 
   <!-- OVERVIEW -->
-  <div class="content-block reveal">
+  <div class="content-block reveal" id="concept">
     <div class="section-label" data-i18n="s1">El Concepto</div>
     <h2 data-i18n="h1">Persona meets Divinity. Vida cotidiana, combate táctico y decisiones que importan.</h2>
     <p data-i18n="p1">Divine Angels es un RPG de acción sobre 4 supermujeres que compaginan trabajo, familia y vida social con proteger la ciudad de un aumento inexplicable de supervillanos. El día se divide en mañana, tarde y noche — tú decides cómo inviertes el tiempo de cada personaje, y esas decisiones tienen consecuencias directas en el combate y la narrativa.</p>
@@ -289,7 +329,7 @@
   </div>
 
   <!-- DESIGN PROCESS -->
-  <div class="content-block reveal">
+  <div class="content-block reveal" id="process">
     <div class="section-label" data-i18n="s2">Proceso de Diseño</div>
     <h2 data-i18n="h2">Del RPG clásico al puzzle táctico: cómo evolucionó el combate.</h2>
     <p data-i18n="p3">El sistema de combate pasó por una evolución significativa durante el desarrollo. El diseño original era correcto en papel — pero aburrido en la práctica.</p>
@@ -328,7 +368,7 @@
   <div class="content-block reveal">
     <div class="section-label" data-i18n="s3">Feature de Diseño</div>
     <h2 data-i18n="h3">El sistema de diálogo en combate: personalidad como mecánica.</h2>
-    <p data-i18n="p4">En lugar de que "hablar" fuera solo una opción de rendición pasiva, diseñamos un sistema donde <strong>cada enemigo tiene una personalidad que responde de forma diferente a cómo le hablas</strong>. Usar tu turno para hablar tiene consecuencias reales y estratégicas.</p>
+    <p data-i18n="p4">En lugar de que "hablar" fuera solo una opción de rendición pasiva, diseñamos un sistema donde cada enemigo tiene una personalidad que responde de forma diferente a cómo le hablas. Usar tu turno para hablar tiene consecuencias reales y estratégicas.</p>
 
     <div class="process-card">
       <div class="process-header"><span></span> <span data-i18n="proc2_title">Cómo funciona la personalidad del enemigo</span></div>
@@ -352,10 +392,10 @@
   </div>
 
   <!-- CHARACTERS -->
-  <div class="content-block reveal">
+  <div class="content-block reveal" id="characters">
     <div class="section-label" data-i18n="s4">Los Personajes</div>
     <h2 data-i18n="h4">Cuatro vidas, cuatro poderes, un sistema de habilidades evolutivo.</h2>
-    <p data-i18n="p6">Cada personaje tiene una vida profesional propia y poderes únicos que <strong>evolucionan según cómo los uses en combate</strong>, generando árboles de habilidad distintos en cada partida.</p>
+    <p data-i18n="p6">Cada personaje tiene una vida profesional propia y poderes únicos que evolucionan según cómo los uses en combate, generando árboles de habilidad distintos en cada partida.</p>
 
     <div class="img-slot" style="margin-bottom:1.5rem;">
       <img src="da-characters.png" alt="Divine Angels characters">
@@ -381,7 +421,7 @@
       <div class="char-card">
         <div class="char-name">Diane</div>
         <div class="char-alias" style="color:var(--yellow);" data-i18n="ch4a">The Technomancer · Ingeniera</div>
-        <div class="char-desc" data-i18n="ch4d">En silla de ruedas con gadgets avanzados. Increíblemente inteligente. Alta capacidad y poder tecnológico.</div>
+        <div class="char-desc" data-i18n="ch4d">En silla de ruedas con gadgets avanzados. La más inteligente del equipo. Alta inteligencia y poder tecnológico.</div>
       </div>
     </div>
     <div class="role-tags">
@@ -404,17 +444,18 @@
   </div>
 
   <!-- OUTCOME -->
-  <div class="content-block reveal">
+  <div class="content-block reveal" id="outcome">
     <div class="section-label" data-i18n="s5">Resultado</div>
     <h2 data-i18n="h5">Un proyecto universitario que llegó a inversores reales.</h2>
     <div class="outcome-banner">
       <h3 data-i18n="ob_title">Interés inversor. Cancelación por contexto, no por calidad.</h3>
       <p data-i18n="ob_desc">Divine Angels se presentó a inversores que mostraron interés real en el proyecto. La cancelación no fue por falta de calidad del diseño — fue por el contexto de ser un proyecto universitario sin el respaldo de un estudio establecido. Una lección valiosa sobre cómo el posicionamiento importa tanto como el producto.</p>
+      <a href="divine-angels-pitch.pdf" class="btn-download" download data-i18n="btn_dossier" style="margin-top:0.8rem; margin-left:0;">↓ Descargar Dossier del Proyecto</a>
     </div>
   </div>
 
   <!-- LEARNINGS -->
-  <div class="content-block reveal">
+  <div class="content-block reveal" id="learnings">
     <div class="section-label" data-i18n="s6">Aprendizajes</div>
     <h2 data-i18n="h6">Lo que este proyecto me enseñó como diseñador.</h2>
     <div class="learnings-grid">
@@ -450,7 +491,7 @@
 <script>
 const i18n = {
   es: {
-    back:"Portfolio", tag:"RPG Narrativo · Prototipo · PC",
+    back:"Portfolio", nav_s1:"Concepto", nav_s2:"Diseño", nav_s3:"Personajes", nav_s4:"Resultado", nav_s5:"Aprendizajes", tag:"RPG Narrativo · Prototipo · PC",
     hero_sub:"4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.",
     m1l:"Rol",m1v:"Game Designer",m2l:"Plataforma",m3l:"Equipo",m3v:"12 personas",
     m4l:"Resultado",m4v:"Prototipo · Presentado a inversores",m5l:"Áreas",m5v:"Sistemas · Narrativa · UI/UX",
@@ -492,6 +533,7 @@ const i18n = {
     lc3t:"Scope y ambición",lc3d:"Divine Angels era muy ambicioso para el tiempo disponible. Aprendí a definir el MVP real de un diseño — qué sistemas son el núcleo y cuáles son features que añaden pero no son imprescindibles para validar la experiencia.",
     lc4t:"El producto no es suficiente",lc4d:"Tener un buen juego no garantiza nada. La presentación, el contexto y el respaldo institucional importan tanto como la calidad del diseño. Una lección que cambió cómo pienso en la producción y posicionamiento de proyectos.",
     ic_skills:"Sistema de habilidades evolutivo — cada poder crece según cómo lo uses, con árboles de habilidad ramificados por personaje.",
+    btn_dossier:"↓ Descargar Dossier del Proyecto",
     btn_back:"← Volver al Portfolio",footer_text:"Hecho con mucho café y amor por los juegos."
   },
   en: {
@@ -537,6 +579,7 @@ const i18n = {
     lc3t:"Scope and ambition",lc3d:"Divine Angels was very ambitious for the time available. I learned to define the real MVP of a design — which systems are the core of the game and which are features that add to it but aren't essential to validate the experience.",
     lc4t:"The product isn't enough",lc4d:"Having a good game guarantees nothing. Presentation, context and institutional backing matter as much as design quality. A lesson that changed how I think about production and project positioning.",
     ic_skills:"Evolutionary skill system — each power grows based on how you use it, with branching skill trees per character.",
+    btn_dossier:"↓ Download Project Dossier",
     btn_back:"← Back to Portfolio",footer_text:"Made with lots of coffee and love for games."
   }
 };
@@ -557,6 +600,20 @@ const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 80); });
 }, { threshold: 0.07 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Active nav section highlight
+const sections = ['concept','process','characters','outcome','learnings'];
+const navLinks = document.querySelectorAll('.nav-section-link');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const active = document.querySelector(`.nav-section-link[href="#${entry.target.id}"]`);
+      if (active) active.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+sections.forEach(id => { const el = document.getElementById(id); if (el) sectionObserver.observe(el); });
 </script>
 </body>
 </html>
