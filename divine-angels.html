@@ -2,27 +2,30 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
+<base href="/manelbarahona.github.io/">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Divine Angels — Manel Barahona</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f0e17;
-    --surface: #171625;
-    --surface2: #1e1c2e;
-    --pink: #ff6b9d;
-    --yellow: #f9c846;
-    --purple: #a855f7;
-    --cyan: #4ecdc4;
-    --green: #6ee7b7;
-    --text: #f0eeff;
-    --muted: #c4bfe0;
-    --muted2: #8a85a8;
-    --border: rgba(255,255,255,0.09);
+    --bg: #0a0f1a;
+    --surface: #0f1825;
+    --surface2: #151f30;
+    --pink: #4a9eff;
+    --yellow: #f5a623;
+    --purple: #2dd4a0;
+    --cyan: #2dd4a0;
+    --green: #2dd4a0;
+    --orange: #f5a623;
+    --text: #e8f0fe;
+    --muted: #9ab4d4;
+    --muted2: #5a7a9e;
+    --border: rgba(74,158,255,0.12);
     --font-display: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'DM Sans', sans-serif;
     --max-w: 860px;
+    --nav-h: 52px;
   }
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
@@ -96,9 +99,9 @@
   }
   .hero-tag {
     display: inline-flex; align-items: center; gap: 0.5rem;
-    background: rgba(255,107,157,0.15); border: 1px solid rgba(255,107,157,0.4);
+    background: rgba(245,166,35,0.15); border: 1px solid rgba(245,166,35,0.4);
     border-radius: 100px; padding: 0.35rem 1rem;
-    font-size: 0.72rem; font-weight: 700; color: var(--pink);
+    font-size: 0.72rem; font-weight: 700; color: var(--yellow);
     font-family: var(--font-display); letter-spacing: 0.08em;
     text-transform: uppercase; margin-bottom: 1rem;
   }
@@ -131,16 +134,16 @@
   .meta-item .meta-value { font-size: 0.85rem; font-weight: 600; color: var(--text); }
   .meta-stats-row { display: flex !important; gap: 1.5rem; align-items: center; border-top: 1px solid var(--border); padding-top: 0.7rem; }
   .meta-stat-block { display: flex; align-items: baseline; gap: 0.4rem; flex-shrink: 0; }
-  .meta-stat-num { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: var(--pink); line-height: 1; }
+  .meta-stat-num { font-family: var(--font-display); font-size: 1.2rem; font-weight: 800; color: var(--yellow); line-height: 1; }
   .meta-stat-label { font-size: 0.72rem; color: var(--muted2); font-weight: 400; }
   .meta-divider { display: none; }
 
   /* CONTENT */
   .project-content { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem 6rem; }
-  .content-block { margin: 3.5rem 0; }
+  .content-block { margin: 3.5rem 0; scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
 
   .section-label { display: flex; align-items: center; gap: 0.7rem; font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.5rem; }
-  .section-label::before { content:''; display:block; width:18px; height:2px; background:var(--pink); }
+  .section-label::before { content:''; display:block; width:18px; height:2px; background:var(--yellow); }
 
   h2 { font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 1rem; color: var(--text); }
 
@@ -188,8 +191,8 @@
   .process-step-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.5rem; display: block; }
   .process-step p { font-size: 0.83rem; color: var(--muted); line-height: 1.55; font-weight: 300; margin: 0; }
   .label-problem { color: #f87171; }
-  .label-solution { color: var(--cyan); }
-  .label-result { color: var(--green); }
+  .label-solution { color: var(--purple); }
+  .label-result { color: #4a9eff; }
 
   /* IMAGES */
   .img-slot { width: 100%; border-radius: 12px; overflow: hidden; border: 1px solid var(--border); margin: 1.5rem 0; background: var(--surface); }
@@ -211,7 +214,7 @@
 
   /* ROLE TAGS */
   .role-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
-  .role-tag { padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.74rem; font-weight: 600; font-family: var(--font-display); background: rgba(255,107,157,0.1); color: var(--pink); border: 1px solid rgba(255,107,157,0.25); }
+  .role-tag { padding: 0.3rem 0.85rem; border-radius: 100px; font-size: 0.74rem; font-weight: 600; font-family: var(--font-display); background: rgba(74,158,255,0.1); color: var(--pink); border: 1px solid rgba(74,158,255,0.25); }
 
   /* LEARNINGS */
   .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
@@ -221,8 +224,8 @@
 
   /* OUTCOME */
   .outcome-banner {
-    background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(255,107,157,0.15));
-    border: 1px solid rgba(168,85,247,0.35);
+    background: linear-gradient(135deg, rgba(74,158,255,0.12), rgba(45,212,160,0.08));
+    border: 1px solid rgba(74,158,255,0.25);
     border-radius: 14px;
     padding: 1rem 1.3rem;
     margin: 1rem 0 0.5rem;
@@ -235,15 +238,15 @@
     position: absolute;
     top: 0; left: 0; right: 0;
     height: 3px;
-    background: linear-gradient(90deg, var(--purple), var(--pink));
+    background: linear-gradient(90deg, var(--pink), var(--purple));
   }
   .outcome-banner h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 800; color: var(--text); margin-bottom: 0.5rem; }
   .outcome-banner p { font-size: 0.9rem; color: var(--muted); line-height: 1.7; font-weight: 300; margin: 0; }
 
   .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; }
   .btn-back:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
-  .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--pink); border: 1px solid rgba(255,107,157,0.35); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; margin-left: 0.8rem; }
-  .btn-download:hover { border-color: var(--pink); background: rgba(255,107,157,0.08); }
+  .btn-download { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--yellow); border: 1px solid rgba(245,166,35,0.35); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; margin-left: 0.8rem; }
+  .btn-download:hover { border-color: var(--yellow); background: rgba(245,166,35,0.08); }
 
   footer { text-align: center; padding: 1.6rem; border-top: 1px solid var(--border); font-size: 0.76rem; color: var(--muted2); }
 
@@ -373,7 +376,7 @@
       <div class="process-header"><span></span> <span data-i18n="proc2_title">Cómo funciona la personalidad del enemigo</span></div>
       <div class="process-steps">
         <div class="process-step">
-          <div class="process-step-label" style="color:var(--yellow);" data-i18n="talk1l">Calmar al enemigo</div>
+          <div class="process-step-label" style="color:#2dd4a0;" data-i18n="talk1l">Calmar al enemigo</div>
           <p data-i18n="talk1p">Más fácil razonar con él y conseguir que se rinda. Pero se vuelve más inteligente tácticamente — buscará activamente escapar del combate si tiene oportunidad.</p>
         </div>
         <div class="process-step">
@@ -381,7 +384,7 @@
           <p data-i18n="talk2p">Más agresivo pero más descuidado. Difícil de rendir, pero mucho más fácil de manipular y tenderle trampas. Su ira se convierte en tu ventaja táctica.</p>
         </div>
         <div class="process-step">
-          <div class="process-step-label" style="color:var(--green);" data-i18n="talk3l">Rendición</div>
+          <div class="process-step-label" style="color:#f5a623;" data-i18n="talk3l">Rendición</div>
           <p data-i18n="talk3p">El objetivo ideal. Requiere leer la personalidad del enemigo y elegir el enfoque correcto. Ganar sin violencia es siempre una opción, pero nunca la más fácil.</p>
         </div>
       </div>
@@ -397,29 +400,29 @@
     <p data-i18n="p6">Cada personaje tiene una vida profesional propia y poderes únicos que evolucionan según cómo los uses en combate, generando árboles de habilidad distintos en cada partida.</p>
 
     <div class="img-slot" style="margin-bottom:1.5rem;">
-      <img src="da-characters.jpg" alt="Divine Angels characters">
+      <img src="da-characters.png" alt="Divine Angels characters">
       <div class="img-caption" data-i18n="ic_chars">Caroline, Alice, Diane y Beatrice — las cuatro protagonistas en su base de operaciones.</div>
     </div>
 
     <div class="chars-grid">
       <div class="char-card">
         <div class="char-name">Alice</div>
-        <div class="char-alias" style="color:var(--pink);" data-i18n="ch1a">The Spearhead · Pediatra</div>
+        <div class="char-alias" style="color:#f5a623;" data-i18n="ch1a">The Spearhead · Pediatra</div>
         <div class="char-desc" data-i18n="ch1d">Poderes físicos de combate cuerpo a cuerpo. Divertida pero protectora. Alta agilidad y carisma.</div>
       </div>
       <div class="char-card">
         <div class="char-name">Beatrice</div>
-        <div class="char-alias" style="color:var(--purple);" data-i18n="ch2a">The Psychic · Programadora</div>
+        <div class="char-alias" style="color:#2dd4a0;" data-i18n="ch2a">The Psychic · Programadora</div>
         <div class="char-desc" data-i18n="ch2d">Poderes psíquicos para doblar la voluntad y manipular la realidad. Alta inteligencia y sociabilidad.</div>
       </div>
       <div class="char-card">
         <div class="char-name">Caroline</div>
-        <div class="char-alias" style="color:var(--cyan);" data-i18n="ch3a">The Elemental · Abogada</div>
+        <div class="char-alias" style="color:#4a9eff;" data-i18n="ch3a">The Elemental · Abogada</div>
         <div class="char-desc" data-i18n="ch3d">Controla agua, hielo, viento, fuego, tierra y rayos. La que más interacciones de entorno genera en combate.</div>
       </div>
       <div class="char-card">
         <div class="char-name">Diane</div>
-        <div class="char-alias" style="color:var(--yellow);" data-i18n="ch4a">The Technomancer · Ingeniera</div>
+        <div class="char-alias" style="color:#f5a623;" data-i18n="ch4a">The Technomancer · Ingeniera</div>
         <div class="char-desc" data-i18n="ch4d">En silla de ruedas con gadgets avanzados. La más inteligente del equipo. Alta inteligencia y poder tecnológico.</div>
       </div>
     </div>
