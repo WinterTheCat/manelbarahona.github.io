@@ -98,9 +98,11 @@
   }
   .meta-bar-inner {
     max-width: var(--max-w); margin: 0 auto;
-    padding: 1.2rem 2.5rem;
-    display: flex; flex-wrap: wrap; gap: 2rem;
+    padding: 1rem 2.5rem;
+    display: flex; flex-wrap: nowrap; gap: 1.5rem;
+    align-items: center;
   }
+  .meta-item { flex-shrink: 0; }
   .meta-item .meta-label { font-size: 0.65rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.2rem; }
   .meta-item .meta-value { font-size: 0.88rem; font-weight: 600; color: var(--text); }
 
@@ -173,7 +175,7 @@
 
   /* CHARS */
   .chars-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-  .char-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.2rem; }
+  .char-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.8rem 1rem; }
   .char-name { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 0.15rem; }
   .char-alias { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.6rem; }
   .char-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.5; font-weight: 300; }
@@ -184,9 +186,8 @@
 
   /* LEARNINGS */
   .learnings-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.5rem 0; }
-  .learning-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 1.3rem; }
-  .learning-icon { font-size: 1.5rem; margin-bottom: 0.7rem; }
-  .learning-title { font-family: var(--font-display); font-weight: 700; font-size: 0.9rem; color: var(--text); margin-bottom: 0.4rem; }
+  .learning-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 0.9rem 1.1rem; }
+  .learning-title { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--text); margin-bottom: 0.5rem; letter-spacing: -0.01em; }
   .learning-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.55; font-weight: 300; }
 
   /* OUTCOME */
@@ -357,7 +358,7 @@
     <p data-i18n="p6">Cada personaje tiene una vida profesional propia y poderes únicos que <strong>evolucionan según cómo los uses en combate</strong>, generando árboles de habilidad distintos en cada partida.</p>
 
     <div class="img-slot" style="margin-bottom:1.5rem;">
-      <img src="da-characters.jpg" alt="Divine Angels characters">
+      <img src="da-characters.png" alt="Divine Angels characters">
       <div class="img-caption" data-i18n="ic_chars">Caroline, Alice, Diane y Beatrice — las cuatro protagonistas en su base de operaciones.</div>
     </div>
 
@@ -387,7 +388,6 @@
       <span class="role-tag" data-i18n="rt1">Diseño de Sistemas</span>
       <span class="role-tag" data-i18n="rt2">Diseño Narrativo</span>
       <span class="role-tag" data-i18n="rt3">Diseño de Combate</span>
-      <span class="role-tag" data-i18n="rt4">UI/UX</span>
       <span class="role-tag" data-i18n="rt5">Árbol de Habilidades</span>
       <span class="role-tag" data-i18n="rt6">Balance de Personajes</span>
     </div>
@@ -419,22 +419,18 @@
     <h2 data-i18n="h6">Lo que este proyecto me enseñó como diseñador.</h2>
     <div class="learnings-grid">
       <div class="learning-card">
-        <div class="learning-icon">🔄</div>
         <div class="learning-title" data-i18n="lc1t">Iterar sin miedo</div>
         <div class="learning-desc" data-i18n="lc1d">Abandonar el sistema de combate original fue difícil — habíamos invertido tiempo en él. Pero reconocer que algo funciona en papel y falla en práctica, y actuar sobre eso, es lo que separa un buen diseñador de uno que se aferra a su primera idea.</div>
       </div>
       <div class="learning-card">
-        <div class="learning-icon">🧩</div>
         <div class="learning-title" data-i18n="lc2t">Los sistemas se comunican</div>
         <div class="learning-desc" data-i18n="lc2d">Diseñar la personalidad de los enemigos enseña que cada sistema toca a todos los demás. Un cambio en el diálogo afecta al balance del combate, que afecta a la dificultad, que afecta a la narrativa. Pensar en sistemas aislados genera problemas en la integración.</div>
       </div>
       <div class="learning-card">
-        <div class="learning-icon">🎯</div>
         <div class="learning-title" data-i18n="lc3t">Scope y ambición</div>
         <div class="learning-desc" data-i18n="lc3d">Divine Angels era muy ambicioso para el tiempo disponible. Aprendí a definir qué es el MVP real de un diseño — qué sistemas son el núcleo del juego y cuáles son features que añaden pero no son imprescindibles para validar la experiencia.</div>
       </div>
       <div class="learning-card">
-        <div class="learning-icon">📢</div>
         <div class="learning-title" data-i18n="lc4t">El producto no es suficiente</div>
         <div class="learning-desc" data-i18n="lc4d">Tener un buen juego no garantiza nada. La presentación, el contexto y el respaldo institucional importan tanto como la calidad del diseño. Una lección que cambió cómo pienso en la producción y el posicionamiento de proyectos.</div>
       </div>
@@ -527,7 +523,7 @@ const i18n = {
     ch1a:"The Spearhead · Pediatrician",ch1d:"Physical combat powers for close-quarters fighting. Funny but protective. High agility and charisma.",
     ch2a:"The Psychic · Game Programmer",ch2d:"Psychic powers to bend will and manipulate reality. High intelligence and sociability.",
     ch3a:"The Elemental · Lawyer",ch3d:"Controls water, ice, wind, fire, earth and lightning. Generates the most environment interactions in combat.",
-    ch4a:"The Technomancer · Engineer",ch4d:"In a wheelchair packed with advanced gadgets. The smartest member of the team.",
+    ch4a:"The Technomancer · Engineer",ch4d:"In a wheelchair packed with advanced gadgets. High intelligence and technological power.",
     rt1:"Systems Design",rt2:"Narrative Design",rt3:"Combat Design",rt4:"UI/UX",rt5:"Skill Tree",rt6:"Character Balance",
     ic3:"Three-part day structure with shopping, work and crime investigation systems.",
     ic_skills:"Evolutionary skill system — each power grows based on how you use it, with branching skill trees per character.",
