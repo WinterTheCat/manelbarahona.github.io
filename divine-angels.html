@@ -191,15 +191,24 @@
 
   /* OUTCOME */
   .outcome-banner {
-    background: linear-gradient(135deg, rgba(168,85,247,0.1), rgba(255,107,157,0.1));
-    border: 1px solid rgba(168,85,247,0.2);
+    background: linear-gradient(135deg, rgba(168,85,247,0.15), rgba(255,107,157,0.15));
+    border: 1px solid rgba(168,85,247,0.35);
     border-radius: 14px;
-    padding: 2rem;
+    padding: 2.5rem 2rem;
     margin: 1.5rem 0;
     text-align: center;
+    position: relative;
+    overflow: hidden;
   }
-  .outcome-banner h3 { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; color: var(--text); margin-bottom: 0.6rem; }
-  .outcome-banner p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; font-weight: 300; max-width: 560px; margin: 0 auto; }
+  .outcome-banner::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--purple), var(--pink));
+  }
+  .outcome-banner h3 { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--text); margin-bottom: 0.8rem; }
+  .outcome-banner p { font-size: 0.95rem; color: var(--muted); line-height: 1.75; font-weight: 300; max-width: 580px; margin: 0 auto; }
 
   .btn-back { display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.78rem 1.7rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; margin-top: 1rem; }
   .btn-back:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
@@ -346,6 +355,12 @@
     <div class="section-label" data-i18n="s4">Los Personajes</div>
     <h2 data-i18n="h4">Cuatro vidas, cuatro poderes, un sistema de habilidades evolutivo.</h2>
     <p data-i18n="p6">Cada personaje tiene una vida profesional propia y poderes únicos que <strong>evolucionan según cómo los uses en combate</strong>, generando árboles de habilidad distintos en cada partida.</p>
+
+    <div class="img-slot" style="margin-bottom:1.5rem;">
+      <img src="da-characters.png" alt="Divine Angels characters">
+      <div class="img-caption" data-i18n="ic_chars">Caroline, Alice, Diane y Beatrice — las cuatro protagonistas en su base de operaciones.</div>
+    </div>
+
     <div class="chars-grid">
       <div class="char-card">
         <div class="char-name">Alice</div>
@@ -433,7 +448,7 @@
 </div>
 
 <footer>
-  <p>© 2025 Manel Barahona · <span data-i18n="footer_text">Hecho con mucho café y amor por los juegos.</span></p>
+  <p>© 2026 Manel Barahona · <span data-i18n="footer_text">Hecho con mucho café y amor por los juegos.</span></p>
 </footer>
 
 <script>
@@ -471,6 +486,7 @@ const i18n = {
     rt1:"Diseño de Sistemas",rt2:"Diseño Narrativo",rt3:"Diseño de Combate",rt4:"UI/UX",rt5:"Árbol de Habilidades",rt6:"Balance de Personajes",
     ic3:"Estructura de día tripartita con sistema de compras, trabajo e investigación de crímenes.",
     ic_skills:"Sistema de habilidades evolutivo — cada poder crece según cómo lo uses, con árboles de habilidad ramificados.",
+    ic_chars:"Caroline, Alice, Diane y Beatrice — las cuatro protagonistas en su base de operaciones.",
     s5:"Resultado",h5:"Un proyecto universitario que llegó a inversores reales.",
     ob_title:"Interés inversor. Cancelación por contexto, no por calidad.",
     ob_desc:"Divine Angels se presentó a inversores que mostraron interés real. La cancelación no fue por falta de calidad del diseño — fue por el contexto de ser un proyecto universitario sin el respaldo de un estudio establecido. Una lección valiosa sobre cómo el posicionamiento importa tanto como el producto.",
@@ -515,6 +531,7 @@ const i18n = {
     rt1:"Systems Design",rt2:"Narrative Design",rt3:"Combat Design",rt4:"UI/UX",rt5:"Skill Tree",rt6:"Character Balance",
     ic3:"Three-part day structure with shopping, work and crime investigation systems.",
     ic_skills:"Evolutionary skill system — each power grows based on how you use it, with branching skill trees per character.",
+    ic_chars:"Caroline, Alice, Diane and Beatrice — the four protagonists in their base of operations.",
     s5:"Outcome",h5:"A university project that reached real investors.",
     ob_title:"Investor interest. Cancelled by context, not by quality.",
     ob_desc:"Divine Angels was pitched to investors who showed genuine interest. The cancellation wasn't due to lack of design quality — it was due to the context of being a university project without an established studio behind it. A valuable lesson in how positioning matters as much as the product.",
