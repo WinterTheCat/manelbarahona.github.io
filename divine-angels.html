@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Divine Angels — Manel Barahona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0f0e17;
+    --surface: #171625;
+    --surface2: #1e1c2e;
+    --pink: #ff6b9d;
+    --yellow: #f9c846;
+    --text: #f0eeff;
+    --muted: #c4bfe0;
+    --muted2: #8a85a8;
+    --border: rgba(255,255,255,0.09);
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --max-w: 900px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 16px; line-height: 1.65; }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1rem 2.5rem;
+    background: rgba(15,14,23,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-back { font-family: var(--font-display); font-weight: 700; font-size: 0.88rem; color: var(--muted); text-decoration: none; display: flex; align-items: center; gap: 0.5rem; transition: color 0.2s; }
+  .nav-back:hover { color: var(--text); }
+  .nav-logo { font-family: var(--font-display); font-weight: 800; font-size: 1rem; color: var(--yellow); text-decoration: none; }
+  .lang-toggle { display: flex; background: var(--surface2); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+  .lang-btn { padding: 0.28rem 0.75rem; font-size: 0.78rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; background: transparent; color: var(--muted2); transition: all 0.2s; letter-spacing: 0.04em; }
+  .lang-btn.active { background: var(--yellow); color: var(--bg); }
+
+  /* HERO */
+  .project-hero {
+    padding: 8rem 2.5rem 4rem;
+    max-width: var(--max-w);
+    margin: 0 auto;
+  }
+  .project-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: rgba(255,107,157,0.1);
+    border: 1px solid rgba(255,107,157,0.3);
+    border-radius: 100px;
+    padding: 0.35rem 1rem;
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--pink);
+    font-family: var(--font-display);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  .project-subtitle {
+    font-size: 1rem; color: var(--muted); max-width: 600px;
+    line-height: 1.75; font-weight: 300; margin-bottom: 2rem;
+  }
+  .project-meta {
+    display: flex; flex-wrap: wrap; gap: 1.5rem;
+    padding: 1.2rem 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+  }
+  .meta-item { }
+  .meta-label { font-size: 0.68rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.2rem; }
+  .meta-value { font-size: 0.9rem; font-weight: 600; color: var(--text); }
+
+  /* CONTENT */
+  .project-content {
+    max-width: var(--max-w);
+    margin: 0 auto;
+    padding: 0 2.5rem 6rem;
+  }
+
+  .section-label {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--muted2); margin-bottom: 0.6rem;
+  }
+  .section-label::before { content:''; display:block; width:18px; height:2px; background:var(--pink); }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+    font-weight: 800; letter-spacing: -0.02em;
+    line-height: 1.15; margin-bottom: 1rem; color: var(--text);
+  }
+
+  .content-block { margin-bottom: 3.5rem; }
+
+  .content-block p {
+    color: var(--muted); line-height: 1.8; font-weight: 300;
+    font-size: 0.97rem; margin-bottom: 0.8rem;
+  }
+
+  /* IMAGE SLOTS */
+  .img-slot {
+    width: 100%; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border);
+    margin: 1.5rem 0;
+    background: var(--surface);
+  }
+  .img-slot img { width: 100%; display: block; object-fit: cover; }
+  .img-slot .img-caption {
+    padding: 0.7rem 1rem;
+    font-size: 0.75rem; color: var(--muted2);
+    border-top: 1px solid var(--border);
+    font-style: italic;
+  }
+  .img-placeholder {
+    width: 100%; aspect-ratio: 16/9;
+    background: var(--surface2);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.5rem; color: var(--muted2);
+    font-size: 0.8rem;
+  }
+  .img-placeholder .ph-icon { font-size: 2rem; }
+
+  .img-grid {
+    display: grid; grid-template-columns: 1fr 1fr;
+    gap: 1rem; margin: 1.5rem 0;
+  }
+  .img-grid .img-slot { margin: 0; }
+
+  /* ROLE TAGS */
+  .role-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 1rem; }
+  .role-tag {
+    padding: 0.3rem 0.85rem; border-radius: 100px;
+    font-size: 0.75rem; font-weight: 600;
+    font-family: var(--font-display);
+    background: rgba(255,107,157,0.1);
+    color: var(--pink);
+    border: 1px solid rgba(255,107,157,0.25);
+  }
+
+  /* BACK BUTTON */
+  .btn-back {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.78rem 1.7rem;
+    background: transparent; color: var(--text);
+    border: 1px solid var(--border); border-radius: 8px;
+    font-family: var(--font-display); font-weight: 600; font-size: 0.88rem;
+    cursor: pointer; text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    margin-top: 1rem;
+  }
+  .btn-back:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.78rem 1.7rem;
+    background: var(--yellow); color: var(--bg);
+    border: none; border-radius: 8px;
+    font-family: var(--font-display); font-weight: 700; font-size: 0.88rem;
+    cursor: pointer; text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    margin-top: 1rem; margin-right: 0.8rem;
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,200,70,0.22); }
+
+  footer { text-align: center; padding: 1.6rem; border-top: 1px solid var(--border); font-size: 0.76rem; color: var(--muted2); }
+
+  @media (max-width: 720px) {
+    nav { padding: 0.9rem 1.2rem; }
+    .project-hero, .project-content { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .img-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-back">← <span data-i18n="back">Portfolio</span></a>
+  <a href="../index.html" class="nav-logo">MB</a>
+  <div class="lang-toggle">
+    <button class="lang-btn active" onclick="setLang('es')">ES</button>
+    <button class="lang-btn" onclick="setLang('en')">EN</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="project-hero">
+  <div class="project-tag" data-i18n="tag">RPG Narrativo · Demo Universitaria</div>
+  <h1>Divine Angels</h1>
+  <p class="project-subtitle" data-i18n="subtitle">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.
+  </p>
+  <div class="project-meta">
+    <div class="meta-item">
+      <div class="meta-label" data-i18n="meta_role_label">Rol</div>
+      <div class="meta-value" data-i18n="meta_role">Lead Game Designer</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label" data-i18n="meta_platform_label">Plataforma</div>
+      <div class="meta-value" data-i18n="meta_platform">PC</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label" data-i18n="meta_team_label">Equipo</div>
+      <div class="meta-value" data-i18n="meta_team">Lorem ipsum</div>
+    </div>
+    <div class="meta-item">
+      <div class="meta-label" data-i18n="meta_duration_label">Duración</div>
+      <div class="meta-value" data-i18n="meta_duration">Lorem ipsum</div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="project-content">
+
+  <!-- COVER IMAGE -->
+  <div class="img-slot">
+    <img src="../divine-angels.jpg" alt="Divine Angels cover">
+    <div class="img-caption" data-i18n="img1_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+  </div>
+
+  <!-- OVERVIEW -->
+  <div class="content-block">
+    <div class="section-label" data-i18n="overview_label">Descripción</div>
+    <h2 data-i18n="overview_title">Lorem ipsum dolor sit amet.</h2>
+    <p data-i18n="overview_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p data-i18n="overview_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <!-- MY ROLE -->
+  <div class="content-block">
+    <div class="section-label" data-i18n="role_label">Mi Rol</div>
+    <h2 data-i18n="role_title">Lorem ipsum dolor sit amet.</h2>
+    <p data-i18n="role_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
+    <p data-i18n="role_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.</p>
+    <div class="role-tags">
+      <span class="role-tag" data-i18n="rtag1">Systems Design</span>
+      <span class="role-tag" data-i18n="rtag2">Narrative Design</span>
+      <span class="role-tag" data-i18n="rtag3">Combat Design</span>
+      <span class="role-tag" data-i18n="rtag4">Lorem Ipsum</span>
+    </div>
+  </div>
+
+  <!-- IMAGE GRID -->
+  <div class="img-grid">
+    <div class="img-slot">
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼️</div>
+        <span data-i18n="img2_ph">Screenshot 2 — replace with image</span>
+      </div>
+      <div class="img-caption" data-i18n="img2_caption">Lorem ipsum dolor sit amet.</div>
+    </div>
+    <div class="img-slot">
+      <div class="img-placeholder">
+        <div class="ph-icon">🖼️</div>
+        <span data-i18n="img3_ph">Screenshot 3 — replace with image</span>
+      </div>
+      <div class="img-caption" data-i18n="img3_caption">Lorem ipsum dolor sit amet.</div>
+    </div>
+  </div>
+
+  <!-- DESIGN CHALLENGES -->
+  <div class="content-block">
+    <div class="section-label" data-i18n="challenges_label">Retos de Diseño</div>
+    <h2 data-i18n="challenges_title">Lorem ipsum dolor sit amet.</h2>
+    <p data-i18n="challenges_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p data-i18n="challenges_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+
+  <!-- FULL WIDTH IMAGE -->
+  <div class="img-slot">
+    <div class="img-placeholder" style="aspect-ratio:21/9;">
+      <div class="ph-icon">🖼️</div>
+      <span data-i18n="img4_ph">Wide screenshot — replace with image</span>
+    </div>
+    <div class="img-caption" data-i18n="img4_caption">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+  </div>
+
+  <!-- LEARNINGS -->
+  <div class="content-block">
+    <div class="section-label" data-i18n="learnings_label">Aprendizajes</div>
+    <h2 data-i18n="learnings_title">Lorem ipsum dolor sit amet.</h2>
+    <p data-i18n="learnings_p1">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+    <p data-i18n="learnings_p2">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.</p>
+  </div>
+
+  <!-- BACK BUTTON -->
+  <div>
+    <a href="../index.html" class="btn-back" data-i18n="btn_back">← Back to Portfolio</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2025 Manel Barahona · <span data-i18n="footer_text">Hecho con mucho café y amor por los juegos.</span></p>
+</footer>
+
+<script>
+const i18n = {
+  es: {
+    back: "Portfolio",
+    tag: "RPG Narrativo · Demo Universitaria",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.",
+    meta_role_label: "Rol", meta_role: "Lead Game Designer",
+    meta_platform_label: "Plataforma", meta_platform: "PC",
+    meta_team_label: "Equipo", meta_team: "Lorem ipsum",
+    meta_duration_label: "Duración", meta_duration: "Lorem ipsum",
+    img1_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    overview_label: "Descripción", overview_title: "Lorem ipsum dolor sit amet.",
+    overview_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    overview_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    role_label: "Mi Rol", role_title: "Lorem ipsum dolor sit amet.",
+    role_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+    role_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.",
+    rtag1: "Diseño de Sistemas", rtag2: "Diseño Narrativo", rtag3: "Diseño de Combate", rtag4: "Lorem Ipsum",
+    img2_ph: "Captura 2 — reemplazar con imagen", img2_caption: "Lorem ipsum dolor sit amet.",
+    img3_ph: "Captura 3 — reemplazar con imagen", img3_caption: "Lorem ipsum dolor sit amet.",
+    challenges_label: "Retos de Diseño", challenges_title: "Lorem ipsum dolor sit amet.",
+    challenges_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    challenges_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    img4_ph: "Captura panorámica — reemplazar con imagen",
+    img4_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    learnings_label: "Aprendizajes", learnings_title: "Lorem ipsum dolor sit amet.",
+    learnings_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+    learnings_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    btn_back: "← Volver al Portfolio",
+    footer_text: "Hecho con mucho café y amor por los juegos."
+  },
+  en: {
+    back: "Portfolio",
+    tag: "Narrative RPG · University Demo",
+    subtitle: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua, ut enim ad minim veniam.",
+    meta_role_label: "Role", meta_role: "Lead Game Designer",
+    meta_platform_label: "Platform", meta_platform: "PC",
+    meta_team_label: "Team", meta_team: "Lorem ipsum",
+    meta_duration_label: "Duration", meta_duration: "Lorem ipsum",
+    img1_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    overview_label: "Overview", overview_title: "Lorem ipsum dolor sit amet.",
+    overview_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    overview_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    role_label: "My Role", role_title: "Lorem ipsum dolor sit amet.",
+    role_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+    role_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident deserunt mollit anim id est laborum.",
+    rtag1: "Systems Design", rtag2: "Narrative Design", rtag3: "Combat Design", rtag4: "Lorem Ipsum",
+    img2_ph: "Screenshot 2 — replace with image", img2_caption: "Lorem ipsum dolor sit amet.",
+    img3_ph: "Screenshot 3 — replace with image", img3_caption: "Lorem ipsum dolor sit amet.",
+    challenges_label: "Design Challenges", challenges_title: "Lorem ipsum dolor sit amet.",
+    challenges_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+    challenges_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    img4_ph: "Wide screenshot — replace with image",
+    img4_caption: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    learnings_label: "Learnings", learnings_title: "Lorem ipsum dolor sit amet.",
+    learnings_p1: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.",
+    learnings_p2: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim.",
+    btn_back: "← Back to Portfolio",
+    footer_text: "Made with lots of coffee and love for games."
+  }
+};
+
+let currentLang = 'es';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = i18n[lang][el.dataset.i18n];
+    if (val === undefined) return;
+    el.textContent = val;
+  });
+  document.documentElement.lang = lang;
+}
+</script>
+</body>
+</html>
