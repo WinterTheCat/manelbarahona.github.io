@@ -17,6 +17,7 @@
     --purple: #a855f7;
     --green: #6ee7b7;
     --orange: #fb923c;
+    --red: #ff6b6b;
     --text: #f0eeff;
     --muted: #c4bfe0;
     --muted2: #8a85a8;
@@ -55,7 +56,7 @@
   .lang-btn.active { background: var(--yellow); color: var(--bg); }
 
   /* HERO */
-  #hero { min-height: 100vh; display: flex; align-items: center; padding: 8rem 2.5rem 5rem; position: relative; overflow: hidden; }
+  #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2.5rem 5rem; position: relative; overflow: hidden; }
   .hero-blobs { position: absolute; inset: 0; pointer-events: none; }
   .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: bfloat 9s ease-in-out infinite; }
   .blob-1 { width: 500px; height: 500px; background: var(--purple); top: -100px; right: -80px; }
@@ -65,14 +66,10 @@
 
   .hero-inner {
     position: relative; z-index: 2;
-    max-width: var(--max-w); width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 4rem;
-    align-items: center;
+    max-width: var(--max-w); width: 100%; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr 300px;
+    gap: 5rem; align-items: center;
   }
-
-  .hero-text {}
 
   .hero-available { display: inline-flex; align-items: center; gap: 0.4rem; font-size: 0.73rem; color: var(--green); font-weight: 600; margin-bottom: 1.2rem; }
   .hero-available::before { content: '●'; font-size: 0.4rem; animation: pulse 2s infinite; }
@@ -94,57 +91,32 @@
   .chip-green  { background: rgba(110,231,183,0.12); color: var(--green);  border: 1px solid rgba(110,231,183,0.25); }
   .chip-orange { background: rgba(251,146,60,0.12);  color: var(--orange); border: 1px solid rgba(251,146,60,0.25); }
 
-  /* HERO PHOTO */
   .hero-photo-col { display: flex; align-items: center; justify-content: center; }
-  .hero-photo-wrap {
-    position: relative;
-    width: 260px; height: 320px;
-  }
+  .hero-photo-wrap { position: relative; width: 260px; height: 320px; }
   .hero-photo-wrap::before {
-    content: '';
-    position: absolute;
-    inset: -3px;
-    border-radius: 140px 140px 120px 120px;
+    content: ''; position: absolute; inset: -3px;
+    border-radius: 24px;
     background: linear-gradient(160deg, var(--yellow), var(--pink), var(--purple));
-    z-index: 0;
-    opacity: 0.7;
+    z-index: 0; opacity: 0.7;
   }
   .hero-photo-wrap::after {
-    content: '';
-    position: absolute;
-    width: 120px; height: 120px;
-    border-radius: 50%;
-    background: var(--cyan);
-    bottom: -20px; right: -20px;
-    filter: blur(40px);
-    opacity: 0.3;
-    z-index: 0;
+    content: ''; position: absolute; width: 120px; height: 120px; border-radius: 50%;
+    background: var(--cyan); bottom: -20px; right: -20px;
+    filter: blur(40px); opacity: 0.3; z-index: 0;
   }
   .hero-photo {
-    position: relative; z-index: 1;
-    width: 100%; height: 100%;
-    object-fit: cover;
-    border-radius: 138px 138px 118px 118px;
-    display: block;
-    background: var(--surface2);
+    position: relative; z-index: 1; width: 100%; height: 100%;
+    object-fit: cover; object-position: center top;
+    border-radius: 22px;
+    display: block; background: var(--surface2);
   }
-  .hero-photo-placeholder {
-    position: relative; z-index: 1;
-    width: 100%; height: 100%;
-    border-radius: 138px 138px 118px 118px;
-    background: var(--surface2);
-    display: flex; flex-direction: column;
-    align-items: center; justify-content: center;
-    gap: 0.5rem; color: var(--muted2);
-    font-size: 0.72rem; text-align: center;
-    padding: 1rem;
-  }
-  .hero-photo-placeholder .ph-icon { font-size: 2.5rem; margin-bottom: 0.3rem; }
-  .hero-photo-placeholder .ph-hint { font-size: 0.65rem; color: var(--muted2); line-height: 1.4; }
+
   .btn-primary { padding: 0.78rem 1.7rem; background: var(--yellow); color: var(--bg); border: none; border-radius: 8px; font-family: var(--font-display); font-weight: 700; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: transform 0.2s, box-shadow 0.2s; display: inline-block; }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(249,200,70,0.22); }
   .btn-secondary { padding: 0.78rem 1.7rem; background: transparent; color: var(--text); border: 1px solid var(--border); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: border-color 0.2s, background 0.2s; display: inline-block; }
   .btn-secondary:hover { border-color: rgba(255,255,255,0.22); background: var(--surface); }
+  .btn-cv { padding: 0.78rem 1.2rem; background: transparent; color: var(--muted); border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: color 0.2s, border-color 0.2s; display: inline-block; }
+  .btn-cv:hover { color: var(--text); border-color: rgba(255,255,255,0.4); }
 
   /* SECTIONS */
   section { padding: 5rem 2.5rem; }
@@ -164,18 +136,77 @@
   .stat-label { font-size: 0.75rem; color: var(--muted2); font-weight: 400; line-height: 1.3; }
 
   /* PROJECTS */
-  .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr)); gap: 1.1rem; }
-  .project-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s; text-decoration: none; color: inherit; display: block; }
-  .project-card:hover { transform: translateY(-5px); border-color: rgba(255,255,255,0.16); box-shadow: 0 14px 36px rgba(0,0,0,0.28); }
-  .project-img-area { width: 100%; aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; font-size: 2rem; border-bottom: 1px solid var(--border); background: var(--surface2); position: relative; overflow: hidden; }
+  .projects-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.1rem;
+  }
+
+  /* Tarjeta destacada — ocupa toda la fila */
+  .project-card-featured {
+    grid-column: 1 / -1;
+  }
+
+  .project-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 12px; overflow: hidden;
+    transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+    text-decoration: none; color: inherit; display: block;
+  }
+  .project-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.16); box-shadow: 0 14px 36px rgba(0,0,0,0.28); }
+
+  /* Layout horizontal para tarjetas destacadas */
+  .project-card-featured .project-card-inner {
+    display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
+  }
+  .project-card-featured .project-img-area {
+    aspect-ratio: 16/9; border-bottom: none; border-right: 1px solid var(--border);
+    height: 100%; min-height: 240px;
+  }
+  .project-card-featured .project-body { padding: 1.8rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+  .project-card-featured .project-title { font-size: 1.5rem; margin-bottom: 0.7rem; }
+  .project-card-featured .project-desc { font-size: 0.9rem; margin-bottom: 1.1rem; }
+
+  /* Tarjeta normal */
+  .project-card:not(.project-card-featured) .project-card-inner { display: block; }
+
+  .project-img-area {
+    width: 100%; aspect-ratio: 16/9;
+    display: flex; align-items: center; justify-content: center;
+    border-bottom: 1px solid var(--border); background: var(--surface2);
+    position: relative; overflow: hidden;
+  }
   .project-img-area img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
-  .project-img-area .img-hint { font-size: 0.6rem; color: var(--muted2); position: absolute; bottom: 5px; right: 7px; background: rgba(0,0,0,0.45); padding: 2px 5px; border-radius: 3px; }
+
   .project-body { padding: 1.1rem 1.2rem 1.2rem; }
   .project-genre { font-size: 0.68rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 0.3rem; }
   .project-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.2; color: var(--text); }
   .project-desc { font-size: 0.83rem; color: var(--muted); line-height: 1.6; margin-bottom: 0.9rem; font-weight: 300; }
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .project-tag { font-size: 0.66rem; padding: 0.16rem 0.5rem; border-radius: 100px; background: var(--surface2); color: var(--muted); font-weight: 500; border: 1px solid var(--border); }
+
+  /* Badge NDA */
+  .badge-nda {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(255,107,157,0.12); color: var(--pink);
+    border: 1px solid rgba(255,107,157,0.25);
+    padding: 0.18rem 0.55rem; border-radius: 100px;
+    margin-left: 0.4rem; vertical-align: middle;
+  }
+  .badge-nda::before { content: '●'; font-size: 0.35rem; }
+
+  .badge-wip {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase;
+    background: rgba(251,146,60,0.12); color: var(--orange);
+    border: 1px solid rgba(251,146,60,0.25);
+    padding: 0.18rem 0.55rem; border-radius: 100px;
+    margin-left: 0.4rem; vertical-align: middle;
+  }
+
   .project-link { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.8rem; font-size: 0.78rem; font-weight: 700; font-family: var(--font-display); text-decoration: none; transition: gap 0.2s; }
   .project-link:hover { gap: 0.55rem; }
 
@@ -225,6 +256,8 @@
     .about-layout, .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
     .exp-item { grid-template-columns: 1fr; gap: 0.2rem; }
     .projects-grid { grid-template-columns: 1fr; }
+    .project-card-featured .project-card-inner { grid-template-columns: 1fr; }
+    .project-card-featured .project-img-area { border-right: none; border-bottom: 1px solid var(--border); height: auto; min-height: unset; }
   }
 </style>
 </head>
@@ -254,10 +287,11 @@
     <div class="hero-text">
       <span class="hero-available" data-i18n="hero_available">Disponible para nuevos proyectos</span>
       <h1>Manel<br>Barahona.<span class="h1-role" data-i18n="h1_role">Game Designer.</span></h1>
-      <p class="hero-desc" data-i18n="hero_desc">Sistemas, narrativa, niveles y el balance que hace que todo encaje. Diseño videojuegos pensando en las personas que los van a jugar — con criterio, con método y con pasión.</p>
+      <p class="hero-desc" data-i18n="hero_desc">Sistemas con propósito narrativo. Equipos con dirección clara. Juegos que se sienten bien por dentro y por fuera.</p>
       <div class="hero-ctas">
-        <a href="#projects" class="btn-primary"   data-i18n="hero_cta1">Ver proyectos</a>
-        <a href="#contact"  class="btn-secondary"  data-i18n="hero_cta2">Hablemos</a>
+        <a href="#projects" class="btn-primary"  data-i18n="hero_cta1">Ver proyectos</a>
+        <a href="#contact"  class="btn-secondary" data-i18n="hero_cta2">Hablemos</a>
+        <a href="cv/manel-barahona-cv.pdf" class="btn-cv" download data-i18n="hero_cta3">↓ CV</a>
       </div>
       <div class="hero-chips">
         <span class="chip chip-yellow" data-i18n="chip_systems">Diseño de Sistemas</span>
@@ -270,8 +304,6 @@
     </div>
     <div class="hero-photo-col">
       <div class="hero-photo-wrap">
-        <!-- Cuando tengas la foto, reemplaza el div.hero-photo-placeholder por:
-             <img src="photo.png" alt="Manel Barahona" class="hero-photo"> -->
         <img src="photo.png" alt="Manel Barahona" class="hero-photo">
       </div>
     </div>
@@ -304,66 +336,124 @@
     <h2 class="reveal" data-i18n="proj_title">Lo que he construido.</h2>
     <div class="projects-grid">
 
-      <a class="project-card reveal" href="https://www.ikarusstudio.com/games/threadborn" target="_blank">
-        <div class="project-img-area" style="background:#1a1035;"><img src="threadborn.jpg" alt="Threadborn screenshot" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <div class="project-body">
-          <div class="project-genre" style="color:var(--purple);" data-i18n="tb_genre">Roguelike JRPG · Indie · Demo disponible</div>
-          <div class="project-title">Threadborn</div>
-          <p class="project-desc" data-i18n="tb_desc">Combate por turnos donde las acciones se resuelven mediante mecánicas de puzzle. Diseñador principal: sistemas de juego, progresión roguelike y bucles de retención.</p>
-          <div class="project-tags"><span class="project-tag" data-i18n="tag_lead">Diseñador Principal</span><span class="project-tag">Puzzle Systems</span><span class="project-tag">JRPG</span><span class="project-tag">Roguelike</span></div>
-          <div class="project-link" style="color:var(--purple);" data-i18n="link_demo">Ver demo →</div>
-        </div>
-      </a>
+      <!-- 1. Run & Gun — DESTACADO -->
+      <div class="project-card project-card-featured reveal">
+        <a href="run-and-gun.html" class="project-card-inner" style="text-decoration:none;color:inherit;display:grid;grid-template-columns:1fr 1fr;">
+          <div class="project-img-area" style="background:#0d1117; border-right:1px solid var(--border);">
+            <img src="run-and-gun.jpg" alt="Run & Gun — proyecto bajo NDA en Dunwich Studio">
+          </div>
+          <div class="project-body" style="display:flex;flex-direction:column;justify-content:center;padding:1.8rem 2rem;">
+            <div class="project-genre" style="color:var(--yellow);" data-i18n="rg_genre">Run & Gun · 2D <span class="badge-nda">NDA</span></div>
+            <div class="project-title" style="font-size:1.5rem;margin-bottom:0.7rem;">Run & Gun</div>
+            <p class="project-desc" style="font-size:0.9rem;margin-bottom:1.1rem;" data-i18n="rg_desc">Avanza a ostias por una reimaginación de la guerra más fría.</p>
+            <div class="project-tags">
+              <span class="project-tag" data-i18n="tag_producer">Producer</span>
+              <span class="project-tag" data-i18n="tag_levels">Level Design</span>
+              <span class="project-tag" data-i18n="tag_systems">Sistemas</span>
+            </div>
+            <div class="project-link" style="color:var(--yellow);margin-top:1rem;" data-i18n="link_case">Ver case study →</div>
+          </div>
+        </a>
+      </div>
 
+      <!-- 2. My Best Friend — DESTACADO -->
+      <div class="project-card project-card-featured reveal">
+        <a href="my-best-friend.html" class="project-card-inner" style="text-decoration:none;color:inherit;display:grid;grid-template-columns:1fr 1fr;">
+          <div class="project-img-area" style="background:#0d0a14; border-right:1px solid var(--border);">
+            <img src="my-best-friend.jpg" alt="My Best Friend — terror de marionetas en primera persona">
+          </div>
+          <div class="project-body" style="display:flex;flex-direction:column;justify-content:center;padding:1.8rem 2rem;">
+            <div class="project-genre" style="color:var(--pink);" data-i18n="mbf_genre">Terror · Primera persona <span class="badge-nda">NDA</span></div>
+            <div class="project-title" style="font-size:1.5rem;margin-bottom:0.7rem;">My Best Friend</div>
+            <p class="project-desc" style="font-size:0.9rem;margin-bottom:1.1rem;" data-i18n="mbf_desc">No sabes qué haces aquí, pero ellos te necesitan...</p>
+            <div class="project-tags">
+              <span class="project-tag" data-i18n="tag_producer">Producer</span>
+              <span class="project-tag" data-i18n="tag_design">Game Design</span>
+              <span class="project-tag">Horror</span>
+            </div>
+            <div class="project-link" style="color:var(--pink);margin-top:1rem;" data-i18n="link_case">Ver case study →</div>
+          </div>
+        </a>
+      </div>
+
+      <!-- 3. Gamergy World -->
       <a class="project-card reveal" href="https://play.google.com/store/apps/details?id=com.ggtech.GamergyWorldMobile&hl=es/" target="_blank">
-        <div class="project-img-area" style="background:#0a1f10;"><img src="Gamergy3.webp" alt="Gamergy World screenshot" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <div class="project-body">
-          <div class="project-genre" style="color:var(--green);" data-i18n="gw_genre">Plataforma Social 3D · Publicado</div>
-          <div class="project-title">Gamergy World</div>
-          <p class="project-desc" data-i18n="gw_desc">Plataforma social tipo Habbo Hotel moderno, orientada a captación y retención. Miles de descargas. Economía, monetización, misiones y minijuegos.</p>
-          <div class="project-tags"><span class="project-tag">Game Designer</span><span class="project-tag">F2P</span><span class="project-tag" data-i18n="tag_economy">Economía</span><span class="project-tag" data-i18n="tag_mobile">Móvil</span></div>
-          <div class="project-link" style="color:var(--green);" data-i18n="link_play">Descargar →</div>
+        <div class="project-card-inner">
+          <div class="project-img-area" style="background:#0a1f10;">
+            <img src="Gamergy3.webp" alt="Gamergy World screenshot">
+          </div>
+          <div class="project-body">
+            <div class="project-genre" style="color:var(--green);" data-i18n="gw_genre">Plataforma Social 3D · Publicado</div>
+            <div class="project-title">Gamergy World</div>
+            <p class="project-desc" data-i18n="gw_desc">Plataforma social tipo Habbo Hotel moderno, orientada a captación y retención. Miles de jugadores. Economía, monetización, misiones y minijuegos.</p>
+            <div class="project-tags">
+              <span class="project-tag">Game Designer</span>
+              <span class="project-tag">F2P</span>
+              <span class="project-tag" data-i18n="tag_economy">Economía</span>
+              <span class="project-tag" data-i18n="tag_mobile">Móvil</span>
+            </div>
+            <div class="project-link" style="color:var(--green);" data-i18n="link_play">Descargar →</div>
+          </div>
         </div>
       </a>
 
+      <!-- 4. Threadborn -->
+      <a class="project-card reveal" href="https://www.ikarusstudio.com/games/threadborn" target="_blank">
+        <div class="project-card-inner">
+          <div class="project-img-area" style="background:#1a1035;">
+            <img src="threadborn.jpg" alt="Threadborn screenshot">
+          </div>
+          <div class="project-body">
+            <div class="project-genre" style="color:var(--purple);" data-i18n="tb_genre">Roguelike JRPG · Indie · Demo próxima</div>
+            <div class="project-title">Threadborn</div>
+            <p class="project-desc" data-i18n="tb_desc">Combate por turnos donde las acciones se resuelven mediante mecánicas de puzzle. Diseñador principal: sistemas, narrativa, puzzles e interfaz.</p>
+            <div class="project-tags">
+              <span class="project-tag" data-i18n="tag_lead">Diseñador Principal</span>
+              <span class="project-tag">Puzzle Systems</span>
+              <span class="project-tag">JRPG</span>
+            </div>
+            <div class="project-link" style="color:var(--purple);" data-i18n="link_demo">Ver demo →</div>
+          </div>
+        </div>
+      </a>
+
+      <!-- 5. Divine Angels -->
       <a class="project-card reveal" href="divine-angels.html">
-        <div class="project-img-area" style="background:#1a0820;"><img src="divine-angels.jpg" alt="Divine Angels screenshot" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <div class="project-body">
-          <div class="project-genre" style="color:var(--pink);" data-i18n="da_genre">RPG Narrativo · Demo universitaria</div>
-          <div class="project-title">Divine Angels</div>
-          <p class="project-desc" data-i18n="da_desc">RPG con combate no-directo: diálogo, rendición e interacción con el entorno. Sistema de decisiones narrativas con impacto en atributos y relaciones del personaje.</p>
-          <div class="project-tags"><span class="project-tag">RPG</span><span class="project-tag" data-i18n="tag_narrative">Narrativa</span><span class="project-tag" data-i18n="tag_systems">Sistemas</span></div>
+        <div class="project-card-inner">
+          <div class="project-img-area" style="background:#1a0820;">
+            <img src="divine-angels.jpg" alt="Divine Angels screenshot">
+          </div>
+          <div class="project-body">
+            <div class="project-genre" style="color:var(--pink);" data-i18n="da_genre">RPG Narrativo · Demo universitaria</div>
+            <div class="project-title">Divine Angels</div>
+            <p class="project-desc" data-i18n="da_desc">RPG con combate no-directo: diálogo, rendición e interacción con el entorno. Sistema de decisiones narrativas con impacto en atributos y relaciones.</p>
+            <div class="project-tags">
+              <span class="project-tag">RPG</span>
+              <span class="project-tag" data-i18n="tag_narrative">Narrativa</span>
+              <span class="project-tag" data-i18n="tag_systems">Sistemas</span>
+            </div>
+            <div class="project-link" style="color:var(--pink);" data-i18n="link_case">Ver case study →</div>
+          </div>
         </div>
       </a>
 
-      <a class="project-card reveal" href="#">
-        <div class="project-img-area" style="background:#0d0d0d;"><img src="goyas-head.jpg" alt="Goya's Head screenshot" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <div class="project-body">
-          <div class="project-genre" style="color:var(--yellow);" data-i18n="gh_genre">Survival Horror · Demo universitaria</div>
-          <div class="project-title">Goya's Head</div>
-          <p class="project-desc" data-i18n="gh_desc">Horror en 3ª persona con mecánicas de luz y cordura. Dirección del equipo de diseño, narrativa y sistema de cámara estilo Silent Hill.</p>
-          <div class="project-tags"><span class="project-tag" data-i18n="tag_lead">Diseñador Principal</span><span class="project-tag">Horror</span><span class="project-tag" data-i18n="tag_narrative">Narrativa</span></div>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="#">
-        <div class="project-img-area" style="background:#080d1a;"><img src="equip-fight.jpg" alt="Equip & Fight screenshot" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <div class="project-body">
-          <div class="project-genre" style="color:var(--cyan);" data-i18n="ef_genre">Board Game · Proyecto personal · WIP</div>
-          <div class="project-title">Equip & Fight</div>
-          <p class="project-desc" data-i18n="ef_desc">Juego de tablero 2–4 jugadores con draft de equipamiento y efectos de cartas diseñados desde cero. Mecánicas coleccionables con alta variabilidad estratégica.</p>
-          <div class="project-tags"><span class="project-tag" data-i18n="tag_design">Diseño completo</span><span class="project-tag" data-i18n="tag_balance">Balance</span><span class="project-tag" data-i18n="tag_systems">Sistemas</span></div>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="https://irenete.itch.io/lulu-y-sus-slimes" target="_blank">
-        <div class="project-img-area" style="background:#12081f;"><img src="lulu-slimes.png" alt="Lulu & her Slimes screenshot" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0;"></div>
-        <div class="project-body">
-          <div class="project-genre" style="color:var(--orange);" data-i18n="ll_genre">Puzzle / Aventura · Game Jam 48h</div>
-          <div class="project-title">Lulu & her Slimes</div>
-          <p class="project-desc" data-i18n="ll_desc">Narrativa y mecánicas diseñadas en 48 horas. Sistema de combinación de ingredientes para criaturas únicas. Mecánicas de memoria y azar para tensión y rejugabilidad.</p>
-          <div class="project-tags"><span class="project-tag" data-i18n="tag_jam">Game Jam</span><span class="project-tag">Puzzle</span><span class="project-tag" data-i18n="tag_narrative">Narrativa</span></div>
-          <div class="project-link" style="color:var(--orange);" data-i18n="link_play">Jugar →</div>
+      <!-- 6. Goya's Head -->
+      <a class="project-card reveal" href="goyas-head.html">
+        <div class="project-card-inner">
+          <div class="project-img-area" style="background:#0d0d0d;">
+            <img src="goyas-head.jpg" alt="Goya's Head screenshot">
+          </div>
+          <div class="project-body">
+            <div class="project-genre" style="color:var(--orange);" data-i18n="gh_genre">Survival Horror · Demo universitaria</div>
+            <div class="project-title">Goya's Head</div>
+            <p class="project-desc" data-i18n="gh_desc">Horror en 3ª persona con mecánicas de luz y cordura. Dirección del equipo de diseño, narrativa y sistema de cámara estilo Silent Hill.</p>
+            <div class="project-tags">
+              <span class="project-tag" data-i18n="tag_lead">Diseñador Principal</span>
+              <span class="project-tag">Horror</span>
+              <span class="project-tag" data-i18n="tag_narrative">Narrativa</span>
+            </div>
+            <div class="project-link" style="color:var(--orange);" data-i18n="link_case">Ver case study →</div>
+          </div>
         </div>
       </a>
 
@@ -378,7 +468,9 @@
 
     <div class="exp-item reveal">
       <div class="exp-dates">Nov 2024 –<br><span data-i18n="exp_present">Actualidad</span></div>
-      <div><div class="exp-role" data-i18n="exp1_role">Game Producer & Level Designer</div><div class="exp-company" style="color:var(--yellow);">Dunwich Studio</div>
+      <div>
+        <div class="exp-role" data-i18n="exp1_role">Game Producer & Level Designer</div>
+        <div class="exp-company" style="color:var(--yellow);">Dunwich Studio</div>
         <ul class="exp-bullets">
           <li data-i18n="exp1_b1">Productor del juego Run & Gun 2D del estudio, coordinando un equipo de cuatro personas.</li>
           <li data-i18n="exp1_b2">Diseño de niveles de vehículos, plataformas, acción y sigilo — ritmo, flujo y variedad de experiencia.</li>
@@ -389,7 +481,9 @@
 
     <div class="exp-item reveal">
       <div class="exp-dates">Sep 2025 –<br><span data-i18n="exp_present">Actualidad</span></div>
-      <div><div class="exp-role" data-i18n="exp2_role">Mentor de Diseño de Videojuegos</div><div class="exp-company" style="color:var(--pink);">Universal Arts School</div>
+      <div>
+        <div class="exp-role" data-i18n="exp2_role">Mentor de Diseño de Videojuegos</div>
+        <div class="exp-company" style="color:var(--pink);">Universal Arts School</div>
         <ul class="exp-bullets">
           <li data-i18n="exp2_b1">Docencia en mecánicas, sistemas, bucles de juego, economías, balance y progresión.</li>
           <li data-i18n="exp2_b2">Diseño de niveles, narrativa, pacing, puzzles y construcción de mundos.</li>
@@ -400,7 +494,9 @@
 
     <div class="exp-item reveal">
       <div class="exp-dates">Mar 2023 –<br>Jun 2024</div>
-      <div><div class="exp-role" data-i18n="exp3_role">Project Manager</div><div class="exp-company" style="color:var(--cyan);">Brave Zebra</div>
+      <div>
+        <div class="exp-role" data-i18n="exp3_role">Project Manager</div>
+        <div class="exp-company" style="color:var(--cyan);">Brave Zebra</div>
         <ul class="exp-bullets">
           <li data-i18n="exp3_b1">Gestión de proyectos en géneros como Metroidvania, roguelike de mazos y estrategia.</li>
           <li data-i18n="exp3_b2">Equipos de +15 personas: full dev, outsourcing de arte y porting multiplataforma.</li>
@@ -411,7 +507,9 @@
 
     <div class="exp-item reveal">
       <div class="exp-dates">Nov 2021 –<br>Nov 2022</div>
-      <div><div class="exp-role" data-i18n="exp4_role">Game Designer</div><div class="exp-company" style="color:var(--green);">GGTECH</div>
+      <div>
+        <div class="exp-role" data-i18n="exp4_role">Game Designer</div>
+        <div class="exp-company" style="color:var(--green);">GGTECH</div>
         <ul class="exp-bullets">
           <li data-i18n="exp4_b1">Diseño de sistemas centrales de Gamergy World: economía, monetización, progresión y features sociales.</li>
           <li data-i18n="exp4_b2">Espacios interactivos, escape rooms, misiones y minijuegos arcade.</li>
@@ -422,14 +520,6 @@
   </div>
 </section>
 
-<section id="cv-section">
-  <div class="section-inner">
-    <div class="section-label reveal" style="justify-content:center;" data-i18n="cv_label">Currículum</div>
-    <h2 class="reveal" style="text-align:center;" data-i18n="cv_title">¿Prefieres verlo en papel?</h2>
-    <p class="reveal" data-i18n="cv_desc">Descarga el CV completo con toda la experiencia, proyectos y formación.</p>
-    <a href="cv/manel-barahona-cv.pdf" class="btn-primary reveal" download data-i18n="cv_btn">Descargar CV (PDF)</a>
-  </div>
-</section>
 
 <section id="contact">
   <div class="section-inner">
@@ -439,10 +529,6 @@
       <div class="reveal">
         <p style="color:var(--muted);font-size:0.93rem;font-weight:300;margin-bottom:1.1rem;" data-i18n="contact_desc">¿Buscas un diseñador para tu equipo? ¿Tienes un proyecto que necesita un sistema bien pensado? Escríbeme.</p>
         <div class="contact-links">
-          <a href="mailto:manel.barahona2@gmail.com" class="contact-link">
-            <span class="contact-link-icon">✉️</span>
-            <div><span class="contact-link-label" data-i18n="contact_email_label">Email</span>manel.barahona2@gmail.com</div>
-          </a>
           <a href="https://linkedin.com/in/manelbarahona" class="contact-link" target="_blank">
             <span class="contact-link-icon">💼</span>
             <div><span class="contact-link-label">LinkedIn</span>/in/manelbarahona</div>
@@ -463,43 +549,43 @@
 </section>
 
 <footer>
-  <p>© 2025 Manel Barahona · <span data-i18n="footer_text">Hecho con mucho café y amor por los juegos.</span></p>
+  <p>© 2026 Manel Barahona · <span data-i18n="footer_text">Hecho con mucho café y amor por los juegos.</span></p>
 </footer>
 
 <script>
 const i18n = {
   es: {
-    nav_about:"Sobre mí",nav_projects:"Proyectos",nav_exp:"Experiencia",nav_contact:"Contacto",
+    nav_about:"Sobre mí", nav_projects:"Proyectos", nav_exp:"Experiencia", nav_contact:"Contacto",
     hero_available:"Disponible para nuevos proyectos",
     h1_role:"Game Designer.",
-    hero_desc:"Sistemas, narrativa, niveles y el balance que hace que todo encaje. Diseño videojuegos pensando en las personas que los van a jugar — con criterio, con método y con pasión.",
-    chip_systems:"Diseño de Sistemas",chip_levels:"Diseño de Niveles",chip_f2p:"F2P & Monetización",
-    chip_narrative:"Narrativa",chip_production:"Producción Ágil",chip_balance:"Balance & Economía",
-    hero_cta1:"Ver proyectos",hero_cta2:"Hablemos",
-    about_label:"Sobre mí",about_title:"Diseño juegos que se sienten bien.",
+    hero_desc:"Sistemas con propósito narrativo. Equipos con dirección clara. Juegos que se sienten bien por dentro y por fuera.",
+    chip_systems:"Diseño de Sistemas", chip_levels:"Diseño de Niveles", chip_f2p:"F2P & Monetización",
+    chip_narrative:"Narrativa", chip_production:"Producción Ágil", chip_balance:"Balance & Economía",
+    hero_cta1:"Ver proyectos", hero_cta2:"Hablemos", hero_cta3:"↓ CV",
+    about_label:"Sobre mí", about_title:"Diseño juegos que se sienten bien.",
     about_p1:"Desde pequeño, los videojuegos fueron ese espacio donde el mundo tenía sentido. Esa sensación de estar dentro de algo más grande que tú es lo que me llevó a querer construir esos mundos.",
     about_p2:"Con formación en <strong>Psicología</strong> y un Máster en Diseño de Videojuegos, diseño con la mentalidad del jugador siempre en primer plano: ¿por qué hace clic? ¿qué le hace volver? ¿qué le hace sonreír?",
     about_p3:"He trabajado en plataformas sociales móviles, Run & Gun, Metroidvanias, roguelikes y proyectos de mesa. Siempre con una obsesión: que cada sistema, nivel y mecánica tenga un propósito claro.",
-    stat1:"Años de experiencia profesional",stat2:"Proyectos en distintos géneros",
-    stat3:"Personas lideradas en equipos",stat4:"Plataformas de publicación",
-    proj_label:"Proyectos",proj_title:"Lo que he construido.",
-    tb_genre:"Roguelike JRPG · Indie · Demo disponible",
-    tb_desc:"Combate por turnos donde las acciones se resuelven mediante mecánicas de puzzle. Diseñador principal: sistemas de juego, progresión roguelike y bucles de retención.",
+    stat1:"Años de experiencia profesional", stat2:"Proyectos en distintos géneros",
+    stat3:"Personas lideradas en equipos", stat4:"Plataformas de publicación",
+    proj_label:"Proyectos", proj_title:"Lo que he construido.",
+    rg_genre:"Run & Gun · 2D",
+    rg_desc:"Avanza a ostias por una reimaginación de la guerra más fría.",
+    mbf_genre:"Terror · Primera persona",
+    mbf_desc:"No sabes qué haces aquí, pero ellos te necesitan...",
     gw_genre:"Plataforma Social 3D · Publicado",
-    gw_desc:"Plataforma social tipo Habbo Hotel moderno, orientada a captación y retención. Miles de descargas. Economía, monetización, misiones y minijuegos.",
+    gw_desc:"Plataforma social tipo Habbo Hotel moderno, orientada a captación y retención. Miles de jugadores. Economía, monetización, misiones y minijuegos.",
+    tb_genre:"Roguelike JRPG · Indie · Demo próxima",
+    tb_desc:"Combate por turnos donde las acciones se resuelven mediante mecánicas de puzzle. Diseñador principal: sistemas, narrativa, puzzles e interfaz.",
     da_genre:"RPG Narrativo · Demo universitaria",
-    da_desc:"RPG con combate no-directo: diálogo, rendición e interacción con el entorno. Sistema de decisiones narrativas con impacto en atributos y relaciones del personaje.",
+    da_desc:"RPG con combate no-directo: diálogo, rendición e interacción con el entorno. Sistema de decisiones narrativas con impacto en atributos y relaciones.",
     gh_genre:"Survival Horror · Demo universitaria",
     gh_desc:"Horror en 3ª persona con mecánicas de luz y cordura. Dirección del equipo de diseño, narrativa y sistema de cámara estilo Silent Hill.",
-    ef_genre:"Board Game · Proyecto personal · WIP",
-    ef_desc:"Juego de tablero 2–4 jugadores con draft de equipamiento y efectos de cartas diseñados desde cero. Mecánicas coleccionables con alta variabilidad estratégica.",
-    ll_genre:"Puzzle / Aventura · Game Jam 48h",
-    ll_desc:"Narrativa y mecánicas diseñadas en 48 horas. Sistema de combinación de ingredientes para criaturas únicas. Mecánicas de memoria y azar para tensión y rejugabilidad.",
-    tag_lead:"Diseñador Principal",tag_economy:"Economía",tag_mobile:"Móvil",
-    tag_narrative:"Narrativa",tag_systems:"Sistemas",tag_design:"Diseño completo",
-    tag_balance:"Balance",tag_jam:"Game Jam",
-    link_demo:"Ver demo →",link_play:"Jugar →",
-    exp_label:"Experiencia",exp_title:"Dónde he trabajado.",exp_present:"Actualidad",
+    tag_producer:"Producer", tag_levels:"Level Design", tag_systems:"Sistemas",
+    tag_design:"Game Design", tag_economy:"Economía", tag_mobile:"Móvil",
+    tag_narrative:"Narrativa", tag_lead:"Diseñador Principal",
+    link_case:"Ver case study →", link_demo:"Ver demo →", link_play:"Descargar →",
+    exp_label:"Experiencia", exp_title:"Dónde he trabajado.", exp_present:"Actualidad",
     exp1_role:"Game Producer & Level Designer",
     exp1_b1:"Productor del juego Run & Gun 2D del estudio, coordinando un equipo de cuatro personas.",
     exp1_b2:"Diseño de niveles de vehículos, plataformas, acción y sigilo — ritmo, flujo y variedad de experiencia.",
@@ -516,48 +602,48 @@ const i18n = {
     exp4_b1:"Diseño de sistemas centrales de Gamergy World: economía, monetización, progresión y features sociales.",
     exp4_b2:"Espacios interactivos, escape rooms, misiones y minijuegos arcade.",
     exp4_b3:"Estructura narrativa, comportamiento de NPCs y flujos de quests.",
-    cv_label:"Currículum",cv_title:"¿Prefieres verlo en papel?",
+    cv_label:"Currículum", cv_title:"¿Prefieres verlo en papel?",
     cv_desc:"Descarga el CV completo con toda la experiencia, proyectos y formación.",
     cv_btn:"Descargar CV (PDF)",
-    contact_label:"Contacto",contact_title:"Hablemos de tu proyecto.",
+    contact_label:"Contacto", contact_title:"Hablemos de tu proyecto.",
     contact_desc:"¿Buscas un diseñador para tu equipo? ¿Tienes un proyecto que necesita un sistema bien pensado? Escríbeme.",
-    contact_email_label:"Email",contact_form_label:"O mándame un mensaje directo:",
-    form_name:"Nombre",form_email:"Email",form_msg:"Cuéntame tu proyecto...",
+    contact_email_label:"Email", contact_form_label:"O mándame un mensaje directo:",
+    form_name:"Nombre", form_email:"Email", form_msg:"Cuéntame tu proyecto...",
     form_send:"Enviar mensaje",
     footer_text:"Hecho con mucho café y amor por los juegos."
   },
   en: {
-    nav_about:"About",nav_projects:"Projects",nav_exp:"Experience",nav_contact:"Contact",
+    nav_about:"About", nav_projects:"Projects", nav_exp:"Experience", nav_contact:"Contact",
     hero_available:"Available for new projects",
     h1_role:"Game Designer.",
-    hero_desc:"Systems, narrative, levels and the balance that makes everything click. I design games with the player always in mind — with judgment, method and passion.",
-    chip_systems:"Systems Design",chip_levels:"Level Design",chip_f2p:"F2P & Monetization",
-    chip_narrative:"Narrative",chip_production:"Agile Production",chip_balance:"Balance & Economy",
-    hero_cta1:"View projects",hero_cta2:"Let's talk",
-    about_label:"About me",about_title:"I design games that feel right.",
+    hero_desc:"Systems with narrative purpose. Teams with clear direction. Games that feel right inside and out.",
+    chip_systems:"Systems Design", chip_levels:"Level Design", chip_f2p:"F2P & Monetization",
+    chip_narrative:"Narrative", chip_production:"Agile Production", chip_balance:"Balance & Economy",
+    hero_cta1:"View projects", hero_cta2:"Let's talk", hero_cta3:"↓ CV",
+    about_label:"About me", about_title:"I design games that feel right.",
     about_p1:"Growing up, video games were the place where everything made sense. That feeling of being inside something bigger than yourself is what made me want to build those worlds.",
     about_p2:"With a background in <strong>Psychology</strong> and a Master's in Game Design, I always put the player's mindset first: why do they click? what makes them come back? what makes them smile?",
     about_p3:"I've worked on social mobile platforms, Run & Gun, Metroidvanias, roguelikes and tabletop projects. Always with one obsession: every system, level and mechanic must have a clear purpose.",
-    stat1:"Years of professional experience",stat2:"Projects across different genres",
-    stat3:"People led in teams",stat4:"Publishing platforms",
-    proj_label:"Projects",proj_title:"What I've built.",
-    tb_genre:"Roguelike JRPG · Indie · Demo available",
-    tb_desc:"Turn-based combat where actions are resolved through puzzle mechanics. Lead designer: game systems, roguelike progression and retention loops.",
+    stat1:"Years of professional experience", stat2:"Projects across different genres",
+    stat3:"People led in teams", stat4:"Publishing platforms",
+    proj_label:"Projects", proj_title:"What I've built.",
+    rg_genre:"Run & Gun · 2D",
+    rg_desc:"Blast through a reimagining of the coldest war.",
+    mbf_genre:"Horror · First person",
+    mbf_desc:"You don't know why you're here, but they need you...",
     gw_genre:"3D Social Platform · Published",
-    gw_desc:"Modern Habbo Hotel-style social platform focused on acquisition and retention. Thousands of downloads. Economy, monetization, missions and minigames.",
+    gw_desc:"Modern Habbo Hotel-style social platform focused on acquisition and retention. Thousands of players. Economy, monetization, missions and minigames.",
+    tb_genre:"Roguelike JRPG · Indie · Demo soon",
+    tb_desc:"Turn-based combat where actions are resolved through puzzle mechanics. Lead designer: systems, narrative, puzzles and UI.",
     da_genre:"Narrative RPG · University demo",
-    da_desc:"RPG with non-direct combat: dialogue, surrender and environment interaction as real alternatives. Narrative decision system with direct impact on attributes and relationships.",
+    da_desc:"RPG with non-direct combat: dialogue, surrender and environment interaction. Narrative decision system with direct impact on attributes and relationships.",
     gh_genre:"Survival Horror · University demo",
     gh_desc:"3rd person horror with light and sanity mechanics. Design team lead, narrative and perspective-shifting camera system inspired by Silent Hill.",
-    ef_genre:"Board Game · Personal project · WIP",
-    ef_desc:"2–4 player board game with equipment draft and card effects designed from scratch. Collectible mechanics with high strategic variability.",
-    ll_genre:"Puzzle / Adventure · 48h Game Jam",
-    ll_desc:"Narrative and mechanics designed in 48 hours. Ingredient combination system for unique creatures. Memory and chance mechanics for tension and replayability.",
-    tag_lead:"Lead Designer",tag_economy:"Economy",tag_mobile:"Mobile",
-    tag_narrative:"Narrative",tag_systems:"Systems",tag_design:"Full design",
-    tag_balance:"Balance",tag_jam:"Game Jam",
-    link_demo:"View demo →",link_play:"Play →",
-    exp_label:"Experience",exp_title:"Where I've worked.",exp_present:"Present",
+    tag_producer:"Producer", tag_levels:"Level Design", tag_systems:"Systems",
+    tag_design:"Game Design", tag_economy:"Economy", tag_mobile:"Mobile",
+    tag_narrative:"Narrative", tag_lead:"Lead Designer",
+    link_case:"View case study →", link_demo:"View demo →", link_play:"Download →",
+    exp_label:"Experience", exp_title:"Where I've worked.", exp_present:"Present",
     exp1_role:"Game Producer & Level Designer",
     exp1_b1:"Producer of the studio's 2D Run & Gun game, coordinating a four-person team.",
     exp1_b2:"Level design for vehicles, platforming, action and stealth — pacing, flow and variety.",
@@ -574,13 +660,13 @@ const i18n = {
     exp4_b1:"Core systems design for Gamergy World: economy, monetization, progression and social features.",
     exp4_b2:"Interactive spaces, escape rooms, missions and arcade minigames.",
     exp4_b3:"Narrative structure, NPC behaviour and quest flows.",
-    cv_label:"Résumé",cv_title:"Prefer to see it on paper?",
+    cv_label:"Résumé", cv_title:"Prefer to see it on paper?",
     cv_desc:"Download the full CV with all experience, projects and education.",
     cv_btn:"Download CV (PDF)",
-    contact_label:"Contact",contact_title:"Let's talk about your project.",
+    contact_label:"Contact", contact_title:"Let's talk about your project.",
     contact_desc:"Looking for a designer for your team? Have a project that needs a well-thought-out system? Write to me.",
-    contact_email_label:"Email",contact_form_label:"Or send me a direct message:",
-    form_name:"Name",form_email:"Email",form_msg:"Tell me about your project...",
+    contact_email_label:"Email", contact_form_label:"Or send me a direct message:",
+    form_name:"Name", form_email:"Email", form_msg:"Tell me about your project...",
     form_send:"Send message",
     footer_text:"Made with lots of coffee and love for games."
   }
@@ -613,33 +699,20 @@ document.getElementById('contact-form').addEventListener('submit', async functio
   const orig = btn.textContent;
   btn.textContent = currentLang === 'es' ? 'Enviando...' : 'Sending...';
   btn.disabled = true;
-
   const data = new FormData(this);
   try {
     const res = await fetch('https://formspree.io/f/xjgzkdgr', {
-      method: 'POST',
-      body: data,
-      headers: { 'Accept': 'application/json' }
+      method: 'POST', body: data, headers: { 'Accept': 'application/json' }
     });
     if (res.ok) {
       btn.textContent = currentLang === 'es' ? '¡Enviado! ✓' : 'Sent! ✓';
-      btn.style.background = 'var(--green)';
-      btn.style.color = 'var(--bg)';
+      btn.style.background = 'var(--green)'; btn.style.color = 'var(--bg)';
       this.reset();
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.style.background = '';
-        btn.style.color = '';
-        btn.disabled = false;
-      }, 4000);
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.style.color = ''; btn.disabled = false; }, 4000);
     } else {
       btn.textContent = currentLang === 'es' ? 'Error, inténtalo de nuevo' : 'Error, try again';
       btn.style.background = '#e74c3c';
-      setTimeout(() => {
-        btn.textContent = orig;
-        btn.style.background = '';
-        btn.disabled = false;
-      }, 3000);
+      setTimeout(() => { btn.textContent = orig; btn.style.background = ''; btn.disabled = false; }, 3000);
     }
   } catch {
     btn.textContent = currentLang === 'es' ? 'Error de conexión' : 'Connection error';
