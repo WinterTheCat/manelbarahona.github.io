@@ -1,0 +1,612 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" href="da-icon.png" type="image/png">
+<meta name="description" content="Goya's Head - Cómo diseñé el miedo a través de la luz, la cordura y la cámara. Proyecto de Manel Barahona, Game Designer.">
+<meta name="author" content="Manel Barahona">
+<meta property="og:title" content="Goya's Head - Manel Barahona">
+<meta property="og:description" content="Cómo tres sistemas distintos se convirtieron en uno solo para generar miedo de verdad.">
+<meta property="og:image" content="https://winterthecat.github.io/manelbarahona.github.io/goyas-head.jpg">
+<meta property="og:url" content="https://winterthecat.github.io/manelbarahona.github.io/goyas-head.html">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<title>Goya's Head - Manel Barahona</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0f; --bg2: #111118; --surface: #18181f;
+    --ink: #f0eeff; --ink2: #c4bfe0; --ink3: #8a85a8;
+    --accent: #e8722a; --blue: #5b8fa8; --sage: #a08060;
+    --border: rgba(255,255,255,0.07); --border2: rgba(255,255,255,0.12);
+    --font-display: 'Plus Jakarta Sans', sans-serif;
+    --font-body: 'DM Sans', sans-serif;
+    --max-w: 820px; --nav-h: 56px;
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.75; overflow-x: hidden; }
+
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    height: var(--nav-h);
+    display: grid; grid-template-columns: auto 1fr auto;
+    align-items: center; gap: 2rem; padding: 0 2.5rem;
+    background: rgba(10,10,15,0.92); backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-back {
+    font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
+    color: var(--ink3); text-decoration: none;
+    display: flex; align-items: center; gap: 0.4rem;
+    transition: color 0.2s; padding-right: 2rem; border-right: 1px solid var(--border);
+  }
+  .nav-back::before { content: "←"; }
+  .nav-back:hover { color: var(--accent); }
+  .nav-sections { display: flex; gap: 0.2rem; overflow-x: auto; scrollbar-width: none; }
+  .nav-sections::-webkit-scrollbar { display: none; }
+  .nav-section-link {
+    font-family: var(--font-display); font-size: 0.75rem; font-weight: 500;
+    color: var(--ink3); text-decoration: none;
+    padding: 0.25rem 0.6rem; border-radius: 4px;
+    transition: color 0.2s, background 0.2s; white-space: nowrap;
+  }
+  .nav-section-link:hover { color: var(--ink); background: var(--surface); }
+  .nav-section-link.active { color: var(--accent); }
+  .nav-right { display: flex; align-items: center; gap: 1rem; padding-left: 2rem; border-left: 1px solid var(--border); }
+  .lang-toggle { display: flex; background: var(--surface); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
+  .lang-btn {
+    padding: 0.22rem 0.7rem; font-size: 0.72rem; font-weight: 700;
+    font-family: var(--font-display); cursor: pointer; border: none;
+    background: transparent; color: var(--ink3); transition: all 0.2s; letter-spacing: 0.05em;
+  }
+  .lang-btn.active { background: var(--accent); color: #fff; }
+
+  .hero {
+    padding-top: var(--nav-h); min-height: 85vh; position: relative;
+    overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
+  }
+  .hero-img {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; object-position: center 30%;
+    filter: saturate(30%) brightness(0.28) sepia(20%);
+  }
+  .hero-overlay {
+    position: absolute; inset: 0;
+    background: linear-gradient(to top, rgba(10,10,15,1) 0%, rgba(10,10,15,0.88) 40%, rgba(10,10,15,0.3) 75%, transparent 100%);
+  }
+  .hero-blob { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; animation: bfloat 11s ease-in-out infinite; }
+  .hero-blob-1 { width: 500px; height: 500px; background: rgba(232,114,42,0.08); top: 10%; right: -5%; }
+  .hero-blob-2 { width: 350px; height: 350px; background: rgba(91,143,168,0.06); bottom: 25%; left: 5%; animation-delay: 5s; }
+  @keyframes bfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-18px)} }
+  .hero-content {
+    position: relative; z-index: 2;
+    max-width: var(--max-w); margin: 0 auto; width: 100%;
+    padding: 0 2.5rem 3.5rem;
+  }
+  .hero-eyebrow {
+    font-family: var(--font-display); font-size: 0.72rem; font-weight: 700;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.8rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .hero-eyebrow::before { content: ''; display: block; width: 18px; height: 2px; background: var(--accent); }
+  .hero-title {
+    font-family: var(--font-display); font-size: clamp(3.5rem, 9vw, 6.5rem);
+    font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
+    color: var(--ink); margin-bottom: 1.2rem;
+  }
+  .hero-question {
+    font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600; color: var(--ink2); line-height: 1.5;
+    max-width: 580px; border-left: 2px solid var(--accent);
+    padding-left: 1rem; font-style: italic;
+  }
+  .hero-question em { color: var(--accent); font-style: normal; }
+
+  .meta-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+  .meta-strip-inner {
+    max-width: var(--max-w); margin: 0 auto; padding: 1rem 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center;
+  }
+  .meta-item { flex-shrink: 0; }
+  .meta-label { font-family: var(--font-display); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.15rem; }
+  .meta-value { font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: var(--ink); }
+  .meta-sep { width: 1px; height: 2rem; background: var(--border); flex-shrink: 0; }
+  .meta-stats { width: 100%; display: flex; gap: 2rem; padding-top: 0.7rem; border-top: 1px solid var(--border); margin-top: 0.2rem; }
+  .meta-stat { display: flex; align-items: baseline; gap: 0.35rem; }
+  .meta-stat-num { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .meta-stat-label { font-family: var(--font-display); font-size: 0.68rem; color: var(--ink3); }
+
+  .page-content { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem 6rem; position: relative; z-index: 1; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
+  .section:last-of-type { border-bottom: none; }
+  .section-eyebrow {
+    font-family: var(--font-display); font-size: 0.68rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.6rem;
+    display: flex; align-items: center; gap: 0.6rem;
+  }
+  .section-eyebrow::before { content: ''; flex: 0 0 18px; height: 2px; background: var(--accent); }
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+  .lead { font-size: 1.02rem; color: var(--ink2); line-height: 1.8; margin-bottom: 1rem; font-weight: 300; }
+  p { color: var(--ink2); line-height: 1.8; margin-bottom: 0.8rem; font-size: 0.97rem; font-weight: 300; }
+  p strong, .lead strong { color: var(--ink); font-weight: 600; }
+
+  .question-block {
+    margin: 1.5rem 0; padding: 1.4rem 1.6rem;
+    border: 1px solid var(--border2); border-left: 3px solid var(--accent);
+    background: rgba(232,114,42,0.04); border-radius: 0 10px 10px 0;
+  }
+  .question-block-label { font-family: var(--font-display); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
+  .question-block-text { font-family: var(--font-display); font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 700; color: var(--ink); line-height: 1.4; font-style: italic; }
+
+  /* STEPPER */
+  .stepper { margin: 1.4rem 0; }
+  .stepper-tabs { display: flex; border: 1px solid var(--border2); border-bottom: none; border-radius: 8px 8px 0 0; overflow: hidden; }
+  .stepper-tab {
+    flex: 1; padding: 0.65rem 0.5rem;
+    font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+    color: var(--ink3); background: var(--bg2); border: none;
+    border-right: 1px solid var(--border); cursor: pointer; transition: all 0.18s;
+    text-align: center; line-height: 1.3;
+  }
+  .stepper-tab:last-child { border-right: none; }
+  .stepper-tab .tab-num { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2px; opacity: 0.6; }
+  .stepper-tab.active { background: var(--surface); color: var(--ink); }
+  .stepper-tab.active .tab-num { opacity: 1; color: var(--accent); }
+  .stepper-panel { display: none; border: 1px solid var(--border2); border-radius: 0 0 8px 8px; background: var(--surface); padding: 1.4rem; }
+  .stepper-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .stepper-panel-img { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+  .stepper-panel-img img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; background: var(--bg2); }
+  .verdict { display: inline-block; font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.18rem 0.65rem; border-radius: 100px; margin-bottom: 0.6rem; }
+  .verdict-bad  { background: rgba(255,80,80,0.12); color: #ff8080; }
+  .verdict-mid  { background: rgba(232,114,42,0.12); color: var(--accent); }
+  .verdict-good { background: rgba(110,231,183,0.12); color: #6ee7b7; }
+  .stepper-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; }
+  .stepper-body { font-size: 0.88rem; color: var(--ink2); line-height: 1.7; font-weight: 300; }
+  .stepper-body strong { color: var(--ink); font-weight: 600; }
+  .stepper-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 1.4rem; border: 1px solid var(--border2); border-top: none;
+    border-radius: 0 0 8px 8px; background: var(--bg2);
+  }
+  .stepper-nav-btn {
+    font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+    color: var(--ink3); background: transparent; border: 1px solid var(--border);
+    border-radius: 100px; padding: 0.25rem 0.8rem; cursor: pointer; transition: all 0.15s;
+  }
+  .stepper-nav-btn:hover { color: var(--ink); border-color: var(--border2); }
+  .stepper-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .stepper-dots { display: flex; gap: 6px; }
+  .stepper-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); transition: background 0.2s; }
+  .stepper-dot.active { background: var(--accent); }
+
+  /* SANITY BAR */
+  .sanity-bar { margin: 1.4rem 0; background: var(--surface); border: 1px solid var(--border2); border-radius: 10px; overflow: hidden; }
+  .sanity-bar-header { padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--border); }
+  .sanity-bar-label { font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem; }
+  .sanity-bar-title { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--ink); }
+  .sanity-level { display: grid; grid-template-columns: 56px 1fr; border-bottom: 1px solid var(--border); }
+  .sanity-level:last-child { border-bottom: none; }
+  .sanity-pct { font-family: var(--font-display); font-size: 0.78rem; font-weight: 800; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); padding: 0.7rem 0; }
+  .sanity-desc { padding: 0.7rem 1rem; font-size: 0.82rem; color: var(--ink3); line-height: 1.55; }
+  .sanity-desc strong { color: var(--ink2); font-weight: 600; }
+  .sl-100 .sanity-pct { color: #6ee7b7; }
+  .sl-60  .sanity-pct { color: #d4c060; }
+  .sl-40  .sanity-pct { color: #e8a060; }
+  .sl-20  .sanity-pct { color: #e07050; }
+  .sl-0   .sanity-pct { color: #cc3333; }
+
+  /* ENEMY CARDS */
+  .enemy-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+  .enemy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
+  .enemy-card:hover { border-color: var(--border2); }
+  .enemy-card-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; object-position: center top; display: block; background: var(--bg2); }
+  .enemy-card-body-wrap { padding: 1rem 1.1rem; }
+  .enemy-card-name { font-family: var(--font-display); font-size: 0.95rem; font-weight: 800; color: var(--ink); margin-bottom: 0.15rem; }
+  .enemy-card-origin { font-family: var(--font-display); font-size: 0.6rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.55rem; }
+  .enemy-card-body { font-size: 0.83rem; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 0.5rem; }
+  .enemy-card-body strong { color: var(--ink); font-weight: 600; }
+  .enemy-card-design { font-size: 0.78rem; color: var(--ink3); line-height: 1.5; border-top: 1px solid var(--border); padding-top: 0.45rem; }
+  .enemy-card-design strong { color: var(--accent); font-weight: 600; }
+
+  .insight { margin: 1.5rem 0; padding: 1rem 1.2rem; border-left: 2px solid var(--accent); background: rgba(232,114,42,0.05); border-radius: 0 8px 8px 0; }
+  .insight-label { font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .insight p { margin: 0; font-size: 0.88rem; color: var(--ink2); }
+  .insight p strong { color: var(--ink); font-weight: 600; }
+
+  .learning-statement { margin: 1.5rem 0; font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.4rem); font-weight: 700; color: var(--ink); line-height: 1.45; }
+  .learning-statement em { color: var(--accent); font-style: normal; }
+
+  .btn-back { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: var(--ink3); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
+  .btn-back:hover { color: var(--accent); border-color: var(--accent); }
+  .btn-back::before { content: "←"; }
+
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; font-family: var(--font-display); font-size: 0.72rem; color: var(--ink3); text-align: center; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 720px) {
+    nav { padding: 0 1.2rem; gap: 1rem; }
+    .hero-content, .page-content, .meta-strip-inner { padding-left: 1.2rem; padding-right: 1.2rem; }
+    .meta-sep { display: none; }
+    .meta-stats { gap: 1.2rem; }
+    .stepper-panel.active { grid-template-columns: 1fr; }
+    .enemy-grid { grid-template-columns: 1fr 1fr; }
+    .enemy-grid .enemy-card:last-child { grid-column: 1 / -1; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-back" data-i18n="back">Portfolio</a>
+  <div class="nav-sections">
+    <a href="#pregunta" class="nav-section-link" data-i18n="nav_s1">La pregunta</a>
+    <a href="#sistema" class="nav-section-link" data-i18n="nav_s2">El sistema</a>
+    <a href="#cuadros" class="nav-section-link" data-i18n="nav_s3">Los cuadros</a>
+    <a href="#aprendizaje" class="nav-section-link" data-i18n="nav_s4">Aprendizaje</a>
+  </div>
+  <div class="nav-right">
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('es')" aria-label="Español">ES</button>
+      <button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-blob hero-blob-1"></div>
+  <div class="hero-blob hero-blob-2"></div>
+  <img src="goyas-head.jpg" alt="Goya's Head" class="hero-img">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow" data-i18n="tag">Survival Horror · Lead Game Designer · Unity</div>
+    <h1 class="hero-title">Goya's<br>Head</h1>
+    <p class="hero-question" data-i18n="hero_q">¿Cómo diseñas miedo de verdad si los sustos duran un segundo <em>pero la oscuridad dura toda la partida?</em></p>
+  </div>
+</div>
+
+<div class="meta-strip">
+  <div class="meta-strip-inner">
+    <div class="meta-item"><div class="meta-label" data-i18n="m1l">Rol</div><div class="meta-value" data-i18n="m1v">Lead Game Designer</div></div>
+    <div class="meta-sep"></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m2l">Motor</div><div class="meta-value">Unity 3D</div></div>
+    <div class="meta-sep"></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m3l">Proyecto</div><div class="meta-value" data-i18n="m3v">Universitario · Equipo</div></div>
+    <div class="meta-sep"></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m4l">Referencias</div><div class="meta-value">Silent Hill · Amnesia · Hellblade</div></div>
+    <div class="meta-stats">
+      <div class="meta-stat"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c1">sistemas interconectados</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">5</span><span class="meta-stat-label" data-i18n="c2">estados de cordura</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">5</span><span class="meta-stat-label" data-i18n="c3">enemigos basados en cuadros reales</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="page-content">
+
+  <!-- LA PREGUNTA -->
+  <div class="section reveal" id="pregunta">
+    <div class="section-eyebrow" data-i18n="s1_eye">La pregunta</div>
+    <h2 data-i18n="s1_h">El miedo no es un susto. Es algo que no puedes apagar.</h2>
+    <p class="lead" data-i18n="s1_lead">Goya's Head es un survival horror en tercera persona ambientado en la Quinta del Sordo, donde Francisco de Goya se encierra con su enfermedad, su sordera y su culpa. Las pinturas negras que cubrió en las paredes cobran vida — y el jugador tiene que sobrevivir dentro de su cabeza.</p>
+    <p data-i18n="s1_p">El primer prototipo tenía los ingredientes correctos: oscuridad, enemigos, cámara cinematográfica. Pero el terror se evaporaba rápido. El problema era que <strong>el miedo funcionaba como un evento, no como un estado</strong>. Cuando no pasaba nada visible, el jugador no sentía nada.</p>
+
+    <div class="question-block reveal">
+      <div class="question-block-label" data-i18n="q_label">La pregunta que lo cambió todo</div>
+      <div class="question-block-text" data-i18n="q_text">"¿Cómo diseñas miedo de verdad si los sustos duran un segundo pero la oscuridad dura toda la partida?"</div>
+    </div>
+
+    <p data-i18n="s1_p2">El terror sostenido no viene de lo que ves — viene de <strong>no saber qué vas a ver</strong>. La respuesta fue convertir la luz, la cordura y la cámara en un único sistema que mantuviera esa presión en todo momento.</p>
+  </div>
+
+  <!-- EL SISTEMA -->
+  <div class="section reveal" id="sistema">
+    <div class="section-eyebrow" data-i18n="s2_eye">El sistema</div>
+    <h2 data-i18n="s2_h">Luz, cordura y cámara. Tres palancas, una sola tensión.</h2>
+    <p data-i18n="s2_p">El núcleo del diseño fue que <strong>cada decisión del jugador tiene consecuencias en los tres sistemas a la vez</strong>. Encender la luz sube la cordura pero te expone. Apagar la luz te esconde pero erosiona tu mente. Y la cámara — cinematográfica, con ángulos que no siempre favorecen al jugador — refleja ese estado en todo momento.</p>
+
+    <div class="stepper reveal">
+      <div class="stepper-tabs">
+        <button class="stepper-tab active" onclick="goStep(0)"><span class="tab-num" data-i18n="t1_num">Luz</span><span data-i18n="t1_tab">Con lámpara encendida</span></button>
+        <button class="stepper-tab" onclick="goStep(1)"><span class="tab-num" data-i18n="t2_num">Oscuridad</span><span data-i18n="t2_tab">Con lámpara apagada</span></button>
+        <button class="stepper-tab" onclick="goStep(2)"><span class="tab-num" data-i18n="t3_num">Velas</span><span data-i18n="t3_tab">Iluminación ambiental</span></button>
+      </div>
+
+      <div class="stepper-panel active" id="step-0">
+        <div class="stepper-panel-img"><img src="gh-luz.jpg" alt="Goya con lámpara encendida"></div>
+        <div>
+          <span class="verdict verdict-mid" data-i18n="v1">Seguro, pero visible</span>
+          <div class="stepper-title" data-i18n="t1_title">La luz recupera cordura. Y te convierte en un blanco.</div>
+          <p class="stepper-body" data-i18n="t1_body">Con la lámpara encendida, Goya ve más y la cordura se recupera lentamente. Pero <strong>la luz atrae a los enemigos</strong>. Los que se mueven por las paredes como pintura negra retroceden al enfocarlos — pero los que patrullan la casa te detectan antes. Necesitas aceite para mantenerla y cerillas para encenderla si se apaga.</p>
+        </div>
+      </div>
+
+      <div class="stepper-panel" id="step-1">
+        <div class="stepper-panel-img"><img src="gh-oscuro.jpg" alt="Goya en la oscuridad"></div>
+        <div>
+          <span class="verdict verdict-bad" data-i18n="v2">Arriesgado, pero invisible</span>
+          <div class="stepper-title" data-i18n="t2_title">Apagar la lámpara reduce tu presencia. Y erosiona tu mente.</div>
+          <p class="stepper-body" data-i18n="t2_body">A oscuras, los enemigos tienen mucha menos probabilidad de detectarte. <strong>Pero la cordura baja poco a poco</strong>. Y a menor cordura, el propio Goya empieza a delatarse — tiembla, respira fuerte, hace ruido sin querer. La oscuridad que te protege al principio se convierte en tu peor enemiga.</p>
+        </div>
+      </div>
+
+      <div class="stepper-panel" id="step-2">
+        <div class="stepper-panel-img"><img src="gh-velas.jpg" alt="Velas en las paredes de la Quinta"></div>
+        <div>
+          <span class="verdict verdict-good" data-i18n="v3">Recurso estratégico</span>
+          <div class="stepper-title" data-i18n="t3_title">Las velas de la casa son una red de seguridad que puede sabotearte.</div>
+          <p class="stepper-body" data-i18n="t3_body">Las velas repartidas por la Quinta pueden encenderse para iluminar zonas sin gastar aceite. <strong>Pero el Cuadro Negro puede apagarlas</strong> si no estás cerca. Gestionar qué partes de la casa mantienes iluminadas forma parte de la supervivencia — una vela apagada en un pasillo que antes era seguro puede significar un camino cortado.</p>
+        </div>
+      </div>
+
+      <div class="stepper-nav">
+        <button class="stepper-nav-btn" id="step-prev" onclick="goStep(stepCur-1)" disabled data-i18n="step_prev">← Anterior</button>
+        <div class="stepper-dots">
+          <div class="stepper-dot active" id="sdot-0"></div>
+          <div class="stepper-dot" id="sdot-1"></div>
+          <div class="stepper-dot" id="sdot-2"></div>
+        </div>
+        <button class="stepper-nav-btn" id="step-next" onclick="goStep(stepCur+1)" data-i18n="step_next">Siguiente →</button>
+      </div>
+    </div>
+
+    <p style="margin-top:1.4rem;" data-i18n="sanity_intro">La cordura no es solo una barra que baja — es el estado del mundo. A medida que Goya pierde la cabeza, <strong>la Quinta del Sordo cambia con él</strong>.</p>
+
+    <div class="sanity-bar reveal">
+      <div class="sanity-bar-header">
+        <div class="sanity-bar-label" data-i18n="san_label">Estados de cordura</div>
+        <div class="sanity-bar-title" data-i18n="san_title">Lo que Goya ve — y lo que el jugador deja de controlar</div>
+      </div>
+      <div class="sanity-level sl-100">
+        <div class="sanity-pct">100%</div>
+        <div class="sanity-desc" data-i18n="san100"><strong>Sin enemigos visibles.</strong> La casa parece una casa.</div>
+      </div>
+      <div class="sanity-level sl-60">
+        <div class="sanity-pct">60%</div>
+        <div class="sanity-desc" data-i18n="san60">La arquitectura se distorsiona. <strong>Algunos cuadros cobran vida.</strong> La iluminación se vuelve más tenue sin que el jugador haya hecho nada.</div>
+      </div>
+      <div class="sanity-level sl-40">
+        <div class="sanity-pct">40%</div>
+        <div class="sanity-desc" data-i18n="san40">Segunda oleada de enemigos. <strong>Goya empieza a escuchar a Saturno.</strong> Todavía no está, pero ya suena.</div>
+      </div>
+      <div class="sanity-level sl-20">
+        <div class="sanity-pct">20%</div>
+        <div class="sanity-desc" data-i18n="san20"><strong>Saturno aparece.</strong> Goya tiembla en idle, gira la cabeza, jadea al moverse. Los enemigos saben dónde estás.</div>
+      </div>
+      <div class="sanity-level sl-0">
+        <div class="sanity-pct">0%</div>
+        <div class="sanity-desc" data-i18n="san0">Solo si Saturno te atrapa. <strong>Carga el último checkpoint</strong> — siempre uno de los cuadros más alegres de Goya. Los únicos que no mienten.</div>
+      </div>
+    </div>
+
+    <div class="insight reveal">
+      <div class="insight-label" data-i18n="ins_label">Por qué funcionó</div>
+      <p data-i18n="ins_p">Cuando los tres sistemas se interconectan, el jugador <strong>nunca puede relajarse del todo</strong> — aunque no esté pasando nada visible. Esa tensión de fondo es lo que genera el terror sostenido que buscábamos.</p>
+    </div>
+  </div>
+
+  <!-- LOS CUADROS -->
+  <div class="section reveal" id="cuadros">
+    <div class="section-eyebrow" data-i18n="s3_eye">Los cuadros</div>
+    <h2 data-i18n="s3_h">Los enemigos no son monstruos. Son pinturas que no deberían moverse.</h2>
+    <p data-i18n="s3_p">Cada enemigo está basado en una pintura negra real de Goya. El reto fue que <strong>el comportamiento del enemigo saliera de lo que la pintura ya te dice</strong> — que al verla colgada en la pared, ya supieras a qué te enfrentabas. Todos tienen además dos formas de ser superados: parcial, siguiendo adelante con el demonio dentro; o completa, enfrentándote a él de verdad.</p>
+
+    <div class="enemy-grid reveal">
+      <div class="enemy-card">
+        <img class="enemy-card-img" src="gh-saturno.jpg" alt="Saturno">
+        <div class="enemy-card-body-wrap">
+          <div class="enemy-card-name">Saturno</div>
+          <div class="enemy-card-origin" data-i18n="e1_origin">Saturno devorando a su hijo · 1819–23</div>
+          <p class="enemy-card-body" data-i18n="e1_body">El único que <strong>persigue al jugador por toda la casa</strong>, sin zona fija. Aparece al 20% de cordura y no para. Es el miedo más profundo de Goya: el tiempo que lo devora todo.</p>
+          <div class="enemy-card-design" data-i18n="e1_design"><strong>Ref:</strong> Mr. X (RE2) — presencia constante, no un susto puntual.</div>
+        </div>
+      </div>
+      <div class="enemy-card">
+        <img class="enemy-card-img" src="gh-cabra.jpg" alt="La Cabra">
+        <div class="enemy-card-body-wrap">
+          <div class="enemy-card-name">La Cabra</div>
+          <div class="enemy-card-origin" data-i18n="e2_origin">El aquelarre · 1797–98</div>
+          <p class="enemy-card-body" data-i18n="e2_body">Sale del cuadro y persigue al jugador. <strong>Puede embestir</strong> — y eso es a la vez su debilidad. Si la baiteas para que embista el cuadro del que salió, queda atrapada. Luego hay que firmar el cuadro para sellarla.</p>
+          <div class="enemy-card-design" data-i18n="e2_design"><strong>Decisión:</strong> Dos finales posibles. La derrota completa requiere usar su agresividad contra ella.</div>
+        </div>
+      </div>
+      <div class="enemy-card">
+        <img class="enemy-card-img" src="gh-perro.jpg" alt="El Perro">
+        <div class="enemy-card-body-wrap">
+          <div class="enemy-card-name">El Perro</div>
+          <div class="enemy-card-origin" data-i18n="e3_origin">Perro semihundido · 1819–23</div>
+          <p class="enemy-card-body" data-i18n="e3_body">Arena infinita. El jugador descubre que <strong>el perro no te perseguía para hacerte daño</strong> — también está atrapado, hundiéndose, intentando aferrarse a ti para escapar.</p>
+          <div class="enemy-card-design" data-i18n="e3_design"><strong>Decisión:</strong> Sin enemigo que derrotar. Solo la elección de si intentas salvarlo o no.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- APRENDIZAJE -->
+  <div class="section reveal" id="aprendizaje">
+    <div class="section-eyebrow" data-i18n="s4_eye">Aprendizaje</div>
+    <h2 data-i18n="s4_h">Qué cambió en cómo entiendo el terror como diseñador.</h2>
+
+    <div class="learning-statement reveal" data-i18n="learn_st">
+      El miedo sostenido no se diseña con sustos. Se diseña con <em>sistemas que nunca dejan de presionar</em> — aunque no pase nada visible.
+    </div>
+
+    <p data-i18n="learn_p">Goya's Head me enseñó que el terror tiene dos capas: el susto inmediato, que es fácil de hacer, y la <strong>tensión de fondo que no desaparece</strong>, que es lo difícil. La clave fue que luz, cordura y cámara respondieran a la misma pregunta.</p>
+    <p data-i18n="learn_p2">Como Lead, las decisiones de arte, diseño y estilo del juego fueron mías — desde la paleta visual y la estética inspirada en las pinturas negras hasta cómo se comporta cada enemigo en relación con su cuadro de origen. <strong>La visión era mía, y el equipo la ejecutó.</strong></p>
+  </div>
+
+  <div style="padding-top:1rem;">
+    <a href="index.html" class="btn-back" data-i18n="btn_back">Volver al Portfolio</a>
+  </div>
+
+</div>
+
+<footer>
+  <p>© 2026 Manel Barahona · <span data-i18n="footer_text">Hecho con mucho café y amor por los juegos.</span></p>
+</footer>
+
+<script>
+const i18n = {
+  es: {
+    back:"Portfolio",
+    nav_s1:"La pregunta", nav_s2:"El sistema", nav_s3:"Los cuadros", nav_s4:"Aprendizaje",
+    tag:"Survival Horror · Lead Game Designer · Unity",
+    hero_q:"¿Cómo diseñas miedo de verdad si los sustos duran un segundo pero la oscuridad dura toda la partida?",
+    m1l:"Rol", m1v:"Lead Game Designer", m2l:"Motor", m3l:"Proyecto", m3v:"Universitario · Equipo", m4l:"Referencias",
+    c1:"sistemas interconectados", c2:"estados de cordura", c3:"enemigos basados en cuadros reales",
+    s1_eye:"La pregunta", s1_h:"El miedo no es un susto. Es algo que no puedes apagar.",
+    s1_lead:"Goya's Head es un survival horror en tercera persona ambientado en la Quinta del Sordo, donde Francisco de Goya se encierra con su enfermedad, su sordera y su culpa. Las pinturas negras que cubrió en las paredes cobran vida — y el jugador tiene que sobrevivir dentro de su cabeza.",
+    s1_p:"El primer prototipo tenía los ingredientes correctos: oscuridad, enemigos, cámara cinematográfica. Pero el terror se evaporaba rápido. El problema era que <strong>el miedo funcionaba como un evento, no como un estado</strong>. Cuando no pasaba nada visible, el jugador no sentía nada.",
+    q_label:"La pregunta que lo cambió todo",
+    q_text:"\"¿Cómo diseñas miedo de verdad si los sustos duran un segundo pero la oscuridad dura toda la partida?\"",
+    s1_p2:"El terror sostenido no viene de lo que ves — viene de <strong>no saber qué vas a ver</strong>. La respuesta fue convertir la luz, la cordura y la cámara en un único sistema que mantuviera esa presión en todo momento.",
+    s2_eye:"El sistema", s2_h:"Luz, cordura y cámara. Tres palancas, una sola tensión.",
+    s2_p:"El núcleo del diseño fue que <strong>cada decisión del jugador tiene consecuencias en los tres sistemas a la vez</strong>. Encender la luz sube la cordura pero te expone. Apagar la luz te esconde pero erosiona tu mente. Y la cámara — cinematográfica, con ángulos que no siempre favorecen al jugador — refleja ese estado en todo momento.",
+    t1_num:"Luz", t1_tab:"Con lámpara encendida",
+    t2_num:"Oscuridad", t2_tab:"Con lámpara apagada",
+    t3_num:"Velas", t3_tab:"Iluminación ambiental",
+    v1:"Seguro, pero visible", v2:"Arriesgado, pero invisible", v3:"Recurso estratégico",
+    t1_title:"La luz recupera cordura. Y te convierte en un blanco.",
+    t1_body:"Con la lámpara encendida, Goya ve más y la cordura se recupera lentamente. Pero <strong>la luz atrae a los enemigos</strong>. Los que se mueven por las paredes como pintura negra retroceden al enfocarlos — pero los que patrullan la casa te detectan antes. Necesitas aceite para mantenerla y cerillas para encenderla si se apaga.",
+    t2_title:"Apagar la lámpara reduce tu presencia. Y erosiona tu mente.",
+    t2_body:"A oscuras, los enemigos tienen mucha menos probabilidad de detectarte. <strong>Pero la cordura baja poco a poco</strong>. Y a menor cordura, el propio Goya empieza a delatarse — tiembla, respira fuerte, hace ruido sin querer. La oscuridad que te protege al principio se convierte en tu peor enemiga.",
+    t3_title:"Las velas de la casa son una red de seguridad que puede sabotearte.",
+    t3_body:"Las velas repartidas por la Quinta pueden encenderse para iluminar zonas sin gastar aceite. <strong>Pero el Cuadro Negro puede apagarlas</strong> si no estás cerca. Gestionar qué partes de la casa mantienes iluminadas forma parte de la supervivencia — una vela apagada en un pasillo que antes era seguro puede significar un camino cortado.",
+    step_prev:"← Anterior", step_next:"Siguiente →",
+    sanity_intro:"La cordura no es solo una barra que baja — es el estado del mundo. A medida que Goya pierde la cabeza, <strong>la Quinta del Sordo cambia con él</strong>.",
+    san_label:"Estados de cordura",
+    san_title:"Lo que Goya ve — y lo que el jugador deja de controlar",
+    san100:"<strong>Sin enemigos visibles.</strong> La casa parece una casa.",
+    san60:"La arquitectura se distorsiona. <strong>Algunos cuadros cobran vida.</strong> La iluminación se vuelve más tenue sin que el jugador haya hecho nada.",
+    san40:"Segunda oleada de enemigos. <strong>Goya empieza a escuchar a Saturno.</strong> Todavía no está, pero ya suena.",
+    san20:"<strong>Saturno aparece.</strong> Goya tiembla en idle, gira la cabeza, jadea al moverse. Los enemigos saben dónde estás.",
+    san0:"Solo si Saturno te atrapa. <strong>Carga el último checkpoint</strong> — siempre uno de los cuadros más alegres de Goya. Los únicos que no mienten.",
+    ins_label:"Por qué funcionó",
+    ins_p:"Cuando los tres sistemas se interconectan, el jugador <strong>nunca puede relajarse del todo</strong> — aunque no esté pasando nada visible. Esa tensión de fondo es lo que genera el terror sostenido que buscábamos.",
+    s3_eye:"Los cuadros", s3_h:"Los enemigos no son monstruos. Son pinturas que no deberían moverse.",
+    s3_p:"Cada enemigo está basado en una pintura negra real de Goya. El reto fue que <strong>el comportamiento del enemigo saliera de lo que la pintura ya te dice</strong> — que al verla colgada en la pared, ya supieras a qué te enfrentabas. Todos tienen además dos formas de ser superados: parcial, siguiendo adelante con el demonio dentro; o completa, enfrentándote a él de verdad.",
+    e1_origin:"Saturno devorando a su hijo · 1819–23",
+    e1_body:"El único que <strong>persigue al jugador por toda la casa</strong>, sin zona fija. Aparece al 20% de cordura y no para. Es el miedo más profundo de Goya: el tiempo que lo devora todo.",
+    e1_design:"<strong>Ref:</strong> Mr. X (RE2) — presencia constante, no un susto puntual.",
+    e2_origin:"El aquelarre · 1797–98",
+    e2_body:"Sale del cuadro y persigue al jugador. <strong>Puede embestir</strong> — y eso es a la vez su debilidad. Si la baiteas para que embista el cuadro del que salió, queda atrapada. Luego hay que firmar el cuadro para sellarla.",
+    e2_design:"<strong>Decisión:</strong> Dos finales posibles. La derrota completa requiere usar su agresividad contra ella.",
+    e3_origin:"Perro semihundido · 1819–23",
+    e3_body:"Arena infinita. El jugador descubre que <strong>el perro no te perseguía para hacerte daño</strong> — también está atrapado, hundiéndose, intentando aferrarse a ti para escapar.",
+    e3_design:"<strong>Decisión:</strong> Sin enemigo que derrotar. Solo la elección de si intentas salvarlo o no.",
+    s4_eye:"Aprendizaje", s4_h:"Qué cambió en cómo entiendo el terror como diseñador.",
+    learn_st:"El miedo sostenido no se diseña con sustos. Se diseña con sistemas que nunca dejan de presionar — aunque no pase nada visible.",
+    learn_p:"Goya's Head me enseñó que el terror tiene dos capas: el susto inmediato, que es fácil de hacer, y la <strong>tensión de fondo que no desaparece</strong>, que es lo difícil. La clave fue que luz, cordura y cámara respondieran a la misma pregunta.",
+    learn_p2:"Como Lead, las decisiones de arte, diseño y estilo del juego fueron mías — desde la paleta visual y la estética inspirada en las pinturas negras hasta cómo se comporta cada enemigo en relación con su cuadro de origen. <strong>La visión era mía, y el equipo la ejecutó.</strong>",
+    btn_back:"Volver al Portfolio",
+    footer_text:"Hecho con mucho café y amor por los juegos."
+  },
+  en: {
+    back:"Portfolio",
+    nav_s1:"The question", nav_s2:"The system", nav_s3:"The paintings", nav_s4:"Learning",
+    tag:"Survival Horror · Lead Game Designer · Unity",
+    hero_q:"How do you design real fear when jump scares last one second but the darkness lasts the whole game?",
+    m1l:"Role", m1v:"Lead Game Designer", m2l:"Engine", m3l:"Project", m3v:"University · Team", m4l:"References",
+    c1:"interconnected systems", c2:"sanity states", c3:"enemies based on real paintings",
+    s1_eye:"The question", s1_h:"Fear isn't a scare. It's something you can't turn off.",
+    s1_lead:"Goya's Head is a third-person survival horror set in the Quinta del Sordo, where Francisco de Goya locks himself away with his illness, his deafness, and his guilt. The black paintings he covered his walls with come to life — and the player has to survive inside his mind.",
+    s1_p:"The first prototype had the right ingredients: darkness, enemies, cinematic camera. But the terror evaporated fast. The problem was that <strong>fear worked as an event, not a state</strong>. When nothing visible was happening, the player felt nothing.",
+    q_label:"The question that changed everything",
+    q_text:"\"How do you design real fear when jump scares last one second but the darkness lasts the whole game?\"",
+    s1_p2:"Sustained terror doesn't come from what you see — it comes from <strong>not knowing what you're about to see</strong>. The answer was to turn light, sanity, and camera into one system that maintained that pressure at all times.",
+    s2_eye:"The system", s2_h:"Light, sanity, and camera. Three levers, one sustained tension.",
+    s2_p:"The core design principle was that <strong>every player decision has consequences across all three systems at once</strong>. Turning on the light raises sanity but exposes you. Turning it off hides you but erodes your mind. And the camera — cinematic, with angles that don't always help the player — reflects that state at all times.",
+    t1_num:"Light", t1_tab:"Lamp on",
+    t2_num:"Dark", t2_tab:"Lamp off",
+    t3_num:"Candles", t3_tab:"Ambient lighting",
+    v1:"Safe, but visible", v2:"Risky, but invisible", v3:"Strategic resource",
+    t1_title:"Light restores sanity. And makes you a target.",
+    t1_body:"With the lamp on, Goya sees further and sanity slowly recovers. But <strong>light attracts enemies</strong>. The ones that move through walls as black paint retreat when you shine it on them — but the ones patrolling the house detect you faster. You need oil to keep it burning and matches to relight it.",
+    t2_title:"Turning off the lamp reduces your presence. And erodes your mind.",
+    t2_body:"In the dark, enemies are far less likely to detect you. <strong>But sanity drops slowly</strong>. And as it does, Goya starts giving himself away — trembling, breathing hard, making noise without meaning to. The darkness that protects you early becomes your worst enemy.",
+    t3_title:"The house's candles are a safety net that can be turned against you.",
+    t3_body:"Candles around the Quinta can be lit to illuminate areas without spending oil. <strong>But the Black Painting can snuff them out</strong> if you're not nearby. Managing which parts of the house you keep lit is part of survival — a candle out in a formerly safe corridor can mean a path cut off.",
+    step_prev:"← Previous", step_next:"Next →",
+    sanity_intro:"Sanity isn't just a bar that goes down — it's the state of the world. As Goya loses his mind, <strong>the Quinta del Sordo changes with him</strong>.",
+    san_label:"Sanity states",
+    san_title:"What Goya sees — and what the player loses control of",
+    san100:"<strong>No visible enemies.</strong> The house seems like a house.",
+    san60:"Architecture distorts. <strong>Some paintings come alive.</strong> Lighting dims without the player doing anything.",
+    san40:"Second wave of enemies. <strong>Goya starts hearing Saturn.</strong> Not here yet, but already audible.",
+    san20:"<strong>Saturn appears.</strong> Goya trembles at idle, turns his head, gasps when moving. Enemies know where you are.",
+    san0:"Only if Saturn catches you. <strong>Loads the last checkpoint</strong> — always one of Goya's brightest paintings. The only ones that don't lie.",
+    ins_label:"Why it worked",
+    ins_p:"When all three systems interconnect, the player <strong>can never fully relax</strong> — even when nothing visible is happening. That background tension is what generates the sustained terror we were after.",
+    s3_eye:"The paintings", s3_h:"The enemies aren't monsters. They're paintings that shouldn't be moving.",
+    s3_p:"Every enemy is based on a real Goya black painting. The challenge was making <strong>each enemy's behavior emerge from what the painting already tells you</strong> — so that seeing it on the wall already told you what you were up against. They also all have two ways to overcome them: partial, moving forward with the demon inside; or complete, by truly confronting it.",
+    e1_origin:"Saturn Devouring His Son · 1819–23",
+    e1_body:"The only one that <strong>pursues the player through the entire house</strong>, no fixed zone. Appears at 20% sanity and doesn't stop. It is Goya's deepest fear: time that devours everything.",
+    e1_design:"<strong>Ref:</strong> Mr. X (RE2) — constant presence, not an isolated scare.",
+    e2_origin:"Witches' Sabbath · 1797–98",
+    e2_body:"Emerges from the painting and chases the player. <strong>It can charge</strong> — which is also its weakness. Bait it into charging the painting it came from and it's trapped again. Then sign the painting to seal it.",
+    e2_design:"<strong>Decision:</strong> Two possible outcomes. Full defeat requires using its own aggression against it.",
+    e3_origin:"Dog Semi-Submerged · 1819–23",
+    e3_body:"Infinite sand. The player discovers that <strong>the dog wasn't chasing you to hurt you</strong> — it's also trapped, sinking, trying to grab onto you to escape.",
+    e3_design:"<strong>Decision:</strong> No enemy to defeat. Just the choice of whether you try to save it.",
+    s4_eye:"Learning", s4_h:"What changed in how I understand horror as a designer.",
+    learn_st:"Sustained fear isn't designed with scares. It's designed with systems that never stop pressing — even when nothing visible is happening.",
+    learn_p:"Goya's Head taught me that horror has two layers: the immediate scare, which is easy to make, and the <strong>background tension that never goes away</strong>, which is the hard part. The key was having light, sanity, and camera all answer the same question.",
+    learn_p2:"As Lead, the art, design and style decisions were mine — from the visual palette and the aesthetic inspired by the black paintings to how each enemy behaves in relation to its source painting. <strong>The vision was mine, and the team executed it.</strong>",
+    btn_back:"Back to Portfolio",
+    footer_text:"Made with lots of coffee and love for games."
+  }
+};
+
+let currentLang = 'es';
+function setLang(lang) {
+  currentLang = lang;
+  document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const val = i18n[lang][el.dataset.i18n];
+    if (val !== undefined) el.innerHTML = val;
+  });
+  document.documentElement.lang = lang;
+}
+
+let stepCur = 0;
+const stepTotal = 3;
+function goStep(i) {
+  if (i < 0 || i >= stepTotal) return;
+  document.getElementById('step-' + stepCur).classList.remove('active');
+  document.getElementById('sdot-' + stepCur).classList.remove('active');
+  document.querySelectorAll('.stepper-tab')[stepCur].classList.remove('active');
+  stepCur = i;
+  document.getElementById('step-' + stepCur).classList.add('active');
+  document.getElementById('sdot-' + stepCur).classList.add('active');
+  document.querySelectorAll('.stepper-tab')[stepCur].classList.add('active');
+  document.getElementById('step-prev').disabled = stepCur === 0;
+  document.getElementById('step-next').disabled = stepCur === stepTotal - 1;
+}
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60); });
+}, { threshold: 0.07 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+const navLinks = document.querySelectorAll('.nav-section-link');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.classList.remove('active'));
+      const a = document.querySelector(`.nav-section-link[href="#${entry.target.id}"]`);
+      if (a) a.classList.add('active');
+    }
+  });
+}, { threshold: 0.3 });
+['pregunta','sistema','cuadros','aprendizaje'].forEach(id => {
+  const el = document.getElementById(id); if (el) sectionObserver.observe(el);
+});
+</script>
+</body>
+</html>
