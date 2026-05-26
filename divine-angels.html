@@ -711,6 +711,18 @@ function goStep(i) {
   document.getElementById('step-next').disabled = stepCur === stepTotal - 1;
 }
 
+let currentSlide = 0;
+const totalSlides = 4;
+function goToSlide(index) {
+  currentSlide = index;
+  document.querySelectorAll('.char-slide').forEach((s, i) => s.classList.toggle('active', i === index));
+  document.querySelectorAll('.char-nav-btn').forEach((b, i) => {
+    b.classList.toggle('active', i === index);
+    b.setAttribute('aria-selected', i === index);
+  });
+}
+function stepSlide(dir) { goToSlide((currentSlide + dir + totalSlides) % totalSlides); }
+
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60); });
 }, { threshold: 0.07 });
