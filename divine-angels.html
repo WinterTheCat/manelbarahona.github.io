@@ -4,68 +4,45 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link rel="icon" href="da-icon.png" type="image/png">
-<meta name="description" content="Divine Angels - RPG narrativo sobre 4 supermujeres que protegen la ciudad. Diseño de sistemas, combate táctico y narrativa ramificada. Proyecto de Manel Barahona.">
+<meta name="description" content="Divine Angels - Cómo diseñé un sistema de combate partiendo de la fantasía del jugador. Proyecto de Manel Barahona, Game Designer.">
 <meta name="author" content="Manel Barahona">
 <meta property="og:title" content="Divine Angels - Manel Barahona">
-<meta property="og:description" content="4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.">
+<meta property="og:description" content="Cómo una pregunta sobre el jugador redefinió un sistema de combate entero.">
 <meta property="og:image" content="https://winterthecat.github.io/manelbarahona.github.io/divine-angels.jpg">
 <meta property="og:url" content="https://winterthecat.github.io/manelbarahona.github.io/divine-angels.html">
 <meta property="og:type" content="website">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Divine Angels - Manel Barahona">
-<meta name="twitter:description" content="4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.">
-<meta name="twitter:image" content="https://winterthecat.github.io/manelbarahona.github.io/divine-angels.jpg">
 <title>Divine Angels - Manel Barahona</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f0e17;
-    --bg2: #171625;
-    --surface: #1e1c2e;
-    --ink: #f0eeff;
-    --ink2: #c4bfe0;
-    --ink3: #8a85a8;
-    --accent: #f9c846;
-    --accent2: #ff6b9d;
-    --blue: #4ecdc4;
-    --sage: #6ee7b7;
-    --border: rgba(255,255,255,0.08);
-    --border2: rgba(255,255,255,0.14);
+    --bg: #0f0e17; --bg2: #171625; --surface: #1e1c2e;
+    --ink: #f0eeff; --ink2: #c4bfe0; --ink3: #8a85a8;
+    --accent: #f9c846; --blue: #4ecdc4; --sage: #6ee7b7;
+    --border: rgba(255,255,255,0.08); --border2: rgba(255,255,255,0.14);
     --font-display: 'Plus Jakarta Sans', sans-serif;
     --font-body: 'DM Sans', sans-serif;
-    --max-w: 820px;
-    --nav-h: 56px;
+    --max-w: 820px; --nav-h: 56px;
   }
-
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--ink);
-    font-family: var(--font-body);
-    font-size: 17px;
-    line-height: 1.75;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--ink); font-family: var(--font-body); font-size: 17px; line-height: 1.75; overflow-x: hidden; }
 
   /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     height: var(--nav-h);
     display: grid; grid-template-columns: auto 1fr auto;
-    align-items: center; gap: 2rem;
-    padding: 0 2.5rem;
-    background: rgba(15,14,23,0.92);
-    backdrop-filter: blur(14px);
+    align-items: center; gap: 2rem; padding: 0 2.5rem;
+    background: rgba(15,14,23,0.92); backdrop-filter: blur(14px);
     border-bottom: 1px solid var(--border);
   }
   .nav-back {
     font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
     color: var(--ink3); text-decoration: none;
     display: flex; align-items: center; gap: 0.4rem;
-    transition: color 0.2s;
-    padding-right: 2rem; border-right: 1px solid var(--border);
+    transition: color 0.2s; padding-right: 2rem; border-right: 1px solid var(--border);
   }
   .nav-back::before { content: "←"; }
   .nav-back:hover { color: var(--accent); }
@@ -80,53 +57,41 @@
   .nav-section-link:hover { color: var(--ink); background: var(--surface); }
   .nav-section-link.active { color: var(--accent); }
   .nav-right {
+    display: flex; align-items: center; gap: 1rem;
     padding-left: 2rem; border-left: 1px solid var(--border);
-    display: flex; align-items: center;
   }
-  .lang-toggle {
-    display: flex; background: var(--surface);
-    border-radius: 20px; overflow: hidden;
-    border: 1px solid var(--border);
+  .nav-pitch {
+    font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+    color: var(--ink3); text-decoration: none;
+    transition: color 0.2s;
   }
+  .nav-pitch:hover { color: var(--ink); }
+  .lang-toggle { display: flex; background: var(--surface); border-radius: 20px; overflow: hidden; border: 1px solid var(--border); }
   .lang-btn {
     padding: 0.22rem 0.7rem; font-size: 0.72rem; font-weight: 700;
     font-family: var(--font-display); cursor: pointer; border: none;
-    background: transparent; color: var(--ink3);
-    transition: all 0.2s; letter-spacing: 0.05em;
+    background: transparent; color: var(--ink3); transition: all 0.2s; letter-spacing: 0.05em;
   }
   .lang-btn.active { background: var(--accent); color: var(--bg); }
 
   /* HERO */
   .hero {
-    padding-top: var(--nav-h);
-    min-height: 85vh;
-    position: relative; overflow: hidden;
-    display: flex; flex-direction: column; justify-content: flex-end;
+    padding-top: var(--nav-h); min-height: 85vh; position: relative;
+    overflow: hidden; display: flex; flex-direction: column; justify-content: flex-end;
   }
   .hero-img {
-    position: absolute; inset: 0;
-    width: 100%; height: 100%;
+    position: absolute; inset: 0; width: 100%; height: 100%;
     object-fit: cover; object-position: center 20%;
-    filter: saturate(60%) brightness(0.45);
+    filter: saturate(60%) brightness(0.35);
   }
   .hero-overlay {
     position: absolute; inset: 0;
-    background: linear-gradient(to top,
-      rgba(15,14,23,1) 0%,
-      rgba(15,14,23,0.8) 35%,
-      rgba(15,14,23,0.2) 70%,
-      transparent 100%);
+    background: linear-gradient(to top, rgba(15,14,23,1) 0%, rgba(15,14,23,0.85) 40%, rgba(15,14,23,0.2) 75%, transparent 100%);
   }
-  /* Blob decorativo en hero */
-  .hero-blob {
-    position: absolute; border-radius: 50%;
-    filter: blur(80px); pointer-events: none;
-    animation: bfloat 9s ease-in-out infinite;
-  }
+  .hero-blob { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: bfloat 9s ease-in-out infinite; }
   .hero-blob-1 { width: 400px; height: 400px; background: rgba(255,107,157,0.15); top: 5%; right: 5%; }
   .hero-blob-2 { width: 300px; height: 300px; background: rgba(249,200,70,0.1); bottom: 20%; left: 10%; animation-delay: 4s; }
   @keyframes bfloat { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-20px)} }
-
   .hero-content {
     position: relative; z-index: 2;
     max-width: var(--max-w); margin: 0 auto; width: 100%;
@@ -142,62 +107,36 @@
   .hero-title {
     font-family: var(--font-display); font-size: clamp(3.5rem, 9vw, 6.5rem);
     font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
-    color: var(--ink); margin-bottom: 1rem;
+    color: var(--ink); margin-bottom: 1.2rem;
   }
-  .hero-subtitle {
-    font-family: var(--font-body); font-size: 1.05rem;
-    color: var(--ink2); max-width: 480px; line-height: 1.7;
-    font-weight: 300;
+  /* LA PREGUNTA en el hero */
+  .hero-question {
+    font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.25rem);
+    font-weight: 600; color: var(--ink2); line-height: 1.5;
+    max-width: 560px; border-left: 2px solid var(--accent);
+    padding-left: 1rem; font-style: italic;
   }
+  .hero-question em { color: var(--accent); font-style: normal; }
 
   /* META STRIP */
   .meta-strip { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
   .meta-strip-inner {
-    max-width: var(--max-w); margin: 0 auto;
-    padding: 1rem 2.5rem;
-    display: flex; flex-wrap: wrap;
-    gap: 0.6rem 1.2rem; align-items: center;
+    max-width: var(--max-w); margin: 0 auto; padding: 1rem 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1.2rem; align-items: center;
   }
   .meta-item { flex-shrink: 0; }
-  .meta-label {
-    font-family: var(--font-display); font-size: 0.58rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--ink3); margin-bottom: 0.15rem;
-  }
-  .meta-value {
-    font-family: var(--font-display); font-size: 0.82rem; font-weight: 600;
-    color: var(--ink);
-  }
+  .meta-label { font-family: var(--font-display); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink3); margin-bottom: 0.15rem; }
+  .meta-value { font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: var(--ink); }
   .meta-sep { width: 1px; height: 2rem; background: var(--border); flex-shrink: 0; }
-  .meta-stats {
-    width: 100%; display: flex; gap: 2rem;
-    padding-top: 0.7rem;
-    border-top: 1px solid var(--border);
-    margin-top: 0.2rem;
-  }
+  .meta-stats { width: 100%; display: flex; gap: 2rem; padding-top: 0.7rem; border-top: 1px solid var(--border); margin-top: 0.2rem; }
   .meta-stat { display: flex; align-items: baseline; gap: 0.35rem; }
-  .meta-stat-num {
-    font-family: var(--font-display); font-size: 1.3rem; font-weight: 800;
-    color: var(--accent); line-height: 1;
-  }
-  .meta-stat-label {
-    font-family: var(--font-display); font-size: 0.68rem; color: var(--ink3);
-  }
+  .meta-stat-num { font-family: var(--font-display); font-size: 1.3rem; font-weight: 800; color: var(--accent); line-height: 1; }
+  .meta-stat-label { font-family: var(--font-display); font-size: 0.68rem; color: var(--ink3); }
 
   /* CONTENT */
-  .page-content {
-    max-width: var(--max-w); margin: 0 auto;
-    padding: 0 2.5rem 6rem;
-    position: relative; z-index: 1;
-  }
-
-  .section {
-    padding: 2.5rem 0;
-    border-bottom: 1px solid var(--border);
-    scroll-margin-top: calc(var(--nav-h) + 1.5rem);
-  }
+  .page-content { max-width: var(--max-w); margin: 0 auto; padding: 0 2.5rem 6rem; position: relative; z-index: 1; }
+  .section { padding: 2.5rem 0; border-bottom: 1px solid var(--border); scroll-margin-top: calc(var(--nav-h) + 1.5rem); }
   .section:last-of-type { border-bottom: none; }
-
   .section-eyebrow {
     font-family: var(--font-display); font-size: 0.68rem; font-weight: 700;
     letter-spacing: 0.16em; text-transform: uppercase;
@@ -205,220 +144,163 @@
     display: flex; align-items: center; gap: 0.6rem;
   }
   .section-eyebrow::before { content: ''; flex: 0 0 18px; height: 2px; background: var(--accent); }
-
-  h2 {
-    font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem);
-    font-weight: 800; letter-spacing: -0.02em; line-height: 1.15;
-    color: var(--ink); margin-bottom: 1rem;
-  }
-
-  .lead {
-    font-size: 1.02rem; color: var(--ink2); line-height: 1.8;
-    margin-bottom: 1rem; font-family: var(--font-body); font-weight: 300;
-  }
-
-  p {
-    color: var(--ink2); line-height: 1.8; margin-bottom: 0.8rem;
-    font-family: var(--font-body); font-size: 0.97rem; font-weight: 300;
-  }
-
+  h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; color: var(--ink); margin-bottom: 1rem; }
+  .lead { font-size: 1.02rem; color: var(--ink2); line-height: 1.8; margin-bottom: 1rem; font-family: var(--font-body); font-weight: 300; }
+  p { color: var(--ink2); line-height: 1.8; margin-bottom: 0.8rem; font-family: var(--font-body); font-size: 0.97rem; font-weight: 300; }
   p strong, .lead strong { color: var(--ink); font-weight: 600; }
   p em { font-style: italic; color: var(--ink2); }
 
-  .refs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.8rem 0 0; }
-  .ref {
-    font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
-    color: var(--blue); border-bottom: 1px solid rgba(78,205,196,0.4); padding-bottom: 1px;
+  /* PREGUNTA DESTACADA */
+  .question-block {
+    margin: 1.5rem 0;
+    padding: 1.4rem 1.6rem;
+    border: 1px solid var(--border2);
+    border-left: 3px solid var(--accent);
+    background: rgba(249,200,70,0.04);
+    border-radius: 0 10px 10px 0;
   }
-  .ref-sep { color: var(--ink3); font-size: 0.7rem; align-self: center; }
+  .question-block-label {
+    font-family: var(--font-display); font-size: 0.6rem; font-weight: 700;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.5rem;
+  }
+  .question-block-text {
+    font-family: var(--font-display); font-size: clamp(1.05rem, 2vw, 1.3rem);
+    font-weight: 700; color: var(--ink); line-height: 1.4; font-style: italic;
+  }
+
+  /* STEPPER */
+  .stepper { margin: 1.4rem 0; }
+  .stepper-tabs {
+    display: flex; border: 1px solid var(--border2); border-bottom: none;
+    border-radius: 8px 8px 0 0; overflow: hidden;
+  }
+  .stepper-tab {
+    flex: 1; padding: 0.65rem 0.5rem;
+    font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+    color: var(--ink3); background: var(--bg2); border: none;
+    border-right: 1px solid var(--border); cursor: pointer; transition: all 0.18s;
+    text-align: center; line-height: 1.3;
+  }
+  .stepper-tab:last-child { border-right: none; }
+  .stepper-tab .tab-num { display: block; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink3); margin-bottom: 2px; opacity: 0.6; }
+  .stepper-tab.active { background: var(--surface); color: var(--ink); }
+  .stepper-tab.active .tab-num { opacity: 1; color: var(--accent); }
+  .stepper-panel {
+    display: none; border: 1px solid var(--border2);
+    border-radius: 0 0 8px 8px; background: var(--surface); padding: 1.4rem;
+  }
+  .stepper-panel.active { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; align-items: start; }
+  .stepper-panel-img { border-radius: 6px; overflow: hidden; border: 1px solid var(--border); }
+  .stepper-panel-img img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; background: var(--bg2); }
+  .verdict { display: inline-block; font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.18rem 0.65rem; border-radius: 100px; margin-bottom: 0.6rem; }
+  .verdict-bad { background: rgba(255,80,80,0.12); color: #ff8080; }
+  .verdict-mid { background: rgba(249,200,70,0.12); color: var(--accent); }
+  .verdict-good { background: rgba(110,231,183,0.12); color: var(--sage); }
+  .stepper-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; color: var(--ink); line-height: 1.3; margin-bottom: 0.5rem; }
+  .stepper-body { font-size: 0.88rem; color: var(--ink2); line-height: 1.7; font-weight: 300; margin-bottom: 0.7rem; }
+  .stepper-body strong { color: var(--ink); font-weight: 600; }
+  .stepper-player {
+    font-size: 0.85rem; color: var(--ink2); line-height: 1.65;
+    border-top: 1px solid var(--border); padding-top: 0.6rem;
+    font-style: italic;
+  }
+  .stepper-player strong { color: var(--sage); font-style: normal; font-weight: 600; }
+  .stepper-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 0.75rem 1.4rem; border: 1px solid var(--border2); border-top: none;
+    border-radius: 0 0 8px 8px; background: var(--bg2);
+  }
+  .stepper-nav-btn {
+    font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+    color: var(--ink3); background: transparent; border: 1px solid var(--border);
+    border-radius: 100px; padding: 0.25rem 0.8rem; cursor: pointer; transition: all 0.15s;
+  }
+  .stepper-nav-btn:hover { color: var(--ink); border-color: var(--border2); }
+  .stepper-nav-btn:disabled { opacity: 0.25; cursor: default; }
+  .stepper-dots { display: flex; gap: 6px; }
+  .stepper-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); transition: background 0.2s; }
+  .stepper-dot.active { background: var(--accent); }
+
+  /* PLAYER EXPERIENCE CARDS — personajes desde el jugador */
+  .player-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+  .player-card {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 10px; padding: 1.1rem 1.2rem;
+    transition: border-color 0.2s;
+  }
+  .player-card:hover { border-color: var(--border2); }
+  .player-card-header { display: flex; align-items: baseline; gap: 0.6rem; margin-bottom: 0.6rem; }
+  .player-card-name { font-family: var(--font-display); font-size: 1rem; font-weight: 800; color: var(--ink); }
+  .player-card-role { font-family: var(--font-display); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink3); }
+  .player-card-fantasy {
+    font-family: var(--font-display); font-size: 0.78rem; font-weight: 700;
+    margin-bottom: 0.5rem; padding: 0.3rem 0.7rem;
+    border-radius: 100px; display: inline-block;
+  }
+  .player-card-body { font-size: 0.85rem; color: var(--ink2); line-height: 1.65; font-weight: 300; margin-bottom: 0.6rem; }
+  .player-card-body strong { color: var(--ink); font-weight: 600; }
+  .player-card-problem {
+    font-size: 0.78rem; color: var(--ink3); line-height: 1.55;
+    border-top: 1px solid var(--border); padding-top: 0.5rem;
+  }
+  .player-card-problem strong { color: var(--ink2); font-weight: 600; }
+
+  /* TALK GRID */
+  .talk-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
+  .talk-item { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; }
+  .talk-label { font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem; }
+  .talk-item p { font-size: 0.85rem; margin: 0; }
 
   /* IMAGES */
-  .img-full {
-    width: 100%; border-radius: 8px; overflow: hidden; margin: 1.2rem 0;
-    border: 1px solid var(--border);
-  }
-  .img-full img {
-    width: 100%; display: block;
-    aspect-ratio: 16/9; object-fit: cover; background: var(--surface);
-  }
-  .img-caption {
-    font-family: var(--font-display); font-size: 0.72rem;
-    color: var(--ink3); margin-top: 0.4rem; font-style: italic;
-  }
+  .img-full { width: 100%; border-radius: 8px; overflow: hidden; margin: 1.2rem 0; border: 1px solid var(--border); }
+  .img-full img { width: 100%; display: block; aspect-ratio: 16/9; object-fit: cover; background: var(--surface); }
+  .img-caption { font-family: var(--font-display); font-size: 0.72rem; color: var(--ink3); margin-top: 0.4rem; font-style: italic; }
   .img-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
   .img-grid .img-full { margin: 0; }
 
-  /* PROCESS BLOCK */
-  .process-block {
-    margin: 1.4rem 0;
-    border-left: 2px solid var(--border2);
-    padding-left: 1.5rem;
-  }
-  .process-step { margin-bottom: 1.2rem; }
-  .process-step:last-child { margin-bottom: 0; }
-  .process-step-label {
-    font-family: var(--font-display); font-size: 0.68rem; font-weight: 700;
-    letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.3rem;
-  }
-  .label-problem { color: #ff6b6b; }
-  .label-solution { color: var(--sage); }
-  .label-result { color: var(--blue); }
-  .process-step p { margin: 0; font-size: 0.92rem; }
-
-  /* TALK GRID */
-  .talk-grid {
-    display: grid; grid-template-columns: 1fr 1fr 1fr;
-    gap: 1rem; margin: 1.2rem 0;
-    border-top: 1px solid var(--border); padding-top: 1.2rem;
-  }
-  .talk-item {
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 8px; padding: 1rem;
-  }
-  .talk-label {
-    font-family: var(--font-display); font-size: 0.7rem; font-weight: 700;
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.4rem;
-  }
-  .talk-item p { font-size: 0.85rem; margin: 0; }
-
-  /* LEARNING INLINE */
-  .learning-inline {
-    margin-top: 1.5rem;
-    padding: 1rem 1.2rem;
-    border-left: 2px solid var(--accent);
-    background: rgba(249,200,70,0.05);
+  /* INSIGHT BLOCK */
+  .insight {
+    margin: 1.5rem 0; padding: 1rem 1.2rem;
+    border-left: 2px solid var(--accent); background: rgba(249,200,70,0.05);
     border-radius: 0 8px 8px 0;
   }
-  .learning-inline-label {
-    font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
-    letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 0.4rem;
+  .insight-label { font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
+  .insight p { margin: 0; font-size: 0.88rem; color: var(--ink2); }
+  .insight p strong { color: var(--ink); font-weight: 600; }
+
+  /* APRENDIZAJE FINAL */
+  .learning-statement {
+    margin: 1.5rem 0;
+    font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.4rem);
+    font-weight: 700; color: var(--ink); line-height: 1.45;
   }
-  .learning-inline p { margin: 0; font-size: 0.88rem; color: var(--ink2); }
-  .learning-inline p strong { color: var(--ink); font-weight: 600; }
+  .learning-statement em { color: var(--accent); font-style: normal; }
+
+  /* SECONDARY GRID */
+  .secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 1.2rem 0; }
+  .secondary-item { background: var(--surface); padding: 1.1rem 1.2rem; }
+  .secondary-label { font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.35rem; }
+  .secondary-title { font-family: var(--font-display); font-size: 0.9rem; font-weight: 700; color: var(--ink); margin-bottom: 0.4rem; line-height: 1.3; }
+  .secondary-item p { font-size: 0.85rem; margin: 0; color: var(--ink3); line-height: 1.65; }
+  .secondary-item p strong { color: var(--ink2); font-weight: 600; }
+
+  /* OUTCOME */
+  .outcome-block { background: var(--surface); border: 1px solid var(--border2); padding: 1.5rem; border-radius: 10px; margin: 1.2rem 0; }
+  .outcome-block h3 { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--ink); margin-bottom: 0.6rem; }
+  .outcome-block p { color: var(--ink2); font-size: 0.88rem; margin: 0; line-height: 1.7; }
+  .outcome-block p strong { color: var(--ink); font-weight: 600; }
 
   /* ROLE TAGS */
   .role-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
-  .role-tag {
-    font-family: var(--font-display); font-size: 0.7rem; font-weight: 600;
-    color: var(--ink3); border: 1px solid var(--border);
-    padding: 0.2rem 0.7rem; border-radius: 100px; letter-spacing: 0.02em;
-    background: var(--surface);
-  }
-
-  /* OUTCOME */
-  .outcome-block {
-    background: var(--surface); border: 1px solid var(--border2);
-    padding: 1.5rem; border-radius: 10px; margin: 1.2rem 0;
-  }
-  .outcome-block h3 {
-    font-family: var(--font-display); font-size: 1rem; font-weight: 700;
-    color: var(--ink); margin-bottom: 0.6rem;
-  }
-  .outcome-block p {
-    color: var(--ink2); font-size: 0.88rem; margin: 0; line-height: 1.7;
-  }
-  .outcome-block p strong { color: var(--ink); font-weight: 600; }
-
-  /* DOWNLOAD BTN */
-  .btn-download {
-    display: inline-flex; align-items: center; gap: 0.5rem;
-    margin-top: 1rem;
-    font-family: var(--font-display); font-size: 0.82rem; font-weight: 700;
-    color: var(--bg); background: var(--accent);
-    padding: 0.55rem 1.2rem; border-radius: 6px; text-decoration: none;
-    transition: opacity 0.2s, transform 0.2s; border: none;
-  }
-  .btn-download:hover { opacity: 0.88; transform: translateY(-1px); }
-
-  /* LEARNINGS SUMMARY */
-  .learnings-summary {
-    margin-top: 1rem;
-    font-size: 1.02rem; color: var(--ink2); line-height: 1.85;
-    font-family: var(--font-body); font-style: italic; font-weight: 300;
-  }
-  .learnings-summary strong { color: var(--ink); font-style: normal; font-weight: 600; }
-
-  /* CARRUSEL */
-  .char-carousel { margin: 1.2rem 0; }
-  .char-slides { position: relative; }
-  .char-slide {
-    display: none;
-    grid-template-columns: 1fr 1fr;
-    gap: 2rem; align-items: start;
-  }
-  .char-slide.active { display: grid; }
-  .char-slide-img { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
-  .char-slide-img img {
-    width: 100%; display: block;
-    aspect-ratio: 3/4; object-fit: cover; background: var(--surface);
-  }
-  .char-slide-name {
-    font-family: var(--font-display); font-weight: 800;
-    font-size: 1.8rem; letter-spacing: -0.02em;
-    color: var(--ink); line-height: 1; margin-bottom: 0.3rem;
-  }
-  .char-slide-alias {
-    font-family: var(--font-display); font-size: 0.65rem; font-weight: 600;
-    letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1rem;
-  }
-  .char-slide-desc {
-    font-size: 0.92rem; color: var(--ink2); line-height: 1.75;
-    margin-bottom: 1rem; font-weight: 300;
-  }
-  .char-slide-desc strong { color: var(--ink); font-weight: 600; }
-  .char-slide-tension {
-    font-family: var(--font-display); font-size: 0.68rem; font-weight: 600;
-    letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--ink3); padding-top: 0.8rem;
-    border-top: 1px solid var(--border);
-  }
-  .char-nav {
-    display: flex; gap: 0.5rem;
-    margin-top: 1.2rem;
-    border-top: 1px solid var(--border);
-    padding-top: 1rem;
-    justify-content: center;
-  }
-  .char-nav-btn {
-    font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
-    color: var(--ink3); background: transparent;
-    border: 1px solid var(--border); border-radius: 100px;
-    padding: 0.3rem 0.9rem; cursor: pointer; transition: all 0.2s;
-  }
-  .char-nav-btn:hover { color: var(--ink); border-color: var(--border2); }
-  .char-nav-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-
-  .char-arrow {
-    position: absolute; top: 50%; transform: translateY(-50%);
-    background: var(--surface); border: 1px solid var(--border);
-    color: var(--ink2); font-size: 1rem;
-    width: 2rem; height: 2rem; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer; z-index: 2;
-    transition: background 0.2s, color 0.2s, border-color 0.2s;
-  }
-  .char-arrow:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
-  .char-arrow-prev { left: -1.2rem; }
-  .char-arrow-next { right: -1.2rem; }
+  .role-tag { font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; color: var(--ink3); border: 1px solid var(--border); padding: 0.2rem 0.7rem; border-radius: 100px; background: var(--surface); }
 
   /* BACK BTN */
-  .btn-back {
-    display: inline-flex; align-items: center; gap: 0.4rem;
-    font-family: var(--font-display); font-size: 0.82rem; font-weight: 600;
-    color: var(--ink3); text-decoration: none;
-    border-bottom: 1px solid var(--border); padding-bottom: 2px;
-    transition: color 0.2s, border-color 0.2s;
-  }
+  .btn-back { display: inline-flex; align-items: center; gap: 0.4rem; font-family: var(--font-display); font-size: 0.82rem; font-weight: 600; color: var(--ink3); text-decoration: none; border-bottom: 1px solid var(--border); padding-bottom: 2px; transition: color 0.2s, border-color 0.2s; }
   .btn-back:hover { color: var(--accent); border-color: var(--accent); }
   .btn-back::before { content: "←"; }
 
-  footer {
-    border-top: 1px solid var(--border);
-    padding: 1.5rem 2.5rem;
-    font-family: var(--font-display); font-size: 0.72rem;
-    color: var(--ink3); text-align: center;
-  }
+  footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; font-family: var(--font-display); font-size: 0.72rem; color: var(--ink3); text-align: center; }
 
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
   .reveal.visible { opacity: 1; transform: translateY(0); }
@@ -426,11 +308,11 @@
   @media (max-width: 720px) {
     nav { padding: 0 1.2rem; gap: 1rem; }
     .hero-content, .page-content, .meta-strip-inner { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .img-grid, .talk-grid { grid-template-columns: 1fr; }
+    .img-grid, .talk-grid, .player-grid, .secondary-grid { grid-template-columns: 1fr; }
     .meta-sep { display: none; }
     .meta-stats { gap: 1.2rem; }
-    .char-slide.active { grid-template-columns: 1fr; }
-    .char-slide-img img { aspect-ratio: 16/9; }
+    .stepper-panel.active { grid-template-columns: 1fr; }
+    .nav-pitch { display: none; }
   }
 </style>
 </head>
@@ -439,16 +321,16 @@
 <nav>
   <a href="index.html" class="nav-back" data-i18n="back">Portfolio</a>
   <div class="nav-sections">
-    <a href="#concept" class="nav-section-link" data-i18n="nav_s1">Concepto</a>
-    <a href="#process" class="nav-section-link" data-i18n="nav_s2">Diseño</a>
-    <a href="#characters" class="nav-section-link" data-i18n="nav_s3">Personajes</a>
-    <a href="#outcome" class="nav-section-link" data-i18n="nav_s4">Resultado</a>
-    <a href="#learnings" class="nav-section-link" data-i18n="nav_s5">Aprendizajes</a>
+    <a href="#pregunta" class="nav-section-link" data-i18n="nav_s1">La pregunta</a>
+    <a href="#respuesta" class="nav-section-link" data-i18n="nav_s2">La respuesta</a>
+    <a href="#jugador" class="nav-section-link" data-i18n="nav_s3">El jugador</a>
+    <a href="#aprendizaje" class="nav-section-link" data-i18n="nav_s4">Aprendizaje</a>
   </div>
   <div class="nav-right">
+    <a href="Divine Angels_Pitch.pdf" class="nav-pitch" target="_blank" data-i18n="nav_pitch">Pitch deck ↗</a>
     <div class="lang-toggle">
-      <button class="lang-btn active" onclick="setLang('es')" aria-label="Cambiar idioma a español">ES</button>
-      <button class="lang-btn" onclick="setLang('en')" aria-label="Change language to English">EN</button>
+      <button class="lang-btn active" onclick="setLang('es')" aria-label="Español">ES</button>
+      <button class="lang-btn" onclick="setLang('en')" aria-label="English">EN</button>
     </div>
   </div>
 </nav>
@@ -456,12 +338,12 @@
 <div class="hero">
   <div class="hero-blob hero-blob-1"></div>
   <div class="hero-blob hero-blob-2"></div>
-  <img src="divine-angels.jpg" alt="Las cuatro protagonistas de Divine Angels en acción" class="hero-img">
+  <img src="divine-angels.jpg" alt="Divine Angels" class="hero-img">
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <div class="hero-eyebrow" data-i18n="tag">RPG Narrativo · Prototipo · PC</div>
+    <div class="hero-eyebrow" data-i18n="tag">RPG Narrativo · Game Design · PC</div>
     <h1 class="hero-title">Divine<br>Angels</h1>
-    <p class="hero-subtitle" data-i18n="hero_sub">4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.</p>
+    <p class="hero-question" data-i18n="hero_q">¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal <em>si cuando combate todo es violencia?</em></p>
   </div>
 </div>
 
@@ -471,220 +353,202 @@
     <div class="meta-sep"></div>
     <div class="meta-item"><div class="meta-label" data-i18n="m2l">Plataforma</div><div class="meta-value">PC</div></div>
     <div class="meta-sep"></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m3l">Equipo</div><div class="meta-value" data-i18n="m3v">12 personas</div></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m3l">Proyecto</div><div class="meta-value" data-i18n="m3v">Propio con apoyo externo</div></div>
     <div class="meta-sep"></div>
     <div class="meta-item"><div class="meta-label" data-i18n="m4l">Tipo</div><div class="meta-value" data-i18n="m4v">Prototipo · Inversores</div></div>
-    <div class="meta-sep"></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m5l">Áreas</div><div class="meta-value" data-i18n="m5v">Sistemas · Narrativa · UI/UX</div></div>
     <div class="meta-stats">
-      <div class="meta-stat"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c1">formas de resolver</span></div>
-      <div class="meta-stat"><span class="meta-stat-num">4</span><span class="meta-stat-label" data-i18n="c2">personajes</span></div>
-      <div class="meta-stat"><span class="meta-stat-num">12</span><span class="meta-stat-label" data-i18n="c3">personas</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c1">iteraciones de combate</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">4</span><span class="meta-stat-label" data-i18n="c2">fantasías de jugador distintas</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">1</span><span class="meta-stat-label" data-i18n="c3">inversor convencido</span></div>
     </div>
   </div>
 </div>
 
 <div class="page-content">
 
-  <!-- CONCEPT -->
-  <div class="section reveal" id="concept">
-    <div class="section-eyebrow" data-i18n="s1">El Concepto</div>
-    <h2 data-i18n="h1">Persona meets Divinity. Vida cotidiana, combate táctico y decisiones que importan.</h2>
-    <p class="lead" data-i18n="p1">Divine Angels es un <strong>RPG de acción sobre 4 supermujeres</strong> que compaginan trabajo, familia y vida social con proteger la ciudad de un aumento inexplicable de supervillanos. El día se divide en <strong>mañana, tarde y noche</strong> — tú decides cómo invierte su tiempo cada personaje, y esas decisiones tienen <strong>consecuencias directas en el combate y la narrativa</strong>.</p>
-    <p data-i18n="p2">El juego combina <strong>combate táctico por turnos en entornos 3D</strong> con interacciones sociales, sistema de investigación de crímenes, economía de recursos y decisiones narrativas ramificadas. Todo está conectado: <strong>lo que haces fuera del combate cambia lo que puedes hacer dentro</strong>.</p>
-    <div class="refs">
-      <span class="ref">Persona</span><span class="ref-sep">—</span>
-      <span class="ref">Divinity: Original Sin</span><span class="ref-sep">—</span>
-      <span class="ref">Undertale</span>
+  <!-- LA PREGUNTA -->
+  <div class="section reveal" id="pregunta">
+    <div class="section-eyebrow" data-i18n="s1_eye">La pregunta</div>
+    <h2 data-i18n="s1_h">De dónde parte todo el diseño.</h2>
+    <p class="lead" data-i18n="s1_lead">Divine Angels es un RPG sobre 4 mujeres — una pediatra, una programadora, una abogada, una ingeniera — que compaginan su vida cotidiana con proteger la ciudad. La premisa prometía algo distinto. El primer prototipo de combate no lo cumplía.</p>
+    <p data-i18n="s1_p">El combate era correcto mecánicamente. Pero cuando un jugador encarna a una pediatra que prefiere negociar antes que pelear, <strong>obligarle a resolver todo a golpes rompe la fantasía que el juego le está prometiendo</strong>. Eso no es un problema de balance — es un problema de coherencia entre lo que el juego dice que eres y lo que te deja hacer.</p>
+
+    <div class="question-block reveal">
+      <div class="question-block-label" data-i18n="q_label">La pregunta que lo cambió todo</div>
+      <div class="question-block-text" data-i18n="q_text">"¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal si cuando combate todo es violencia?"</div>
     </div>
+
+    <p data-i18n="s1_p2">Esta pregunta reencuadró todo el proyecto. Ya no buscaba mejorar el combate — buscaba un sistema que <strong>mantuviera la promesa del juego dentro del combate</strong>, no solo fuera de él.</p>
   </div>
 
-  <!-- PROCESS -->
-  <div class="section reveal" id="process">
-    <div class="section-eyebrow" data-i18n="s2">Proceso de Diseño</div>
-    <h2 data-i18n="h2">Del RPG genérico a una propuesta con identidad.</h2>
+  <!-- LA RESPUESTA -->
+  <div class="section reveal" id="respuesta">
+    <div class="section-eyebrow" data-i18n="s2_eye">La respuesta</div>
+    <h2 data-i18n="s2_h">Tres intentos. Solo el tercero respondía a la pregunta correcta.</h2>
+    <p data-i18n="s2_p">Las dos primeras iteraciones mejoraron el combate. Ninguna resolvió la disonancia entre la fantasía del juego y lo que el jugador podía hacer dentro de él.</p>
 
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1rem; margin:1.2rem 0;" class="reveal">
-      <div class="img-full" style="margin:0;">
-        <img src="da-v1.jpg" alt="Primera iteración del combate: sistema RPG clásico por turnos sin diferenciación respecto a otros juegos del género">
-        <div class="img-caption" data-i18n="ev1_cap">V1 — RPG genérico. Sin propuesta diferenciadora.</div>
+    <div class="stepper reveal">
+      <div class="stepper-tabs">
+        <button class="stepper-tab active" onclick="goStep(0)"><span class="tab-num">V1</span><span data-i18n="v1_tab">RPG genérico</span></button>
+        <button class="stepper-tab" onclick="goStep(1)"><span class="tab-num">V2</span><span data-i18n="v2_tab">Combate ambiental</span></button>
+        <button class="stepper-tab" onclick="goStep(2)"><span class="tab-num">V3</span><span data-i18n="v3_tab">Diálogo como mecánica</span></button>
       </div>
-      <div class="img-full" style="margin:0;">
-        <img src="da-v2.jpg" alt="Segunda iteración con interacciones ambientales: habilidades que reaccionan con el entorno en entornos 3D tácticos">
-        <div class="img-caption" data-i18n="ev2_cap">V2 — Combate ambiental. Profundidad táctica, sin identidad propia.</div>
+
+      <div class="stepper-panel active" id="step-0">
+        <div class="stepper-panel-img"><img src="da-v1.jpg" alt="V1 — RPG genérico por turnos"></div>
+        <div>
+          <span class="verdict verdict-bad" data-i18n="v1_verdict">No responde la pregunta</span>
+          <div class="stepper-title" data-i18n="v1_title">Correcto, pero deshonesto con el jugador.</div>
+          <p class="stepper-body" data-i18n="v1_body">El sistema funcionaba mecánicamente. El problema era que le decía al jugador "eres una heroína compasiva" y luego le daba solo opciones violentas para resolver los encuentros. <strong>La mecánica contradecía la promesa.</strong></p>
+          <div class="stepper-player" data-i18n="v1_player"><strong>Experiencia del jugador:</strong> "Me dijeron que era una pediatra que no quiere pelear. ¿Por qué solo puedo atacar?"</div>
+        </div>
       </div>
-      <div class="img-full" style="margin:0;">
-        <img src="da-v3.jpg" alt="Versión final con sistema de diálogo integrado en el combate: opciones no agresivas coherentes con la personalidad de los personajes">
-        <div class="img-caption" data-i18n="ev3_cap">V3 — Diálogo como mecánica. Coherente con los personajes.</div>
+
+      <div class="stepper-panel" id="step-1">
+        <div class="stepper-panel-img"><img src="da-v2.jpg" alt="V2 — Combate ambiental con interacciones elementales"></div>
+        <div>
+          <span class="verdict verdict-mid" data-i18n="v2_verdict">Más profundo, mismo problema</span>
+          <div class="stepper-title" data-i18n="v2_title">Añadí complejidad táctica. La disonancia seguía ahí.</div>
+          <p class="stepper-body" data-i18n="v2_body">Las interacciones ambientales — elementos, trampas, terreno — generaban decisiones tácticas genuinas. Pero seguían siendo decisiones sobre <strong>cómo hacer daño</strong>, no sobre cómo resolver el conflicto de la forma en que el personaje lo haría.</p>
+          <div class="stepper-player" data-i18n="v2_player"><strong>Experiencia del jugador:</strong> "Ahora puedo electrocutar el charco. Sigue sin parecerse a lo que haría mi personaje."</div>
+        </div>
+      </div>
+
+      <div class="stepper-panel" id="step-2">
+        <div class="stepper-panel-img"><img src="da-v3.jpg" alt="V3 — Diálogo integrado como mecánica activa de combate"></div>
+        <div>
+          <span class="verdict verdict-good" data-i18n="v3_verdict">Responde la pregunta</span>
+          <div class="stepper-title" data-i18n="v3_title">El diálogo como mecánica activa con consecuencias tácticas reales.</div>
+          <p class="stepper-body" data-i18n="v3_body">Convertí el diálogo en una herramienta de combate tan válida como atacar. <strong>Calmar, enfurecer, o lograr la rendición sin violencia</strong> — siempre posible, con consecuencias tácticas distintas. La violencia pasó a ser una opción más, no la única.</p>
+          <div class="stepper-player" data-i18n="v3_player"><strong>Experiencia del jugador:</strong> "Puedo ganar sin pegar un golpe. Ahora sí me siento la heroína que el juego me prometió."</div>
+        </div>
+      </div>
+
+      <div class="stepper-nav">
+        <button class="stepper-nav-btn" id="step-prev" onclick="goStep(stepCur-1)" disabled data-i18n="step_prev">← Anterior</button>
+        <div class="stepper-dots">
+          <div class="stepper-dot active" id="sdot-0"></div>
+          <div class="stepper-dot" id="sdot-1"></div>
+          <div class="stepper-dot" id="sdot-2"></div>
+        </div>
+        <button class="stepper-nav-btn" id="step-next" onclick="goStep(stepCur+1)" data-i18n="step_next">Siguiente →</button>
       </div>
     </div>
-
-    <p data-i18n="p3a">El primer prototipo de combate funcionaba mecánicamente pero <strong>no aportaba nada nuevo</strong>. La pregunta que nos hicimos no fue <em>¿cómo mejoramos el combate?</em> sino <strong>¿por qué debería existir este juego?</strong></p>
-    <p data-i18n="p3b">La primera iteración con <strong>interacciones ambientales</strong> resolvió el problema de profundidad táctica — mojar el suelo, colocar objetos, combinar habilidades elementales generaba decisiones genuinas. Pero seguía sintiéndose como un Divinity con personajes distintos. Habíamos <strong>añadido complejidad sin añadir identidad</strong>.</p>
-    <p data-i18n="p3c">El giro llegó cuando volvimos a los personajes. Alice, Beatrice, Caroline y Diane son mujeres normales con trabajos, familias y vidas sociales. <strong>Un héroe así no da palizas — ayuda, negocia, captura.</strong> La violencia debería ser el último recurso, no el predeterminado.</p>
-    <p data-i18n="p3d">Eso redefinió el combate: el <strong>diálogo pasó de ser una opción pasiva a una mecánica activa</strong> con consecuencias tácticas reales. Calmar a un enemigo lo hace más inteligente pero más fácil de rendir. Enfurecerlo lo hace predecible pero peligroso. La rendición sin violencia siempre es posible — y <strong>esa posibilidad cambia cómo piensas cada encuentro</strong>.</p>
-    <p data-i18n="p3e">El resultado no fue solo un sistema más interesante. Fue <strong>un sistema coherente con quiénes son los personajes</strong>.</p>
 
     <div class="img-grid reveal">
       <div class="img-full">
-        <img src="da-combat.jpg" alt="Sistema de combate táctico en entorno 3D con interacción de habilidades elementales">
-        <div class="img-caption" data-i18n="ic1">Sistema de combate táctico con interacción de habilidades.</div>
+        <img src="da-combat.jpg" alt="Combate táctico con opciones de diálogo integradas">
+        <div class="img-caption" data-i18n="ic1">El diálogo aparece como acción de combate, no como menú aparte.</div>
       </div>
       <div class="img-full">
-        <img src="da-interaction.jpg" alt="Demostración de habilidades reaccionando con el entorno: agua, electricidad y fuego">
-        <div class="img-caption" data-i18n="ic2">Las habilidades reaccionan con el entorno y entre sí.</div>
+        <img src="da-interaction.jpg" alt="Interacciones ambientales y de habilidades">
+        <div class="img-caption" data-i18n="ic2">Las habilidades ambientales se mantienen — complementan, no sustituyen, al diálogo.</div>
       </div>
     </div>
 
-    <h2 style="margin-top:1.5rem;" data-i18n="h3">La personalidad como mecánica de combate.</h2>
-    <p data-i18n="p4">En lugar de que hablar fuera solo una opción pasiva, diseñamos un sistema donde <strong>cada enemigo tiene una personalidad</strong> que responde de forma diferente según cómo le hablas.</p>
-
-    <div class="talk-grid reveal">
-      <div class="talk-item">
-        <div class="talk-label" style="color:var(--sage);" data-i18n="talk1l">Calmar</div>
-        <p data-i18n="talk1p">Más fácil lograr la <strong>rendición</strong>. Pero el enemigo se vuelve más inteligente tácticamente y buscará escapar.</p>
-      </div>
-      <div class="talk-item">
-        <div class="talk-label" style="color:#ff6b6b;" data-i18n="talk2l">Enfurecer</div>
-        <p data-i18n="talk2p">Más <strong>agresivo pero descuidado</strong>. Difícil de rendir pero fácil de manipular y tender trampas.</p>
-      </div>
-      <div class="talk-item">
-        <div class="talk-label" style="color:var(--blue);" data-i18n="talk3l">Rendición</div>
-        <p data-i18n="talk3p">El <strong>objetivo ideal</strong>. Requiere leer la personalidad correcta. Ganar sin violencia siempre es una opción.</p>
-      </div>
-    </div>
-
-    <div class="img-full reveal">
-      <img src="da-skills.jpg" alt="Sistema de habilidades evolutivo mostrando el árbol de poderes de cada personaje">
-      <div class="img-caption" data-i18n="ic_skills">Sistema de habilidades evolutivo — cada poder crece según cómo lo uses en combate.</div>
+    <div class="insight reveal">
+      <div class="insight-label" data-i18n="ins1_label">Por qué funcionó</div>
+      <p data-i18n="ins1_p">Cuando diseñas partiendo de la fantasía del jugador y vas hacia atrás, <strong>los sistemas y la narrativa se alinean solos</strong>. No tienes que forzar la coherencia — emerge de la misma pregunta que guía las decisiones de diseño.</p>
     </div>
   </div>
 
-  <!-- CHARACTERS -->
-  <div class="section reveal" id="characters">
-    <div class="section-eyebrow" data-i18n="s4">Los Personajes</div>
-    <h2 data-i18n="h4">Cuatro vidas, cuatro poderes, árboles de habilidad únicos.</h2>
-    <p data-i18n="p6">Cada personaje tiene una <strong>vida profesional propia</strong> y poderes que evolucionan según cómo los uses en combate, generando <strong>árboles de habilidad distintos en cada partida</strong>.</p>
+  <!-- EL JUGADOR — personajes como fantasías -->
+  <div class="section reveal" id="jugador">
+    <div class="section-eyebrow" data-i18n="s3_eye">El jugador</div>
+    <h2 data-i18n="s3_h">Cuatro personajes. Cuatro fantasías distintas que el sistema tiene que sostener.</h2>
+    <p data-i18n="s3_p">Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué tipo de experiencia va a vivir. El reto de diseño fue crear un sistema único que sostuviera las cuatro promesas simultáneamente sin que ninguna se sintiera forzada.</p>
 
     <div class="img-full reveal">
-      <img src="da-characters.jpg" alt="Las cuatro protagonistas de Divine Angels: Caroline, Alice, Diane y Beatrice en su base de operaciones">
-      <div class="img-caption" data-i18n="ic_chars">Caroline, Alice, Diane y Beatrice en su base de operaciones.</div>
+      <img src="da-characters.jpg" alt="Las cuatro protagonistas de Divine Angels">
+      <div class="img-caption" data-i18n="ic_chars">Las cuatro protagonistas — cada una representa una fantasía de jugador diferente.</div>
     </div>
 
-    <!-- CARRUSEL -->
-    <div class="char-carousel reveal" role="region" aria-label="Personajes de Divine Angels">
-      <div class="char-slides">
-        <button class="char-arrow char-arrow-prev" onclick="stepSlide(-1)" aria-label="Personaje anterior">←</button>
-        <button class="char-arrow char-arrow-next" onclick="stepSlide(1)" aria-label="Personaje siguiente">→</button>
-
-        <div class="char-slide active" aria-label="Personaje Alice">
-          <div class="char-slide-img">
-            <img src="da-char-alice.jpg" alt="Alice, The Spearhead, pediatra con poderes físicos extraordinarios">
-          </div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Alice</div>
-            <div class="char-slide-alias" style="color:#ff6b9d;" data-i18n="ch1a">The Spearhead · Pediatra</div>
-            <p class="char-slide-desc" data-i18n="ch1d"><strong>Fuerza monstruosa al servicio del cuidado.</strong> Alice es la más poderosa físicamente y la que más evita usar esa fuerza. Su vocación de sanar hace que sus opciones de diálogo sean las más efectivas para lograr rendiciones — convencer a alguien de parar viene naturalmente de quien dedica su vida a cuidar a los demás.</p>
-            <div class="char-slide-tension" data-i18n="ch1t">Tensión de diseño: poder destructivo · instinto protector</div>
-          </div>
+    <div class="player-grid reveal">
+      <div class="player-card">
+        <div class="player-card-header">
+          <div class="player-card-name">Alice</div>
+          <div class="player-card-role" data-i18n="ch1_role">Pediatra</div>
         </div>
-
-        <div class="char-slide" aria-label="Personaje Beatrice">
-          <div class="char-slide-img">
-            <img src="da-char-beatrice.jpg" alt="Beatrice, The Psychic, programadora que usa la telepatía para entender a las personas como entiende el código">
-          </div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Beatrice</div>
-            <div class="char-slide-alias" style="color:#4ecdc4;" data-i18n="ch2a">The Psychic · Programadora</div>
-            <p class="char-slide-desc" data-i18n="ch2d"><strong>Entiende sistemas mejor que personas.</strong> La telepatía es su intento de leer a los demás con la misma precisión con la que lee código. Es la más efectiva manipulando la voluntad en combate, pero también la que más riesgo tiene de cruzar una línea ética — el juego lo refleja en las consecuencias narrativas de sus poderes.</p>
-            <div class="char-slide-tension" data-i18n="ch2t">Tensión de diseño: precisión sistémica · complejidad humana</div>
-          </div>
-        </div>
-
-        <div class="char-slide" aria-label="Personaje Caroline">
-          <div class="char-slide-img">
-            <img src="da-char-caroline.jpg" alt="Caroline, The Elemental, abogada cuyos poderes elementales reflejan su estado emocional interno">
-          </div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Caroline</div>
-            <div class="char-slide-alias" style="color:#6ee7b7;" data-i18n="ch3a">The Elemental · Abogada</div>
-            <p class="char-slide-desc" data-i18n="ch3d"><strong>Se entrena para no dejarse llevar por las emociones. Sus poderes no le dan esa opción.</strong> El entorno reacciona a su estado interno — bajo presión genera más electricidad, en calma más control sobre el agua y el hielo. Es el personaje donde las decisiones sociales del jugador tienen mayor impacto directo en el combate.</p>
-            <div class="char-slide-tension" data-i18n="ch3t">Tensión de diseño: control racional · emoción elemental</div>
-          </div>
-        </div>
-
-        <div class="char-slide" aria-label="Personaje Diane">
-          <div class="char-slide-img">
-            <img src="da-char-diane.jpg" alt="Diane, The Technomancer, ingeniera en silla de ruedas transformable en mecha que eligió potenciar su cuerpo en lugar de curarlo">
-          </div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Diane</div>
-            <div class="char-slide-alias" style="color:#f9c846;" data-i18n="ch4a">The Technomancer · Ingeniera</div>
-            <p class="char-slide-desc" data-i18n="ch4d"><strong>Podría haberse curado. Eligió no hacerlo.</strong> Como tecnópata diseñó su propia silla — con todas las comodidades y la capacidad de transformarse en mecha. No redefinió su limitación, simplemente nunca la vio como tal. Es el personaje con mayor rango de acción y el más autosuficiente del equipo.</p>
-            <div class="char-slide-tension" data-i18n="ch4t">Tensión de diseño: limitación física · poder tecnológico ilimitado</div>
-          </div>
-        </div>
+        <div class="player-card-fantasy" style="background:rgba(255,107,157,0.12); color:#ff6b9d;" data-i18n="ch1_fantasy">Fantasía: ganar sin hacer daño</div>
+        <p class="player-card-body" data-i18n="ch1_body">El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>, no una desventaja. Sus opciones de diálogo son las más efectivas para lograr rendiciones — el sistema tiene que recompensarle por negociar, no castigarle por no atacar.</p>
+        <div class="player-card-problem" data-i18n="ch1_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?</div>
       </div>
 
-      <div class="char-nav" role="tablist" aria-label="Seleccionar personaje">
-        <button class="char-nav-btn active" onclick="goToSlide(0)" role="tab" aria-selected="true" aria-label="Alice">Alice</button>
-        <button class="char-nav-btn" onclick="goToSlide(1)" role="tab" aria-selected="false" aria-label="Beatrice">Beatrice</button>
-        <button class="char-nav-btn" onclick="goToSlide(2)" role="tab" aria-selected="false" aria-label="Caroline">Caroline</button>
-        <button class="char-nav-btn" onclick="goToSlide(3)" role="tab" aria-selected="false" aria-label="Diane">Diane</button>
+      <div class="player-card">
+        <div class="player-card-header">
+          <div class="player-card-name">Beatrice</div>
+          <div class="player-card-role" data-i18n="ch2_role">Programadora</div>
+        </div>
+        <div class="player-card-fantasy" style="background:rgba(78,205,196,0.12); color:#4ecdc4;" data-i18n="ch2_fantasy">Fantasía: leer a las personas como sistemas</div>
+        <p class="player-card-body" data-i18n="ch2_body">El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong> — encontrar el patrón, explotar la lógica. Sus poderes telepáticos son la versión fantástica de esa necesidad de control sistémico. El riesgo ético de sus poderes es parte del atractivo.</p>
+        <div class="player-card-problem" data-i18n="ch2_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?</div>
+      </div>
+
+      <div class="player-card">
+        <div class="player-card-header">
+          <div class="player-card-name">Caroline</div>
+          <div class="player-card-role" data-i18n="ch3_role">Abogada</div>
+        </div>
+        <div class="player-card-fantasy" style="background:rgba(110,231,183,0.12); color:#6ee7b7;" data-i18n="ch3_fantasy">Fantasía: mantener el control bajo presión</div>
+        <p class="player-card-body" data-i18n="ch3_body">El jugador que elige a Caroline quiere <strong>demostrar que puede mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — bajo presión genera electricidad, en calma controla el agua. Las decisiones sociales del jugador afectan directamente al combate.</p>
+        <div class="player-card-problem" data-i18n="ch3_problem"><strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?</div>
+      </div>
+
+      <div class="player-card">
+        <div class="player-card-header">
+          <div class="player-card-name">Diane</div>
+          <div class="player-card-role" data-i18n="ch4_role">Ingeniera</div>
+        </div>
+        <div class="player-card-fantasy" style="background:rgba(249,200,70,0.12); color:#f9c846;" data-i18n="ch4_fantasy">Fantasía: no tener límites que no hayas elegido tú</div>
+        <p class="player-card-body" data-i18n="ch4_body">El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo y diseñó su propia silla transformable en mecha. Es el personaje más autosuficiente porque la fantasía que sostiene es que las limitaciones son elecciones, no imposiciones.</p>
+        <div class="player-card-problem" data-i18n="ch4_problem"><strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?</div>
+      </div>
+    </div>
+
+    <div class="insight reveal">
+      <div class="insight-label" data-i18n="ins2_label">Lo que aprendí sobre diseño de personajes</div>
+      <p data-i18n="ins2_p">Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía que quieres sostener, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?</p>
+    </div>
+
+    <!-- SECUNDARIOS -->
+    <div class="secondary-grid reveal">
+      <div class="secondary-item">
+        <div class="secondary-label" data-i18n="sec1_label">Habilidades</div>
+        <div class="secondary-title" data-i18n="sec1_title">Árboles que crecen desde la fantasía</div>
+        <p data-i18n="sec1_p">Cada poder evoluciona según cómo lo uses — pero las opciones disponibles siempre están <strong>filtradas por quién es el personaje</strong>. No puedes desarrollar habilidades que contradigan la promesa que ese personaje le hace al jugador.</p>
+      </div>
+      <div class="secondary-item">
+        <div class="secondary-label" data-i18n="sec2_label">Narrativa</div>
+        <div class="secondary-title" data-i18n="sec2_title">El personaje no puede ignorar al jugador</div>
+        <p data-i18n="sec2_p">El reto técnico fue la <strong>disonancia narrativa</strong> — que una conversación nunca contradiga lo que el jugador acaba de hacer. Solución: nodos de unión que modifican el estado del personaje en lugar de ramificar infinitamente.</p>
       </div>
     </div>
 
     <div class="role-tags reveal">
-      <span class="role-tag" data-i18n="rt1">Diseño de Sistemas</span>
-      <span class="role-tag" data-i18n="rt2">Diseño Narrativo</span>
-      <span class="role-tag" data-i18n="rt3">Diseño de Combate</span>
-      <span class="role-tag" data-i18n="rt4">Árbol de Habilidades</span>
-      <span class="role-tag" data-i18n="rt5">Balance de Personajes</span>
-    </div>
-
-    <div class="img-full reveal" style="margin-top:1.2rem;">
-      <img src="da-social.jpg" alt="Sistema de interacciones sociales mostrando conversación entre personajes con opciones de diálogo">
-      <div class="img-caption" data-i18n="ic3">Sistema de interacciones sociales — las decisiones del día afectan al combate y la narrativa.</div>
-    </div>
-
-    <div class="learning-inline reveal">
-      <div class="learning-inline-label" data-i18n="char_learn_label">Aprendizaje de diseño</div>
-      <p data-i18n="char_learn_p">El reto técnico se resolvió con <strong>conversaciones de unión</strong> — nodos que modifican variables de estado en lugar de ramificar infinitamente. Pero el reto real fue la <strong>disonancia narrativa</strong>: que una conversación nunca contradijera las acciones previas del jugador ni rompiera al personaje. <strong>El personaje tiene que reflejar al jugador, no ignorarlo.</strong></p>
+      <span class="role-tag" data-i18n="rt1">Diseño centrado en el jugador</span>
+      <span class="role-tag" data-i18n="rt2">Sistemas · Narrativa</span>
+      <span class="role-tag" data-i18n="rt3">Diseño de combate</span>
+      <span class="role-tag" data-i18n="rt4">Árbol de habilidades</span>
+      <span class="role-tag" data-i18n="rt5">Balance de personajes</span>
     </div>
   </div>
 
-  <!-- OUTCOME -->
-  <div class="section reveal" id="outcome">
-    <div class="section-eyebrow" data-i18n="s5">Resultado</div>
-    <h2 data-i18n="h5">Un inversor convencido. Un equipo que no aguantó.</h2>
-    <div class="outcome-block">
-      <h3 data-i18n="ob_title">La idea era buena — el problema fue mantener el equipo.</h3>
-      <p data-i18n="ob_desc">Divine Angels llegó a manos de un <strong>inversor real que quedó convencido del concepto</strong>. Su condición para seguir adelante era una <strong>vertical slice completa</strong> — arte, mecánicas y jugabilidad integradas en un nivel funcional. Era un siguiente paso razonable. El proyecto no llegó hasta ahí: algunos miembros del equipo empezaron a trabajar en otros proyectos, otros desaparecieron. <strong>La gestión del equipo es tan crítica como el diseño</strong> — una lección que cambió cómo pienso en cualquier proyecto desde entonces.</p>
-      <a href="Divine Angels_Pitch.pdf" class="btn-download" download aria-label="Descargar dossier del proyecto Divine Angels en PDF" data-i18n="btn_dossier">↓ Descargar Dossier del Proyecto</a>
-    </div>
-  </div>
+  <!-- APRENDIZAJE -->
+  <div class="section reveal" id="aprendizaje">
+    <div class="section-eyebrow" data-i18n="s4_eye">Aprendizaje</div>
+    <h2 data-i18n="s4_h">Qué cambió en cómo diseño.</h2>
 
-  <!-- LEARNINGS -->
-  <div class="section reveal" id="learnings">
-    <div class="section-eyebrow" data-i18n="s6">Aprendizajes</div>
-    <h2 data-i18n="h6">Qué tipo de diseñador me hizo este proyecto.</h2>
-
-    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:var(--border); border:1px solid var(--border); border-radius:8px; overflow:hidden; margin:1.2rem 0;">
-      <div style="background:var(--surface); padding:1rem 1.1rem;">
-        <div style="font-family:var(--font-display); font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;" data-i18n="lp1_label">Diseño de sistemas</div>
-        <div style="font-family:var(--font-display); font-size:0.88rem; font-weight:700; color:var(--ink); line-height:1.3;" data-i18n="lp1_title">Personajes como sistemas adaptativos</div>
-      </div>
-      <div style="background:var(--surface); padding:1rem 1.1rem;">
-        <div style="font-family:var(--font-display); font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;" data-i18n="lp2_label">Diseño narrativo</div>
-        <div style="font-family:var(--font-display); font-size:0.88rem; font-weight:700; color:var(--ink); line-height:1.3;" data-i18n="lp2_title">Coherencia entre acción y diálogo</div>
-      </div>
-      <div style="background:var(--surface); padding:1rem 1.1rem;">
-        <div style="font-family:var(--font-display); font-size:0.6rem; font-weight:700; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:0.4rem;" data-i18n="lp3_label">Producción</div>
-        <div style="font-family:var(--font-display); font-size:0.88rem; font-weight:700; color:var(--ink); line-height:1.3;" data-i18n="lp3_title">El equipo es tan crítico como el diseño</div>
-      </div>
+    <div class="learning-statement reveal" data-i18n="learn_statement">
+      Cuando diseñas desde la fantasía del jugador hacia atrás, <em>los sistemas y la narrativa no necesitan coordinarse</em> — responden a la misma pregunta.
     </div>
 
-    <p class="learnings-summary" data-i18n="learn_p">Divine Angels me enseñó a pensar en personajes no como entidades fijas, sino como <strong>sistemas que se adaptan al jugador</strong>. Cuando un personaje puede ser encarnado por cientos de personas con estilos de juego distintos, el diseño tiene que anticipar esa variabilidad sin perder la coherencia del personaje. Ese equilibrio — entre <strong>identidad sólida y adaptabilidad</strong> — es el problema de diseño que más me interesa resolver.</p>
+    <p data-i18n="learn_p1">Antes de Divine Angels diseñaba sistemas y luego buscaba cómo hacer que la narrativa los acompañara. Este proyecto me obligó a invertir el proceso: <strong>primero la experiencia que quiero que tenga el jugador, luego qué sistema la sostiene</strong>. La diferencia no es cosmética — cambia qué preguntas haces en cada decisión de diseño.</p>
+    <p data-i18n="learn_p2">La otra lección fue de producción: un inversor convencido no es suficiente si el equipo no aguanta. <strong>La gestión de personas es tan crítica como el diseño</strong> — y en este caso, fue lo que determinó el resultado final del proyecto.</p>
+
+    <div class="outcome-block reveal">
+      <h3 data-i18n="ob_title">Qué pasó con el proyecto</h3>
+      <p data-i18n="ob_desc">Divine Angels llegó a manos de un <strong>inversor real que quedó convencido del concepto</strong>. Su condición era una vertical slice completa — arte, mecánicas y jugabilidad integradas en un nivel funcional. El proyecto no llegó hasta ahí: parte del equipo externo se dispersó antes de poder completarla.</p>
+    </div>
   </div>
 
   <div style="padding-top:1rem;">
@@ -700,118 +564,136 @@
 <script>
 const i18n = {
   es: {
-    back:"Portfolio", nav_s1:"Concepto", nav_s2:"Diseño", nav_s3:"Personajes", nav_s4:"Resultado", nav_s5:"Aprendizajes",
-    tag:"RPG Narrativo · Prototipo · PC",
-    hero_sub:"4 supermujeres. Una ciudad en peligro. Un sistema de combate que reimagina el RPG clásico.",
-    m1l:"Rol", m1v:"Game Designer", m2l:"Plataforma", m3l:"Equipo", m3v:"12 personas",
-    m4l:"Tipo", m4v:"Prototipo · Inversores", m5l:"Áreas", m5v:"Sistemas · Narrativa · UI/UX",
-    c1:"formas de resolver", c2:"personajes", c3:"personas",
-    s1:"El Concepto", h1:"Persona meets Divinity. Vida cotidiana, combate táctico y decisiones que importan.",
-    p1:"Divine Angels es un <strong>RPG de acción sobre 4 supermujeres</strong> que compaginan trabajo, familia y vida social con proteger la ciudad de un aumento inexplicable de supervillanos. El día se divide en <strong>mañana, tarde y noche</strong> — tú decides cómo invierte su tiempo cada personaje, y esas decisiones tienen <strong>consecuencias directas en el combate y la narrativa</strong>.",
-    p2:"El juego combina <strong>combate táctico por turnos en entornos 3D</strong> con interacciones sociales, sistema de investigación de crímenes, economía de recursos y decisiones narrativas ramificadas. Todo está conectado: <strong>lo que haces fuera del combate cambia lo que puedes hacer dentro</strong>.",
-    s2:"Proceso de Diseño", h2:"Del RPG genérico a una propuesta con identidad.",
-    p3a:"El primer prototipo de combate funcionaba mecánicamente pero <strong>no aportaba nada nuevo</strong>. La pregunta que nos hicimos no fue <em>¿cómo mejoramos el combate?</em> sino <strong>¿por qué debería existir este juego?</strong>",
-    p3b:"La primera iteración con <strong>interacciones ambientales</strong> resolvió el problema de profundidad táctica — mojar el suelo, colocar objetos, combinar habilidades elementales generaba decisiones genuinas. Pero seguía sintiéndose como un Divinity con personajes distintos. Habíamos <strong>añadido complejidad sin añadir identidad</strong>.",
-    p3c:"El giro llegó cuando volvimos a los personajes. Alice, Beatrice, Caroline y Diane son mujeres normales con trabajos, familias y vidas sociales. <strong>Un héroe así no da palizas — ayuda, negocia, captura.</strong> La violencia debería ser el último recurso, no el predeterminado.",
-    p3d:"Eso redefinió el combate: el <strong>diálogo pasó de ser una opción pasiva a una mecánica activa</strong> con consecuencias tácticas reales. Calmar a un enemigo lo hace más inteligente pero más fácil de rendir. Enfurecerlo lo hace predecible pero peligroso. La rendición sin violencia siempre es posible — y <strong>esa posibilidad cambia cómo piensas cada encuentro</strong>.",
-    p3e:"El resultado no fue solo un sistema más interesante. Fue <strong>un sistema coherente con quiénes son los personajes</strong>.",
-    ev1_cap:"V1 — RPG genérico. Sin propuesta diferenciadora.",
-    ev2_cap:"V2 — Combate ambiental. Profundidad táctica, sin identidad propia.",
-    ev3_cap:"V3 — Diálogo como mecánica. Coherente con los personajes.",
-    ic1:"Sistema de combate táctico con interacción de habilidades.",
-    ic2:"Las habilidades reaccionan con el entorno y entre sí.",
-    h3:"La personalidad como mecánica de combate.",
-    p4:"En lugar de que hablar fuera solo una opción pasiva, diseñamos un sistema donde <strong>cada enemigo tiene una personalidad</strong> que responde de forma diferente según cómo le hablas.",
-    talk1l:"Calmar", talk1p:"Más fácil lograr la <strong>rendición</strong>. Pero el enemigo se vuelve más inteligente tácticamente y buscará escapar.",
-    talk2l:"Enfurecer", talk2p:"Más <strong>agresivo pero descuidado</strong>. Difícil de rendir pero fácil de manipular y tender trampas.",
-    talk3l:"Rendición", talk3p:"El <strong>objetivo ideal</strong>. Requiere leer la personalidad correcta. Ganar sin violencia siempre es una opción.",
-    ic_skills:"Sistema de habilidades evolutivo — cada poder crece según cómo lo uses en combate.",
-    s4:"Los Personajes", h4:"Cuatro vidas, cuatro poderes, árboles de habilidad únicos.",
-    p6:"Cada personaje tiene una <strong>vida profesional propia</strong> y poderes que evolucionan según cómo los uses en combate, generando <strong>árboles de habilidad distintos en cada partida</strong>.",
-    ic_chars:"Caroline, Alice, Diane y Beatrice en su base de operaciones.",
-    ch1a:"The Spearhead · Pediatra",
-    ch1d:"<strong>Fuerza monstruosa al servicio del cuidado.</strong> Alice es la más poderosa físicamente y la que más evita usar esa fuerza. Su vocación de sanar hace que sus opciones de diálogo sean las más efectivas para lograr rendiciones — convencer a alguien de parar viene naturalmente de quien dedica su vida a cuidar a los demás.",
-    ch1t:"Tensión de diseño: poder destructivo · instinto protector",
-    ch2a:"The Psychic · Programadora",
-    ch2d:"<strong>Entiende sistemas mejor que personas.</strong> La telepatía es su intento de leer a los demás con la misma precisión con la que lee código. Es la más efectiva manipulando la voluntad en combate, pero también la que más riesgo tiene de cruzar una línea ética — el juego lo refleja en las consecuencias narrativas de sus poderes.",
-    ch2t:"Tensión de diseño: precisión sistémica · complejidad humana",
-    ch3a:"The Elemental · Abogada",
-    ch3d:"<strong>Se entrena para no dejarse llevar por las emociones. Sus poderes no le dan esa opción.</strong> El entorno reacciona a su estado interno — bajo presión genera más electricidad, en calma más control sobre el agua y el hielo. Es el personaje donde las decisiones sociales del jugador tienen mayor impacto directo en el combate.",
-    ch3t:"Tensión de diseño: control racional · emoción elemental",
-    ch4a:"The Technomancer · Ingeniera",
-    ch4d:"<strong>Podría haberse curado. Eligió no hacerlo.</strong> Como tecnópata diseñó su propia silla — con todas las comodidades y la capacidad de transformarse en mecha. No redefinió su limitación, simplemente nunca la vio como tal. Es el personaje con mayor rango de acción y el más autosuficiente del equipo.",
-    ch4t:"Tensión de diseño: limitación física · poder tecnológico ilimitado",
-    rt1:"Diseño de Sistemas", rt2:"Diseño Narrativo", rt3:"Diseño de Combate", rt4:"Árbol de Habilidades", rt5:"Balance de Personajes",
-    ic3:"Sistema de interacciones sociales — las decisiones del día afectan al combate y la narrativa.",
-    char_learn_label:"Aprendizaje de diseño",
-    char_learn_p:"El reto técnico se resolvió con <strong>conversaciones de unión</strong> — nodos que modifican variables de estado en lugar de ramificar infinitamente. Pero el reto real fue la <strong>disonancia narrativa</strong>: que una conversación nunca contradijera las acciones previas del jugador ni rompiera al personaje. <strong>El personaje tiene que reflejar al jugador, no ignorarlo.</strong>",
-    s5:"Resultado", h5:"Un inversor convencido. Un equipo que no aguantó.",
-    ob_title:"La idea era buena — el problema fue mantener el equipo.",
-    ob_desc:"Divine Angels llegó a manos de un <strong>inversor real que quedó convencido del concepto</strong>. Su condición para seguir adelante era una <strong>vertical slice completa</strong> — arte, mecánicas y jugabilidad integradas en un nivel funcional. Era un siguiente paso razonable. El proyecto no llegó hasta ahí: algunos miembros del equipo empezaron a trabajar en otros proyectos, otros desaparecieron. <strong>La gestión del equipo es tan crítica como el diseño</strong> — una lección que cambió cómo pienso en cualquier proyecto desde entonces.",
-    btn_dossier:"↓ Descargar Dossier del Proyecto",
-    s6:"Aprendizajes", h6:"Qué tipo de diseñador me hizo este proyecto.",
-    learn_p:"Divine Angels me enseñó a pensar en personajes no como entidades fijas, sino como <strong>sistemas que se adaptan al jugador</strong>. Cuando un personaje puede ser encarnado por cientos de personas con estilos de juego distintos, el diseño tiene que anticipar esa variabilidad sin perder la coherencia del personaje. Ese equilibrio — entre <strong>identidad sólida y adaptabilidad</strong> — es el problema de diseño que más me interesa resolver.",
-    lp1_label:"Diseño de sistemas", lp1_title:"Personajes como sistemas adaptativos",
-    lp2_label:"Diseño narrativo", lp2_title:"Coherencia entre acción y diálogo",
-    lp3_label:"Producción", lp3_title:"El equipo es tan crítico como el diseño",
-    btn_back:"Volver al Portfolio", footer_text:"Hecho con mucho café y amor por los juegos."
+    back:"Portfolio",
+    nav_s1:"La pregunta", nav_s2:"La respuesta", nav_s3:"El jugador", nav_s4:"Aprendizaje",
+    nav_pitch:"Pitch deck ↗",
+    tag:"RPG Narrativo · Game Design · PC",
+    hero_q:"¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal si cuando combate todo es violencia?",
+    m1l:"Rol", m1v:"Game Designer", m2l:"Plataforma", m3l:"Proyecto", m3v:"Propio con apoyo externo",
+    m4l:"Tipo", m4v:"Prototipo · Inversores",
+    c1:"iteraciones de combate", c2:"fantasías de jugador distintas", c3:"inversor convencido",
+    s1_eye:"La pregunta", s1_h:"De dónde parte todo el diseño.",
+    s1_lead:"Divine Angels es un RPG sobre 4 mujeres — una pediatra, una programadora, una abogada, una ingeniera — que compaginan su vida cotidiana con proteger la ciudad. La premisa prometía algo distinto. El primer prototipo de combate no lo cumplía.",
+    s1_p:"El combate era correcto mecánicamente. Pero cuando un jugador encarna a una pediatra que prefiere negociar antes que pelear, <strong>obligarle a resolver todo a golpes rompe la fantasía que el juego le está prometiendo</strong>. Eso no es un problema de balance — es un problema de coherencia entre lo que el juego dice que eres y lo que te deja hacer.",
+    q_label:"La pregunta que lo cambió todo",
+    q_text:"\"¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal si cuando combate todo es violencia?\"",
+    s1_p2:"Esta pregunta reencuadró todo el proyecto. Ya no buscaba mejorar el combate — buscaba un sistema que <strong>mantuviera la promesa del juego dentro del combate</strong>, no solo fuera de él.",
+    s2_eye:"La respuesta", s2_h:"Tres intentos. Solo el tercero respondía a la pregunta correcta.",
+    s2_p:"Las dos primeras iteraciones mejoraron el combate. Ninguna resolvió la disonancia entre la fantasía del juego y lo que el jugador podía hacer dentro de él.",
+    v1_tab:"RPG genérico", v2_tab:"Combate ambiental", v3_tab:"Diálogo como mecánica",
+    v1_verdict:"No responde la pregunta",
+    v1_title:"Correcto, pero deshonesto con el jugador.",
+    v1_body:"El sistema funcionaba mecánicamente. El problema era que le decía al jugador \"eres una heroína compasiva\" y luego le daba solo opciones violentas para resolver los encuentros. <strong>La mecánica contradecía la promesa.</strong>",
+    v1_player:"<strong>Experiencia del jugador:</strong> \"Me dijeron que era una pediatra que no quiere pelear. ¿Por qué solo puedo atacar?\"",
+    v2_verdict:"Más profundo, mismo problema",
+    v2_title:"Añadí complejidad táctica. La disonancia seguía ahí.",
+    v2_body:"Las interacciones ambientales — elementos, trampas, terreno — generaban decisiones tácticas genuinas. Pero seguían siendo decisiones sobre <strong>cómo hacer daño</strong>, no sobre cómo resolver el conflicto de la forma en que el personaje lo haría.",
+    v2_player:"<strong>Experiencia del jugador:</strong> \"Ahora puedo electrocutar el charco. Sigue sin parecerse a lo que haría mi personaje.\"",
+    v3_verdict:"Responde la pregunta",
+    v3_title:"El diálogo como mecánica activa con consecuencias tácticas reales.",
+    v3_body:"Convertí el diálogo en una herramienta de combate tan válida como atacar. <strong>Calmar, enfurecer, o lograr la rendición sin violencia</strong> — siempre posible, con consecuencias tácticas distintas. La violencia pasó a ser una opción más, no la única.",
+    v3_player:"<strong>Experiencia del jugador:</strong> \"Puedo ganar sin pegar un golpe. Ahora sí me siento la heroína que el juego me prometió.\"",
+    step_prev:"← Anterior", step_next:"Siguiente →",
+    ic1:"El diálogo aparece como acción de combate, no como menú aparte.",
+    ic2:"Las habilidades ambientales se mantienen — complementan, no sustituyen, al diálogo.",
+    ins1_label:"Por qué funcionó",
+    ins1_p:"Cuando diseñas partiendo de la fantasía del jugador y vas hacia atrás, <strong>los sistemas y la narrativa se alinean solos</strong>. No tienes que forzar la coherencia — emerge de la misma pregunta que guía las decisiones de diseño.",
+    s3_eye:"El jugador", s3_h:"Cuatro personajes. Cuatro fantasías distintas que el sistema tiene que sostener.",
+    s3_p:"Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué tipo de experiencia va a vivir. El reto de diseño fue crear un sistema único que sostuviera las cuatro promesas simultáneamente sin que ninguna se sintiera forzada.",
+    ic_chars:"Las cuatro protagonistas — cada una representa una fantasía de jugador diferente.",
+    ch1_role:"Pediatra", ch1_fantasy:"Fantasía: ganar sin hacer daño",
+    ch1_body:"El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>, no una desventaja. Sus opciones de diálogo son las más efectivas para lograr rendiciones — el sistema tiene que recompensarle por negociar, no castigarle por no atacar.",
+    ch1_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?",
+    ch2_role:"Programadora", ch2_fantasy:"Fantasía: leer a las personas como sistemas",
+    ch2_body:"El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong> — encontrar el patrón, explotar la lógica. Sus poderes telepáticos son la versión fantástica de esa necesidad de control sistémico. El riesgo ético de sus poderes es parte del atractivo.",
+    ch2_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?",
+    ch3_role:"Abogada", ch3_fantasy:"Fantasía: mantener el control bajo presión",
+    ch3_body:"El jugador que elige a Caroline quiere <strong>demostrar que puede mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — bajo presión genera electricidad, en calma controla el agua. Las decisiones sociales del jugador afectan directamente al combate.",
+    ch3_problem:"<strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?",
+    ch4_role:"Ingeniera", ch4_fantasy:"Fantasía: no tener límites que no hayas elegido tú",
+    ch4_body:"El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo y diseñó su propia silla transformable en mecha. Es el personaje más autosuficiente porque la fantasía que sostiene es que las limitaciones son elecciones, no imposiciones.",
+    ch4_problem:"<strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?",
+    ins2_label:"Lo que aprendí sobre diseño de personajes",
+    ins2_p:"Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía que quieres sostener, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?",
+    sec1_label:"Habilidades", sec1_title:"Árboles que crecen desde la fantasía",
+    sec1_p:"Cada poder evoluciona según cómo lo uses — pero las opciones disponibles siempre están <strong>filtradas por quién es el personaje</strong>. No puedes desarrollar habilidades que contradigan la promesa que ese personaje le hace al jugador.",
+    sec2_label:"Narrativa", sec2_title:"El personaje no puede ignorar al jugador",
+    sec2_p:"El reto técnico fue la <strong>disonancia narrativa</strong> — que una conversación nunca contradiga lo que el jugador acaba de hacer. Solución: nodos de unión que modifican el estado del personaje en lugar de ramificar infinitamente.",
+    rt1:"Diseño centrado en el jugador", rt2:"Sistemas · Narrativa", rt3:"Diseño de combate", rt4:"Árbol de habilidades", rt5:"Balance de personajes",
+    s4_eye:"Aprendizaje", s4_h:"Qué cambió en cómo diseño.",
+    learn_statement:"Cuando diseñas desde la fantasía del jugador hacia atrás, los sistemas y la narrativa no necesitan coordinarse — responden a la misma pregunta.",
+    learn_p1:"Antes de Divine Angels diseñaba sistemas y luego buscaba cómo hacer que la narrativa los acompañara. Este proyecto me obligó a invertir el proceso: <strong>primero la experiencia que quiero que tenga el jugador, luego qué sistema la sostiene</strong>. La diferencia no es cosmética — cambia qué preguntas haces en cada decisión de diseño.",
+    learn_p2:"La otra lección fue de producción: un inversor convencido no es suficiente si el equipo no aguanta. <strong>La gestión de personas es tan crítica como el diseño</strong> — y en este caso, fue lo que determinó el resultado final del proyecto.",
+    ob_title:"Qué pasó con el proyecto",
+    ob_desc:"Divine Angels llegó a manos de un <strong>inversor real que quedó convencido del concepto</strong>. Su condición era una vertical slice completa — arte, mecánicas y jugabilidad integradas en un nivel funcional. El proyecto no llegó hasta ahí: parte del equipo externo se dispersó antes de poder completarla.",
+    btn_back:"Volver al Portfolio",
+    footer_text:"Hecho con mucho café y amor por los juegos."
   },
   en: {
-    back:"Portfolio", nav_s1:"Concept", nav_s2:"Design", nav_s3:"Characters", nav_s4:"Outcome", nav_s5:"Learnings",
-    tag:"Narrative RPG · Prototype · PC",
-    hero_sub:"4 superwomen. A city in danger. A combat system that reimagines the classic RPG.",
-    m1l:"Role", m1v:"Game Designer", m2l:"Platform", m3l:"Team", m3v:"12 people",
-    m4l:"Type", m4v:"Prototype · Investors", m5l:"Areas", m5v:"Systems · Narrative · UI/UX",
-    c1:"ways to resolve", c2:"characters", c3:"people",
-    s1:"The Concept", h1:"Persona meets Divinity. Daily life, tactical combat and choices that matter.",
-    p1:"Divine Angels is an <strong>action RPG about 4 superwomen</strong> balancing work, family and social life with protecting the city from an unexplained surge of super criminals. The day splits into <strong>morning, afternoon and evening</strong> — you decide how each character spends their time, and those decisions <strong>directly impact combat and narrative</strong>.",
-    p2:"The game blends <strong>turn-based tactical combat in 3D environments</strong> with social interactions, crime investigation, resource economy and branching narrative decisions. Everything is connected: <strong>what you do outside combat changes what you can do inside it</strong>.",
-    s2:"Design Process", h2:"From generic RPG to a design with identity.",
-    p3a:"The first combat prototype worked mechanically but <strong>didn't offer anything new</strong>. The question we asked wasn't <em>how do we improve combat?</em> but <strong>why should this game exist?</strong>",
-    p3b:"The first iteration with <strong>environmental interactions</strong> solved the tactical depth problem — wetting the floor, placing objects, combining elemental skills generated genuine decisions. But it still felt like Divinity with different characters. We had <strong>added complexity without adding identity</strong>.",
-    p3c:"The turning point came when we went back to the characters. Alice, Beatrice, Caroline and Diane are ordinary women with jobs, families and social lives. <strong>A hero like that doesn't beat people up — she helps, negotiates, captures.</strong> Violence should be the last resort, not the default.",
-    p3d:"That redefined combat: <strong>dialogue went from a passive option to an active mechanic</strong> with real tactical consequences. Calming an enemy makes them smarter but easier to surrender. Angering them makes them predictable but dangerous. Non-violent surrender is always possible — and <strong>that possibility changes how you think through every encounter</strong>.",
-    p3e:"The result wasn't just a more interesting system. It was <strong>a system coherent with who the characters are</strong>.",
-    ev1_cap:"V1 — Generic RPG. No differentiating proposition.",
-    ev2_cap:"V2 — Environmental combat. Tactical depth, no identity.",
-    ev3_cap:"V3 — Dialogue as mechanic. Coherent with the characters.",
-    ic1:"Turn-based tactical combat with skill interaction system.",
-    ic2:"Skills react with the environment and with each other.",
-    h3:"Personality as a combat mechanic.",
-    p4:"Instead of talking being a passive option, we designed a system where <strong>every enemy has a personality</strong> that responds differently based on how you talk to them.",
-    talk1l:"Calm", talk1p:"Easier to get <strong>surrender</strong>. But the enemy becomes tactically smarter and will look for escape routes.",
-    talk2l:"Anger", talk2p:"More <strong>aggressive but reckless</strong>. Hard to surrender but easy to trap and manipulate.",
-    talk3l:"Surrender", talk3p:"The <strong>ideal outcome</strong>. Requires reading the right personality. Winning without violence is always an option.",
-    ic_skills:"Evolutionary skill system — each power grows based on how you use it in combat.",
-    s4:"The Characters", h4:"Four lives, four powers, unique skill trees.",
-    p6:"Each character has their own <strong>professional life</strong> and powers that evolve based on how you use them in combat, generating <strong>different skill trees in each run</strong>.",
-    ic_chars:"Caroline, Alice, Diane and Beatrice in their base of operations.",
-    ch1a:"The Spearhead · Pediatrician",
-    ch1d:"<strong>Monstrous strength in service of care.</strong> Alice is the most physically powerful and the one who avoids using that power the most. Her vocation for healing makes her dialogue options the most effective at achieving surrenders — convincing someone to stop comes naturally to someone who dedicates her life to caring for others.",
-    ch1t:"Design tension: destructive power · protective instinct",
-    ch2a:"The Psychic · Programmer",
-    ch2d:"<strong>Understands systems better than people.</strong> Telepathy is her attempt to read others with the same precision she reads code. She's the most effective at bending will in combat, but also the one most at risk of crossing an ethical line — the game reflects this in the narrative consequences of her powers.",
-    ch2t:"Design tension: systemic precision · human complexity",
-    ch3a:"The Elemental · Lawyer",
-    ch3d:"<strong>She trains herself not to be driven by emotions. Her powers don't give her that option.</strong> The environment reacts to her internal state — under pressure she generates more electricity, in calm more control over water and ice. She's the character where the player's social decisions have the most direct impact on combat.",
-    ch3t:"Design tension: rational control · elemental emotion",
-    ch4a:"The Technomancer · Engineer",
-    ch4d:"<strong>She could have healed herself. She chose not to.</strong> As a technopath she designed her own wheelchair — with every comfort and the ability to transform into a mech. She didn't redefine her limitation, she simply never saw it as one. She's the character with the greatest range of action and the most self-sufficient on the team.",
-    ch4t:"Design tension: physical limitation · unlimited technological power",
-    rt1:"Systems Design", rt2:"Narrative Design", rt3:"Combat Design", rt4:"Skill Tree", rt5:"Character Balance",
-    ic3:"Social interaction system — daily decisions directly impact combat and narrative.",
-    char_learn_label:"Design learning",
-    char_learn_p:"The technical challenge was solved with <strong>junction conversations</strong> — nodes that modify state variables instead of branching infinitely. But the real challenge was <strong>narrative dissonance</strong>: ensuring a conversation never contradicted the player's previous actions or broke character. <strong>The character has to reflect the player, not ignore them.</strong>",
-    s5:"Outcome", h5:"A convinced investor. A team that didn't hold together.",
-    ob_title:"The idea was good — keeping the team together was the problem.",
-    ob_desc:"Divine Angels reached <strong>a real investor who was convinced by the concept</strong>. Their condition to move forward was a <strong>complete vertical slice</strong> — art, mechanics and gameplay integrated into a functional level. A reasonable next step. The project didn't get there: some team members moved on to other projects, others simply disappeared. <strong>Team management is as critical as design</strong> — a lesson that changed how I think about every project since.",
-    btn_dossier:"↓ Download Project Dossier",
-    s6:"Learnings", h6:"What kind of designer this project made me.",
-    learn_p:"Divine Angels taught me to think of characters not as fixed entities, but as <strong>systems that adapt to the player</strong>. When a character can be inhabited by hundreds of people with different play styles, the design has to anticipate that variability without losing character coherence. That balance — between <strong>solid identity and adaptability</strong> — is the design problem I'm most interested in solving.",
-    lp1_label:"Systems design", lp1_title:"Characters as adaptive systems",
-    lp2_label:"Narrative design", lp2_title:"Coherence between action and dialogue",
-    lp3_label:"Production", lp3_title:"The team is as critical as the design",
-    btn_back:"Back to Portfolio", footer_text:"Made with lots of coffee and love for games."
+    back:"Portfolio",
+    nav_s1:"The question", nav_s2:"The answer", nav_s3:"The player", nav_s4:"Learning",
+    nav_pitch:"Pitch deck ↗",
+    tag:"Narrative RPG · Game Design · PC",
+    hero_q:"How can a player immerse themselves in the fantasy of being a superheroine with a normal life if combat is nothing but violence?",
+    m1l:"Role", m1v:"Game Designer", m2l:"Platform", m3l:"Project", m3v:"Solo with external support",
+    m4l:"Type", m4v:"Prototype · Investors",
+    c1:"combat iterations", c2:"distinct player fantasies", c3:"investor convinced",
+    s1_eye:"The question", s1_h:"Where the entire design starts.",
+    s1_lead:"Divine Angels is an RPG about 4 women — a pediatrician, a programmer, a lawyer, an engineer — balancing daily life with protecting the city. The premise promised something different. The first combat prototype didn't deliver it.",
+    s1_p:"The combat was mechanically sound. But when a player embodies a pediatrician who prefers to negotiate rather than fight, <strong>forcing them to resolve everything through violence breaks the fantasy the game is promising</strong>. That's not a balance problem — it's a coherence problem between what the game says you are and what it lets you do.",
+    q_label:"The question that changed everything",
+    q_text:"\"How can a player immerse themselves in the fantasy of being a superheroine with a normal life if combat is nothing but violence?\"",
+    s1_p2:"This question reframed the entire project. I was no longer trying to improve combat — I was looking for a system that <strong>maintained the game's promise inside combat</strong>, not just outside it.",
+    s2_eye:"The answer", s2_h:"Three attempts. Only the third answered the right question.",
+    s2_p:"The first two iterations improved combat. Neither resolved the dissonance between the game's fantasy and what the player could actually do within it.",
+    v1_tab:"Generic RPG", v2_tab:"Environmental combat", v3_tab:"Dialogue as mechanic",
+    v1_verdict:"Doesn't answer the question",
+    v1_title:"Sound, but dishonest with the player.",
+    v1_body:"The system worked mechanically. The problem was it told the player \"you're a compassionate heroine\" then gave them only violent options to resolve encounters. <strong>The mechanic contradicted the promise.</strong>",
+    v1_player:"<strong>Player experience:</strong> \"They told me I was a pediatrician who doesn't want to fight. Why can I only attack?\"",
+    v2_verdict:"Deeper, same problem",
+    v2_title:"I added tactical depth. The dissonance was still there.",
+    v2_body:"Environmental interactions — elements, traps, terrain — generated genuine tactical decisions. But they were still decisions about <strong>how to deal damage</strong>, not how to resolve the conflict the way the character would.",
+    v2_player:"<strong>Player experience:</strong> \"Now I can electrocute the puddle. Still doesn't feel like what my character would do.\"",
+    v3_verdict:"Answers the question",
+    v3_title:"Dialogue as an active mechanic with real tactical consequences.",
+    v3_body:"I turned dialogue into a combat tool as valid as attacking. <strong>Calm, anger, or achieve surrender without violence</strong> — always possible, with distinct tactical consequences. Violence became one option among many, not the only one.",
+    v3_player:"<strong>Player experience:</strong> \"I can win without throwing a single punch. Now I actually feel like the heroine the game promised me.\"",
+    step_prev:"← Previous", step_next:"Next →",
+    ic1:"Dialogue appears as a combat action, not a separate menu.",
+    ic2:"Environmental skills remain — they complement dialogue, not replace it.",
+    ins1_label:"Why it worked",
+    ins1_p:"When you design starting from the player's fantasy and work backwards, <strong>systems and narrative align on their own</strong>. You don't have to force coherence — it emerges from the same question guiding every design decision.",
+    s3_eye:"The player", s3_h:"Four characters. Four distinct fantasies the system has to sustain.",
+    s3_p:"Each character isn't just a skill set — it's a <strong>promise to the player</strong> about what kind of experience they'll have. The design challenge was building one system that sustained all four promises simultaneously without any feeling forced.",
+    ic_chars:"The four protagonists — each representing a different player fantasy.",
+    ch1_role:"Pediatrician", ch1_fantasy:"Fantasy: win without causing harm",
+    ch1_body:"The player who picks Alice wants to prove that <strong>compassion is a viable strategy</strong>, not a disadvantage. Her dialogue options are the most effective at achieving surrenders — the system has to reward negotiating, not punish not attacking.",
+    ch1_problem:"<strong>Design problem:</strong> How do I make choosing not to fight feel as satisfying as winning a hard combat?",
+    ch2_role:"Programmer", ch2_fantasy:"Fantasy: read people like systems",
+    ch2_body:"The player who picks Beatrice wants to <strong>understand the enemy before acting</strong> — find the pattern, exploit the logic. Her telepathic powers are the fantastical version of that need for systemic control. The ethical risk of her powers is part of the appeal.",
+    ch2_problem:"<strong>Design problem:</strong> How do I make manipulating an enemy carry a real narrative cost, not just a mechanical one?",
+    ch3_role:"Lawyer", ch3_fantasy:"Fantasy: stay in control under pressure",
+    ch3_body:"The player who picks Caroline wants to <strong>prove they can stay calm when everything gets complicated</strong>. Her powers react to her emotional state — under pressure she generates electricity, in calm she controls water. The player's social decisions directly affect combat.",
+    ch3_problem:"<strong>Design problem:</strong> How do I reflect the character's emotional state in the mechanic without making it feel punishing?",
+    ch4_role:"Engineer", ch4_fantasy:"Fantasy: no limits you didn't choose yourself",
+    ch4_body:"The player who picks Diane wants <strong>total autonomy</strong>. She could have healed herself — she chose not to, and designed her own wheelchair that transforms into a mech. She's the most self-sufficient character because the fantasy she embodies is that limitations are choices, not impositions.",
+    ch4_problem:"<strong>Design problem:</strong> How do I design the most versatile character without eclipsing the other three?",
+    ins2_label:"What I learned about character design",
+    ins2_p:"A character isn't a set of stats — it's a <strong>promise of experience to the player</strong>. When you're clear on the fantasy you want to sustain, decisions about skills, dialogue and progression stop being arbitrary. You have a criterion: does this reinforce or contradict the promise?",
+    sec1_label:"Skills", sec1_title:"Trees that grow from the fantasy",
+    sec1_p:"Each power evolves based on how you use it — but available options are always <strong>filtered by who the character is</strong>. You can't develop skills that contradict the promise that character makes to the player.",
+    sec2_label:"Narrative", sec2_title:"The character can't ignore the player",
+    sec2_p:"The technical challenge was <strong>narrative dissonance</strong> — ensuring a conversation never contradicts what the player just did. Solution: junction nodes that modify character state instead of branching infinitely.",
+    rt1:"Player-centred design", rt2:"Systems · Narrative", rt3:"Combat design", rt4:"Skill tree", rt5:"Character balance",
+    s4_eye:"Learning", s4_h:"What changed in how I design.",
+    learn_statement:"When you design from the player's fantasy backwards, systems and narrative don't need to be coordinated — they answer the same question.",
+    learn_p1:"Before Divine Angels I designed systems and then figured out how to make the narrative follow. This project forced me to invert the process: <strong>first the experience I want the player to have, then the system that sustains it</strong>. The difference isn't cosmetic — it changes what questions you ask at every design decision.",
+    learn_p2:"The other lesson was about production: a convinced investor isn't enough if the team doesn't hold together. <strong>People management is as critical as design</strong> — and in this case, it determined the final outcome of the project.",
+    ob_title:"What happened with the project",
+    ob_desc:"Divine Angels reached <strong>a real investor who was convinced by the concept</strong>. Their condition was a complete vertical slice — art, mechanics and gameplay integrated into a functional level. The project didn't get there: part of the external team dispersed before it could be completed.",
+    btn_back:"Back to Portfolio",
+    footer_text:"Made with lots of coffee and love for games."
   }
 };
 
@@ -821,41 +703,44 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(b => b.classList.toggle('active', b.textContent === lang.toUpperCase()));
   document.querySelectorAll('[data-i18n]').forEach(el => {
     const val = i18n[lang][el.dataset.i18n];
-    if (val === undefined) return;
-    el.innerHTML = val;
+    if (val !== undefined) el.innerHTML = val;
   });
   document.documentElement.lang = lang;
 }
 
-let currentSlide = 0;
-const totalSlides = 4;
-function goToSlide(index) {
-  currentSlide = index;
-  document.querySelectorAll('.char-slide').forEach((s, i) => s.classList.toggle('active', i === index));
-  document.querySelectorAll('.char-nav-btn').forEach((b, i) => {
-    b.classList.toggle('active', i === index);
-    b.setAttribute('aria-selected', i === index);
-  });
+let stepCur = 0;
+const stepTotal = 3;
+function goStep(i) {
+  if (i < 0 || i >= stepTotal) return;
+  document.getElementById('step-' + stepCur).classList.remove('active');
+  document.getElementById('sdot-' + stepCur).classList.remove('active');
+  document.querySelectorAll('.stepper-tab')[stepCur].classList.remove('active');
+  stepCur = i;
+  document.getElementById('step-' + stepCur).classList.add('active');
+  document.getElementById('sdot-' + stepCur).classList.add('active');
+  document.querySelectorAll('.stepper-tab')[stepCur].classList.add('active');
+  document.getElementById('step-prev').disabled = stepCur === 0;
+  document.getElementById('step-next').disabled = stepCur === stepTotal - 1;
 }
-function stepSlide(dir) { goToSlide((currentSlide + dir + totalSlides) % totalSlides); }
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60); });
 }, { threshold: 0.07 });
 document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-const sections = ['concept','process','characters','outcome','learnings'];
 const navLinks = document.querySelectorAll('.nav-section-link');
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       navLinks.forEach(l => l.classList.remove('active'));
-      const active = document.querySelector(`.nav-section-link[href="#${entry.target.id}"]`);
-      if (active) active.classList.add('active');
+      const a = document.querySelector(`.nav-section-link[href="#${entry.target.id}"]`);
+      if (a) a.classList.add('active');
     }
   });
 }, { threshold: 0.3 });
-sections.forEach(id => { const el = document.getElementById(id); if (el) sectionObserver.observe(el); });
+['pregunta','respuesta','jugador','aprendizaje'].forEach(id => {
+  const el = document.getElementById(id); if (el) sectionObserver.observe(el);
+});
 </script>
 </body>
 </html>
