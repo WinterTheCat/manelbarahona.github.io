@@ -277,6 +277,28 @@
   }
   .learning-statement em { color: var(--accent); font-style: normal; }
 
+  /* CHAR CAROUSEL */
+  .char-carousel { margin: 1.2rem 0; }
+  .char-slides { position: relative; }
+  .char-slide { display: none; grid-template-columns: 200px 1fr; gap: 1.5rem; align-items: start; }
+  .char-slide.active { display: grid; }
+  .char-slide-img { border-radius: 8px; overflow: hidden; border: 1px solid var(--border); }
+  .char-slide-img img { width: 100%; display: block; aspect-ratio: 1/1; object-fit: cover; object-position: center top; background: var(--surface); }
+  .char-slide-name { font-family: var(--font-display); font-weight: 800; font-size: 1.4rem; letter-spacing: -0.02em; color: var(--ink); line-height: 1; margin-bottom: 0.15rem; }
+  .char-slide-alias { font-family: var(--font-display); font-size: 0.62rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem; display: block; }
+  .char-slide-desc { font-size: 0.88rem; color: var(--ink2); line-height: 1.75; margin-bottom: 0.7rem; font-weight: 300; }
+  .char-slide-desc strong { color: var(--ink); font-weight: 600; }
+  .char-slide-tension { font-family: var(--font-display); font-size: 0.72rem; font-weight: 600; color: var(--ink3); padding-top: 0.7rem; border-top: 1px solid var(--border); line-height: 1.5; }
+  .char-slide-tension strong { color: var(--ink2); font-weight: 600; }
+  .char-nav { display: flex; gap: 0.5rem; margin-top: 1.2rem; border-top: 1px solid var(--border); padding-top: 1rem; justify-content: center; }
+  .char-nav-btn { font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; color: var(--ink3); background: transparent; border: 1px solid var(--border); border-radius: 100px; padding: 0.3rem 0.9rem; cursor: pointer; transition: all 0.2s; }
+  .char-nav-btn:hover { color: var(--ink); border-color: var(--border2); }
+  .char-nav-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .char-arrow { position: absolute; top: 40%; transform: translateY(-50%); background: var(--surface); border: 1px solid var(--border); color: var(--ink2); font-size: 1rem; width: 2rem; height: 2rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; z-index: 2; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+  .char-arrow:hover { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .char-arrow-prev { left: -1.2rem; }
+  .char-arrow-next { right: -1.2rem; }
+
   /* SECONDARY GRID */
   .secondary-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; margin: 1.2rem 0; }
   .secondary-item { background: var(--surface); padding: 1.1rem 1.2rem; }
@@ -312,6 +334,9 @@
     .meta-sep { display: none; }
     .meta-stats { gap: 1.2rem; }
     .stepper-panel.active { grid-template-columns: 1fr; }
+    .char-slide.active { grid-template-columns: 1fr; }
+    .char-arrow-prev { left: 0; }
+    .char-arrow-next { right: 0; }
     .nav-pitch { display: none; }
   }
 </style>
@@ -453,81 +478,73 @@
   <div class="section reveal" id="jugador">
     <div class="section-eyebrow" data-i18n="s3_eye">El jugador</div>
     <h2 data-i18n="s3_h">Cuatro personajes. Cuatro fantasías distintas que el sistema tiene que sostener.</h2>
-    <p data-i18n="s3_p">Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué tipo de experiencia va a vivir. El reto de diseño fue crear un sistema único que sostuviera las cuatro promesas simultáneamente sin que ninguna se sintiera forzada.</p>
+    <p data-i18n="s3_p">Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué experiencia va a vivir. El reto fue diseñar un sistema único que sostuviera las cuatro sin que ninguna se sintiera forzada.</p>
 
-    <div class="img-full reveal">
-      <img src="da-characters.jpg" alt="Las cuatro protagonistas de Divine Angels">
-      <div class="img-caption" data-i18n="ic_chars">Las cuatro protagonistas — cada una representa una fantasía de jugador diferente.</div>
-    </div>
+    <!-- CARRUSEL DE FANTASÍAS -->
+    <div class="char-carousel reveal" role="region" aria-label="Personajes y problemas de diseño">
+      <div class="char-slides">
+        <button class="char-arrow char-arrow-prev" onclick="stepSlide(-1)" aria-label="Anterior">←</button>
+        <button class="char-arrow char-arrow-next" onclick="stepSlide(1)" aria-label="Siguiente">→</button>
 
-    <div class="player-grid reveal">
-      <div class="player-card">
-        <div class="player-card-header">
-          <div class="player-card-name">Alice</div>
-          <div class="player-card-role" data-i18n="ch1_role">Pediatra</div>
+        <div class="char-slide active">
+          <div class="char-slide-img"><img src="da-char-alice.jpg" alt="Alice"></div>
+          <div class="char-slide-info">
+            <div class="char-slide-name">Alice</div>
+            <div class="char-slide-alias" style="color:#ff6b9d;" data-i18n="ch1_role">Pediatra</div>
+            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(255,107,157,0.12);color:#ff6b9d;" data-i18n="ch1_fantasy">Fantasía: ganar sin hacer daño</div>
+            <p class="char-slide-desc" data-i18n="ch1_body">El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>. El sistema tiene que recompensarle por negociar, no castigarle por no atacar.</p>
+            <div class="char-slide-tension" data-i18n="ch1_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?</div>
+          </div>
         </div>
-        <div class="player-card-fantasy" style="background:rgba(255,107,157,0.12); color:#ff6b9d;" data-i18n="ch1_fantasy">Fantasía: ganar sin hacer daño</div>
-        <p class="player-card-body" data-i18n="ch1_body">El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>, no una desventaja. Sus opciones de diálogo son las más efectivas para lograr rendiciones — el sistema tiene que recompensarle por negociar, no castigarle por no atacar.</p>
-        <div class="player-card-problem" data-i18n="ch1_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?</div>
+
+        <div class="char-slide">
+          <div class="char-slide-img"><img src="da-char-beatrice.jpg" alt="Beatrice"></div>
+          <div class="char-slide-info">
+            <div class="char-slide-name">Beatrice</div>
+            <div class="char-slide-alias" style="color:#4ecdc4;" data-i18n="ch2_role">Programadora</div>
+            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(78,205,196,0.12);color:#4ecdc4;" data-i18n="ch2_fantasy">Fantasía: leer a las personas como sistemas</div>
+            <p class="char-slide-desc" data-i18n="ch2_body">El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong>. Sus poderes telepáticos son la versión fantástica de esa necesidad de control — con un riesgo ético que es parte del atractivo.</p>
+            <div class="char-slide-tension" data-i18n="ch2_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?</div>
+          </div>
+        </div>
+
+        <div class="char-slide">
+          <div class="char-slide-img"><img src="da-char-caroline.jpg" alt="Caroline"></div>
+          <div class="char-slide-info">
+            <div class="char-slide-name">Caroline</div>
+            <div class="char-slide-alias" style="color:#6ee7b7;" data-i18n="ch3_role">Abogada</div>
+            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(110,231,183,0.12);color:#6ee7b7;" data-i18n="ch3_fantasy">Fantasía: mantener el control bajo presión</div>
+            <p class="char-slide-desc" data-i18n="ch3_body">El jugador que elige a Caroline quiere <strong>mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — las decisiones sociales del jugador afectan directamente al combate.</p>
+            <div class="char-slide-tension" data-i18n="ch3_problem"><strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?</div>
+          </div>
+        </div>
+
+        <div class="char-slide">
+          <div class="char-slide-img"><img src="da-char-diane.jpg" alt="Diane"></div>
+          <div class="char-slide-info">
+            <div class="char-slide-name">Diane</div>
+            <div class="char-slide-alias" style="color:#f9c846;" data-i18n="ch4_role">Ingeniera</div>
+            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(249,200,70,0.12);color:#f9c846;" data-i18n="ch4_fantasy">Fantasía: no tener límites que no hayas elegido tú</div>
+            <p class="char-slide-desc" data-i18n="ch4_body">El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo. Es el personaje más autosuficiente porque su fantasía es que las limitaciones son elecciones, no imposiciones.</p>
+            <div class="char-slide-tension" data-i18n="ch4_problem"><strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?</div>
+          </div>
+        </div>
       </div>
 
-      <div class="player-card">
-        <div class="player-card-header">
-          <div class="player-card-name">Beatrice</div>
-          <div class="player-card-role" data-i18n="ch2_role">Programadora</div>
-        </div>
-        <div class="player-card-fantasy" style="background:rgba(78,205,196,0.12); color:#4ecdc4;" data-i18n="ch2_fantasy">Fantasía: leer a las personas como sistemas</div>
-        <p class="player-card-body" data-i18n="ch2_body">El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong> — encontrar el patrón, explotar la lógica. Sus poderes telepáticos son la versión fantástica de esa necesidad de control sistémico. El riesgo ético de sus poderes es parte del atractivo.</p>
-        <div class="player-card-problem" data-i18n="ch2_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?</div>
-      </div>
-
-      <div class="player-card">
-        <div class="player-card-header">
-          <div class="player-card-name">Caroline</div>
-          <div class="player-card-role" data-i18n="ch3_role">Abogada</div>
-        </div>
-        <div class="player-card-fantasy" style="background:rgba(110,231,183,0.12); color:#6ee7b7;" data-i18n="ch3_fantasy">Fantasía: mantener el control bajo presión</div>
-        <p class="player-card-body" data-i18n="ch3_body">El jugador que elige a Caroline quiere <strong>demostrar que puede mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — bajo presión genera electricidad, en calma controla el agua. Las decisiones sociales del jugador afectan directamente al combate.</p>
-        <div class="player-card-problem" data-i18n="ch3_problem"><strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?</div>
-      </div>
-
-      <div class="player-card">
-        <div class="player-card-header">
-          <div class="player-card-name">Diane</div>
-          <div class="player-card-role" data-i18n="ch4_role">Ingeniera</div>
-        </div>
-        <div class="player-card-fantasy" style="background:rgba(249,200,70,0.12); color:#f9c846;" data-i18n="ch4_fantasy">Fantasía: no tener límites que no hayas elegido tú</div>
-        <p class="player-card-body" data-i18n="ch4_body">El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo y diseñó su propia silla transformable en mecha. Es el personaje más autosuficiente porque la fantasía que sostiene es que las limitaciones son elecciones, no imposiciones.</p>
-        <div class="player-card-problem" data-i18n="ch4_problem"><strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?</div>
+      <div class="char-nav" role="tablist">
+        <button class="char-nav-btn active" onclick="goToSlide(0)" role="tab" aria-selected="true">Alice</button>
+        <button class="char-nav-btn" onclick="goToSlide(1)" role="tab" aria-selected="false">Beatrice</button>
+        <button class="char-nav-btn" onclick="goToSlide(2)" role="tab" aria-selected="false">Caroline</button>
+        <button class="char-nav-btn" onclick="goToSlide(3)" role="tab" aria-selected="false">Diane</button>
       </div>
     </div>
 
     <div class="insight reveal">
       <div class="insight-label" data-i18n="ins2_label">Lo que aprendí sobre diseño de personajes</div>
-      <p data-i18n="ins2_p">Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía que quieres sostener, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?</p>
+      <p data-i18n="ins2_p">Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?</p>
     </div>
 
-    <!-- SECUNDARIOS -->
-    <div class="secondary-grid reveal">
-      <div class="secondary-item">
-        <div class="secondary-label" data-i18n="sec1_label">Habilidades</div>
-        <div class="secondary-title" data-i18n="sec1_title">Árboles que crecen desde la fantasía</div>
-        <p data-i18n="sec1_p">Cada poder evoluciona según cómo lo uses — pero las opciones disponibles siempre están <strong>filtradas por quién es el personaje</strong>. No puedes desarrollar habilidades que contradigan la promesa que ese personaje le hace al jugador.</p>
-      </div>
-      <div class="secondary-item">
-        <div class="secondary-label" data-i18n="sec2_label">Narrativa</div>
-        <div class="secondary-title" data-i18n="sec2_title">El personaje no puede ignorar al jugador</div>
-        <p data-i18n="sec2_p">El reto técnico fue la <strong>disonancia narrativa</strong> — que una conversación nunca contradiga lo que el jugador acaba de hacer. Solución: nodos de unión que modifican el estado del personaje en lugar de ramificar infinitamente.</p>
-      </div>
-    </div>
-
-    <div class="role-tags reveal">
-      <span class="role-tag" data-i18n="rt1">Diseño centrado en el jugador</span>
-      <span class="role-tag" data-i18n="rt2">Sistemas · Narrativa</span>
-      <span class="role-tag" data-i18n="rt3">Diseño de combate</span>
-      <span class="role-tag" data-i18n="rt4">Árbol de habilidades</span>
-      <span class="role-tag" data-i18n="rt5">Balance de personajes</span>
-    </div>
+    <p data-i18n="sec_combined" style="font-size:0.9rem; color:var(--ink3); line-height:1.7; margin-top:0.5rem;">Los árboles de habilidades aplican el mismo filtro — ningún poder puede contradecir la promesa del personaje. Y en narrativa, el reto fue la <strong>disonancia</strong>: que ninguna conversación contradijera lo que el jugador acababa de hacer. Solución: nodos de estado en lugar de ramificación infinita.</p>
   </div>
 
   <!-- APRENDIZAJE -->
@@ -590,24 +607,20 @@ const i18n = {
     s3_p:"Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué tipo de experiencia va a vivir. El reto de diseño fue crear un sistema único que sostuviera las cuatro promesas simultáneamente sin que ninguna se sintiera forzada.",
     ic_chars:"Las cuatro protagonistas — cada una representa una fantasía de jugador diferente.",
     ch1_role:"Pediatra", ch1_fantasy:"Fantasía: ganar sin hacer daño",
-    ch1_body:"El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>, no una desventaja. Sus opciones de diálogo son las más efectivas para lograr rendiciones — el sistema tiene que recompensarle por negociar, no castigarle por no atacar.",
+    ch1_body:"El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>. El sistema tiene que recompensarle por negociar, no castigarle por no atacar.",
     ch1_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?",
     ch2_role:"Programadora", ch2_fantasy:"Fantasía: leer a las personas como sistemas",
-    ch2_body:"El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong> — encontrar el patrón, explotar la lógica. Sus poderes telepáticos son la versión fantástica de esa necesidad de control sistémico. El riesgo ético de sus poderes es parte del atractivo.",
+    ch2_body:"El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong>. Sus poderes telepáticos son la versión fantástica de esa necesidad de control — con un riesgo ético que es parte del atractivo.",
     ch2_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?",
     ch3_role:"Abogada", ch3_fantasy:"Fantasía: mantener el control bajo presión",
-    ch3_body:"El jugador que elige a Caroline quiere <strong>demostrar que puede mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — bajo presión genera electricidad, en calma controla el agua. Las decisiones sociales del jugador afectan directamente al combate.",
+    ch3_body:"El jugador que elige a Caroline quiere <strong>mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — las decisiones sociales del jugador afectan directamente al combate.",
     ch3_problem:"<strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?",
     ch4_role:"Ingeniera", ch4_fantasy:"Fantasía: no tener límites que no hayas elegido tú",
-    ch4_body:"El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo y diseñó su propia silla transformable en mecha. Es el personaje más autosuficiente porque la fantasía que sostiene es que las limitaciones son elecciones, no imposiciones.",
+    ch4_body:"El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo. Es el personaje más autosuficiente porque su fantasía es que las limitaciones son elecciones, no imposiciones.",
     ch4_problem:"<strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?",
     ins2_label:"Lo que aprendí sobre diseño de personajes",
-    ins2_p:"Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía que quieres sostener, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?",
-    sec1_label:"Habilidades", sec1_title:"Árboles que crecen desde la fantasía",
-    sec1_p:"Cada poder evoluciona según cómo lo uses — pero las opciones disponibles siempre están <strong>filtradas por quién es el personaje</strong>. No puedes desarrollar habilidades que contradigan la promesa que ese personaje le hace al jugador.",
-    sec2_label:"Narrativa", sec2_title:"El personaje no puede ignorar al jugador",
-    sec2_p:"El reto técnico fue la <strong>disonancia narrativa</strong> — que una conversación nunca contradiga lo que el jugador acaba de hacer. Solución: nodos de unión que modifican el estado del personaje en lugar de ramificar infinitamente.",
-    rt1:"Diseño centrado en el jugador", rt2:"Sistemas · Narrativa", rt3:"Diseño de combate", rt4:"Árbol de habilidades", rt5:"Balance de personajes",
+    ins2_p:"Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?",
+    sec_combined:"Los árboles de habilidades aplican el mismo filtro — ningún poder puede contradecir la promesa del personaje. Y en narrativa, el reto fue la <strong>disonancia</strong>: que ninguna conversación contradijera lo que el jugador acababa de hacer. Solución: nodos de estado en lugar de ramificación infinita.",
     s4_eye:"Aprendizaje", s4_h:"Qué cambió en cómo diseño.",
     learn_statement:"Cuando diseñas desde la fantasía del jugador hacia atrás, los sistemas y la narrativa no necesitan coordinarse — responden a la misma pregunta.",
     learn_p1:"Antes de Divine Angels diseñaba sistemas y luego buscaba cómo hacer que la narrativa los acompañara. Este proyecto me obligó a invertir el proceso: <strong>primero la experiencia que quiero que tenga el jugador, luego qué sistema la sostiene</strong>. La diferencia no es cosmética — cambia qué preguntas haces en cada decisión de diseño.",
@@ -650,24 +663,20 @@ const i18n = {
     s3_p:"Each character isn't just a skill set — it's a <strong>promise to the player</strong> about what kind of experience they'll have. The design challenge was building one system that sustained all four promises simultaneously without any feeling forced.",
     ic_chars:"The four protagonists — each representing a different player fantasy.",
     ch1_role:"Pediatrician", ch1_fantasy:"Fantasy: win without causing harm",
-    ch1_body:"The player who picks Alice wants to prove that <strong>compassion is a viable strategy</strong>, not a disadvantage. Her dialogue options are the most effective at achieving surrenders — the system has to reward negotiating, not punish not attacking.",
+    ch1_body:"The player who picks Alice wants to prove that <strong>compassion is a viable strategy</strong>. The system has to reward negotiating, not punish not attacking.",
     ch1_problem:"<strong>Design problem:</strong> How do I make choosing not to fight feel as satisfying as winning a hard combat?",
     ch2_role:"Programmer", ch2_fantasy:"Fantasy: read people like systems",
-    ch2_body:"The player who picks Beatrice wants to <strong>understand the enemy before acting</strong> — find the pattern, exploit the logic. Her telepathic powers are the fantastical version of that need for systemic control. The ethical risk of her powers is part of the appeal.",
+    ch2_body:"The player who picks Beatrice wants to <strong>understand the enemy before acting</strong>. Her telepathic powers are the fantastical version of that need for control — the ethical risk is part of the appeal.",
     ch2_problem:"<strong>Design problem:</strong> How do I make manipulating an enemy carry a real narrative cost, not just a mechanical one?",
     ch3_role:"Lawyer", ch3_fantasy:"Fantasy: stay in control under pressure",
-    ch3_body:"The player who picks Caroline wants to <strong>prove they can stay calm when everything gets complicated</strong>. Her powers react to her emotional state — under pressure she generates electricity, in calm she controls water. The player's social decisions directly affect combat.",
+    ch3_body:"The player who picks Caroline wants to <strong>stay calm when everything gets complicated</strong>. Her powers react to her emotional state — the player's social decisions directly affect combat.",
     ch3_problem:"<strong>Design problem:</strong> How do I reflect the character's emotional state in the mechanic without making it feel punishing?",
     ch4_role:"Engineer", ch4_fantasy:"Fantasy: no limits you didn't choose yourself",
-    ch4_body:"The player who picks Diane wants <strong>total autonomy</strong>. She could have healed herself — she chose not to, and designed her own wheelchair that transforms into a mech. She's the most self-sufficient character because the fantasy she embodies is that limitations are choices, not impositions.",
+    ch4_body:"The player who picks Diane wants <strong>total autonomy</strong>. She could have healed herself — she chose not to. She's the most self-sufficient character because her fantasy is that limitations are choices, not impositions.",
     ch4_problem:"<strong>Design problem:</strong> How do I design the most versatile character without eclipsing the other three?",
     ins2_label:"What I learned about character design",
-    ins2_p:"A character isn't a set of stats — it's a <strong>promise of experience to the player</strong>. When you're clear on the fantasy you want to sustain, decisions about skills, dialogue and progression stop being arbitrary. You have a criterion: does this reinforce or contradict the promise?",
-    sec1_label:"Skills", sec1_title:"Trees that grow from the fantasy",
-    sec1_p:"Each power evolves based on how you use it — but available options are always <strong>filtered by who the character is</strong>. You can't develop skills that contradict the promise that character makes to the player.",
-    sec2_label:"Narrative", sec2_title:"The character can't ignore the player",
-    sec2_p:"The technical challenge was <strong>narrative dissonance</strong> — ensuring a conversation never contradicts what the player just did. Solution: junction nodes that modify character state instead of branching infinitely.",
-    rt1:"Player-centred design", rt2:"Systems · Narrative", rt3:"Combat design", rt4:"Skill tree", rt5:"Character balance",
+    ins2_p:"A character isn't a set of stats — it's a <strong>promise of experience to the player</strong>. When you're clear on the fantasy, decisions about skills, dialogue and progression stop being arbitrary. You have a criterion: does this reinforce or contradict the promise?",
+    sec_combined:"Skill trees apply the same filter — no power can contradict the character's promise. And in narrative, the challenge was <strong>dissonance</strong>: ensuring no conversation contradicted what the player just did. Solution: state nodes instead of infinite branching.",
     s4_eye:"Learning", s4_h:"What changed in how I design.",
     learn_statement:"When you design from the player's fantasy backwards, systems and narrative don't need to be coordinated — they answer the same question.",
     learn_p1:"Before Divine Angels I designed systems and then figured out how to make the narrative follow. This project forced me to invert the process: <strong>first the experience I want the player to have, then the system that sustains it</strong>. The difference isn't cosmetic — it changes what questions you ask at every design decision.",
