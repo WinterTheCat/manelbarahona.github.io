@@ -143,7 +143,6 @@
   .question-block-label { font-family: var(--font-display); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.5rem; }
   .question-block-text { font-family: var(--font-display); font-size: clamp(1.05rem, 2vw, 1.3rem); font-weight: 700; color: var(--ink); line-height: 1.4; font-style: italic; }
 
-  /* STEPPER */
   .stepper { margin: 1.4rem 0; }
   .stepper-tabs { display: flex; border: 1px solid var(--border2); border-bottom: none; border-radius: 8px 8px 0 0; overflow: hidden; }
   .stepper-tab {
@@ -184,7 +183,6 @@
   .stepper-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); transition: background 0.2s; }
   .stepper-dot.active { background: var(--accent); }
 
-  /* SANITY BAR */
   .sanity-bar { margin: 1.4rem 0; background: var(--surface); border: 1px solid var(--border2); border-radius: 10px; overflow: hidden; }
   .sanity-bar-header { padding: 0.9rem 1.2rem; border-bottom: 1px solid var(--border); }
   .sanity-bar-label { font-family: var(--font-display); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.2rem; }
@@ -200,7 +198,6 @@
   .sl-20  .sanity-pct { color: #e07050; }
   .sl-0   .sanity-pct { color: #cc3333; }
 
-  /* ENEMY CARDS */
   .enemy-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
   .enemy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; transition: border-color 0.2s; }
   .enemy-card:hover { border-color: var(--border2); }
@@ -216,6 +213,7 @@
   .insight { margin: 1.5rem 0; padding: 1rem 1.2rem; border-left: 2px solid var(--accent); background: rgba(232,114,42,0.05); border-radius: 0 8px 8px 0; }
   .insight-label { font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent); margin-bottom: 0.4rem; }
   .insight p { margin: 0; font-size: 0.88rem; color: var(--ink2); }
+  .insight p + p { margin-top: 0.6rem; }
   .insight p strong { color: var(--ink); font-weight: 600; }
 
   .learning-statement { margin: 1.5rem 0; font-family: var(--font-display); font-size: clamp(1.1rem, 2.2vw, 1.4rem); font-weight: 700; color: var(--ink); line-height: 1.45; }
@@ -226,9 +224,6 @@
   .btn-back::before { content: "←"; }
 
   footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; font-family: var(--font-display); font-size: 0.72rem; color: var(--ink3); text-align: center; }
-
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 720px) {
     nav { padding: 0 1.2rem; gap: 1rem; }
@@ -291,27 +286,27 @@
 <div class="page-content">
 
   <!-- LA PREGUNTA -->
-  <div class="section reveal" id="pregunta">
+  <div class="section" id="pregunta">
     <div class="section-eyebrow" data-i18n="s1_eye">La pregunta</div>
     <h2 data-i18n="s1_h">El miedo no es un susto. Es algo que no puedes apagar.</h2>
-    <p class="lead" data-i18n="s1_lead">Goya's Head es un survival horror en tercera persona ambientado en la Quinta del Sordo, donde Francisco de Goya se encierra con su enfermedad, su sordera y su culpa. Las pinturas negras que cubrió en las paredes cobran vida — y el jugador tiene que sobrevivir dentro de su cabeza.</p>
+    <p class="lead" data-i18n="s1_lead">Goya's Head es un survival horror en tercera persona ambientado en la Quinta del Sordo, donde Francisco de Goya se encierra con su enfermedad, su sordera y su culpa. Las pinturas negras que cubrió en las paredes cobran vida, y el jugador tiene que sobrevivir dentro de su cabeza.</p>
     <p data-i18n="s1_p">El primer prototipo tenía los ingredientes correctos: oscuridad, enemigos, cámara cinematográfica. Pero el terror se evaporaba rápido. El problema era que <strong>el miedo funcionaba como un evento, no como un estado</strong>. Cuando no pasaba nada visible, el jugador no sentía nada.</p>
 
-    <div class="question-block reveal">
+    <div class="question-block">
       <div class="question-block-label" data-i18n="q_label">La pregunta que lo cambió todo</div>
       <div class="question-block-text" data-i18n="q_text">"¿Cómo diseñas miedo de verdad si los sustos duran un segundo pero la oscuridad dura toda la partida?"</div>
     </div>
 
-    <p data-i18n="s1_p2">El terror sostenido no viene de lo que ves — viene de <strong>no saber qué vas a ver</strong>. La respuesta fue convertir la luz, la cordura y la cámara en un único sistema que mantuviera esa presión en todo momento.</p>
+    <p data-i18n="s1_p2">El terror sostenido no viene de lo que ves. Viene de <strong>no saber qué vas a ver</strong>. La respuesta fue convertir la luz, la cordura y la cámara en un único sistema que mantuviera esa presión en todo momento.</p>
   </div>
 
   <!-- EL SISTEMA -->
-  <div class="section reveal" id="sistema">
+  <div class="section" id="sistema">
     <div class="section-eyebrow" data-i18n="s2_eye">El sistema</div>
     <h2 data-i18n="s2_h">Luz, cordura y cámara. Tres palancas, una sola tensión.</h2>
-    <p data-i18n="s2_p">El núcleo del diseño fue que <strong>cada decisión del jugador tiene consecuencias en los tres sistemas a la vez</strong>. Encender la luz sube la cordura pero te expone. Apagar la luz te esconde pero erosiona tu mente. Y la cámara — cinematográfica, con ángulos que no siempre favorecen al jugador — refleja ese estado en todo momento.</p>
+    <p data-i18n="s2_p">El núcleo del diseño fue que <strong>cada decisión del jugador tiene consecuencias en los tres sistemas a la vez</strong>. Encender la luz sube la cordura pero te expone. Apagar la luz te esconde pero erosiona tu mente. Y la cámara, cinematográfica con ángulos que no siempre favorecen al jugador, refleja ese estado en todo momento.</p>
 
-    <div class="stepper reveal">
+    <div class="stepper">
       <div class="stepper-tabs">
         <button class="stepper-tab active" onclick="goStep(0)"><span class="tab-num" data-i18n="t1_num">Luz</span><span data-i18n="t1_tab">Con lámpara encendida</span></button>
         <button class="stepper-tab" onclick="goStep(1)"><span class="tab-num" data-i18n="t2_num">Oscuridad</span><span data-i18n="t2_tab">Con lámpara apagada</span></button>
@@ -323,7 +318,7 @@
         <div>
           <span class="verdict verdict-mid" data-i18n="v1">Seguro, pero visible</span>
           <div class="stepper-title" data-i18n="t1_title">La luz recupera cordura. Y te convierte en un blanco.</div>
-          <p class="stepper-body" data-i18n="t1_body">Con la lámpara encendida, Goya ve más y la cordura se recupera lentamente. Pero <strong>la luz atrae a los enemigos</strong>. Los que se mueven por las paredes como pintura negra retroceden al enfocarlos — pero los que patrullan la casa te detectan antes. Necesitas aceite para mantenerla y cerillas para encenderla si se apaga.</p>
+          <p class="stepper-body" data-i18n="t1_body">Con la lámpara encendida, Goya ve más y la cordura se recupera lentamente. Pero <strong>la luz atrae a los enemigos</strong>. Los que se mueven por las paredes como pintura negra retroceden al enfocarlos, pero los que patrullan la casa te detectan antes. Necesitas aceite para mantenerla y cerillas para encenderla si se apaga.</p>
         </div>
       </div>
 
@@ -332,7 +327,7 @@
         <div>
           <span class="verdict verdict-bad" data-i18n="v2">Arriesgado, pero invisible</span>
           <div class="stepper-title" data-i18n="t2_title">Apagar la lámpara reduce tu presencia. Y erosiona tu mente.</div>
-          <p class="stepper-body" data-i18n="t2_body">A oscuras, los enemigos tienen mucha menos probabilidad de detectarte. <strong>Pero la cordura baja poco a poco</strong>. Y a menor cordura, el propio Goya empieza a delatarse — tiembla, respira fuerte, hace ruido sin querer. La oscuridad que te protege al principio se convierte en tu peor enemiga.</p>
+          <p class="stepper-body" data-i18n="t2_body">A oscuras, los enemigos tienen mucha menos probabilidad de detectarte. <strong>Pero la cordura baja poco a poco</strong>. Y a menor cordura, el propio Goya empieza a delatarse: tiembla, respira fuerte, hace ruido sin querer. La oscuridad que te protege al principio se convierte en tu peor enemiga.</p>
         </div>
       </div>
 
@@ -341,7 +336,7 @@
         <div>
           <span class="verdict verdict-good" data-i18n="v3">Recurso estratégico</span>
           <div class="stepper-title" data-i18n="t3_title">Las velas de la casa son una red de seguridad que puede sabotearte.</div>
-          <p class="stepper-body" data-i18n="t3_body">Las velas repartidas por la Quinta pueden encenderse para iluminar zonas sin gastar aceite. <strong>Pero el Cuadro Negro puede apagarlas</strong> si no estás cerca. Gestionar qué partes de la casa mantienes iluminadas forma parte de la supervivencia — una vela apagada en un pasillo que antes era seguro puede significar un camino cortado.</p>
+          <p class="stepper-body" data-i18n="t3_body">Las velas repartidas por la Quinta pueden encenderse para iluminar zonas sin gastar aceite. <strong>Pero el Cuadro Negro puede apagarlas</strong> si no estás cerca. Gestionar qué partes de la casa mantienes iluminadas forma parte de la supervivencia. Una vela apagada en un pasillo que antes era seguro puede significar un camino cortado.</p>
         </div>
       </div>
 
@@ -356,12 +351,12 @@
       </div>
     </div>
 
-    <p style="margin-top:1.4rem;" data-i18n="sanity_intro">La cordura no es solo una barra que baja — es el estado del mundo. A medida que Goya pierde la cabeza, <strong>la Quinta del Sordo cambia con él</strong>.</p>
+    <p style="margin-top:1.4rem;" data-i18n="sanity_intro">La cordura no es solo una barra que baja. Es el estado del mundo. A medida que Goya pierde la cabeza, <strong>la Quinta del Sordo cambia con él</strong>.</p>
 
-    <div class="sanity-bar reveal">
+    <div class="sanity-bar">
       <div class="sanity-bar-header">
         <div class="sanity-bar-label" data-i18n="san_label">Estados de cordura</div>
-        <div class="sanity-bar-title" data-i18n="san_title">Lo que Goya ve — y lo que el jugador deja de controlar</div>
+        <div class="sanity-bar-title" data-i18n="san_title">Lo que Goya ve, y lo que el jugador deja de controlar</div>
       </div>
       <div class="sanity-level sl-100">
         <div class="sanity-pct">100%</div>
@@ -381,30 +376,30 @@
       </div>
       <div class="sanity-level sl-0">
         <div class="sanity-pct">0%</div>
-        <div class="sanity-desc" data-i18n="san0">Solo si Saturno te atrapa. <strong>Carga el último checkpoint</strong> — siempre uno de los cuadros más alegres de Goya. Los únicos que no mienten.</div>
+        <div class="sanity-desc" data-i18n="san0">Solo si Saturno te atrapa. <strong>Carga el último checkpoint,</strong> siempre uno de los cuadros más alegres de Goya. Los únicos que no mienten.</div>
       </div>
     </div>
 
-    <div class="insight reveal">
+    <div class="insight">
       <div class="insight-label" data-i18n="ins_label">Por qué funcionó</div>
-      <p data-i18n="ins_p">Cuando los tres sistemas se interconectan, el jugador <strong>nunca puede relajarse del todo</strong> — aunque no esté pasando nada visible. Esa tensión de fondo es lo que genera el terror sostenido que buscábamos.</p>
+      <p data-i18n="ins_p">Cuando los tres sistemas se interconectan, el jugador <strong>nunca puede relajarse del todo,</strong> aunque no esté pasando nada visible. Esa tensión de fondo es lo que genera el terror sostenido que buscábamos.</p>
     </div>
   </div>
 
   <!-- LOS CUADROS -->
-  <div class="section reveal" id="cuadros">
+  <div class="section" id="cuadros">
     <div class="section-eyebrow" data-i18n="s3_eye">Los cuadros</div>
     <h2 data-i18n="s3_h">Los enemigos no son monstruos. Son pinturas que no deberían moverse.</h2>
-    <p data-i18n="s3_p">Cada enemigo está basado en una pintura negra real de Goya. El reto fue que <strong>el comportamiento del enemigo saliera de lo que la pintura ya te dice</strong> — que al verla colgada en la pared, ya supieras a qué te enfrentabas. Todos tienen además dos formas de ser superados: parcial, siguiendo adelante con el demonio dentro; o completa, enfrentándote a él de verdad.</p>
+    <p data-i18n="s3_p">Cada enemigo está basado en una pintura negra real de Goya. El reto fue que <strong>el comportamiento del enemigo saliera de lo que la pintura ya te dice,</strong> que al verla colgada en la pared ya supieras a qué te enfrentabas. Todos tienen dos formas de ser superados: parcial, siguiendo adelante con el demonio dentro; o completa, enfrentándote a él de verdad.</p>
 
-    <div class="enemy-grid reveal">
+    <div class="enemy-grid">
       <div class="enemy-card">
         <img class="enemy-card-img" src="gh-saturno.jpg" alt="Saturno">
         <div class="enemy-card-body-wrap">
           <div class="enemy-card-name">Saturno</div>
           <div class="enemy-card-origin" data-i18n="e1_origin">Saturno devorando a su hijo · 1819–23</div>
-          <p class="enemy-card-body" data-i18n="e1_body">El único que <strong>persigue al jugador por toda la casa</strong>, sin zona fija. Aparece al 20% de cordura y no para. Es el miedo más profundo de Goya: el tiempo que lo devora todo.</p>
-          <div class="enemy-card-design" data-i18n="e1_design"><strong>Ref:</strong> Mr. X (RE2) — presencia constante, no un susto puntual.</div>
+          <p class="enemy-card-body" data-i18n="e1_body">El único que <strong>persigue al jugador por toda la casa,</strong> sin zona fija. Aparece al 20% de cordura y no para. Es el miedo más profundo de Goya: el tiempo que lo devora todo.</p>
+          <div class="enemy-card-design" data-i18n="e1_design"><strong>Ref:</strong> Mr. X (RE2). Presencia constante, no un susto puntual.</div>
         </div>
       </div>
       <div class="enemy-card">
@@ -412,7 +407,7 @@
         <div class="enemy-card-body-wrap">
           <div class="enemy-card-name">La Cabra</div>
           <div class="enemy-card-origin" data-i18n="e2_origin">El aquelarre · 1797–98</div>
-          <p class="enemy-card-body" data-i18n="e2_body">Sale del cuadro y persigue al jugador. <strong>Puede embestir</strong> — y eso es a la vez su debilidad. Si la baiteas para que embista el cuadro del que salió, queda atrapada. Luego hay que firmar el cuadro para sellarla.</p>
+          <p class="enemy-card-body" data-i18n="e2_body">Sale del cuadro y persigue al jugador. <strong>Puede embestir,</strong> y eso es a la vez su debilidad. Si la baiteas para que embista el cuadro del que salió, queda atrapada. Luego hay que firmar el cuadro para sellarla.</p>
           <div class="enemy-card-design" data-i18n="e2_design"><strong>Decisión:</strong> Dos finales posibles. La derrota completa requiere usar su agresividad contra ella.</div>
         </div>
       </div>
@@ -421,7 +416,7 @@
         <div class="enemy-card-body-wrap">
           <div class="enemy-card-name">El Perro</div>
           <div class="enemy-card-origin" data-i18n="e3_origin">Perro semihundido · 1819–23</div>
-          <p class="enemy-card-body" data-i18n="e3_body">Arena infinita. El jugador descubre que <strong>el perro no te perseguía para hacerte daño</strong> — también está atrapado, hundiéndose, intentando aferrarse a ti para escapar.</p>
+          <p class="enemy-card-body" data-i18n="e3_body">Arena infinita. El jugador descubre que <strong>el perro no te perseguía para hacerte daño.</strong> También está atrapado, hundiéndose, intentando aferrarse a ti para escapar.</p>
           <div class="enemy-card-design" data-i18n="e3_design"><strong>Decisión:</strong> Sin enemigo que derrotar. Solo la elección de si intentas salvarlo o no.</div>
         </div>
       </div>
@@ -429,16 +424,17 @@
   </div>
 
   <!-- APRENDIZAJE -->
-  <div class="section reveal" id="aprendizaje">
+  <div class="section" id="aprendizaje">
     <div class="section-eyebrow" data-i18n="s4_eye">Aprendizaje</div>
     <h2 data-i18n="s4_h">Qué cambió en cómo entiendo el terror como diseñador.</h2>
 
-    <div class="learning-statement reveal" data-i18n="learn_st">
-      El miedo sostenido no se diseña con sustos. Se diseña con <em>sistemas que nunca dejan de presionar</em> — aunque no pase nada visible.
+    <div class="learning-statement" data-i18n="learn_st">
+      El miedo sostenido no se diseña con sustos. Se diseña con <em>sistemas que nunca dejan de presionar.</em>
     </div>
 
-    <p data-i18n="learn_p">Goya's Head me enseñó que el terror tiene dos capas: el susto inmediato, que es fácil de hacer, y la <strong>tensión de fondo que no desaparece</strong>, que es lo difícil. La clave fue que luz, cordura y cámara respondieran a la misma pregunta.</p>
-    <p data-i18n="learn_p2">Como Lead, las decisiones de arte, diseño y estilo del juego fueron mías — desde la paleta visual y la estética inspirada en las pinturas negras hasta cómo se comporta cada enemigo en relación con su cuadro de origen. <strong>La visión era mía, y el equipo la ejecutó.</strong></p>
+    <p data-i18n="learn_p">Goya's Head me enseñó que el terror tiene dos capas: el susto inmediato, que es fácil de hacer, y la <strong>tensión de fondo que no desaparece,</strong> que es lo difícil. La clave fue que luz, cordura y cámara respondieran a la misma pregunta en lugar de ser tres sistemas paralelos que el jugador gestiona por separado.</p>
+
+    <p data-i18n="learn_p2">Como Lead, aprendí que <strong>una visión clara es lo que permite que un equipo tome decisiones autónomas sin perder la coherencia.</strong> Cuando el "por qué" del diseño está bien definido, el equipo no necesita que le digas qué hacer en cada momento. Sabe qué está bien porque entiende qué estamos intentando conseguir.</p>
   </div>
 
   <div style="padding-top:1rem;">
@@ -461,49 +457,49 @@ const i18n = {
     m1l:"Rol", m1v:"Lead Game Designer", m2l:"Motor", m3l:"Proyecto", m3v:"Universitario · Equipo", m4l:"Referencias",
     c1:"sistemas interconectados", c2:"estados de cordura", c3:"enemigos basados en cuadros reales",
     s1_eye:"La pregunta", s1_h:"El miedo no es un susto. Es algo que no puedes apagar.",
-    s1_lead:"Goya's Head es un survival horror en tercera persona ambientado en la Quinta del Sordo, donde Francisco de Goya se encierra con su enfermedad, su sordera y su culpa. Las pinturas negras que cubrió en las paredes cobran vida — y el jugador tiene que sobrevivir dentro de su cabeza.",
+    s1_lead:"Goya's Head es un survival horror en tercera persona ambientado en la Quinta del Sordo, donde Francisco de Goya se encierra con su enfermedad, su sordera y su culpa. Las pinturas negras que cubrió en las paredes cobran vida, y el jugador tiene que sobrevivir dentro de su cabeza.",
     s1_p:"El primer prototipo tenía los ingredientes correctos: oscuridad, enemigos, cámara cinematográfica. Pero el terror se evaporaba rápido. El problema era que <strong>el miedo funcionaba como un evento, no como un estado</strong>. Cuando no pasaba nada visible, el jugador no sentía nada.",
     q_label:"La pregunta que lo cambió todo",
     q_text:"\"¿Cómo diseñas miedo de verdad si los sustos duran un segundo pero la oscuridad dura toda la partida?\"",
-    s1_p2:"El terror sostenido no viene de lo que ves — viene de <strong>no saber qué vas a ver</strong>. La respuesta fue convertir la luz, la cordura y la cámara en un único sistema que mantuviera esa presión en todo momento.",
+    s1_p2:"El terror sostenido no viene de lo que ves. Viene de <strong>no saber qué vas a ver</strong>. La respuesta fue convertir la luz, la cordura y la cámara en un único sistema que mantuviera esa presión en todo momento.",
     s2_eye:"El sistema", s2_h:"Luz, cordura y cámara. Tres palancas, una sola tensión.",
-    s2_p:"El núcleo del diseño fue que <strong>cada decisión del jugador tiene consecuencias en los tres sistemas a la vez</strong>. Encender la luz sube la cordura pero te expone. Apagar la luz te esconde pero erosiona tu mente. Y la cámara — cinematográfica, con ángulos que no siempre favorecen al jugador — refleja ese estado en todo momento.",
+    s2_p:"El núcleo del diseño fue que <strong>cada decisión del jugador tiene consecuencias en los tres sistemas a la vez</strong>. Encender la luz sube la cordura pero te expone. Apagar la luz te esconde pero erosiona tu mente. Y la cámara, cinematográfica con ángulos que no siempre favorecen al jugador, refleja ese estado en todo momento.",
     t1_num:"Luz", t1_tab:"Con lámpara encendida",
     t2_num:"Oscuridad", t2_tab:"Con lámpara apagada",
     t3_num:"Velas", t3_tab:"Iluminación ambiental",
     v1:"Seguro, pero visible", v2:"Arriesgado, pero invisible", v3:"Recurso estratégico",
     t1_title:"La luz recupera cordura. Y te convierte en un blanco.",
-    t1_body:"Con la lámpara encendida, Goya ve más y la cordura se recupera lentamente. Pero <strong>la luz atrae a los enemigos</strong>. Los que se mueven por las paredes como pintura negra retroceden al enfocarlos — pero los que patrullan la casa te detectan antes. Necesitas aceite para mantenerla y cerillas para encenderla si se apaga.",
+    t1_body:"Con la lámpara encendida, Goya ve más y la cordura se recupera lentamente. Pero <strong>la luz atrae a los enemigos</strong>. Los que se mueven por las paredes como pintura negra retroceden al enfocarlos, pero los que patrullan la casa te detectan antes. Necesitas aceite para mantenerla y cerillas para encenderla si se apaga.",
     t2_title:"Apagar la lámpara reduce tu presencia. Y erosiona tu mente.",
-    t2_body:"A oscuras, los enemigos tienen mucha menos probabilidad de detectarte. <strong>Pero la cordura baja poco a poco</strong>. Y a menor cordura, el propio Goya empieza a delatarse — tiembla, respira fuerte, hace ruido sin querer. La oscuridad que te protege al principio se convierte en tu peor enemiga.",
+    t2_body:"A oscuras, los enemigos tienen mucha menos probabilidad de detectarte. <strong>Pero la cordura baja poco a poco</strong>. Y a menor cordura, el propio Goya empieza a delatarse: tiembla, respira fuerte, hace ruido sin querer. La oscuridad que te protege al principio se convierte en tu peor enemiga.",
     t3_title:"Las velas de la casa son una red de seguridad que puede sabotearte.",
-    t3_body:"Las velas repartidas por la Quinta pueden encenderse para iluminar zonas sin gastar aceite. <strong>Pero el Cuadro Negro puede apagarlas</strong> si no estás cerca. Gestionar qué partes de la casa mantienes iluminadas forma parte de la supervivencia — una vela apagada en un pasillo que antes era seguro puede significar un camino cortado.",
+    t3_body:"Las velas repartidas por la Quinta pueden encenderse para iluminar zonas sin gastar aceite. <strong>Pero el Cuadro Negro puede apagarlas</strong> si no estás cerca. Gestionar qué partes de la casa mantienes iluminadas forma parte de la supervivencia. Una vela apagada en un pasillo que antes era seguro puede significar un camino cortado.",
     step_prev:"← Anterior", step_next:"Siguiente →",
-    sanity_intro:"La cordura no es solo una barra que baja — es el estado del mundo. A medida que Goya pierde la cabeza, <strong>la Quinta del Sordo cambia con él</strong>.",
+    sanity_intro:"La cordura no es solo una barra que baja. Es el estado del mundo. A medida que Goya pierde la cabeza, <strong>la Quinta del Sordo cambia con él</strong>.",
     san_label:"Estados de cordura",
-    san_title:"Lo que Goya ve — y lo que el jugador deja de controlar",
+    san_title:"Lo que Goya ve, y lo que el jugador deja de controlar",
     san100:"<strong>Sin enemigos visibles.</strong> La casa parece una casa.",
     san60:"La arquitectura se distorsiona. <strong>Algunos cuadros cobran vida.</strong> La iluminación se vuelve más tenue sin que el jugador haya hecho nada.",
     san40:"Segunda oleada de enemigos. <strong>Goya empieza a escuchar a Saturno.</strong> Todavía no está, pero ya suena.",
     san20:"<strong>Saturno aparece.</strong> Goya tiembla en idle, gira la cabeza, jadea al moverse. Los enemigos saben dónde estás.",
-    san0:"Solo si Saturno te atrapa. <strong>Carga el último checkpoint</strong> — siempre uno de los cuadros más alegres de Goya. Los únicos que no mienten.",
+    san0:"Solo si Saturno te atrapa. <strong>Carga el último checkpoint,</strong> siempre uno de los cuadros más alegres de Goya. Los únicos que no mienten.",
     ins_label:"Por qué funcionó",
-    ins_p:"Cuando los tres sistemas se interconectan, el jugador <strong>nunca puede relajarse del todo</strong> — aunque no esté pasando nada visible. Esa tensión de fondo es lo que genera el terror sostenido que buscábamos.",
+    ins_p:"Cuando los tres sistemas se interconectan, el jugador <strong>nunca puede relajarse del todo,</strong> aunque no esté pasando nada visible. Esa tensión de fondo es lo que genera el terror sostenido que buscábamos.",
     s3_eye:"Los cuadros", s3_h:"Los enemigos no son monstruos. Son pinturas que no deberían moverse.",
-    s3_p:"Cada enemigo está basado en una pintura negra real de Goya. El reto fue que <strong>el comportamiento del enemigo saliera de lo que la pintura ya te dice</strong> — que al verla colgada en la pared, ya supieras a qué te enfrentabas. Todos tienen además dos formas de ser superados: parcial, siguiendo adelante con el demonio dentro; o completa, enfrentándote a él de verdad.",
+    s3_p:"Cada enemigo está basado en una pintura negra real de Goya. El reto fue que <strong>el comportamiento del enemigo saliera de lo que la pintura ya te dice,</strong> que al verla colgada en la pared ya supieras a qué te enfrentabas. Todos tienen dos formas de ser superados: parcial, siguiendo adelante con el demonio dentro; o completa, enfrentándote a él de verdad.",
     e1_origin:"Saturno devorando a su hijo · 1819–23",
-    e1_body:"El único que <strong>persigue al jugador por toda la casa</strong>, sin zona fija. Aparece al 20% de cordura y no para. Es el miedo más profundo de Goya: el tiempo que lo devora todo.",
-    e1_design:"<strong>Ref:</strong> Mr. X (RE2) — presencia constante, no un susto puntual.",
+    e1_body:"El único que <strong>persigue al jugador por toda la casa,</strong> sin zona fija. Aparece al 20% de cordura y no para. Es el miedo más profundo de Goya: el tiempo que lo devora todo.",
+    e1_design:"<strong>Ref:</strong> Mr. X (RE2). Presencia constante, no un susto puntual.",
     e2_origin:"El aquelarre · 1797–98",
-    e2_body:"Sale del cuadro y persigue al jugador. <strong>Puede embestir</strong> — y eso es a la vez su debilidad. Si la baiteas para que embista el cuadro del que salió, queda atrapada. Luego hay que firmar el cuadro para sellarla.",
+    e2_body:"Sale del cuadro y persigue al jugador. <strong>Puede embestir,</strong> y eso es a la vez su debilidad. Si la baiteas para que embista el cuadro del que salió, queda atrapada. Luego hay que firmar el cuadro para sellarla.",
     e2_design:"<strong>Decisión:</strong> Dos finales posibles. La derrota completa requiere usar su agresividad contra ella.",
     e3_origin:"Perro semihundido · 1819–23",
-    e3_body:"Arena infinita. El jugador descubre que <strong>el perro no te perseguía para hacerte daño</strong> — también está atrapado, hundiéndose, intentando aferrarse a ti para escapar.",
+    e3_body:"Arena infinita. El jugador descubre que <strong>el perro no te perseguía para hacerte daño.</strong> También está atrapado, hundiéndose, intentando aferrarse a ti para escapar.",
     e3_design:"<strong>Decisión:</strong> Sin enemigo que derrotar. Solo la elección de si intentas salvarlo o no.",
     s4_eye:"Aprendizaje", s4_h:"Qué cambió en cómo entiendo el terror como diseñador.",
-    learn_st:"El miedo sostenido no se diseña con sustos. Se diseña con sistemas que nunca dejan de presionar — aunque no pase nada visible.",
-    learn_p:"Goya's Head me enseñó que el terror tiene dos capas: el susto inmediato, que es fácil de hacer, y la <strong>tensión de fondo que no desaparece</strong>, que es lo difícil. La clave fue que luz, cordura y cámara respondieran a la misma pregunta.",
-    learn_p2:"Como Lead, las decisiones de arte, diseño y estilo del juego fueron mías — desde la paleta visual y la estética inspirada en las pinturas negras hasta cómo se comporta cada enemigo en relación con su cuadro de origen. <strong>La visión era mía, y el equipo la ejecutó.</strong>",
+    learn_st:"El miedo sostenido no se diseña con sustos. Se diseña con sistemas que nunca dejan de presionar.",
+    learn_p:"Goya's Head me enseñó que el terror tiene dos capas: el susto inmediato, que es fácil de hacer, y la <strong>tensión de fondo que no desaparece,</strong> que es lo difícil. La clave fue que luz, cordura y cámara respondieran a la misma pregunta en lugar de ser tres sistemas paralelos que el jugador gestiona por separado.",
+    learn_p2:"Como Lead, aprendí que <strong>una visión clara es lo que permite que un equipo tome decisiones autónomas sin perder la coherencia.</strong> Cuando el \"por qué\" del diseño está bien definido, el equipo no necesita que le digas qué hacer en cada momento. Sabe qué está bien porque entiende qué estamos intentando conseguir.",
     btn_back:"Volver al Portfolio",
     footer_text:"Hecho con mucho café y amor por los juegos."
   },
@@ -515,49 +511,49 @@ const i18n = {
     m1l:"Role", m1v:"Lead Game Designer", m2l:"Engine", m3l:"Project", m3v:"University · Team", m4l:"References",
     c1:"interconnected systems", c2:"sanity states", c3:"enemies based on real paintings",
     s1_eye:"The question", s1_h:"Fear isn't a scare. It's something you can't turn off.",
-    s1_lead:"Goya's Head is a third-person survival horror set in the Quinta del Sordo, where Francisco de Goya locks himself away with his illness, his deafness, and his guilt. The black paintings he covered his walls with come to life — and the player has to survive inside his mind.",
+    s1_lead:"Goya's Head is a third-person survival horror set in the Quinta del Sordo, where Francisco de Goya locks himself away with his illness, his deafness, and his guilt. The black paintings he covered his walls with come to life, and the player has to survive inside his mind.",
     s1_p:"The first prototype had the right ingredients: darkness, enemies, cinematic camera. But the terror evaporated fast. The problem was that <strong>fear worked as an event, not a state</strong>. When nothing visible was happening, the player felt nothing.",
     q_label:"The question that changed everything",
     q_text:"\"How do you design real fear when jump scares last one second but the darkness lasts the whole game?\"",
-    s1_p2:"Sustained terror doesn't come from what you see — it comes from <strong>not knowing what you're about to see</strong>. The answer was to turn light, sanity, and camera into one system that maintained that pressure at all times.",
+    s1_p2:"Sustained terror doesn't come from what you see. It comes from <strong>not knowing what you're about to see</strong>. The answer was to turn light, sanity, and camera into one system that maintained that pressure at all times.",
     s2_eye:"The system", s2_h:"Light, sanity, and camera. Three levers, one sustained tension.",
-    s2_p:"The core design principle was that <strong>every player decision has consequences across all three systems at once</strong>. Turning on the light raises sanity but exposes you. Turning it off hides you but erodes your mind. And the camera — cinematic, with angles that don't always help the player — reflects that state at all times.",
+    s2_p:"The core design principle was that <strong>every player decision has consequences across all three systems at once</strong>. Turning on the light raises sanity but exposes you. Turning it off hides you but erodes your mind. And the camera, cinematic with angles that don't always help the player, reflects that state at all times.",
     t1_num:"Light", t1_tab:"Lamp on",
     t2_num:"Dark", t2_tab:"Lamp off",
     t3_num:"Candles", t3_tab:"Ambient lighting",
     v1:"Safe, but visible", v2:"Risky, but invisible", v3:"Strategic resource",
     t1_title:"Light restores sanity. And makes you a target.",
-    t1_body:"With the lamp on, Goya sees further and sanity slowly recovers. But <strong>light attracts enemies</strong>. The ones that move through walls as black paint retreat when you shine it on them — but the ones patrolling the house detect you faster. You need oil to keep it burning and matches to relight it.",
+    t1_body:"With the lamp on, Goya sees further and sanity slowly recovers. But <strong>light attracts enemies</strong>. The ones that move through walls as black paint retreat when you shine it on them, but the ones patrolling the house detect you faster. You need oil to keep it burning and matches to relight it.",
     t2_title:"Turning off the lamp reduces your presence. And erodes your mind.",
-    t2_body:"In the dark, enemies are far less likely to detect you. <strong>But sanity drops slowly</strong>. And as it does, Goya starts giving himself away — trembling, breathing hard, making noise without meaning to. The darkness that protects you early becomes your worst enemy.",
+    t2_body:"In the dark, enemies are far less likely to detect you. <strong>But sanity drops slowly</strong>. And as it does, Goya starts giving himself away: trembling, breathing hard, making noise without meaning to. The darkness that protects you early becomes your worst enemy.",
     t3_title:"The house's candles are a safety net that can be turned against you.",
-    t3_body:"Candles around the Quinta can be lit to illuminate areas without spending oil. <strong>But the Black Painting can snuff them out</strong> if you're not nearby. Managing which parts of the house you keep lit is part of survival — a candle out in a formerly safe corridor can mean a path cut off.",
+    t3_body:"Candles around the Quinta can be lit to illuminate areas without spending oil. <strong>But the Black Painting can snuff them out</strong> if you're not nearby. Managing which parts of the house you keep lit is part of survival. A candle out in a formerly safe corridor can mean a path cut off.",
     step_prev:"← Previous", step_next:"Next →",
-    sanity_intro:"Sanity isn't just a bar that goes down — it's the state of the world. As Goya loses his mind, <strong>the Quinta del Sordo changes with him</strong>.",
+    sanity_intro:"Sanity isn't just a bar that goes down. It's the state of the world. As Goya loses his mind, <strong>the Quinta del Sordo changes with him</strong>.",
     san_label:"Sanity states",
-    san_title:"What Goya sees — and what the player loses control of",
+    san_title:"What Goya sees, and what the player loses control of",
     san100:"<strong>No visible enemies.</strong> The house seems like a house.",
     san60:"Architecture distorts. <strong>Some paintings come alive.</strong> Lighting dims without the player doing anything.",
     san40:"Second wave of enemies. <strong>Goya starts hearing Saturn.</strong> Not here yet, but already audible.",
     san20:"<strong>Saturn appears.</strong> Goya trembles at idle, turns his head, gasps when moving. Enemies know where you are.",
-    san0:"Only if Saturn catches you. <strong>Loads the last checkpoint</strong> — always one of Goya's brightest paintings. The only ones that don't lie.",
+    san0:"Only if Saturn catches you. <strong>Loads the last checkpoint,</strong> always one of Goya's brightest paintings. The only ones that don't lie.",
     ins_label:"Why it worked",
-    ins_p:"When all three systems interconnect, the player <strong>can never fully relax</strong> — even when nothing visible is happening. That background tension is what generates the sustained terror we were after.",
+    ins_p:"When all three systems interconnect, the player <strong>can never fully relax,</strong> even when nothing visible is happening. That background tension is what generates the sustained terror we were after.",
     s3_eye:"The paintings", s3_h:"The enemies aren't monsters. They're paintings that shouldn't be moving.",
-    s3_p:"Every enemy is based on a real Goya black painting. The challenge was making <strong>each enemy's behavior emerge from what the painting already tells you</strong> — so that seeing it on the wall already told you what you were up against. They also all have two ways to overcome them: partial, moving forward with the demon inside; or complete, by truly confronting it.",
+    s3_p:"Every enemy is based on a real Goya black painting. The challenge was making <strong>each enemy's behavior emerge from what the painting already tells you,</strong> so that seeing it on the wall already told you what you were up against. They all have two ways to overcome them: partial, moving forward with the demon inside; or complete, by truly confronting it.",
     e1_origin:"Saturn Devouring His Son · 1819–23",
-    e1_body:"The only one that <strong>pursues the player through the entire house</strong>, no fixed zone. Appears at 20% sanity and doesn't stop. It is Goya's deepest fear: time that devours everything.",
-    e1_design:"<strong>Ref:</strong> Mr. X (RE2) — constant presence, not an isolated scare.",
+    e1_body:"The only one that <strong>pursues the player through the entire house,</strong> no fixed zone. Appears at 20% sanity and doesn't stop. It is Goya's deepest fear: time that devours everything.",
+    e1_design:"<strong>Ref:</strong> Mr. X (RE2). Constant presence, not an isolated scare.",
     e2_origin:"Witches' Sabbath · 1797–98",
-    e2_body:"Emerges from the painting and chases the player. <strong>It can charge</strong> — which is also its weakness. Bait it into charging the painting it came from and it's trapped again. Then sign the painting to seal it.",
+    e2_body:"Emerges from the painting and chases the player. <strong>It can charge,</strong> which is also its weakness. Bait it into charging the painting it came from and it's trapped again. Then sign the painting to seal it.",
     e2_design:"<strong>Decision:</strong> Two possible outcomes. Full defeat requires using its own aggression against it.",
     e3_origin:"Dog Semi-Submerged · 1819–23",
-    e3_body:"Infinite sand. The player discovers that <strong>the dog wasn't chasing you to hurt you</strong> — it's also trapped, sinking, trying to grab onto you to escape.",
+    e3_body:"Infinite sand. The player discovers that <strong>the dog wasn't chasing you to hurt you.</strong> It's also trapped, sinking, trying to grab onto you to escape.",
     e3_design:"<strong>Decision:</strong> No enemy to defeat. Just the choice of whether you try to save it.",
     s4_eye:"Learning", s4_h:"What changed in how I understand horror as a designer.",
-    learn_st:"Sustained fear isn't designed with scares. It's designed with systems that never stop pressing — even when nothing visible is happening.",
-    learn_p:"Goya's Head taught me that horror has two layers: the immediate scare, which is easy to make, and the <strong>background tension that never goes away</strong>, which is the hard part. The key was having light, sanity, and camera all answer the same question.",
-    learn_p2:"As Lead, the art, design and style decisions were mine — from the visual palette and the aesthetic inspired by the black paintings to how each enemy behaves in relation to its source painting. <strong>The vision was mine, and the team executed it.</strong>",
+    learn_st:"Sustained fear isn't designed with scares. It's designed with systems that never stop pressing.",
+    learn_p:"Goya's Head taught me that horror has two layers: the immediate scare, which is easy to make, and the <strong>background tension that never goes away,</strong> which is the hard part. The key was having light, sanity, and camera all answer the same question rather than being three parallel systems the player manages separately.",
+    learn_p2:"As Lead, I learned that <strong>a clear vision is what allows a team to make autonomous decisions without losing coherence.</strong> When the \"why\" of the design is well defined, the team doesn't need to be told what to do at every moment. They know what's right because they understand what we're trying to achieve.",
     btn_back:"Back to Portfolio",
     footer_text:"Made with lots of coffee and love for games."
   }
@@ -588,11 +584,6 @@ function goStep(i) {
   document.getElementById('step-prev').disabled = stepCur === 0;
   document.getElementById('step-next').disabled = stepCur === stepTotal - 1;
 }
-
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60); });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 const navLinks = document.querySelectorAll('.nav-section-link');
 const sectionObserver = new IntersectionObserver(entries => {
