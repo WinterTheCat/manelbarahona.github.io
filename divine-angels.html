@@ -109,7 +109,6 @@
     font-weight: 800; line-height: 0.9; letter-spacing: -0.03em;
     color: var(--ink); margin-bottom: 1.2rem;
   }
-  /* LA PREGUNTA en el hero */
   .hero-question {
     font-family: var(--font-display); font-size: clamp(1rem, 2vw, 1.25rem);
     font-weight: 600; color: var(--ink2); line-height: 1.5;
@@ -222,7 +221,7 @@
   .stepper-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border2); transition: background 0.2s; }
   .stepper-dot.active { background: var(--accent); }
 
-  /* PLAYER EXPERIENCE CARDS — personajes desde el jugador */
+  /* PLAYER EXPERIENCE CARDS */
   .player-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1.2rem 0; }
   .player-card {
     background: var(--surface); border: 1px solid var(--border);
@@ -324,13 +323,12 @@
 
   footer { border-top: 1px solid var(--border); padding: 1.5rem 2.5rem; font-family: var(--font-display); font-size: 0.72rem; color: var(--ink3); text-align: center; }
 
-  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
+
 
   @media (max-width: 720px) {
     nav { padding: 0 1.2rem; gap: 1rem; }
     .hero-content, .page-content, .meta-strip-inner { padding-left: 1.2rem; padding-right: 1.2rem; }
-    .img-grid, .talk-grid, .player-grid, .secondary-grid { grid-template-columns: 1fr; }
+    .img-grid, .talk-grid, .player-grid, .secondary-grid, .insight-pair { grid-template-columns: 1fr; }
     .meta-sep { display: none; }
     .meta-stats { gap: 1.2rem; }
     .stepper-panel.active { grid-template-columns: 1fr; }
@@ -348,7 +346,6 @@
   <div class="nav-sections">
     <a href="#pregunta" class="nav-section-link" data-i18n="nav_s1">La pregunta</a>
     <a href="#respuesta" class="nav-section-link" data-i18n="nav_s2">La respuesta</a>
-    <a href="#jugador" class="nav-section-link" data-i18n="nav_s3">El jugador</a>
     <a href="#aprendizaje" class="nav-section-link" data-i18n="nav_s4">Aprendizaje</a>
   </div>
   <div class="nav-right">
@@ -368,7 +365,7 @@
   <div class="hero-content">
     <div class="hero-eyebrow" data-i18n="tag">RPG Narrativo · Game Design · PC</div>
     <h1 class="hero-title">Divine<br>Angels</h1>
-    <p class="hero-question" data-i18n="hero_q">¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal <em>si cuando combate todo es violencia?</em></p>
+    <p class="hero-question" data-i18n="hero_q">¿Cómo hacer que el jugador viva la fantasía de compaginar ser una superheroína con su vida diaria, si solo puede resolver sus problemas <em>abrazando la violencia?</em></p>
   </div>
 </div>
 
@@ -380,11 +377,11 @@
     <div class="meta-sep"></div>
     <div class="meta-item"><div class="meta-label" data-i18n="m3l">Proyecto</div><div class="meta-value" data-i18n="m3v">Propio con apoyo externo</div></div>
     <div class="meta-sep"></div>
-    <div class="meta-item"><div class="meta-label" data-i18n="m4l">Tipo</div><div class="meta-value" data-i18n="m4v">Prototipo · Inversores</div></div>
+    <div class="meta-item"><div class="meta-label" data-i18n="m4l">Tipo</div><div class="meta-value" data-i18n="m4v">Prototipo Universitario</div></div>
     <div class="meta-stats">
-      <div class="meta-stat"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c1">iteraciones de combate</span></div>
-      <div class="meta-stat"><span class="meta-stat-num">4</span><span class="meta-stat-label" data-i18n="c2">fantasías de jugador distintas</span></div>
-      <div class="meta-stat"><span class="meta-stat-num">1</span><span class="meta-stat-label" data-i18n="c3">inversor convencido</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c1">formas de jugar</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">4</span><span class="meta-stat-label" data-i18n="c2">personajes diferenciados</span></div>
+      <div class="meta-stat"><span class="meta-stat-num">3</span><span class="meta-stat-label" data-i18n="c3">sistemas unidos</span></div>
     </div>
   </div>
 </div>
@@ -392,27 +389,28 @@
 <div class="page-content">
 
   <!-- LA PREGUNTA -->
-  <div class="section reveal" id="pregunta">
+  <div class="section" id="pregunta">
     <div class="section-eyebrow" data-i18n="s1_eye">La pregunta</div>
     <h2 data-i18n="s1_h">De dónde parte todo el diseño.</h2>
-    <p class="lead" data-i18n="s1_lead">Divine Angels es un RPG sobre 4 mujeres — una pediatra, una programadora, una abogada, una ingeniera — que compaginan su vida cotidiana con proteger la ciudad. La premisa prometía algo distinto. El primer prototipo de combate no lo cumplía.</p>
-    <p data-i18n="s1_p">El combate era correcto mecánicamente. Pero cuando un jugador encarna a una pediatra que prefiere negociar antes que pelear, <strong>obligarle a resolver todo a golpes rompe la fantasía que el juego le está prometiendo</strong>. Eso no es un problema de balance — es un problema de coherencia entre lo que el juego dice que eres y lo que te deja hacer.</p>
+    <p class="lead" data-i18n="s1_lead">Divine Angels es un RPG sobre 4 mujeres que compaginan su vida cotidiana con <strong>proteger la ciudad</strong>, mientras ocultan sus superpoderes al mundo. Pero la <strong>resolución de conflictos</strong> se sentía inconexa con esta idea.</p>
+    <p data-i18n="s1_p">El combate era adecuado. Un RPG clásico de acción por turnos. Pero cuando un jugador encarna a una persona que hasta hace unos momentos estaba cuidando a su hijo, <strong>hacerle resolver todo a golpes rompe el personaje y la fantasía del jugador</strong>. Eso no es un problema de balance, es un problema de <strong>disonancia entre lo que el juego dice que eres y lo que te deja hacer</strong>.</p>
+    <p data-i18n="s1_intro">Entonces, me pregunté:</p>
 
-    <div class="question-block reveal">
+    <div class="question-block">
       <div class="question-block-label" data-i18n="q_label">La pregunta que lo cambió todo</div>
       <div class="question-block-text" data-i18n="q_text">"¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal si cuando combate todo es violencia?"</div>
     </div>
 
-    <p data-i18n="s1_p2">Esta pregunta reencuadró todo el proyecto. Ya no buscaba mejorar el combate — buscaba un sistema que <strong>mantuviera la promesa del juego dentro del combate</strong>, no solo fuera de él.</p>
+    <p data-i18n="s1_p2">Esta pregunta reencuadró todo el proyecto. Ya no buscaba mejorar el combate, buscaba un sistema que <strong>mantuviera la promesa del juego dentro del combate</strong>, no solo fuera de él.</p>
   </div>
 
   <!-- LA RESPUESTA -->
-  <div class="section reveal" id="respuesta">
+  <div class="section" id="respuesta">
     <div class="section-eyebrow" data-i18n="s2_eye">La respuesta</div>
     <h2 data-i18n="s2_h">Tres intentos. Solo el tercero respondía a la pregunta correcta.</h2>
-    <p data-i18n="s2_p">Las dos primeras iteraciones mejoraron el combate. Ninguna resolvió la disonancia entre la fantasía del juego y lo que el jugador podía hacer dentro de él.</p>
+    <p data-i18n="s2_p">Las dos primeras iteraciones mejoraron el combate. Ninguna resolvió la <strong>disonancia</strong> entre la fantasía del juego y lo que el jugador podía hacer dentro de él.</p>
 
-    <div class="stepper reveal">
+    <div class="stepper">
       <div class="stepper-tabs">
         <button class="stepper-tab active" onclick="goStep(0)"><span class="tab-num">V1</span><span data-i18n="v1_tab">RPG genérico</span></button>
         <button class="stepper-tab" onclick="goStep(1)"><span class="tab-num">V2</span><span data-i18n="v2_tab">Combate ambiental</span></button>
@@ -420,29 +418,29 @@
       </div>
 
       <div class="stepper-panel active" id="step-0">
-        <div class="stepper-panel-img"><img src="da-v1.jpg" alt="V1 — RPG genérico por turnos"></div>
+        <div class="stepper-panel-img"><img src="da-v1.jpg" alt="V1. RPG genérico por turnos"></div>
         <div>
           <span class="verdict verdict-bad" data-i18n="v1_verdict">No responde la pregunta</span>
           <div class="stepper-title" data-i18n="v1_title">Correcto, pero deshonesto con el jugador.</div>
-          <p class="stepper-body" data-i18n="v1_body">El sistema funcionaba mecánicamente. El problema era que le decía al jugador "eres una heroína compasiva" y luego le daba solo opciones violentas para resolver los encuentros. <strong>La mecánica contradecía la promesa.</strong></p>
+          <p class="stepper-body" data-i18n="v1_body">El sistema funcionaba mecánicamente. El problema era que le decía al jugador "eres una heroína compasiva" y luego le daba <strong>solo opciones violentas</strong> para resolver los encuentros. <strong>La mecánica contradecía la promesa.</strong></p>
         </div>
       </div>
 
       <div class="stepper-panel" id="step-1">
-        <div class="stepper-panel-img"><img src="da-v2.jpg" alt="V2 — Combate ambiental con interacciones elementales"></div>
+        <div class="stepper-panel-img"><img src="da-v2.jpg" alt="V2. Combate ambiental con interacciones elementales"></div>
         <div>
           <span class="verdict verdict-mid" data-i18n="v2_verdict">Más profundo, mismo problema</span>
           <div class="stepper-title" data-i18n="v2_title">Añadí complejidad táctica. La disonancia seguía ahí.</div>
-          <p class="stepper-body" data-i18n="v2_body">Las interacciones ambientales — elementos, trampas, terreno — generaban decisiones tácticas genuinas. Pero seguían siendo decisiones sobre <strong>cómo hacer daño</strong>, no sobre cómo resolver el conflicto de la forma en que el personaje lo haría.</p>
+          <p class="stepper-body" data-i18n="v2_body">Las interacciones ambientales (elementos, trampas, terreno) generaban <strong>decisiones tácticas genuinas</strong>. Pero seguían siendo decisiones sobre <strong>cómo hacer daño</strong>, no sobre cómo resolver el conflicto de la forma en que el personaje lo haría.</p>
         </div>
       </div>
 
       <div class="stepper-panel" id="step-2">
-        <div class="stepper-panel-img"><img src="da-v3.jpg" alt="V3 — Diálogo integrado como mecánica activa de combate"></div>
+        <div class="stepper-panel-img"><img src="da-v3.jpg" alt="V3. Diálogo integrado como mecánica activa de combate"></div>
         <div>
           <span class="verdict verdict-good" data-i18n="v3_verdict">Responde la pregunta</span>
           <div class="stepper-title" data-i18n="v3_title">El diálogo como mecánica activa con consecuencias tácticas reales.</div>
-          <p class="stepper-body" data-i18n="v3_body">Convertí el diálogo en una herramienta de combate tan válida como atacar. <strong>Calmar, enfurecer, o lograr la rendición sin violencia</strong> — siempre posible, con consecuencias tácticas distintas. La violencia pasó a ser una opción más, no la única.</p>
+          <p class="stepper-body" data-i18n="v3_body">Convertí el diálogo en una herramienta de combate tan válida como atacar. <strong>Calmar, enfurecer, o lograr la rendición sin violencia</strong>, siempre posible, con consecuencias tácticas distintas. La violencia pasó a ser <strong>una opción más, no la única</strong>.</p>
         </div>
       </div>
 
@@ -457,106 +455,43 @@
       </div>
     </div>
 
-    <div class="img-grid reveal">
+
+    <div class="img-grid">
       <div class="img-full">
         <img src="da-combat.jpg" alt="Combate táctico con opciones de diálogo integradas">
         <div class="img-caption" data-i18n="ic1">El diálogo aparece como acción de combate, no como menú aparte.</div>
       </div>
       <div class="img-full">
         <img src="da-interaction.jpg" alt="Interacciones ambientales y de habilidades">
-        <div class="img-caption" data-i18n="ic2">Las habilidades ambientales se mantienen — complementan, no sustituyen, al diálogo.</div>
+        <div class="img-caption" data-i18n="ic2">Las habilidades ambientales se mantienen: complementan, no sustituyen, al diálogo.</div>
       </div>
     </div>
 
-    <div class="insight reveal">
-      <div class="insight-label" data-i18n="ins1_label">Por qué funcionó</div>
-      <p data-i18n="ins1_p">Cuando diseñas partiendo de la fantasía del jugador y vas hacia atrás, <strong>los sistemas y la narrativa se alinean solos</strong>. No tienes que forzar la coherencia — emerge de la misma pregunta que guía las decisiones de diseño.</p>
+    <div class="outcome-block">
+      <div class="section-eyebrow" style="margin-bottom:0.6rem;" data-i18n="res_eye">Resultado</div>
+      <p data-i18n="res_p">El prototipo no llegó a publicarse, pero las pruebas con usuarios validaron la dirección. Los jugadores describían los personajes como <strong>reales, no como arquetipos</strong>, y el combate, lejos de romper la inmersión, <strong>reforzaba quién era cada personaje</strong>. Que un sistema de diálogo integrado en combate se sintiera natural sin explicación previa fue la señal más clara de que <strong>partir de la fantasía del jugador había sido la decisión correcta</strong>.</p>
     </div>
+
   </div>
 
-  <!-- EL JUGADOR — personajes como fantasías -->
-  <div class="section reveal" id="jugador">
-    <div class="section-eyebrow" data-i18n="s3_eye">El jugador</div>
-    <h2 data-i18n="s3_h">Cuatro personajes. Cuatro fantasías distintas que el sistema tiene que sostener.</h2>
-    <p data-i18n="s3_p">Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué experiencia va a vivir. El reto fue diseñar un sistema único que sostuviera las cuatro sin que ninguna se sintiera forzada.</p>
 
-    <!-- CARRUSEL DE FANTASÍAS -->
-    <div class="char-carousel reveal" role="region" aria-label="Personajes y problemas de diseño">
-      <div class="char-slides">
-        <button class="char-arrow char-arrow-prev" onclick="stepSlide(-1)" aria-label="Anterior">←</button>
-        <button class="char-arrow char-arrow-next" onclick="stepSlide(1)" aria-label="Siguiente">→</button>
-
-        <div class="char-slide active">
-          <div class="char-slide-img"><img src="da-char-alice.jpg" alt="Alice"></div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Alice</div>
-            <div class="char-slide-alias" style="color:#ff6b9d;" data-i18n="ch1_role">Pediatra</div>
-            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(255,107,157,0.12);color:#ff6b9d;" data-i18n="ch1_fantasy">Fantasía: ganar sin hacer daño</div>
-            <p class="char-slide-desc" data-i18n="ch1_body">El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>. El sistema tiene que recompensarle por negociar, no castigarle por no atacar.</p>
-            <div class="char-slide-tension" data-i18n="ch1_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?</div>
-          </div>
-        </div>
-
-        <div class="char-slide">
-          <div class="char-slide-img"><img src="da-char-beatrice.jpg" alt="Beatrice"></div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Beatrice</div>
-            <div class="char-slide-alias" style="color:#4ecdc4;" data-i18n="ch2_role">Programadora</div>
-            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(78,205,196,0.12);color:#4ecdc4;" data-i18n="ch2_fantasy">Fantasía: leer a las personas como sistemas</div>
-            <p class="char-slide-desc" data-i18n="ch2_body">El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong>. Sus poderes telepáticos son la versión fantástica de esa necesidad de control — con un riesgo ético que es parte del atractivo.</p>
-            <div class="char-slide-tension" data-i18n="ch2_problem"><strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?</div>
-          </div>
-        </div>
-
-        <div class="char-slide">
-          <div class="char-slide-img"><img src="da-char-caroline.jpg" alt="Caroline"></div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Caroline</div>
-            <div class="char-slide-alias" style="color:#6ee7b7;" data-i18n="ch3_role">Abogada</div>
-            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(110,231,183,0.12);color:#6ee7b7;" data-i18n="ch3_fantasy">Fantasía: mantener el control bajo presión</div>
-            <p class="char-slide-desc" data-i18n="ch3_body">El jugador que elige a Caroline quiere <strong>mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — las decisiones sociales del jugador afectan directamente al combate.</p>
-            <div class="char-slide-tension" data-i18n="ch3_problem"><strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?</div>
-          </div>
-        </div>
-
-        <div class="char-slide">
-          <div class="char-slide-img"><img src="da-char-diane.jpg" alt="Diane"></div>
-          <div class="char-slide-info">
-            <div class="char-slide-name">Diane</div>
-            <div class="char-slide-alias" style="color:#f9c846;" data-i18n="ch4_role">Ingeniera</div>
-            <div style="display:inline-block;font-family:var(--font-display);font-size:0.7rem;font-weight:700;padding:0.22rem 0.65rem;border-radius:100px;margin-bottom:0.65rem;background:rgba(249,200,70,0.12);color:#f9c846;" data-i18n="ch4_fantasy">Fantasía: no tener límites que no hayas elegido tú</div>
-            <p class="char-slide-desc" data-i18n="ch4_body">El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo. Es el personaje más autosuficiente porque su fantasía es que las limitaciones son elecciones, no imposiciones.</p>
-            <div class="char-slide-tension" data-i18n="ch4_problem"><strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="char-nav" role="tablist">
-        <button class="char-nav-btn active" onclick="goToSlide(0)" role="tab" aria-selected="true">Alice</button>
-        <button class="char-nav-btn" onclick="goToSlide(1)" role="tab" aria-selected="false">Beatrice</button>
-        <button class="char-nav-btn" onclick="goToSlide(2)" role="tab" aria-selected="false">Caroline</button>
-        <button class="char-nav-btn" onclick="goToSlide(3)" role="tab" aria-selected="false">Diane</button>
-      </div>
-    </div>
-
-    <div class="insight reveal">
-      <div class="insight-label" data-i18n="ins2_label">Lo que aprendí sobre diseño de personajes</div>
-      <p data-i18n="ins2_p">Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?</p>
-    </div>
-
-    <p data-i18n="sec_combined" style="font-size:0.9rem; color:var(--ink3); line-height:1.7; margin-top:0.5rem;">Los árboles de habilidades aplican el mismo filtro — ningún poder puede contradecir la promesa del personaje. Y en narrativa, el reto fue la <strong>disonancia</strong>: que ninguna conversación contradijera lo que el jugador acababa de hacer. Solución: nodos de estado en lugar de ramificación infinita.</p>
-  </div>
 
   <!-- APRENDIZAJE -->
-  <div class="section reveal" id="aprendizaje">
+  <div class="section" id="aprendizaje">
     <div class="section-eyebrow" data-i18n="s4_eye">Aprendizaje</div>
     <h2 data-i18n="s4_h">Qué cambió en cómo diseño.</h2>
 
-    <div class="learning-statement reveal" data-i18n="learn_statement">
-      Cuando diseñas desde la fantasía del jugador hacia atrás, <em>los sistemas y la narrativa no necesitan coordinarse</em> — responden a la misma pregunta.
+    <div class="insight">
+      <div class="insight-label" data-i18n="ins1_label">Por qué funcionó</div>
+      <p data-i18n="ins1_p">Cuando diseñas partiendo de la <strong>fantasía del jugador</strong> y vas hacia la experiencia de juego final, <strong>los sistemas y la narrativa se alinean solos</strong>. No tienes que forzar la coherencia: emerge de la misma pregunta que guía las decisiones de diseño.</p>
+      <p data-i18n="ins1_p2" style="margin-top:0.6rem;">Es lo mismo con los personajes. Cuando tienes clara la fantasía, las decisiones de habilidades, diálogo y progresión <strong>dejan de ser arbitrarias</strong>. Tienes una pregunta que hacerte antes de tomar cada decisión: <strong>¿esto refuerza o contradice la promesa del juego?</strong></p>
     </div>
 
-    <p data-i18n="learn_p1">Antes de Divine Angels diseñaba sistemas y luego buscaba cómo hacer que la narrativa los acompañara. Este proyecto me obligó a invertir el proceso: <strong>primero la experiencia que quiero que tenga el jugador, luego qué sistema la sostiene</strong>. La diferencia no es cosmética — cambia qué preguntas haces en cada decisión de diseño.</p>
+    <div class="learning-statement" data-i18n="learn_statement">
+      Antes diseñaba sistemas. <em>Ahora diseño para alguien.</em>
+    </div>
+
+    <p data-i18n="learn_p1">El cambio no fue solo conceptual. Desde Divine Angels, antes de tomar cualquier decisión de diseño defino quién es el jugador real: <strong>qué fantasía busca, qué le frustra, qué le hace sentir competente</strong>. Ese perfil no es un documento que se archiva, es el <strong>filtro activo</strong> con el que evalúo cada mecánica, cada línea de diálogo, cada sistema de progresión. Si una decisión no refuerza esa fantasía, no entra.</p>
   </div>
 
   <div style="padding-top:1rem;">
@@ -576,54 +511,54 @@ const i18n = {
     nav_s1:"La pregunta", nav_s2:"La respuesta", nav_s3:"El jugador", nav_s4:"Aprendizaje",
     nav_pitch:"Pitch deck ↗",
     tag:"RPG Narrativo · Game Design · PC",
-    hero_q:"¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal si cuando combate todo es violencia?",
+    hero_q:"¿Cómo hacer que el jugador viva la fantasía de compaginar ser una superheroína con su vida diaria, si solo puede resolver sus problemas abrazando la violencia?",
     m1l:"Rol", m1v:"Game Designer", m2l:"Plataforma", m3l:"Proyecto", m3v:"Propio con apoyo externo",
-    m4l:"Tipo", m4v:"Prototipo · Inversores",
-    c1:"iteraciones de combate", c2:"fantasías de jugador distintas", c3:"inversor convencido",
+    m4l:"Tipo", m4v:"Prototipo Universitario",
+    c1:"formas de jugar", c2:"personajes diferenciados", c3:"sistemas unidos",
     s1_eye:"La pregunta", s1_h:"De dónde parte todo el diseño.",
-    s1_lead:"Divine Angels es un RPG sobre 4 mujeres — una pediatra, una programadora, una abogada, una ingeniera — que compaginan su vida cotidiana con proteger la ciudad. La premisa prometía algo distinto. El primer prototipo de combate no lo cumplía.",
-    s1_p:"El combate era correcto mecánicamente. Pero cuando un jugador encarna a una pediatra que prefiere negociar antes que pelear, <strong>obligarle a resolver todo a golpes rompe la fantasía que el juego le está prometiendo</strong>. Eso no es un problema de balance — es un problema de coherencia entre lo que el juego dice que eres y lo que te deja hacer.",
+    s1_lead:"Divine Angels es un RPG sobre 4 mujeres que compaginan su vida cotidiana con <strong>proteger la ciudad</strong>, mientras ocultan sus superpoderes al mundo. Pero la <strong>resolución de conflictos</strong> se sentía inconexa con esta idea.",
+    s1_p:"El combate era adecuado. Un RPG clásico de acción por turnos. Pero cuando un jugador encarna a una persona que hasta hace unos momentos estaba cuidando a su hijo, <strong>hacerle resolver todo a golpes rompe el personaje y la fantasía del jugador</strong>. Eso no es un problema de balance, es un problema de <strong>disonancia entre lo que el juego dice que eres y lo que te deja hacer</strong>.",
+    s1_intro:"Entonces, me pregunté:",
     q_label:"La pregunta que lo cambió todo",
     q_text:"\"¿Cómo puede el jugador sumergirse en la fantasía de ser una heroína con una vida normal si cuando combate todo es violencia?\"",
-    s1_p2:"Esta pregunta reencuadró todo el proyecto. Ya no buscaba mejorar el combate — buscaba un sistema que <strong>mantuviera la promesa del juego dentro del combate</strong>, no solo fuera de él.",
+    s1_p2:"Esta pregunta reencuadró todo el proyecto. Ya no buscaba mejorar el combate, buscaba un sistema que <strong>mantuviera la promesa del juego dentro del combate</strong>, no solo fuera de él.",
     s2_eye:"La respuesta", s2_h:"Tres intentos. Solo el tercero respondía a la pregunta correcta.",
-    s2_p:"Las dos primeras iteraciones mejoraron el combate. Ninguna resolvió la disonancia entre la fantasía del juego y lo que el jugador podía hacer dentro de él.",
+    s2_p:"Las dos primeras iteraciones mejoraron el combate. Ninguna resolvió la <strong>disonancia</strong> entre la fantasía del juego y lo que el jugador podía hacer dentro de él.",
     v1_tab:"RPG genérico", v2_tab:"Combate ambiental", v3_tab:"Diálogo como mecánica",
     v1_verdict:"No responde la pregunta",
     v1_title:"Correcto, pero deshonesto con el jugador.",
-    v1_body:"El sistema funcionaba mecánicamente. El problema era que le decía al jugador \"eres una heroína compasiva\" y luego le daba solo opciones violentas para resolver los encuentros. <strong>La mecánica contradecía la promesa.</strong>",
+    v1_body:"El sistema funcionaba mecánicamente. El problema era que le decía al jugador \"eres una heroína compasiva\" y luego le daba <strong>solo opciones violentas</strong> para resolver los encuentros. <strong>La mecánica contradecía la promesa.</strong>",
     v2_verdict:"Más profundo, mismo problema",
     v2_title:"Añadí complejidad táctica. La disonancia seguía ahí.",
-    v2_body:"Las interacciones ambientales — elementos, trampas, terreno — generaban decisiones tácticas genuinas. Pero seguían siendo decisiones sobre <strong>cómo hacer daño</strong>, no sobre cómo resolver el conflicto de la forma en que el personaje lo haría.",
+    v2_body:"Las interacciones ambientales (elementos, trampas, terreno) generaban <strong>decisiones tácticas genuinas</strong>. Pero seguían siendo decisiones sobre <strong>cómo hacer daño</strong>, no sobre cómo resolver el conflicto de la forma en que el personaje lo haría.",
     v3_verdict:"Responde la pregunta",
     v3_title:"El diálogo como mecánica activa con consecuencias tácticas reales.",
-    v3_body:"Convertí el diálogo en una herramienta de combate tan válida como atacar. <strong>Calmar, enfurecer, o lograr la rendición sin violencia</strong> — siempre posible, con consecuencias tácticas distintas. La violencia pasó a ser una opción más, no la única.",
+    v3_body:"Convertí el diálogo en una herramienta de combate tan válida como atacar. <strong>Calmar, enfurecer, o lograr la rendición sin violencia</strong>, siempre posible, con consecuencias tácticas distintas. La violencia pasó a ser <strong>una opción más, no la única</strong>.",
     step_prev:"← Anterior", step_next:"Siguiente →",
     ic1:"El diálogo aparece como acción de combate, no como menú aparte.",
-    ic2:"Las habilidades ambientales se mantienen — complementan, no sustituyen, al diálogo.",
+    ic2:"Las habilidades ambientales se mantienen: complementan, no sustituyen, al diálogo.",
+    res_eye:"Resultado",
+    res_p:"El prototipo no llegó a publicarse, pero las pruebas con usuarios validaron la dirección. Los jugadores describían los personajes como <strong>reales, no como arquetipos</strong>, y el combate, lejos de romper la inmersión, <strong>reforzaba quién era cada personaje</strong>. Que un sistema de diálogo integrado en combate se sintiera natural sin explicación previa fue la señal más clara de que <strong>partir de la fantasía del jugador había sido la decisión correcta</strong>.",
     ins1_label:"Por qué funcionó",
-    ins1_p:"Cuando diseñas partiendo de la fantasía del jugador y vas hacia atrás, <strong>los sistemas y la narrativa se alinean solos</strong>. No tienes que forzar la coherencia — emerge de la misma pregunta que guía las decisiones de diseño.",
+    ins1_p:"Cuando diseñas partiendo de la <strong>fantasía del jugador</strong> y vas hacia la experiencia de juego final, <strong>los sistemas y la narrativa se alinean solos</strong>. No tienes que forzar la coherencia: emerge de la misma pregunta que guía las decisiones de diseño.",
+    ins1_p2:"Es lo mismo con los personajes. Cuando tienes clara la fantasía, las decisiones de habilidades, diálogo y progresión <strong>dejan de ser arbitrarias</strong>. Tienes una pregunta que hacerte antes de tomar cada decisión: <strong>¿esto refuerza o contradice la promesa del juego?</strong>",
     s3_eye:"El jugador", s3_h:"Cuatro personajes. Cuatro fantasías distintas que el sistema tiene que sostener.",
-    s3_p:"Cada personaje no es solo un set de habilidades — es una <strong>promesa al jugador</strong> sobre qué tipo de experiencia va a vivir. El reto de diseño fue crear un sistema único que sostuviera las cuatro promesas simultáneamente sin que ninguna se sintiera forzada.",
-    ic_chars:"Las cuatro protagonistas — cada una representa una fantasía de jugador diferente.",
+    s3_p:"Cada personaje no es solo un set de habilidades, es una <strong>promesa al jugador</strong> sobre qué experiencia va a vivir. El reto fue diseñar un sistema único que sostuviera las cuatro sin que ninguna se sintiera forzada.",
     ch1_role:"Pediatra", ch1_fantasy:"Fantasía: ganar sin hacer daño",
     ch1_body:"El jugador que elige a Alice quiere demostrar que <strong>la compasión es una estrategia viable</strong>. El sistema tiene que recompensarle por negociar, no castigarle por no atacar.",
     ch1_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que elegir no pelear sea igual de satisfactorio que ganar un combate difícil?",
     ch2_role:"Programadora", ch2_fantasy:"Fantasía: leer a las personas como sistemas",
-    ch2_body:"El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong>. Sus poderes telepáticos son la versión fantástica de esa necesidad de control — con un riesgo ético que es parte del atractivo.",
-    ch2_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un coste narrativo real, no solo mecánico?",
+    ch2_body:"El jugador que elige a Beatrice quiere <strong>entender al enemigo antes de actuar</strong>. Sus poderes telepáticos son la versión fantástica de esa necesidad de control, con un <strong>riesgo ético</strong> que es parte del atractivo.",
+    ch2_problem:"<strong>Problema de diseño:</strong> ¿Cómo hago que manipular a un enemigo tenga un <strong>coste narrativo real</strong>, no solo mecánico?",
     ch3_role:"Abogada", ch3_fantasy:"Fantasía: mantener el control bajo presión",
-    ch3_body:"El jugador que elige a Caroline quiere <strong>mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su estado emocional — las decisiones sociales del jugador afectan directamente al combate.",
+    ch3_body:"El jugador que elige a Caroline quiere <strong>mantenerse serena cuando todo se complica</strong>. Sus poderes reaccionan a su <strong>estado emocional</strong>. las decisiones sociales del jugador afectan directamente al combate.",
     ch3_problem:"<strong>Problema de diseño:</strong> ¿Cómo reflejo el estado emocional del personaje en la mecánica sin que se sienta punitivo?",
     ch4_role:"Ingeniera", ch4_fantasy:"Fantasía: no tener límites que no hayas elegido tú",
-    ch4_body:"El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado — eligió no hacerlo. Es el personaje más autosuficiente porque su fantasía es que las limitaciones son elecciones, no imposiciones.",
+    ch4_body:"El jugador que elige a Diane quiere <strong>autonomía total</strong>. Podría haberse curado, eligió no hacerlo. Es el personaje más autosuficiente porque su fantasía es que <strong>las limitaciones son elecciones, no imposiciones</strong>.",
     ch4_problem:"<strong>Problema de diseño:</strong> ¿Cómo diseño el personaje más versátil sin que eclipse a los otros tres?",
-    ins2_label:"Lo que aprendí sobre diseño de personajes",
-    ins2_p:"Un personaje no es un conjunto de stats — es una <strong>promesa de experiencia al jugador</strong>. Cuando tienes clara la fantasía, las decisiones de habilidades, diálogo y progresión dejan de ser arbitrarias. Tienes un criterio: ¿esto refuerza o contradice la promesa?",
-    sec_combined:"Los árboles de habilidades aplican el mismo filtro — ningún poder puede contradecir la promesa del personaje. Y en narrativa, el reto fue la <strong>disonancia</strong>: que ninguna conversación contradijera lo que el jugador acababa de hacer. Solución: nodos de estado en lugar de ramificación infinita.",
     s4_eye:"Aprendizaje", s4_h:"Qué cambió en cómo diseño.",
-    learn_statement:"Cuando diseñas desde la fantasía del jugador hacia atrás, los sistemas y la narrativa no necesitan coordinarse — responden a la misma pregunta.",
-    learn_p1:"Antes de Divine Angels diseñaba sistemas y luego buscaba cómo hacer que la narrativa los acompañara. Este proyecto me obligó a invertir el proceso: <strong>primero la experiencia que quiero que tenga el jugador, luego qué sistema la sostiene</strong>. La diferencia no es cosmética — cambia qué preguntas haces en cada decisión de diseño.",
+    learn_statement:"Antes diseñaba sistemas. Ahora diseño para alguien.",
+    learn_p1:"El cambio no fue solo conceptual. Desde Divine Angels, antes de tomar cualquier decisión de diseño defino quién es el jugador real: <strong>qué fantasía busca, qué le frustra, qué le hace sentir competente</strong>. Ese perfil no es un documento que se archiva, es el <strong>filtro activo</strong> con el que evalúo cada mecánica, cada línea de diálogo, cada sistema de progresión. Si una decisión no refuerza esa fantasía, no entra.",
     btn_back:"Volver al Portfolio",
     footer_text:"Hecho con mucho café y amor por los juegos."
   },
@@ -634,52 +569,52 @@ const i18n = {
     tag:"Narrative RPG · Game Design · PC",
     hero_q:"How can a player immerse themselves in the fantasy of being a superheroine with a normal life if combat is nothing but violence?",
     m1l:"Role", m1v:"Game Designer", m2l:"Platform", m3l:"Project", m3v:"Solo with external support",
-    m4l:"Type", m4v:"Prototype · Investors",
-    c1:"combat iterations", c2:"distinct player fantasies", c3:"investor convinced",
+    m4l:"Type", m4v:"University Prototype",
+    c1:"ways to play", c2:"distinct characters", c3:"unified systems",
     s1_eye:"The question", s1_h:"Where the entire design starts.",
-    s1_lead:"Divine Angels is an RPG about 4 women — a pediatrician, a programmer, a lawyer, an engineer — balancing daily life with protecting the city. The premise promised something different. The first combat prototype didn't deliver it.",
-    s1_p:"The combat was mechanically sound. But when a player embodies a pediatrician who prefers to negotiate rather than fight, <strong>forcing them to resolve everything through violence breaks the fantasy the game is promising</strong>. That's not a balance problem — it's a coherence problem between what the game says you are and what it lets you do.",
+    s1_lead:"Divine Angels is an RPG about 4 women balancing daily life with <strong>protecting the city</strong>, while hiding their superpowers from the world. But <strong>conflict resolution</strong> felt disconnected from this idea.",
+    s1_p:"The combat was adequate. A classic turn-based action RPG. But when a player embodies someone who was caring for their child just moments ago, <strong>forcing them to resolve everything through violence breaks the character and the player's fantasy</strong>. That's not a balance problem. it's a problem of <strong>dissonance between what the game says you are and what it lets you do</strong>.",
+    s1_intro:"So I asked myself:",
     q_label:"The question that changed everything",
     q_text:"\"How can a player immerse themselves in the fantasy of being a superheroine with a normal life if combat is nothing but violence?\"",
-    s1_p2:"This question reframed the entire project. I was no longer trying to improve combat — I was looking for a system that <strong>maintained the game's promise inside combat</strong>, not just outside it.",
+    s1_p2:"This question reframed the entire project. I was no longer trying to improve combat. I was looking for a system that <strong>maintained the game's promise inside combat</strong>, not just outside it.",
     s2_eye:"The answer", s2_h:"Three attempts. Only the third answered the right question.",
-    s2_p:"The first two iterations improved combat. Neither resolved the dissonance between the game's fantasy and what the player could actually do within it.",
+    s2_p:"The first two iterations improved combat. Neither resolved the <strong>dissonance</strong> between the game's fantasy and what the player could actually do within it.",
     v1_tab:"Generic RPG", v2_tab:"Environmental combat", v3_tab:"Dialogue as mechanic",
     v1_verdict:"Doesn't answer the question",
     v1_title:"Sound, but dishonest with the player.",
-    v1_body:"The system worked mechanically. The problem was it told the player \"you're a compassionate heroine\" then gave them only violent options to resolve encounters. <strong>The mechanic contradicted the promise.</strong>",
+    v1_body:"The system worked mechanically. The problem was it told the player \"you're a compassionate heroine\" then gave them <strong>only violent options</strong> to resolve encounters. <strong>The mechanic contradicted the promise.</strong>",
     v2_verdict:"Deeper, same problem",
     v2_title:"I added tactical depth. The dissonance was still there.",
-    v2_body:"Environmental interactions — elements, traps, terrain — generated genuine tactical decisions. But they were still decisions about <strong>how to deal damage</strong>, not how to resolve the conflict the way the character would.",
+    v2_body:"Environmental interactions (elements, traps, terrain) generated <strong>genuine tactical decisions</strong>. But they were still decisions about <strong>how to deal damage</strong>, not how to resolve the conflict the way the character would.",
     v3_verdict:"Answers the question",
     v3_title:"Dialogue as an active mechanic with real tactical consequences.",
-    v3_body:"I turned dialogue into a combat tool as valid as attacking. <strong>Calm, anger, or achieve surrender without violence</strong> — always possible, with distinct tactical consequences. Violence became one option among many, not the only one.",
+    v3_body:"I turned dialogue into a combat tool as valid as attacking. <strong>Calm, anger, or achieve surrender without violence</strong>, always possible, with distinct tactical consequences. Violence became <strong>one option among many, not the only one</strong>.",
     step_prev:"← Previous", step_next:"Next →",
     ic1:"Dialogue appears as a combat action, not a separate menu.",
-    ic2:"Environmental skills remain — they complement dialogue, not replace it.",
+    ic2:"Environmental skills remain: they complement dialogue, not replace it.",
+    res_eye:"Result",
+    res_p:"The prototype was never released, but user testing validated the direction. Players described the characters as <strong>real, not archetypes</strong>. and combat, far from breaking immersion, <strong>reinforced who each character was</strong>. A dialogue system integrated into combat feeling natural without explanation was the clearest sign that <strong>designing from the player's fantasy had been the right call</strong>.",
     ins1_label:"Why it worked",
-    ins1_p:"When you design starting from the player's fantasy and work backwards, <strong>systems and narrative align on their own</strong>. You don't have to force coherence — it emerges from the same question guiding every design decision.",
+    ins1_p:"When you design starting from the <strong>player's fantasy</strong> and work towards the final game experience, <strong>systems and narrative align on their own</strong>. You don't have to force coherence: it emerges from the same question guiding every design decision.",
+    ins1_p2:"The same applies to characters. When the fantasy is clear, decisions about skills, dialogue and progression <strong>stop being arbitrary</strong>. You have one question to ask before every decision: <strong>does this reinforce or contradict the game's promise?</strong>",
     s3_eye:"The player", s3_h:"Four characters. Four distinct fantasies the system has to sustain.",
-    s3_p:"Each character isn't just a skill set — it's a <strong>promise to the player</strong> about what kind of experience they'll have. The design challenge was building one system that sustained all four promises simultaneously without any feeling forced.",
-    ic_chars:"The four protagonists — each representing a different player fantasy.",
+    s3_p:"Each character isn't just a skill set, it's a <strong>promise to the player</strong> about what kind of experience they'll have. The design challenge was building one system that sustained all four without any feeling forced.",
     ch1_role:"Pediatrician", ch1_fantasy:"Fantasy: win without causing harm",
     ch1_body:"The player who picks Alice wants to prove that <strong>compassion is a viable strategy</strong>. The system has to reward negotiating, not punish not attacking.",
     ch1_problem:"<strong>Design problem:</strong> How do I make choosing not to fight feel as satisfying as winning a hard combat?",
     ch2_role:"Programmer", ch2_fantasy:"Fantasy: read people like systems",
-    ch2_body:"The player who picks Beatrice wants to <strong>understand the enemy before acting</strong>. Her telepathic powers are the fantastical version of that need for control — the ethical risk is part of the appeal.",
-    ch2_problem:"<strong>Design problem:</strong> How do I make manipulating an enemy carry a real narrative cost, not just a mechanical one?",
+    ch2_body:"The player who picks Beatrice wants to <strong>understand the enemy before acting</strong>. Her telepathic powers are the fantastical version of that need for control. the <strong>ethical risk</strong> is part of the appeal.",
+    ch2_problem:"<strong>Design problem:</strong> How do I make manipulating an enemy carry a <strong>real narrative cost</strong>, not just a mechanical one?",
     ch3_role:"Lawyer", ch3_fantasy:"Fantasy: stay in control under pressure",
-    ch3_body:"The player who picks Caroline wants to <strong>stay calm when everything gets complicated</strong>. Her powers react to her emotional state — the player's social decisions directly affect combat.",
+    ch3_body:"The player who picks Caroline wants to <strong>stay calm when everything gets complicated</strong>. Her powers react to her <strong>emotional state</strong>. the player's social decisions directly affect combat.",
     ch3_problem:"<strong>Design problem:</strong> How do I reflect the character's emotional state in the mechanic without making it feel punishing?",
     ch4_role:"Engineer", ch4_fantasy:"Fantasy: no limits you didn't choose yourself",
-    ch4_body:"The player who picks Diane wants <strong>total autonomy</strong>. She could have healed herself — she chose not to. She's the most self-sufficient character because her fantasy is that limitations are choices, not impositions.",
+    ch4_body:"The player who picks Diane wants <strong>total autonomy</strong>. She could have healed herself. she chose not to. She's the most self-sufficient character because her fantasy is that <strong>limitations are choices, not impositions</strong>.",
     ch4_problem:"<strong>Design problem:</strong> How do I design the most versatile character without eclipsing the other three?",
-    ins2_label:"What I learned about character design",
-    ins2_p:"A character isn't a set of stats — it's a <strong>promise of experience to the player</strong>. When you're clear on the fantasy, decisions about skills, dialogue and progression stop being arbitrary. You have a criterion: does this reinforce or contradict the promise?",
-    sec_combined:"Skill trees apply the same filter — no power can contradict the character's promise. And in narrative, the challenge was <strong>dissonance</strong>: ensuring no conversation contradicted what the player just did. Solution: state nodes instead of infinite branching.",
     s4_eye:"Learning", s4_h:"What changed in how I design.",
-    learn_statement:"When you design from the player's fantasy backwards, systems and narrative don't need to be coordinated — they answer the same question.",
-    learn_p1:"Before Divine Angels I designed systems and then figured out how to make the narrative follow. This project forced me to invert the process: <strong>first the experience I want the player to have, then the system that sustains it</strong>. The difference isn't cosmetic — it changes what questions you ask at every design decision.",
+    learn_statement:"I used to design systems. Now I design for someone.",
+    learn_p1:"The shift wasn't just conceptual. Since Divine Angels, before making any design decision I define who the real player is: <strong>what fantasy they're chasing, what frustrates them, what makes them feel competent</strong>. That profile isn't a document that gets filed away — it's the <strong>active filter</strong> I use to evaluate every mechanic, every line of dialogue, every progression system. If a decision doesn't reinforce that fantasy, it doesn't make it in.",
     btn_back:"Back to Portfolio",
     footer_text:"Made with lots of coffee and love for games."
   }
@@ -723,11 +658,6 @@ function goToSlide(index) {
 }
 function stepSlide(dir) { goToSlide((currentSlide + dir + totalSlides) % totalSlides); }
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60); });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
 const navLinks = document.querySelectorAll('.nav-section-link');
 const sectionObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
@@ -738,7 +668,7 @@ const sectionObserver = new IntersectionObserver(entries => {
     }
   });
 }, { threshold: 0.3 });
-['pregunta','respuesta','jugador','aprendizaje'].forEach(id => {
+['pregunta','respuesta','aprendizaje'].forEach(id => {
   const el = document.getElementById(id); if (el) sectionObserver.observe(el);
 });
 </script>
