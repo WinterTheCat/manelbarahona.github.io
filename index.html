@@ -38,7 +38,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     position: fixed; top: 0; left: 0; right: 0; z-index: 100;
     display: flex; align-items: center; justify-content: space-between;
@@ -55,7 +54,6 @@
   .lang-btn { padding: 0.28rem 0.75rem; font-size: 0.78rem; font-weight: 700; font-family: var(--font-display); cursor: pointer; border: none; background: transparent; color: var(--muted2); transition: all 0.2s; letter-spacing: 0.04em; }
   .lang-btn.active { background: var(--yellow); color: var(--bg); }
 
-  /* HERO */
   #hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 8rem 2.5rem 5rem; position: relative; overflow: hidden; }
   .hero-blobs { position: absolute; inset: 0; pointer-events: none; }
   .blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: 0.18; animation: bfloat 9s ease-in-out infinite; }
@@ -118,14 +116,12 @@
   .btn-cv { padding: 0.78rem 1.2rem; background: transparent; color: var(--muted); border: 1px dashed rgba(255,255,255,0.2); border-radius: 8px; font-family: var(--font-display); font-weight: 600; font-size: 0.88rem; cursor: pointer; text-decoration: none; transition: color 0.2s, border-color 0.2s; display: inline-block; }
   .btn-cv:hover { color: var(--text); border-color: rgba(255,255,255,0.4); }
 
-  /* SECTIONS */
   section { padding: 5rem 2.5rem; }
   .section-inner { max-width: var(--max-w); margin: 0 auto; }
   .section-label { display: flex; align-items: center; gap: 0.7rem; font-family: var(--font-display); font-size: 0.7rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); margin-bottom: 0.5rem; }
   .section-label::before { content:''; display:block; width:18px; height:2px; background:var(--yellow); }
   h2 { font-family: var(--font-display); font-size: clamp(1.6rem, 3.2vw, 2.2rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin-bottom: 2.2rem; color: var(--text); }
 
-  /* ABOUT */
   #about { background: var(--surface); }
   .about-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
   .about-text p { color: var(--muted); line-height: 1.8; margin-bottom: 0.9rem; font-weight: 300; font-size: 0.97rem; }
@@ -135,18 +131,8 @@
   .stat-num { font-family: var(--font-display); font-size: 1.8rem; font-weight: 800; color: var(--yellow); line-height: 1; margin-bottom: 0.2rem; }
   .stat-label { font-size: 0.75rem; color: var(--muted2); font-weight: 400; line-height: 1.3; }
 
-  /* PROJECTS */
-  .projects-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1.1rem;
-  }
-
-  /* Tarjeta destacada — ocupa toda la fila */
-  .project-card-featured {
-    grid-column: 1 / -1;
-  }
-
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .project-card-featured { grid-column: 1 / -1; }
   .project-card {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 12px; overflow: hidden;
@@ -154,22 +140,12 @@
     text-decoration: none; color: inherit; display: block;
   }
   .project-card:hover { transform: translateY(-4px); border-color: rgba(255,255,255,0.16); box-shadow: 0 14px 36px rgba(0,0,0,0.28); }
-
-  /* Layout horizontal para tarjetas destacadas */
-  .project-card-featured .project-card-inner {
-    display: grid; grid-template-columns: 1fr 1fr; align-items: stretch;
-  }
-  .project-card-featured .project-img-area {
-    aspect-ratio: 16/9; border-bottom: none; border-right: 1px solid var(--border);
-    height: 100%; min-height: 240px;
-  }
+  .project-card-featured .project-card-inner { display: grid; grid-template-columns: 1fr 1fr; align-items: stretch; }
+  .project-card-featured .project-img-area { aspect-ratio: 16/9; border-bottom: none; border-right: 1px solid var(--border); height: 100%; min-height: 240px; }
   .project-card-featured .project-body { padding: 1.8rem 2rem; display: flex; flex-direction: column; justify-content: center; }
   .project-card-featured .project-title { font-size: 1.5rem; margin-bottom: 0.7rem; }
   .project-card-featured .project-desc { font-size: 0.9rem; margin-bottom: 1.1rem; }
-
-  /* Tarjeta normal */
   .project-card:not(.project-card-featured) .project-card-inner { display: block; }
-
   .project-img-area {
     width: 100%; aspect-ratio: 16/9;
     display: flex; align-items: center; justify-content: center;
@@ -177,7 +153,6 @@
     position: relative; overflow: hidden;
   }
   .project-img-area img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
-
   .project-body { padding: 1.1rem 1.2rem 1.2rem; }
   .project-genre { font-size: 0.68rem; font-weight: 700; font-family: var(--font-display); letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 0.3rem; }
   .project-title { font-family: var(--font-display); font-size: 1.1rem; font-weight: 800; letter-spacing: -0.01em; margin-bottom: 0.5rem; line-height: 1.2; color: var(--text); }
@@ -185,7 +160,6 @@
   .project-tags { display: flex; flex-wrap: wrap; gap: 0.3rem; }
   .project-tag { font-size: 0.66rem; padding: 0.16rem 0.5rem; border-radius: 100px; background: var(--surface2); color: var(--muted); font-weight: 500; border: 1px solid var(--border); }
 
-  /* Badge NDA */
   .badge-nda {
     display: inline-flex; align-items: center; gap: 0.3rem;
     font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
@@ -197,7 +171,7 @@
   }
   .badge-nda::before { content: '●'; font-size: 0.35rem; }
 
-  .badge-wip {
+  .badge-soon {
     display: inline-flex; align-items: center; gap: 0.3rem;
     font-family: var(--font-display); font-size: 0.62rem; font-weight: 700;
     letter-spacing: 0.1em; text-transform: uppercase;
@@ -207,10 +181,12 @@
     margin-left: 0.4rem; vertical-align: middle;
   }
 
+  .project-card-disabled { pointer-events: none; opacity: 0.65; cursor: default; }
+  .project-card-disabled:hover { transform: none; box-shadow: none; border-color: var(--border); }
+
   .project-link { display: inline-flex; align-items: center; gap: 0.3rem; margin-top: 0.8rem; font-size: 0.78rem; font-weight: 700; font-family: var(--font-display); text-decoration: none; transition: gap 0.2s; }
   .project-link:hover { gap: 0.55rem; }
 
-  /* EXPERIENCE */
   #experience { background: var(--surface); }
   .exp-item { display: grid; grid-template-columns: 130px 1fr; gap: 1.5rem; padding: 1.5rem 0; border-bottom: 1px solid var(--border); align-items: start; }
   .exp-item:last-child { border-bottom: none; }
@@ -221,12 +197,6 @@
   .exp-bullets li { font-size: 0.84rem; color: var(--muted); line-height: 1.6; padding-left: 1rem; position: relative; font-weight: 300; }
   .exp-bullets li::before { content: '▸'; position: absolute; left: 0; color: var(--yellow); font-size: 0.62rem; top: 0.35rem; }
 
-  /* CV */
-  #cv-section { text-align: center; }
-  #cv-section .section-inner { display: flex; flex-direction: column; align-items: center; }
-  #cv-section p { color: var(--muted); margin-bottom: 1.6rem; font-size: 0.97rem; font-weight: 300; max-width: 420px; }
-
-  /* CONTACT */
   #contact { background: var(--surface); }
   .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; align-items: start; }
   .contact-links { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 0.4rem; }
@@ -241,9 +211,6 @@
   .contact-form ::placeholder { color: var(--muted2); }
 
   footer { text-align: center; padding: 1.6rem; border-top: 1px solid var(--border); font-size: 0.76rem; color: var(--muted2); }
-
-  .reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s ease, transform 0.5s ease; }
-  .reveal.visible { opacity: 1; transform: translateY(0); }
 
   @media (max-width: 720px) {
     nav { padding: 0.9rem 1.2rem; }
@@ -312,22 +279,22 @@
 
 <section id="about">
   <div class="section-inner">
-    <div class="section-label reveal" data-i18n="about_label">Sobre mí</div>
-    <h2 class="reveal" data-i18n="about_title">Diseño juegos que se sienten bien.</h2>
+    <div class="section-label" data-i18n="about_label">Sobre mí</div>
+    <h2 data-i18n="about_title">Diseño juegos que se sienten bien.</h2>
     <div class="about-layout">
-      <div class="about-text reveal">
-        <p data-i18n="about_p1">Desde pequeño, los videojuegos fueron ese espacio donde el mundo tenía sentido. Esa sensación de estar dentro de algo más grande que tú es lo que me llevó a querer construir esos mundos.</p>
-        <p data-i18n="about_p2">Con formación en <strong>Psicología</strong> y un Máster en Diseño de Videojuegos, diseño con la mentalidad del jugador siempre en primer plano: ¿por qué hace clic? ¿qué le hace volver? ¿qué le hace sonreír?</p>
-        <p data-i18n="about_p3">He trabajado en plataformas sociales móviles, Run & Gun, Metroidvanias, roguelikes y proyectos de mesa. Siempre con una obsesión: que cada sistema, nivel y mecánica tenga un propósito claro.</p>
+      <div class="about-text">
+        <p data-i18n="about_p1">Tengo formación en <strong>Psicología</strong> y un Máster en Diseño de Videojuegos. Esa combinación define cómo trabajo: diseño con la mentalidad del jugador en primer plano, preguntándome por qué hace clic, qué le hace volver y qué le hace sentir competente.</p>
+        <p data-i18n="about_p2">He trabajado en plataformas sociales móviles, Run & Gun, Metroidvanias, roguelikes y proyectos de mesa. Siempre con la misma obsesión: que cada sistema, nivel y mecánica tenga un propósito claro.</p>
+        <p data-i18n="about_p3">Los videojuegos son ese espacio donde las reglas tienen sentido y las decisiones importan. Eso es lo que intento construir.</p>
       </div>
-      <div class="about-stats reveal">
+      <div class="about-stats">
         <div class="stat-card"><div class="stat-num">3+</div><div class="stat-label" data-i18n="stat1">Años de experiencia profesional</div></div>
         <div class="stat-card"><div class="stat-num">8+</div><div class="stat-label" data-i18n="stat2">Proyectos en distintos géneros</div></div>
         <div class="stat-card"><div class="stat-num">15+</div><div class="stat-label" data-i18n="stat3">Personas lideradas en equipos</div></div>
         <div class="stat-card"><div class="stat-num">3</div><div class="stat-label" data-i18n="stat4">Plataformas de publicación</div></div>
       </div>
     </div>
-    <div class="reveal" style="margin-top:2rem;">
+    <div style="margin-top:2rem;">
       <a href="#projects" class="btn-primary" data-i18n="about_cta">Ver lo que he construido</a>
     </div>
   </div>
@@ -335,18 +302,18 @@
 
 <section id="projects">
   <div class="section-inner">
-    <div class="section-label reveal" data-i18n="proj_label">Proyectos</div>
-    <h2 class="reveal" data-i18n="proj_title">Lo que he construido.</h2>
+    <div class="section-label" data-i18n="proj_label">Proyectos</div>
+    <h2 data-i18n="proj_title">Lo que he construido.</h2>
     <div class="projects-grid">
 
-      <!-- 1. Run & Gun — DESTACADO -->
-      <div class="project-card project-card-featured reveal">
-        <a href="run-and-gun.html" class="project-card-inner" style="text-decoration:none;color:inherit;display:grid;grid-template-columns:1fr 1fr;">
+      <!-- 1. Run & Gun — DESTACADO, próximamente -->
+      <div class="project-card project-card-featured project-card-disabled">
+        <div class="project-card-inner" style="display:grid;grid-template-columns:1fr 1fr;">
           <div class="project-img-area" style="background:#0d1117; border-right:1px solid var(--border);">
-            <img src="run-and-gun.jpg" alt="Run & Gun — proyecto bajo NDA en Dunwich Studio">
+            <img src="run-and-gun.jpg" alt="Run & Gun">
           </div>
           <div class="project-body" style="display:flex;flex-direction:column;justify-content:center;padding:1.8rem 2rem;">
-            <div class="project-genre" style="color:var(--yellow);" data-i18n="rg_genre">Run & Gun · 2D <span class="badge-nda">NDA</span></div>
+            <div class="project-genre" style="color:var(--yellow);" data-i18n="rg_genre">Run & Gun · 2D <span class="badge-nda">NDA</span> <span class="badge-soon" data-i18n="badge_soon">Próximamente</span></div>
             <div class="project-title" style="font-size:1.5rem;margin-bottom:0.7rem;">Run & Gun</div>
             <p class="project-desc" style="font-size:0.9rem;margin-bottom:1.1rem;" data-i18n="rg_desc">Avanza a ostias por una reimaginación de la guerra más fría.</p>
             <div class="project-tags">
@@ -354,19 +321,19 @@
               <span class="project-tag" data-i18n="tag_levels">Level Design</span>
               <span class="project-tag" data-i18n="tag_systems">Sistemas</span>
             </div>
-            <div class="project-link" style="color:var(--yellow);margin-top:1rem;" data-i18n="link_case">Ver case study →</div>
+            <div class="project-link" style="color:var(--muted2);margin-top:1rem;" data-i18n="link_soon">Case study en construcción</div>
           </div>
-        </a>
+        </div>
       </div>
 
-      <!-- 2. My Best Friend — DESTACADO -->
-      <div class="project-card project-card-featured reveal">
-        <a href="my-best-friend.html" class="project-card-inner" style="text-decoration:none;color:inherit;display:grid;grid-template-columns:1fr 1fr;">
+      <!-- 2. My Best Friend — DESTACADO, próximamente -->
+      <div class="project-card project-card-featured project-card-disabled">
+        <div class="project-card-inner" style="display:grid;grid-template-columns:1fr 1fr;">
           <div class="project-img-area" style="background:#0d0a14; border-right:1px solid var(--border);">
-            <img src="my-best-friend.jpg" alt="My Best Friend — terror de marionetas en primera persona">
+            <img src="my-best-friend.jpg" alt="My Best Friend">
           </div>
           <div class="project-body" style="display:flex;flex-direction:column;justify-content:center;padding:1.8rem 2rem;">
-            <div class="project-genre" style="color:var(--pink);" data-i18n="mbf_genre">Terror · Primera persona <span class="badge-nda">NDA</span></div>
+            <div class="project-genre" style="color:var(--pink);" data-i18n="mbf_genre">Terror · Primera persona <span class="badge-nda">NDA</span> <span class="badge-soon" data-i18n="badge_soon">Próximamente</span></div>
             <div class="project-title" style="font-size:1.5rem;margin-bottom:0.7rem;">My Best Friend</div>
             <p class="project-desc" style="font-size:0.9rem;margin-bottom:1.1rem;" data-i18n="mbf_desc">No sabes qué haces aquí, pero ellos te necesitan...</p>
             <div class="project-tags">
@@ -374,13 +341,13 @@
               <span class="project-tag" data-i18n="tag_design">Game Design</span>
               <span class="project-tag">Horror</span>
             </div>
-            <div class="project-link" style="color:var(--pink);margin-top:1rem;" data-i18n="link_case">Ver case study →</div>
+            <div class="project-link" style="color:var(--muted2);margin-top:1rem;" data-i18n="link_soon">Case study en construcción</div>
           </div>
-        </a>
+        </div>
       </div>
 
       <!-- 3. Gamergy World -->
-      <a class="project-card reveal" href="https://play.google.com/store/apps/details?id=com.ggtech.GamergyWorldMobile&hl=es/" target="_blank">
+      <a class="project-card" href="https://play.google.com/store/apps/details?id=com.ggtech.GamergyWorldMobile&hl=es/" target="_blank">
         <div class="project-card-inner">
           <div class="project-img-area" style="background:#0a1f10;">
             <img src="Gamergy3.webp" alt="Gamergy World screenshot">
@@ -401,7 +368,7 @@
       </a>
 
       <!-- 4. Threadborn -->
-      <a class="project-card reveal" href="https://www.ikarusstudio.com/games/threadborn" target="_blank">
+      <a class="project-card" href="https://www.ikarusstudio.com/games/threadborn" target="_blank">
         <div class="project-card-inner">
           <div class="project-img-area" style="background:#1a1035;">
             <img src="threadborn.jpg" alt="Threadborn screenshot">
@@ -421,7 +388,7 @@
       </a>
 
       <!-- 5. Divine Angels -->
-      <a class="project-card reveal" href="divine-angels.html">
+      <a class="project-card" href="divine-angels.html">
         <div class="project-card-inner">
           <div class="project-img-area" style="background:#1a0820;">
             <img src="divine-angels.jpg" alt="Divine Angels screenshot">
@@ -441,7 +408,7 @@
       </a>
 
       <!-- 6. Goya's Head -->
-      <a class="project-card reveal" href="goyas-head.html">
+      <a class="project-card" href="goyas-head.html">
         <div class="project-card-inner">
           <div class="project-img-area" style="background:#0d0d0d;">
             <img src="goyas-head.jpg" alt="Goya's Head screenshot">
@@ -466,23 +433,23 @@
 
 <section id="experience">
   <div class="section-inner">
-    <div class="section-label reveal" data-i18n="exp_label">Experiencia</div>
-    <h2 class="reveal" data-i18n="exp_title">Dónde he trabajado.</h2>
+    <div class="section-label" data-i18n="exp_label">Experiencia</div>
+    <h2 data-i18n="exp_title">Dónde he trabajado.</h2>
 
-    <div class="exp-item reveal">
+    <div class="exp-item">
       <div class="exp-dates">Nov 2024 –<br><span data-i18n="exp_present">Actualidad</span></div>
       <div>
         <div class="exp-role" data-i18n="exp1_role">Game Producer & Level Designer</div>
         <div class="exp-company" style="color:var(--yellow);">Dunwich Studio</div>
         <ul class="exp-bullets">
           <li data-i18n="exp1_b1">Productor del juego Run & Gun 2D del estudio, coordinando un equipo de cuatro personas.</li>
-          <li data-i18n="exp1_b2">Diseño de niveles de vehículos, plataformas, acción y sigilo — ritmo, flujo y variedad de experiencia.</li>
+          <li data-i18n="exp1_b2">Diseño de niveles de vehículos, plataformas, acción y sigilo: ritmo, flujo y variedad de experiencia.</li>
           <li data-i18n="exp1_b3">Gestión del pipeline de producción con Scrum y Kanban.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item reveal">
+    <div class="exp-item">
       <div class="exp-dates">Sep 2025 –<br><span data-i18n="exp_present">Actualidad</span></div>
       <div>
         <div class="exp-role" data-i18n="exp2_role">Mentor de Diseño de Videojuegos</div>
@@ -495,20 +462,20 @@
       </div>
     </div>
 
-    <div class="exp-item reveal">
+    <div class="exp-item">
       <div class="exp-dates">Mar 2023 –<br>Jun 2024</div>
       <div>
         <div class="exp-role" data-i18n="exp3_role">Project Manager</div>
         <div class="exp-company" style="color:var(--cyan);">Brave Zebra</div>
         <ul class="exp-bullets">
           <li data-i18n="exp3_b1">Gestión de proyectos en géneros como Metroidvania, roguelike de mazos y estrategia.</li>
-          <li data-i18n="exp3_b2">Equipos de +15 personas: full dev, outsourcing de arte y porting multiplataforma.</li>
+          <li data-i18n="exp3_b2">Equipos de más de 15 personas: full dev, outsourcing de arte y porting multiplataforma.</li>
           <li data-i18n="exp3_b3">Interlocutor principal con clientes y gestión de stakeholders.</li>
         </ul>
       </div>
     </div>
 
-    <div class="exp-item reveal">
+    <div class="exp-item">
       <div class="exp-dates">Nov 2021 –<br>Nov 2022</div>
       <div>
         <div class="exp-role" data-i18n="exp4_role">Game Designer</div>
@@ -520,19 +487,19 @@
         </ul>
       </div>
     </div>
-    <div class="reveal" style="margin-top:2rem;">
+
+    <div style="margin-top:2rem;">
       <a href="cv/manel-barahona-cv.pdf" class="btn-primary" download data-i18n="exp_cta">Descargar CV</a>
     </div>
   </div>
 </section>
 
-
 <section id="contact">
   <div class="section-inner">
-    <div class="section-label reveal" data-i18n="contact_label">Contacto</div>
-    <h2 class="reveal" data-i18n="contact_title">Hablemos de tu proyecto.</h2>
+    <div class="section-label" data-i18n="contact_label">Contacto</div>
+    <h2 data-i18n="contact_title">Hablemos de tu proyecto.</h2>
     <div class="contact-grid">
-      <div class="reveal">
+      <div>
         <p style="color:var(--muted);font-size:0.93rem;font-weight:300;margin-bottom:1.1rem;" data-i18n="contact_desc">¿Buscas un diseñador para tu equipo? ¿Tienes un proyecto que necesita un sistema bien pensado? Escríbeme.</p>
         <div class="contact-links">
           <a href="https://linkedin.com/in/manelbarahona" class="contact-link" target="_blank">
@@ -541,7 +508,7 @@
           </a>
         </div>
       </div>
-      <div class="reveal">
+      <div>
         <p style="color:var(--muted2);font-size:0.8rem;margin-bottom:0.75rem;font-weight:300;" data-i18n="contact_form_label">O mándame un mensaje directo:</p>
         <form class="contact-form" id="contact-form">
           <input type="text"  name="name"    data-i18n-ph="form_name"  placeholder="Nombre" required>
@@ -569,12 +536,14 @@ const i18n = {
     chip_narrative:"Narrativa", chip_production:"Producción Ágil", chip_balance:"Balance & Economía",
     hero_cta1:"Ver proyectos", hero_cta2:"Hablemos", hero_cta3:"↓ CV",
     about_label:"Sobre mí", about_title:"Diseño juegos que se sienten bien.",
-    about_p1:"Desde pequeño, los videojuegos fueron ese espacio donde el mundo tenía sentido. Esa sensación de estar dentro de algo más grande que tú es lo que me llevó a querer construir esos mundos.",
-    about_p2:"Con formación en <strong>Psicología</strong> y un Máster en Diseño de Videojuegos, diseño con la mentalidad del jugador siempre en primer plano: ¿por qué hace clic? ¿qué le hace volver? ¿qué le hace sonreír?",
-    about_p3:"He trabajado en plataformas sociales móviles, Run & Gun, Metroidvanias, roguelikes y proyectos de mesa. Siempre con una obsesión: que cada sistema, nivel y mecánica tenga un propósito claro.",
+    about_p1:"Tengo formación en <strong>Psicología</strong> y un Máster en Diseño de Videojuegos. Esa combinación define cómo trabajo: diseño con la mentalidad del jugador en primer plano, preguntándome por qué hace clic, qué le hace volver y qué le hace sentir competente.",
+    about_p2:"He trabajado en plataformas sociales móviles, Run & Gun, Metroidvanias, roguelikes y proyectos de mesa. Siempre con la misma obsesión: que cada sistema, nivel y mecánica tenga un propósito claro.",
+    about_p3:"Los videojuegos son ese espacio donde las reglas tienen sentido y las decisiones importan. Eso es lo que intento construir.",
     stat1:"Años de experiencia profesional", stat2:"Proyectos en distintos géneros",
     stat3:"Personas lideradas en equipos", stat4:"Plataformas de publicación",
+    about_cta:"Ver lo que he construido",
     proj_label:"Proyectos", proj_title:"Lo que he construido.",
+    badge_soon:"Próximamente",
     rg_genre:"Run & Gun · 2D",
     rg_desc:"Avanza a ostias por una reimaginación de la guerra más fría.",
     mbf_genre:"Terror · Primera persona",
@@ -591,10 +560,11 @@ const i18n = {
     tag_design:"Game Design", tag_economy:"Economía", tag_mobile:"Móvil",
     tag_narrative:"Narrativa", tag_lead:"Diseñador Principal",
     link_case:"Ver case study →", link_demo:"Ver demo →", link_play:"Descargar →",
+    link_soon:"Case study en construcción",
     exp_label:"Experiencia", exp_title:"Dónde he trabajado.", exp_present:"Actualidad",
     exp1_role:"Game Producer & Level Designer",
     exp1_b1:"Productor del juego Run & Gun 2D del estudio, coordinando un equipo de cuatro personas.",
-    exp1_b2:"Diseño de niveles de vehículos, plataformas, acción y sigilo — ritmo, flujo y variedad de experiencia.",
+    exp1_b2:"Diseño de niveles de vehículos, plataformas, acción y sigilo: ritmo, flujo y variedad de experiencia.",
     exp1_b3:"Gestión del pipeline de producción con Scrum y Kanban.",
     exp2_role:"Mentor de Diseño de Videojuegos",
     exp2_b1:"Docencia en mecánicas, sistemas, bucles de juego, economías, balance y progresión.",
@@ -602,22 +572,18 @@ const i18n = {
     exp2_b3:"Guía de sprints de prototipado y críticas de diseño orientadas a la industria.",
     exp3_role:"Project Manager",
     exp3_b1:"Gestión de proyectos en géneros como Metroidvania, roguelike de mazos y estrategia.",
-    exp3_b2:"Equipos de +15 personas: full dev, outsourcing de arte y porting multiplataforma.",
+    exp3_b2:"Equipos de más de 15 personas: full dev, outsourcing de arte y porting multiplataforma.",
     exp3_b3:"Interlocutor principal con clientes y gestión de stakeholders.",
     exp4_role:"Game Designer",
     exp4_b1:"Diseño de sistemas centrales de Gamergy World: economía, monetización, progresión y features sociales.",
     exp4_b2:"Espacios interactivos, escape rooms, misiones y minijuegos arcade.",
     exp4_b3:"Estructura narrativa, comportamiento de NPCs y flujos de quests.",
-    cv_label:"Currículum", cv_title:"¿Prefieres verlo en papel?",
-    cv_desc:"Descarga el CV completo con toda la experiencia, proyectos y formación.",
-    cv_btn:"Descargar CV (PDF)",
+    exp_cta:"Descargar CV",
     contact_label:"Contacto", contact_title:"Hablemos de tu proyecto.",
     contact_desc:"¿Buscas un diseñador para tu equipo? ¿Tienes un proyecto que necesita un sistema bien pensado? Escríbeme.",
-    contact_email_label:"Email", contact_form_label:"O mándame un mensaje directo:",
+    contact_form_label:"O mándame un mensaje directo:",
     form_name:"Nombre", form_email:"Email", form_msg:"Cuéntame tu proyecto...",
     form_send:"Enviar mensaje",
-    about_cta:"Ver lo que he construido",
-    exp_cta:"Descargar CV",
     footer_text:"Hecho con mucho café y amor por los juegos."
   },
   en: {
@@ -629,12 +595,14 @@ const i18n = {
     chip_narrative:"Narrative", chip_production:"Agile Production", chip_balance:"Balance & Economy",
     hero_cta1:"View projects", hero_cta2:"Let's talk", hero_cta3:"↓ CV",
     about_label:"About me", about_title:"I design games that feel right.",
-    about_p1:"Growing up, video games were the place where everything made sense. That feeling of being inside something bigger than yourself is what made me want to build those worlds.",
-    about_p2:"With a background in <strong>Psychology</strong> and a Master's in Game Design, I always put the player's mindset first: why do they click? what makes them come back? what makes them smile?",
-    about_p3:"I've worked on social mobile platforms, Run & Gun, Metroidvanias, roguelikes and tabletop projects. Always with one obsession: every system, level and mechanic must have a clear purpose.",
+    about_p1:"I have a background in <strong>Psychology</strong> and a Master's in Game Design. That combination defines how I work: I design with the player's mindset first, asking why they click, what makes them come back, and what makes them feel competent.",
+    about_p2:"I've worked on social mobile platforms, Run & Gun, Metroidvanias, roguelikes and tabletop projects. Always with the same obsession: every system, level and mechanic must have a clear purpose.",
+    about_p3:"Video games are the space where rules make sense and decisions matter. That's what I try to build.",
     stat1:"Years of professional experience", stat2:"Projects across different genres",
     stat3:"People led in teams", stat4:"Publishing platforms",
+    about_cta:"See what I've built",
     proj_label:"Projects", proj_title:"What I've built.",
+    badge_soon:"Coming soon",
     rg_genre:"Run & Gun · 2D",
     rg_desc:"Blast through a reimagining of the coldest war.",
     mbf_genre:"Horror · First person",
@@ -651,10 +619,11 @@ const i18n = {
     tag_design:"Game Design", tag_economy:"Economy", tag_mobile:"Mobile",
     tag_narrative:"Narrative", tag_lead:"Lead Designer",
     link_case:"View case study →", link_demo:"View demo →", link_play:"Download →",
+    link_soon:"Case study in progress",
     exp_label:"Experience", exp_title:"Where I've worked.", exp_present:"Present",
     exp1_role:"Game Producer & Level Designer",
     exp1_b1:"Producer of the studio's 2D Run & Gun game, coordinating a four-person team.",
-    exp1_b2:"Level design for vehicles, platforming, action and stealth — pacing, flow and variety.",
+    exp1_b2:"Level design for vehicles, platforming, action and stealth: pacing, flow and variety.",
     exp1_b3:"Production pipeline management with Scrum and Kanban.",
     exp2_role:"Game Design Mentor",
     exp2_b1:"Teaching mechanics, systems, game loops, economies, balance and progression.",
@@ -662,22 +631,18 @@ const i18n = {
     exp2_b3:"Guiding prototyping sprints and industry-oriented design critiques.",
     exp3_role:"Project Manager",
     exp3_b1:"Managing projects in genres like Metroidvania, deck-building roguelike and strategy.",
-    exp3_b2:"Teams of 15+: full dev, art outsourcing and multiplatform porting.",
+    exp3_b2:"Teams of 15 or more: full dev, art outsourcing and multiplatform porting.",
     exp3_b3:"Primary client contact and stakeholder management.",
     exp4_role:"Game Designer",
     exp4_b1:"Core systems design for Gamergy World: economy, monetization, progression and social features.",
     exp4_b2:"Interactive spaces, escape rooms, missions and arcade minigames.",
     exp4_b3:"Narrative structure, NPC behaviour and quest flows.",
-    cv_label:"Résumé", cv_title:"Prefer to see it on paper?",
-    cv_desc:"Download the full CV with all experience, projects and education.",
-    cv_btn:"Download CV (PDF)",
+    exp_cta:"Download CV",
     contact_label:"Contact", contact_title:"Let's talk about your project.",
     contact_desc:"Looking for a designer for your team? Have a project that needs a well-thought-out system? Write to me.",
-    contact_email_label:"Email", contact_form_label:"Or send me a direct message:",
+    contact_form_label:"Or send me a direct message:",
     form_name:"Name", form_email:"Email", form_msg:"Tell me about your project...",
     form_send:"Send message",
-    about_cta:"See what I've built",
-    exp_cta:"Download CV",
     footer_text:"Made with lots of coffee and love for games."
   }
 };
@@ -698,10 +663,19 @@ function setLang(lang) {
   document.documentElement.lang = lang;
 }
 
-const observer = new IntersectionObserver(entries => {
-  entries.forEach((e, i) => { if (e.isIntersecting) setTimeout(() => e.target.classList.add('visible'), i * 60); });
-}, { threshold: 0.07 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+const navLinks = document.querySelectorAll('.nav-links a');
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      navLinks.forEach(l => l.style.color = '');
+      const a = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+      if (a) a.style.color = 'var(--yellow)';
+    }
+  });
+}, { threshold: 0.3 });
+['about','projects','experience','contact'].forEach(id => {
+  const el = document.getElementById(id); if (el) sectionObserver.observe(el);
+});
 
 document.getElementById('contact-form').addEventListener('submit', async function(e) {
   e.preventDefault();
